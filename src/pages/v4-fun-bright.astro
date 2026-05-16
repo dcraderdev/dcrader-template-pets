@@ -332,6 +332,37 @@ import { gallery } from '../data/v4/gallery';
     </div>
   </section>
 
+  <!-- UPCOMING EVENTS -->
+  <section class="py-16 px-4" style="background:#ECFEFF;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-[#F97316] font-extrabold uppercase tracking-wider text-sm mb-2">Coming Up!</p>
+        <h2 class="font-fredoka text-5xl text-[#1E293B] mb-3">Themed Play Days 🎉</h2>
+        <p class="text-[#475569] max-w-md mx-auto">Every month we throw a themed play day for our daycare crew. Costumes optional, fun mandatory.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {[
+          { emoji: '🌊', name: 'Splash & Dash', date: 'Jun 21 · Saturday', desc: 'Kiddie pools, sprinklers, and all the zoomies. Towel provided, good mood required.', color: '#06B6D4' },
+          { emoji: '🎆', name: 'Pup-arazzi Day', date: 'Jul 4 · Friday', desc: 'Professional pet photographer on-site! Every dog gets their close-up. Prints available.', color: '#F97316' },
+          { emoji: '🍦', name: 'Doggy Ice Cream Social', date: 'Jul 19 · Saturday', desc: 'Frozen banana + peanut butter cups for everyone. Mess-friendly attire recommended.', color: '#FCD34D' },
+          { emoji: '🎃', name: 'Howl-o-ween Costume Parade', date: 'Oct 31 · Friday', desc: 'Costume contest with prizes! Judges: our staff. Prizes: bragging rights & extra treats.', color: '#F97316' },
+          { emoji: '🎄', name: 'Holiday Photo Booth', date: 'Dec 13 · Saturday', desc: 'Santa hats provided. Send the card your family didn\'t know they needed.', color: '#06B6D4' },
+          { emoji: '🐾', name: 'Adoption Awareness Day', date: 'Every 3rd Fri.', desc: 'Partner shelter brings adoptable dogs to meet our crew. Open play all day.', color: '#FCD34D' },
+        ].map((ev) => (
+          <div class="bg-white rounded-2xl p-6 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-start justify-between gap-2">
+              <span class="text-4xl">{ev.emoji}</span>
+              <span class="font-semibold text-xs uppercase tracking-wide px-3 py-1.5 rounded-full text-[#1E293B]" style={`background:${ev.color}40;`}>{ev.date}</span>
+            </div>
+            <h3 class="font-fredoka text-2xl text-[#1E293B]">{ev.name}</h3>
+            <p class="text-sm text-[#475569] leading-relaxed flex-grow">{ev.desc}</p>
+            <a href="#booking" class="text-xs font-bold uppercase tracking-wide transition-opacity hover:opacity-70" style={`color:${ev.color};`}>Save a spot →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- TESTIMONIALS -->
   <section id="testimonials" class="py-20 px-4" style="background:#1E293B;">
     <div class="max-w-5xl mx-auto">

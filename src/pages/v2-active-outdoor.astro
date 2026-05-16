@@ -263,6 +263,23 @@ import { gallery } from '../data/v2/gallery';
     </div>
   </section>
 
+  <!-- STATS STRIP -->
+  <section class="py-12 px-4" style="background:#F5A623;">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      {[
+        { n: '4,800+', label: 'Miles Hiked with Dogs' },
+        { n: '4.9 ★', label: '218 Reviews' },
+        { n: '6 yrs', label: 'Zero Trail Incidents' },
+        { n: '15+', label: 'Certified Trail Routes' },
+      ].map((s) => (
+        <div>
+          <div class="font-oswald text-4xl font-bold text-[#1A4731] mb-1">{s.n}</div>
+          <p class="text-[#1A4731]/70 text-xs font-semibold uppercase tracking-wider">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <!-- TEAM -->
   <section id="team" class="py-20 px-4" style="background:#F8F7F4;">
     <div class="max-w-5xl mx-auto">
