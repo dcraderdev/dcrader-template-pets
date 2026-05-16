@@ -279,6 +279,40 @@ import { gallery } from '../data/v5/gallery';
     </div>
   </section>
 
+  <!-- CONCIERGE & PARTNER SERVICES -->
+  <section class="py-20 px-4" style="background:#F8F5F0;">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="gold font-montserrat text-xs tracking-widest uppercase mb-3">Exclusive Access</p>
+        <h2 class="font-cormorant text-5xl font-normal text-[#0F172A] italic">Concierge & Partner Services</h2>
+        <div class="gold-rule mt-4 mb-4"></div>
+        <p class="text-[#94A3B8] font-montserrat text-xs tracking-wide max-w-lg mx-auto">Available to all Hollow guests. Our concierge team handles every arrangement so you don't have to.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { icon: '🚗', name: 'Chauffeur Transfer', desc: 'White-glove door-to-suite transport in climate-controlled SUV. Available Beverly Hills, Bel Air, Brentwood, and Century City.', tag: 'On Request' },
+          { icon: '🍽️', name: 'Canine Nutritionist', desc: 'Custom weekly menus developed with a board-certified veterinary nutritionist. Fresh, organic, air-chilled proteins only.', tag: 'Included in Pres. Suite' },
+          { icon: '📹', name: 'Live Camera Access', desc: '24/7 HD streaming to your phone. Motion alerts when your pet is active. Footage retained for 7 days.', tag: 'All Suites' },
+          { icon: '💆', name: 'Canine Massage', desc: 'Swedish and acupressure sessions with a certified canine massage therapist. 30 or 60-minute sessions available.', tag: 'Add-On' },
+          { icon: '🐕', name: 'Private Trainer Sessions', desc: 'One-on-one sessions with a Certified Professional Dog Trainer during your pet\'s stay. Progress report included.', tag: 'Add-On' },
+          { icon: '🌿', name: 'Botanical Spa Treatment', desc: 'Signature aromatherapy bath, blueberry facial, and calming lavender finishing spray. The Hollow\'s most-requested service.', tag: 'Add-On' },
+        ].map((p) => (
+          <div class="bg-white p-8 flex flex-col gap-4 hover:shadow-xl transition-shadow" style="border-top: 1px solid #D4AF37;">
+            <div class="flex items-start justify-between gap-3">
+              <span class="text-3xl">{p.icon}</span>
+              <span class="font-montserrat text-xs tracking-widest uppercase gold">{p.tag}</span>
+            </div>
+            <h3 class="font-cormorant text-2xl text-[#0F172A] italic">{p.name}</h3>
+            <p class="text-sm text-[#334155] leading-relaxed font-light flex-grow">{p.desc}</p>
+            <a href="#booking" class="font-montserrat text-xs tracking-widest uppercase gold hover:opacity-70 transition-opacity mt-2">
+              Arrange via concierge →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- TEAM -->
   <section id="team" class="py-20 px-4 amenity-strip">
     <div class="max-w-6xl mx-auto">
