@@ -19,6 +19,8 @@ import { gallery } from '../data/v4/gallery';
     .grad-coral { background: linear-gradient(135deg, #F97316, #FCD34D); }
     .grad-teal { background: linear-gradient(135deg, #06B6D4, #34D399); }
     .grad-yellow { background: linear-gradient(135deg, #FCD34D, #F97316); }
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 5rem; }
   </style>
 
   <!-- NAV -->
@@ -386,7 +388,12 @@ import { gallery } from '../data/v4/gallery';
   <script>
     const btn = document.getElementById('v4-menu-btn');
     const menu = document.getElementById('v4-mobile-menu');
-    if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    if (btn && menu) {
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      document.querySelectorAll('#v4-mobile-menu a').forEach((link) => {
+        link.addEventListener('click', () => menu.classList.add('hidden'));
+      });
+    }
     const form = document.getElementById('v4-booking-form') as HTMLFormElement | null;
     const success = document.getElementById('v4-booking-success');
     if (form) {

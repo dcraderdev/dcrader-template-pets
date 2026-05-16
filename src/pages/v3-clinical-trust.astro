@@ -12,6 +12,8 @@ import { gallery } from '../data/v3/gallery';
     .btn-teal:hover { background: #0c6478; }
     input:focus, select:focus, textarea:focus { outline: 2px solid #0E7490; outline-offset: 2px; }
     .check-teal { color: #0E7490; font-weight: 700; }
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 5rem; }
   </style>
 
   <!-- NAV -->
@@ -202,7 +204,7 @@ import { gallery } from '../data/v3/gallery';
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {gallery.map((img) => (
           <div class="overflow-hidden shadow-sm hover:shadow-md transition-shadow" style="aspect-ratio: 4/3;">
-            <img src={img.url} alt={img.alt} loading="lazy" class="w-full h-full object-cover hover:scale-103 transition-transform duration-500" />
+            <img src={img.url} alt={img.alt} loading="lazy" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500" />
           </div>
         ))}
       </div>
@@ -403,7 +405,12 @@ import { gallery } from '../data/v3/gallery';
   <script>
     const btn = document.getElementById('v3-menu-btn');
     const menu = document.getElementById('v3-mobile-menu');
-    if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    if (btn && menu) {
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      document.querySelectorAll('#v3-mobile-menu a').forEach((link) => {
+        link.addEventListener('click', () => menu.classList.add('hidden'));
+      });
+    }
     const form = document.getElementById('v3-booking-form') as HTMLFormElement | null;
     const success = document.getElementById('v3-booking-success');
     if (form) {

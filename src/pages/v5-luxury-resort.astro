@@ -28,6 +28,9 @@ import { gallery } from '../data/v5/gallery';
     input:focus, select:focus, textarea:focus { outline: 1px solid #D4AF37; outline-offset: 2px; }
     .amenity-strip { background: #0F172A; }
     .gallery-img:hover { box-shadow: 0 0 0 2px #D4AF37; }
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 5rem; }
+    @media (max-width: 768px) { .hero-bg-v5 { background-attachment: scroll; } }
   </style>
 
   <!-- NAV -->
@@ -187,7 +190,7 @@ import { gallery } from '../data/v5/gallery';
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {gallery.map((img) => (
           <div class="overflow-hidden gallery-img transition-all" style="aspect-ratio: 4/3;">
-            <img src={img.url} alt={img.alt} loading="lazy" class="w-full h-full object-cover hover:scale-103 transition-transform duration-700" />
+            <img src={img.url} alt={img.alt} loading="lazy" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />
           </div>
         ))}
       </div>
@@ -393,7 +396,12 @@ import { gallery } from '../data/v5/gallery';
   <script>
     const btn = document.getElementById('v5-menu-btn');
     const menu = document.getElementById('v5-mobile-menu');
-    if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    if (btn && menu) {
+      btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+      document.querySelectorAll('#v5-mobile-menu a').forEach((link) => {
+        link.addEventListener('click', () => menu.classList.add('hidden'));
+      });
+    }
     const form = document.getElementById('v5-booking-form') as HTMLFormElement | null;
     const success = document.getElementById('v5-booking-success');
     if (form) {
