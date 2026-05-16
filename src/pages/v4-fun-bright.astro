@@ -3,11 +3,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { business, team, testimonials } from '../data/v4/business';
 import { services, packages } from '../data/v4/services';
 import { gallery } from '../data/v4/gallery';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": business.name,
+  "description": business.description,
+  "telephone": business.phone,
+  "email": business.email,
+  "address": { "@type": "PostalAddress", "streetAddress": business.address },
+  "url": "https://pets.dcrader.dev/v4-fun-bright",
+  "priceRange": "$",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "412" },
+  "openingHours": ["Mo-Fr 06:30-19:30", "Sa 07:00-18:00", "Su 09:00-17:00"],
+});
 ---
 <BaseLayout
   title={`${business.name} — ${business.tagline}`}
   description={business.description}
   ogImage="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&h=630&fit=crop&q=80"
+  schemaJson={schemaJson}
 >
 
   <!-- ANNOUNCEMENT BANNER -->

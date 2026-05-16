@@ -3,12 +3,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { business, team, testimonials } from '../data/v5/business';
 import { services, packages } from '../data/v5/services';
 import { gallery } from '../data/v5/gallery';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": business.name,
+  "description": business.description,
+  "telephone": business.phone,
+  "email": business.email,
+  "address": { "@type": "PostalAddress", "streetAddress": business.address },
+  "url": "https://pets.dcrader.dev/v5-luxury-resort",
+  "priceRange": "$$$$",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "194" },
+  "openingHours": ["Mo-Su 08:00-20:00"],
+});
 ---
 <BaseLayout
   title={`${business.name} — ${business.tagline}`}
   description={business.description}
   ogImage="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1200&h=630&fit=crop&q=80"
   heroImage="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1600&h=900&fit=crop&q=80"
+  schemaJson={schemaJson}
 >
 
   <!-- ANNOUNCEMENT BANNER -->

@@ -3,11 +3,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { business, team, testimonials } from '../data/v3/business';
 import { services, packages } from '../data/v3/services';
 import { gallery } from '../data/v3/gallery';
+
+const schemaJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": business.name,
+  "description": business.description,
+  "telephone": business.phone,
+  "email": business.email,
+  "address": { "@type": "PostalAddress", "streetAddress": business.address },
+  "url": "https://pets.dcrader.dev/v3-clinical-trust",
+  "priceRange": "$$",
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "184" },
+  "openingHours": ["Mo-Fr 08:00-18:00", "Sa 09:00-17:00"],
+});
 ---
 <BaseLayout
   title={`${business.name} — ${business.tagline}`}
   description={business.description}
   ogImage="https://images.unsplash.com/photo-1560743641-3914f2c45636?w=1200&h=630&fit=crop&q=80"
+  schemaJson={schemaJson}
 >
 
   <!-- ANNOUNCEMENT BANNER -->

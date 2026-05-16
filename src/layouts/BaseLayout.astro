@@ -5,9 +5,10 @@ export interface Props {
   ogImage?: string;
   heroImage?: string;
   variant?: string;
+  schemaJson?: string;
 }
 
-const { title, description, ogImage, heroImage, variant = '' } = Astro.props;
+const { title, description, ogImage, heroImage, variant = '', schemaJson } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://pets.dcrader.dev');
 ---
 <!DOCTYPE html>
@@ -35,6 +36,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://pets.dcr
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;600&family=Fredoka+One&family=Nunito:wght@400;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {schemaJson && <Fragment set:html={`<script type="application/ld+json">${schemaJson}</script>`} />}
   </head>
   <body>
     <slot />
