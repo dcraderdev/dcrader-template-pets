@@ -261,6 +261,66 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+  <!-- SUITE TYPES -->
+  <section class="py-16 px-4" style="background:#F2EAD8;">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Where They Stay</p>
+        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F]">Our Suites</h2>
+        <p class="text-[#9C7B6C] mt-3 max-w-lg mx-auto">No cages. No kennels. Every dog sleeps in a real room — because that's what they deserve.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-6">
+        {[
+          {
+            name: 'Cozy Den',
+            size: '80 sq ft',
+            icon: '🛏️',
+            price: 'from $89/night',
+            features: ['Queen-sized dog bed', 'Soft lighting', 'White noise machine', 'Daily photo update', 'Morning & evening yard time'],
+            color: '#6B8F71',
+          },
+          {
+            name: 'Garden Suite',
+            size: '120 sq ft + private yard',
+            icon: '🌿',
+            price: 'from $129/night',
+            features: ['King-sized memory foam', 'Private outdoor enclosure', 'Webcam access', 'Twice-daily enrichment', 'Aromatherapy diffuser'],
+            color: '#C17B50',
+            featured: true,
+          },
+          {
+            name: 'Premium Suite',
+            size: '200 sq ft + terrace',
+            icon: '✨',
+            price: 'from $175/night',
+            features: ['Orthopedic luxury bed', 'Private terrace access', 'Live 24/7 camera', 'Three enrichment sessions', 'Spa add-on included'],
+            color: '#3D2B1F',
+          },
+        ].map((suite) => (
+          <div class={`rounded-2xl overflow-hidden bg-white shadow-md flex flex-col ${suite.featured ? 'ring-2 ring-[#C17B50] scale-[1.02]' : ''}`}>
+            {suite.featured && <div class="text-center py-2 text-xs font-bold uppercase tracking-widest text-white" style="background:#C17B50;">Most Popular</div>}
+            <div class="p-6 text-center border-b border-[#F2EAD8]">
+              <div class="text-4xl mb-3">{suite.icon}</div>
+              <h3 class="font-playfair text-2xl font-bold text-[#3D2B1F] mb-1">{suite.name}</h3>
+              <p class="text-[#9C7B6C] text-xs mb-3">{suite.size}</p>
+              <p class="font-bold text-lg" style={`color:${suite.color};`}>{suite.price}</p>
+            </div>
+            <ul class="p-6 flex flex-col gap-3 flex-grow">
+              {suite.features.map((f) => (
+                <li class="text-sm text-[#5C4033] flex items-start gap-2">
+                  <span style={`color:${suite.color};`} class="font-bold mt-0.5">✓</span> {f}
+                </li>
+              ))}
+            </ul>
+            <div class="px-6 pb-6">
+              <a href="#booking" class="block text-center btn-terra text-sm py-2 w-full">Reserve This Suite</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- HOW IT WORKS -->
   <section class="py-16 px-4" style="background:#FAF6EF;">
     <div class="max-w-5xl mx-auto">

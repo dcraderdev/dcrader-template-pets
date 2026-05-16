@@ -247,6 +247,34 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+  <!-- SAFETY & PREPAREDNESS -->
+  <section class="py-16 px-4" style="background:#0F2A1D;">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-oswald text-4xl md:text-5xl font-bold text-white uppercase mb-3">Safety First. Always.</h2>
+        <div class="w-16 h-1 mx-auto mb-4" style="background:#F5A623;"></div>
+        <p class="text-white/60 max-w-xl mx-auto">Before your dog takes a single step on trail, we've already planned for every scenario.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {[
+          { icon: '🗺️', title: 'Pre-Hike Route Plan', desc: 'Every hike is mapped before departure. Trailhead, waypoints, emergency exit routes, and estimated return time all shared with our base coordinator.' },
+          { icon: '📡', title: 'Live GPS Tracking', desc: 'Every guide carries a GPS beacon. Real-time location is visible to our office team throughout the hike. Owners can request a location update anytime.' },
+          { icon: '🩺', title: 'Wilderness First Aid', desc: 'All guides hold current Wilderness First Responder or WFA certification. Field-grade first aid kit on every hike, including canine-specific supplies.' },
+          { icon: '📞', title: '2-Min Check-In Protocol', desc: 'If any dog shows distress or weather changes rapidly, our guide radios base within 2 minutes. Emergency vet on speed dial. Owner notified immediately.' },
+        ].map((item) => (
+          <div class="p-6 flex flex-col gap-3" style="border: 1px solid rgba(245,166,35,0.25); background:rgba(255,255,255,0.04);">
+            <div class="text-4xl">{item.icon}</div>
+            <h3 class="font-oswald text-xl font-bold text-[#F5A623] uppercase">{item.title}</h3>
+            <p class="text-white/60 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-10 text-center">
+        <p class="text-white/40 font-oswald text-sm uppercase tracking-widest">CO Animal Handler Licensed · Wilderness First Aid Certified · Insured & Bonded</p>
+      </div>
+    </div>
+  </section>
+
   <!-- TRAIL LEVELS -->
   <section class="py-16 px-4" style="background:#1A4731;">
     <div class="max-w-5xl mx-auto">
