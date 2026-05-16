@@ -131,6 +131,23 @@ import { gallery } from '../data/v1/gallery';
     </div>
   </section>
 
+  <!-- STATS STRIP -->
+  <section class="py-10 px-4" style="background:#3D2B1F;">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      {[
+        { n: '5,000+', label: 'Dog-Nights Booked' },
+        { n: '4.9 ★', label: '312 Google Reviews' },
+        { n: '12', label: 'Max Dogs at Once' },
+        { n: '2×', label: 'Daily Photo Updates' },
+      ].map((s) => (
+        <div>
+          <div class="font-playfair text-3xl font-bold text-[#C17B50] mb-1">{s.n}</div>
+          <p class="text-[#F2EAD8]/70 text-xs tracking-wider uppercase">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <!-- HEALTH & REQUIREMENTS -->
   <section class="py-16 px-4" style="background:#FAF6EF;">
     <div class="max-w-4xl mx-auto">

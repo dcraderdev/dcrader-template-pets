@@ -3,7 +3,7 @@ export const business = {
   tagline: 'Where dogs run wild and come home happy',
   description: 'Boulder\'s premier adventure dog service. Professional hiking, outdoor daycare, and nature-based training for active dogs who crave real exercise.',
   phone: '(720) 443-8821',
-  email: 'woof@trailttails.com',
+  email: 'woof@trailtails.com',
   address: '1847 Canyon Boulevard, Boulder, CO 80302',
   neighborhood: 'North Boulder',
   hours: {

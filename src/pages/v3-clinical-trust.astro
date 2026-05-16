@@ -198,6 +198,23 @@ import { gallery } from '../data/v3/gallery';
     </div>
   </section>
 
+  <!-- STATS STRIP -->
+  <section class="py-10 px-4 bg-white border-y border-[#E2E8F0]">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      {[
+        { n: '2,300+', label: 'Appointments Completed' },
+        { n: '4.9 ★', label: '184 Verified Reviews' },
+        { n: '0', label: 'Cage Drying — Ever' },
+        { n: '100%', label: 'Fear-Free Protocols' },
+      ].map((s) => (
+        <div>
+          <div class="text-3xl font-bold text-[#0E7490] mb-1">{s.n}</div>
+          <p class="text-[#64748B] text-xs tracking-wider uppercase">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
   <!-- PRICING -->
   <section id="pricing" class="py-16 px-4 bg-white">
     <div class="max-w-5xl mx-auto">
