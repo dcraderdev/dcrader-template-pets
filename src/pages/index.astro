@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const variants = [
+  {
+    slug: '/v1-cozy-boutique',
+    name: 'Paws & Pine',
+    subtitle: 'V1 — Cozy Boutique',
+    location: 'San Francisco, CA',
+    target: 'Boutique boarding, upscale neighborhood clientele',
+    palette: ['#6B8F71', '#C17B50', '#3D2B1F', '#FAF6EF'],
+    bg: 'linear-gradient(135deg, #3D2B1F 60%, #6B8F71 100%)',
+    accent: '#C17B50',
+    fonts: 'Playfair Display + Lato',
+    feel: 'Warm, artisanal, SF dog spa Instagram',
+  },
+  {
+    slug: '/v2-active-outdoor',
+    name: 'Trail Tails Adventure Co.',
+    subtitle: 'V2 — Active Outdoor',
+    location: 'Boulder, CO',
+    target: 'Adventure dogs, high-drive breeds, active owners',
+    palette: ['#1A4731', '#F5A623', '#E87B3A', '#F8F7F4'],
+    bg: 'linear-gradient(135deg, #1A4731 60%, #F5A623 100%)',
+    accent: '#F5A623',
+    fonts: 'Oswald + Open Sans',
+    feel: 'Bold, outdoorsy, National Park energy',
+  },
+  {
+    slug: '/v3-clinical-trust',
+    name: 'Calm Coat Veterinary Grooming',
+    subtitle: 'V3 — Clinical Trust',
+    location: 'Seattle, WA',
+    target: 'Anxious dogs, medical grooming needs, discerning owners',
+    palette: ['#0E7490', '#0D9488', '#CCFBF1', '#FFFFFF'],
+    bg: 'linear-gradient(135deg, #0E7490 60%, #0D9488 100%)',
+    accent: '#0E7490',
+    fonts: 'Inter throughout',
+    feel: 'Clinical, clean, trustworthy, maximum credentials',
+  },
+  {
+    slug: '/v4-fun-bright',
+    name: 'Sniff & Snuggle Daycare',
+    subtitle: 'V4 — Fun & Bright',
+    location: 'Austin, TX',
+    target: 'Daycare, puppy classes, young families',
+    palette: ['#F97316', '#06B6D4', '#FCD34D', '#1E293B'],
+    bg: 'linear-gradient(135deg, #F97316 50%, #06B6D4 100%)',
+    accent: '#F97316',
+    fonts: 'Fredoka One + Nunito',
+    feel: 'Playful, colorful, happiest page on the internet',
+  },
+  {
+    slug: '/v5-luxury-resort',
+    name: 'The Hollow Pet Hotel & Spa',
+    subtitle: 'V5 — Luxury Resort',
+    location: 'Beverly Hills, CA',
+    target: 'Ultra-premium boarding, high-net-worth clientele',
+    palette: ['#0F172A', '#D4AF37', '#B8860B', '#F8F5F0'],
+    bg: 'linear-gradient(135deg, #0F172A 60%, #B8860B 100%)',
+    accent: '#D4AF37',
+    fonts: 'Cormorant Garamond + Montserrat',
+    feel: 'Five-star hotel, maximum negative space, gold accents',
+  },
+];
+---
+<BaseLayout
+  title="Pet Services Landing Page Templates — dcrader.dev"
+  description="5 market-ready pet services landing page templates built with Astro and Tailwind. Groomers, boarders, daycares, trainers — all covered."
+>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0F172A; color: #CBD5E1; }
+    .card-hover { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .card-hover:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  </style>
+
+  <!-- HEADER -->
+  <header class="px-6 py-20 text-center border-b border-white/10">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-5xl mb-6">🐾</div>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Pet Services Landing Pages</h1>
+      <p class="text-[#94A3B8] text-lg mb-6">5 market-ready templates for groomers, boarders, trainers, and daycares.<br/>Built with Astro 4 + Tailwind CSS.</p>
+      <div class="flex flex-wrap justify-center gap-3 text-xs">
+        <span class="bg-white/10 text-white/70 px-3 py-1.5 rounded-full">Astro 4</span>
+        <span class="bg-white/10 text-white/70 px-3 py-1.5 rounded-full">Tailwind CSS</span>
+        <span class="bg-white/10 text-white/70 px-3 py-1.5 rounded-full">TypeScript</span>
+        <span class="bg-white/10 text-white/70 px-3 py-1.5 rounded-full">Vercel Ready</span>
+        <span class="bg-white/10 text-white/70 px-3 py-1.5 rounded-full">Mobile First</span>
+        <span class="bg-white/10 text-white/70 px-3 py-1.5 rounded-full">WCAG AA</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- GRID -->
+  <main class="max-w-6xl mx-auto px-6 py-16">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {variants.map((v, i) => (
+        <a href={v.slug} class="block rounded-2xl overflow-hidden bg-[#1E293B] border border-white/10 card-hover no-underline">
+          <!-- Color preview block -->
+          <div class="h-44 flex flex-col items-center justify-center text-center px-4 relative" style={`background:${v.bg};`}>
+            <!-- Palette dots -->
+            <div class="absolute top-4 right-4 flex gap-1.5">
+              {v.palette.map((c) => (
+                <div class="w-4 h-4 rounded-full border border-white/20" style={`background:${c};`} title={c}></div>
+              ))}
+            </div>
+            <div class="text-white/30 text-xs uppercase tracking-widest mb-2">{v.subtitle}</div>
+            <h2 class="text-2xl font-bold text-white text-center leading-snug">{v.name}</h2>
+            <p class="text-white/70 text-xs mt-1">{v.location}</p>
+          </div>
+          <!-- Card content -->
+          <div class="p-5 flex flex-col gap-3">
+            <div>
+              <p class="text-[#94A3B8] text-xs font-semibold uppercase tracking-wider mb-1">Target Market</p>
+              <p class="text-white text-sm">{v.target}</p>
+            </div>
+            <div>
+              <p class="text-[#94A3B8] text-xs font-semibold uppercase tracking-wider mb-1">Typography</p>
+              <p class="text-white text-sm">{v.fonts}</p>
+            </div>
+            <div>
+              <p class="text-[#94A3B8] text-xs font-semibold uppercase tracking-wider mb-1">Design Feel</p>
+              <p class="text-white/80 text-sm italic">{v.feel}</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between">
+              <span class="text-xs text-[#94A3B8]">8 sections · booking form</span>
+              <span class="text-sm font-semibold" style={`color:${v.accent};`}>Preview →</span>
+            </div>
+          </div>
+        </a>
+      ))}
+
+      <!-- CTA card -->
+      <div class="rounded-2xl border border-dashed border-white/20 flex flex-col items-center justify-center text-center p-10 gap-4">
+        <div class="text-4xl">🛠️</div>
+        <h3 class="text-white font-bold text-lg">Your Version</h3>
+        <p class="text-[#94A3B8] text-sm">Fork this repo and customize any variant. Edit <code class="bg-white/10 px-1 py-0.5 rounded text-xs">src/data/v{"{n}"}/</code> files with your business details.</p>
+        <a
+          href="https://github.com/dcraderdev/dcrader-template-pets"
+          class="text-sm font-semibold bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 rounded-full transition-colors"
+          target="_blank" rel="noopener noreferrer"
+        >
+          View on GitHub →
+        </a>
+      </div>
+    </div>
+
+    <!-- Sections breakdown -->
+    <div class="mt-16 border border-white/10 rounded-2xl p-8">
+      <h2 class="text-white font-bold text-xl mb-6 text-center">Every Template Includes</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { icon: '🖼️', name: 'Hero', desc: 'Full-screen with overlay' },
+          { icon: '🐕', name: 'Services', desc: '4 service cards' },
+          { icon: '💳', name: 'Pricing', desc: '3 package tiers' },
+          { icon: '📸', name: 'Gallery', desc: '8-image layout' },
+          { icon: '👥', name: 'Team', desc: 'Bio + certifications' },
+          { icon: '⭐', name: 'Testimonials', desc: '3 star reviews' },
+          { icon: '📋', name: 'Booking Form', desc: 'JS success state' },
+          { icon: '📍', name: 'Contact', desc: 'Hours + map embed' },
+        ].map((s) => (
+          <div class="flex items-start gap-3 p-3 rounded-xl bg-white/5">
+            <span class="text-2xl">{s.icon}</span>
+            <div>
+              <p class="text-white font-semibold text-sm">{s.name}</p>
+              <p class="text-[#94A3B8] text-xs">{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 py-8 text-center">
+    <p class="text-[#94A3B8] text-sm">
+      Built by <a href="https://dcrader.dev" class="text-white hover:underline">dcrader.dev</a>
+      · <a href="https://github.com/dcraderdev/dcrader-template-pets" class="text-white hover:underline">github.com/dcraderdev/dcrader-template-pets</a>
+    </p>
+    <p class="text-white/30 text-xs mt-2">Photos from Unsplash · MIT License</p>
+  </footer>
+</BaseLayout>

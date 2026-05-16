@@ -1,0 +1,407 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business, team, testimonials } from '../data/v5/business';
+import { services, packages } from '../data/v5/services';
+import { gallery } from '../data/v5/gallery';
+---
+<BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; background: #F8F5F0; color: #334155; }
+    .font-cormorant { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .font-montserrat { font-family: 'Montserrat', sans-serif; }
+    .hero-bg-v5 {
+      background-image: linear-gradient(rgba(15,23,42,0.62), rgba(15,23,42,0.68)),
+        url('https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1600&h=900&fit=crop&q=80');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+    }
+    .gold { color: #D4AF37; }
+    .bg-gold { background: #B8860B; }
+    .bg-navy { background: #0F172A; }
+    .border-gold { border-color: #D4AF37; }
+    .btn-gold-outline { border: 1px solid #D4AF37; color: #D4AF37; background: transparent; border-radius: 2px; padding: 0.85rem 2.5rem; font-family: 'Montserrat', sans-serif; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.8rem; transition: all 0.3s; display: inline-block; }
+    .btn-gold-outline:hover { background: #D4AF37; color: #0F172A; }
+    .btn-navy { background: #0F172A; color: #D4AF37; border: 1px solid #0F172A; border-radius: 2px; padding: 0.85rem 2.5rem; font-family: 'Montserrat', sans-serif; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.8rem; transition: all 0.3s; display: inline-block; }
+    .btn-navy:hover { background: #D4AF37; color: #0F172A; border-color: #D4AF37; }
+    .gold-rule { height: 1px; background: linear-gradient(90deg, transparent, #D4AF37, transparent); margin: 0.75rem auto; max-width: 200px; }
+    input:focus, select:focus, textarea:focus { outline: 1px solid #D4AF37; outline-offset: 2px; }
+    .amenity-strip { background: #0F172A; }
+    .gallery-img:hover { box-shadow: 0 0 0 2px #D4AF37; }
+  </style>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 shadow-xl" style="background:#0F172A;">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-3">
+        <span class="text-xl">👑</span>
+        <span class="font-cormorant text-xl font-semibold gold tracking-widest">{business.name}</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8 text-xs font-medium tracking-widest uppercase">
+        <a href="#services" class="text-white/60 hover:text-[#D4AF37] transition-colors">Services</a>
+        <a href="#pricing" class="text-white/60 hover:text-[#D4AF37] transition-colors">Packages</a>
+        <a href="#gallery" class="text-white/60 hover:text-[#D4AF37] transition-colors">Gallery</a>
+        <a href="#team" class="text-white/60 hover:text-[#D4AF37] transition-colors">Team</a>
+        <a href="#booking" class="btn-gold-outline">Reserve</a>
+      </div>
+      <button id="v5-menu-btn" class="md:hidden text-[#D4AF37] text-2xl" aria-label="Open menu">☰</button>
+    </div>
+    <div id="v5-mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col gap-3 border-t border-white/10">
+      <a href="#services" class="text-white/60 text-xs uppercase tracking-widest py-2">Services</a>
+      <a href="#pricing" class="text-white/60 text-xs uppercase tracking-widest py-2">Packages</a>
+      <a href="#gallery" class="text-white/60 text-xs uppercase tracking-widest py-2">Gallery</a>
+      <a href="#team" class="text-white/60 text-xs uppercase tracking-widest py-2">Team</a>
+      <a href="#booking" class="btn-gold-outline text-center">Reserve</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero-bg-v5 min-h-screen flex items-center justify-center text-center px-4">
+    <div class="max-w-4xl mx-auto">
+      <p class="gold font-montserrat text-xs tracking-widest uppercase mb-6">Est. {business.founded} · {business.neighborhood}</p>
+      <div class="gold-rule mb-6"></div>
+      <h1 class="font-cormorant text-6xl md:text-8xl font-normal text-white leading-tight mb-4 italic">
+        Where Extraordinary Pets<br/>Receive Extraordinary Care
+      </h1>
+      <div class="gold-rule mt-6 mb-6"></div>
+      <p class="text-white/60 font-montserrat text-xs tracking-widest uppercase mb-10">{business.phone}</p>
+      <a href="#booking" class="btn-gold-outline text-sm px-12 py-4">Reserve Your Suite</a>
+    </div>
+  </section>
+
+  <!-- AMENITY STRIP -->
+  <section class="amenity-strip py-6 px-4">
+    <div class="max-w-6xl mx-auto flex flex-wrap justify-center gap-6 md:gap-10">
+      {[
+        { icon: '🏨', label: 'Private Suites' },
+        { icon: '📹', label: 'In-Room Cameras' },
+        { icon: '🍽️', label: 'Organic Cuisine' },
+        { icon: '👨‍⚕️', label: '24/7 Veterinarian' },
+        { icon: '🚗', label: 'Chauffeur Available' },
+      ].map((a) => (
+        <div class="flex items-center gap-3 text-center">
+          <span class="text-2xl">{a.icon}</span>
+          <span class="text-white/60 font-montserrat text-xs tracking-widest uppercase">{a.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-20 px-4" style="background:#F8F5F0;">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="gold font-montserrat text-xs tracking-widest uppercase mb-3">Our Offerings</p>
+        <h2 class="font-cormorant text-5xl font-normal text-[#0F172A] italic">The Services</h2>
+        <div class="gold-rule mt-4"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {services.map((s) => (
+          <div class="bg-white p-8 flex flex-col gap-4 hover:shadow-xl transition-shadow" style="border-top: 2px solid #D4AF37;">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex gap-4 items-start">
+                <span class="text-3xl">{s.icon}</span>
+                <div>
+                  <h3 class="font-cormorant text-2xl text-[#0F172A] italic">{s.name}</h3>
+                  <p class="font-montserrat text-xs gold tracking-wider mt-1">{s.price}</p>
+                </div>
+              </div>
+            </div>
+            <p class="text-sm text-[#334155] leading-relaxed font-light">{s.description}</p>
+            <ul class="grid grid-cols-2 gap-2 mt-2">
+              {s.highlights.map((h) => (
+                <li class="text-xs text-[#334155] flex items-center gap-2 font-light">
+                  <span class="gold">—</span> {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- THE EXPERIENCE FULL WIDTH -->
+  <section class="py-0 overflow-hidden" style="background:#0F172A;">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 items-center">
+      <div class="h-80 md:h-auto md:min-h-[500px] overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=600&fit=crop&q=80"
+          alt="Luxury pet care at The Hollow Pet Hotel"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="p-12 md:p-16">
+        <p class="gold font-montserrat text-xs tracking-widest uppercase mb-4">The Experience</p>
+        <h2 class="font-cormorant text-4xl md:text-5xl text-white italic font-normal leading-tight mb-6">A Standard of Care<br/>Your Pet Deserves</h2>
+        <p class="text-white/60 text-sm leading-relaxed mb-6 font-light">{business.description}</p>
+        <p class="gold text-sm leading-relaxed mb-8 font-light italic">"Every guest receives a personalized care plan, reviewed by our on-call veterinarian, and executed by staff trained to five-star hospitality standards."</p>
+        <a href="#booking" class="btn-gold-outline">Reserve Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-20 px-4" style="background:#F8F5F0;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="gold font-montserrat text-xs tracking-widest uppercase mb-3">Packages</p>
+        <h2 class="font-cormorant text-5xl font-normal text-[#0F172A] italic">Suite Packages</h2>
+        <div class="gold-rule mt-4"></div>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {packages.map((pkg) => (
+          <div class={`flex flex-col p-8 gap-5 ${pkg.featured ? '' : 'bg-white shadow-sm'}`}
+               style={pkg.featured ? 'background:#0F172A;' : ''}>
+            {pkg.featured && <div class="text-center mb-2"><span class="gold font-montserrat text-xs tracking-widest uppercase">Signature Package</span></div>}
+            <div>
+              <h3 class="font-cormorant text-2xl italic mb-1" style={pkg.featured ? 'color:#D4AF37' : 'color:#0F172A'}>{pkg.name}</h3>
+              <p class="font-montserrat text-xs tracking-wider uppercase" style={pkg.featured ? 'color:rgba(255,255,255,0.4)' : 'color:#94A3B8'}>{pkg.period}</p>
+            </div>
+            <div class="font-cormorant text-5xl" style={pkg.featured ? 'color:#D4AF37' : 'color:#0F172A'}>{pkg.price}</div>
+            <p class="text-sm font-light" style={pkg.featured ? 'color:rgba(255,255,255,0.6)' : 'color:#334155'}>{pkg.description}</p>
+            <ul class="space-y-2 flex-grow">
+              {pkg.features.map((f) => (
+                <li class="text-sm font-light flex items-start gap-2" style={pkg.featured ? 'color:rgba(255,255,255,0.7)' : 'color:#334155'}>
+                  <span style={pkg.featured ? 'color:#D4AF37' : 'color:#B8860B'} class="mt-0.5">—</span> {f}
+                </li>
+              ))}
+            </ul>
+            <a href="#booking" class={`text-center mt-2 ${pkg.featured ? 'btn-gold-outline' : 'btn-navy'}`}>
+              Reserve
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="py-20 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="gold font-montserrat text-xs tracking-widest uppercase mb-3">Our Guests</p>
+        <h2 class="font-cormorant text-5xl font-normal text-[#0F172A] italic">The Gallery</h2>
+        <div class="gold-rule mt-4"></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {gallery.map((img) => (
+          <div class="overflow-hidden gallery-img transition-all" style="aspect-ratio: 4/3;">
+            <img src={img.url} alt={img.alt} loading="lazy" class="w-full h-full object-cover hover:scale-103 transition-transform duration-700" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="py-20 px-4 amenity-strip">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="gold font-montserrat text-xs tracking-widest uppercase mb-3">Our Staff</p>
+        <h2 class="font-cormorant text-5xl font-normal text-white italic">The Team</h2>
+        <div class="gold-rule mt-4"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {team.map((member) => (
+          <div class="text-center flex flex-col items-center gap-3">
+            <div style="padding: 3px; background: #D4AF37; border-radius: 50%;">
+              <img src={member.photo} alt={`Photo of ${member.name}, ${member.role} at ${business.name}`} class="w-28 h-28 rounded-full object-cover" />
+            </div>
+            <h3 class="font-cormorant text-xl italic text-white mt-2">{member.name}</h3>
+            <p class="gold font-montserrat text-xs tracking-wider uppercase">{member.role}</p>
+            <p class="text-white/50 text-xs leading-relaxed font-light">{member.bio}</p>
+            <ul class="space-y-1 mt-2">
+              {member.certifications.map((cert) => (
+                <li class="text-[#D4AF37]/60 text-xs font-light">· {cert}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="py-20 px-4" style="background:#F8F5F0;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="gold font-montserrat text-xs tracking-widest uppercase mb-3">Guest Reviews</p>
+        <h2 class="font-cormorant text-5xl font-normal text-[#0F172A] italic">In Their Words</h2>
+        <div class="gold-rule mt-4"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((t) => (
+          <div class="flex flex-col gap-5">
+            <div class="flex gap-0.5 gold" aria-label={`${t.stars} out of 5 stars`}>{'★'.repeat(t.stars)}</div>
+            <blockquote class="font-cormorant text-xl italic text-[#0F172A] leading-relaxed flex-grow">"{t.text}"</blockquote>
+            <div class="flex items-center gap-3 pt-4 border-t border-[#E2E8F0]">
+              <div class="h-px flex-grow" style="background:linear-gradient(90deg, #D4AF37, transparent);"></div>
+              <div class="text-right">
+                <p class="font-montserrat text-xs font-semibold text-[#0F172A] uppercase tracking-wide">{t.name}</p>
+                <p class="text-xs text-[#94A3B8] font-light">{t.breed} · {t.date}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section id="booking" class="py-20 px-4 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="gold font-montserrat text-xs tracking-widest uppercase mb-3">Reservations</p>
+        <h2 class="font-cormorant text-5xl font-normal text-[#0F172A] italic">Request a Reservation</h2>
+        <div class="gold-rule mt-4 mb-4"></div>
+        <p class="text-[#94A3B8] font-montserrat text-xs tracking-wide">Reservations are confirmed within 2 hours</p>
+      </div>
+      <div id="v5-form-wrap" class="border border-[#E2E8F0] p-10" style="border-top: 2px solid #D4AF37;">
+        <form id="v5-booking-form" class="flex flex-col gap-6" novalidate>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex flex-col gap-1.5">
+              <label for="v5-owner-name" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Guest's Name <span class="gold">*</span></label>
+              <input id="v5-owner-name" name="ownerName" type="text" required placeholder="Your full name" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label for="v5-pet-name" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Pet's Name <span class="gold">*</span></label>
+              <input id="v5-pet-name" name="petName" type="text" required placeholder="Your pet's name" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex flex-col gap-1.5">
+              <label for="v5-email" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Email <span class="gold">*</span></label>
+              <input id="v5-email" name="email" type="email" required placeholder="you@email.com" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label for="v5-phone" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Phone <span class="gold">*</span></label>
+              <input id="v5-phone" name="phone" type="tel" required placeholder="(310) 000-0000" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex flex-col gap-1.5">
+              <label for="v5-breed" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Breed</label>
+              <input id="v5-breed" name="breed" type="text" placeholder="e.g. Standard Poodle" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label for="v5-service" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Service <span class="gold">*</span></label>
+              <select id="v5-service" name="service" required class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] font-light">
+                <option value="">Select a service…</option>
+                {services.map((s) => <option value={s.name}>{s.name}</option>)}
+              </select>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="v5-date" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Arrival Date <span class="gold">*</span></label>
+            <input id="v5-date" name="date" type="date" required class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] font-light" />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="v5-notes" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Special Requirements</label>
+            <textarea id="v5-notes" name="notes" rows="4" placeholder="Dietary preferences, medical conditions, grooming schedule, behavioral notes, preferred walk times…" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light resize-y"></textarea>
+          </div>
+          <button type="submit" class="btn-navy text-center w-full py-4">
+            Submit Reservation Request
+          </button>
+          <p class="text-center text-xs text-[#94A3B8] font-montserrat">Reservations are confirmed within 2 hours · {business.phone}</p>
+        </form>
+        <div id="v5-booking-success" class="hidden text-center py-14">
+          <div class="gold text-5xl mb-4 font-cormorant italic">✦</div>
+          <h3 class="font-cormorant text-3xl italic text-[#0F172A] mb-2">Reservation Received</h3>
+          <div class="gold-rule mb-4"></div>
+          <p class="text-[#334155] text-sm font-light">Thank you. Our reservations team will confirm your booking within 2 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 px-4 amenity-strip">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="font-cormorant text-4xl font-normal text-white italic">Location & Reservations</h2>
+        <div class="gold-rule mt-4"></div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="flex flex-col gap-5">
+          <div class="p-6" style="background:rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.25);">
+            <h3 class="font-cormorant text-xl italic text-white mb-4">Reception Hours</h3>
+            <table class="w-full text-sm font-light">
+              <tbody>
+                <tr class="border-b border-white/10"><td class="py-2 text-white/60">Monday – Friday</td><td class="py-2 text-right gold">{business.hours.weekdays}</td></tr>
+                <tr class="border-b border-white/10"><td class="py-2 text-white/60">Saturday</td><td class="py-2 text-right gold">{business.hours.saturday}</td></tr>
+                <tr><td class="py-2 text-white/60">Sunday</td><td class="py-2 text-right gold">{business.hours.sunday}</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="p-6 flex flex-col gap-3" style="background:rgba(255,255,255,0.04); border: 1px solid rgba(212,175,55,0.25);">
+            <h3 class="font-cormorant text-xl italic text-white mb-1">Contact</h3>
+            <a href={`tel:${business.phone}`} class="text-sm text-white/60 hover:text-[#D4AF37] transition-colors font-light">📞 {business.phone}</a>
+            <a href={`mailto:${business.email}`} class="text-sm text-white/60 hover:text-[#D4AF37] transition-colors font-light">✉️ {business.email}</a>
+            <p class="text-sm text-white/60 font-light">📍 {business.address}</p>
+            <p class="text-sm text-white/40 font-light">🚨 {business.emergency}</p>
+            <p class="text-xs text-white/25 mt-3 font-light">{business.license}</p>
+          </div>
+        </div>
+        <div style="min-height:300px; border:1px solid rgba(212,175,55,0.25);">
+          <iframe
+            title={`Map to ${business.name} in Beverly Hills`}
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13229.9!2d-118.41!3d34.07!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bc04d6d147ab%3A0xd6c7c379fd081ed1!2sBeverly%20Hills%2C%20CA!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+            width="100%" height="100%" style="border:0; min-height:300px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#060D1A;" class="py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid sm:grid-cols-4 gap-10 mb-12">
+        <div class="sm:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xl">👑</span>
+            <span class="font-cormorant text-xl italic gold">{business.name}</span>
+          </div>
+          <p class="text-white/40 text-xs leading-relaxed font-light mb-4">{business.description}</p>
+          <p class="gold text-xs font-montserrat tracking-wider">A Member of the Luxury Pet Hotels of America</p>
+        </div>
+        <div>
+          <h4 class="font-montserrat text-xs font-semibold tracking-widest uppercase text-white/60 mb-4">Services</h4>
+          <ul class="space-y-2">
+            {services.map((s) => (
+              <li><a href="#services" class="text-white/35 hover:text-[#D4AF37] text-xs font-light transition-colors">{s.name}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-montserrat text-xs font-semibold tracking-widest uppercase text-white/60 mb-4">Contact</h4>
+          <ul class="space-y-2 text-xs text-white/35 font-light">
+            <li>{business.address}</li>
+            <li><a href={`tel:${business.phone}`} class="hover:text-[#D4AF37] transition-colors">{business.phone}</a></li>
+            <li><a href={`mailto:${business.email}`} class="hover:text-[#D4AF37] transition-colors">{business.email}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-8 flex items-center justify-between">
+        <p class="text-white/25 text-xs font-light">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+        <p class="text-white/25 text-xs font-light">{business.license}</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('v5-menu-btn');
+    const menu = document.getElementById('v5-mobile-menu');
+    if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    const form = document.getElementById('v5-booking-form') as HTMLFormElement | null;
+    const success = document.getElementById('v5-booking-success');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        form.classList.add('hidden');
+        if (success) success.classList.remove('hidden');
+      });
+    }
+  </script>
+</BaseLayout>

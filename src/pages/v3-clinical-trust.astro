@@ -1,0 +1,417 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business, team, testimonials } from '../data/v3/business';
+import { services, packages } from '../data/v3/services';
+import { gallery } from '../data/v3/gallery';
+---
+<BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; background: #FFFFFF; color: #334155; }
+    .font-inter { font-family: 'Inter', system-ui, sans-serif; }
+    .btn-teal { background: #0E7490; color: #fff; border-radius: 6px; padding: 0.75rem 1.75rem; font-weight: 600; font-size: 0.875rem; transition: background 0.2s; display: inline-block; }
+    .btn-teal:hover { background: #0c6478; }
+    input:focus, select:focus, textarea:focus { outline: 2px solid #0E7490; outline-offset: 2px; }
+    .check-teal { color: #0E7490; font-weight: 700; }
+  </style>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-white border-b border-[#E2E8F0] shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-2">
+        <span class="text-2xl">🩺</span>
+        <span class="font-semibold text-[#0E7490] text-lg">{business.name}</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="#services" class="text-[#334155] hover:text-[#0E7490] transition-colors">Services</a>
+        <a href="#credentials" class="text-[#334155] hover:text-[#0E7490] transition-colors">Credentials</a>
+        <a href="#pricing" class="text-[#334155] hover:text-[#0E7490] transition-colors">Pricing</a>
+        <a href="#team" class="text-[#334155] hover:text-[#0E7490] transition-colors">Team</a>
+        <a href="#contact" class="text-[#334155] hover:text-[#0E7490] transition-colors">Contact</a>
+        <a href="#booking" class="btn-teal">Request Appointment</a>
+      </div>
+      <button id="v3-menu-btn" class="md:hidden text-[#0E7490] text-2xl" aria-label="Open menu">☰</button>
+    </div>
+    <div id="v3-mobile-menu" class="hidden md:hidden px-4 pb-4 flex flex-col gap-3 border-t border-[#E2E8F0]">
+      <a href="#services" class="text-sm text-[#334155] font-medium py-2">Services</a>
+      <a href="#credentials" class="text-sm text-[#334155] font-medium py-2">Credentials</a>
+      <a href="#pricing" class="text-sm text-[#334155] font-medium py-2">Pricing</a>
+      <a href="#team" class="text-sm text-[#334155] font-medium py-2">Team</a>
+      <a href="#booking" class="btn-teal text-center">Request Appointment</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="py-16 px-4" style="background:#F8FAFC;">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-5 gap-12 items-center">
+        <div class="md:col-span-3">
+          <div class="inline-flex items-center gap-2 bg-[#CCFBF1] text-[#0E7490] text-xs font-semibold px-4 py-2 rounded-full mb-6">
+            <span>✓</span> Veterinary-Supervised Grooming · Est. {business.founded}
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold text-[#0F172A] leading-tight mb-5">
+            Grooming Built on<br/>
+            <span class="text-[#0E7490]">Medical Standards.</span>
+          </h1>
+          <p class="text-[#334155] text-lg leading-relaxed mb-8 max-w-xl">{business.tagline}</p>
+          <div class="flex flex-col sm:flex-row gap-4 mb-10">
+            <a href="#booking" class="btn-teal text-base px-8 py-3">Request Appointment</a>
+            <a href="#services" class="border border-[#E2E8F0] text-[#334155] px-8 py-3 rounded-md font-medium text-base hover:border-[#0E7490] hover:text-[#0E7490] transition-all">View Services</a>
+          </div>
+          <!-- Trust badges -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { icon: '🏥', label: 'NAVTA Member' },
+              { icon: '✅', label: 'Fear Free Certified' },
+              { icon: '📋', label: 'WA Licensed Facility' },
+              { icon: '👩‍⚕️', label: 'Vet Supervised' },
+            ].map((b) => (
+              <div class="bg-white border border-[#E2E8F0] rounded-md p-3 text-center shadow-sm">
+                <div class="text-xl mb-1">{b.icon}</div>
+                <p class="text-[#0E7490] text-xs font-semibold leading-tight">{b.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="md:col-span-2">
+          <div class="rounded-lg overflow-hidden" style="border: 3px solid #0E7490;">
+            <img
+              src="https://images.unsplash.com/photo-1560743641-3914f2c45636?w=600&h=700&fit=crop&q=80"
+              alt="Professional therapeutic grooming at Calm Coat Veterinary Grooming"
+              class="w-full object-cover"
+              style="height:420px;"
+            />
+          </div>
+          <div class="mt-3 p-3 bg-[#CCFBF1] rounded-md flex items-start gap-2">
+            <span class="text-[#0E7490] font-bold text-lg">i</span>
+            <p class="text-[#0E7490] text-xs leading-relaxed">Every appointment begins with a behavioral and coat assessment. No exceptions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-16 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-10 border-b border-[#E2E8F0] pb-6">
+        <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">What We Offer</p>
+        <h2 class="text-3xl font-bold text-[#0F172A]">Our Services</h2>
+        <p class="text-[#64748B] mt-2 max-w-lg">Every service is designed around the dog's comfort, not our convenience.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        {services.map((s) => (
+          <div class="flex gap-5 p-6 bg-white border border-[#E2E8F0] rounded-md hover:shadow-md transition-shadow" style="border-left: 4px solid #0E7490;">
+            <div class="text-3xl flex-shrink-0 mt-1">{s.icon}</div>
+            <div class="flex-grow">
+              <div class="flex items-start justify-between gap-4 mb-2">
+                <h3 class="text-lg font-bold text-[#0F172A]">{s.name}</h3>
+                <span class="text-[#0E7490] font-bold text-sm whitespace-nowrap flex-shrink-0">{s.price}</span>
+              </div>
+              <p class="text-sm text-[#334155] leading-relaxed mb-3">{s.description}</p>
+              <ul class="grid grid-cols-2 gap-1">
+                {s.highlights.map((h) => (
+                  <li class="text-xs text-[#64748B] flex items-center gap-1">
+                    <span class="check-teal">✓</span> {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <section id="credentials" class="py-16 px-4" style="background:#F8FAFC;">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-10 border-b border-[#E2E8F0] pb-6">
+        <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Our Standards</p>
+        <h2 class="text-3xl font-bold text-[#0F172A]">Credentials & Certifications</h2>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        {[
+          '🏥 NAVTA Member Facility',
+          '✅ Fear Free Certified Professional',
+          '👩‍⚕️ Veterinary-Supervised',
+          '📋 WA Licensed #VF-20208841',
+          '🎓 NCMG Certified Master Groomer',
+          '🌿 Fear Free Grooming Specialist',
+          '🦴 Orthopedic Handling Trained',
+          '💉 Partner Veterinary Clinic On-Call',
+          '📸 Before/After Documentation',
+          '🔬 DVM-Reviewed Protocols',
+          '🚫 Zero Cage Drying',
+          '⭐ Fear Free Shelter Specialist',
+        ].map((cred) => (
+          <div class="flex items-center gap-2 bg-white border border-[#E2E8F0] rounded-full px-4 py-2 text-sm font-medium text-[#334155] shadow-sm">
+            {cred}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="py-16 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10 border-b border-[#E2E8F0] pb-6">
+        <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Plans</p>
+        <h2 class="text-3xl font-bold text-[#0F172A]">Pricing</h2>
+      </div>
+      <div class="flex flex-col gap-5">
+        {packages.map((pkg) => (
+          <div class={`flex flex-col sm:flex-row gap-6 items-start sm:items-center p-6 border rounded-md ${pkg.featured ? 'border-[#0E7490] bg-[#F8FAFC]' : 'border-[#E2E8F0] bg-white'}`}>
+            {pkg.featured && <div class="bg-[#0E7490] text-white text-xs font-semibold px-3 py-1 rounded-full self-start sm:hidden">Most Popular</div>}
+            <div class="sm:w-48 flex-shrink-0">
+              <div class="flex items-center gap-2 mb-1">
+                {pkg.featured && <span class="hidden sm:inline bg-[#0E7490] text-white text-xs font-semibold px-2 py-0.5 rounded-full">Popular</span>}
+              </div>
+              <h3 class="text-xl font-bold text-[#0F172A] mb-1">{pkg.name}</h3>
+              <p class="text-sm text-[#64748B]">{pkg.period}</p>
+              <p class="text-3xl font-bold text-[#0E7490] mt-2">{pkg.price}</p>
+            </div>
+            <div class="flex-grow border-t sm:border-t-0 sm:border-l border-[#E2E8F0] pt-4 sm:pt-0 sm:pl-6">
+              <p class="text-sm text-[#334155] mb-3">{pkg.description}</p>
+              <ul class="grid sm:grid-cols-2 gap-2">
+                {pkg.features.map((f) => (
+                  <li class="text-sm text-[#334155] flex items-center gap-2">
+                    <span class="check-teal">✓</span> {f}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="sm:w-40 flex-shrink-0">
+              <a href="#booking" class={`btn-teal text-sm py-2 px-5 w-full text-center block ${pkg.featured ? 'bg-[#0E7490]' : 'bg-[#0D9488]'}`}>
+                Get Started
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="py-16 px-4" style="background:#F8FAFC;">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-10 border-b border-[#E2E8F0] pb-6">
+        <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Our Studio</p>
+        <h2 class="text-3xl font-bold text-[#0F172A]">Gallery</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {gallery.map((img) => (
+          <div class="overflow-hidden shadow-sm hover:shadow-md transition-shadow" style="aspect-ratio: 4/3;">
+            <img src={img.url} alt={img.alt} loading="lazy" class="w-full h-full object-cover hover:scale-103 transition-transform duration-500" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="py-16 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-10 border-b border-[#E2E8F0] pb-6">
+        <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">The Experts</p>
+        <h2 class="text-3xl font-bold text-[#0F172A]">Our Team</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {team.map((member) => (
+          <div class="border border-[#E2E8F0] rounded-md overflow-hidden hover:shadow-md transition-shadow">
+            <div class="h-2 bg-[#0E7490]"></div>
+            <img src={member.photo} alt={`Photo of ${member.name}, ${member.role}`} class="w-full h-48 object-cover" />
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-[#0F172A] mb-0.5">{member.name}</h3>
+              <p class="text-[#0E7490] text-sm font-semibold mb-3">{member.role}</p>
+              <p class="text-sm text-[#334155] leading-relaxed mb-4">{member.bio}</p>
+              <ul class="space-y-1">
+                {member.certifications.map((cert) => (
+                  <li class="text-xs text-[#64748B] flex items-center gap-2">
+                    <span class="check-teal">✓</span> {cert}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="py-16 px-4" style="background:#F8FAFC;">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10 border-b border-[#E2E8F0] pb-6">
+        <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Patient Reviews</p>
+        <h2 class="text-3xl font-bold text-[#0F172A]">What Our Clients Say</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {testimonials.map((t) => (
+          <div class="bg-white border border-[#E2E8F0] rounded-md p-6 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="flex gap-0.5 text-[#F5A623]" aria-label={`${t.stars} out of 5 stars`}>
+                {'★'.repeat(t.stars)}
+              </div>
+              <span class="text-xs bg-[#CCFBF1] text-[#0E7490] px-2 py-0.5 rounded-full font-semibold">Verified</span>
+            </div>
+            <blockquote class="text-sm text-[#334155] leading-relaxed mb-4 italic">"{t.text}"</blockquote>
+            <div>
+              <p class="font-bold text-[#0F172A] text-sm">{t.name}</p>
+              <p class="text-xs text-[#64748B]">{t.breed} · {t.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section id="booking" class="py-16 px-4 bg-white">
+    <div class="max-w-2xl mx-auto">
+      <div class="mb-10">
+        <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Scheduling</p>
+        <h2 class="text-3xl font-bold text-[#0F172A] mb-2">Request Appointment</h2>
+        <p class="text-[#334155] text-sm">All new patients begin with a 30-minute intake assessment. Fill out the form and we'll confirm within 24 hours.</p>
+      </div>
+      <div id="v3-form-wrap" class="border border-[#E2E8F0] rounded-md p-8 shadow-sm">
+        <form id="v3-booking-form" class="flex flex-col gap-5" novalidate>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-1">
+              <label for="v3-owner-name" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Owner Name <span class="text-red-500">*</span></label>
+              <input id="v3-owner-name" name="ownerName" type="text" required placeholder="Your full name" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+              <p class="text-xs text-[#94A3B8]">Legal name for records</p>
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="v3-pet-name" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Pet Name <span class="text-red-500">*</span></label>
+              <input id="v3-pet-name" name="petName" type="text" required placeholder="Your dog's name" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+              <p class="text-xs text-[#94A3B8]">As it appears on records</p>
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-1">
+              <label for="v3-email" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Email <span class="text-red-500">*</span></label>
+              <input id="v3-email" name="email" type="email" required placeholder="you@email.com" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="v3-phone" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Phone <span class="text-red-500">*</span></label>
+              <input id="v3-phone" name="phone" type="tel" required placeholder="(206) 000-0000" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-1">
+              <label for="v3-breed" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Breed</label>
+              <input id="v3-breed" name="breed" type="text" placeholder="e.g. Standard Poodle" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="v3-service" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Service Type <span class="text-red-500">*</span></label>
+              <select id="v3-service" name="service" required class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A]">
+                <option value="">Select a service…</option>
+                {services.map((s) => <option value={s.name}>{s.name}</option>)}
+              </select>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="v3-date" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Preferred Date <span class="text-red-500">*</span></label>
+            <input id="v3-date" name="date" type="date" required class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A]" />
+          </div>
+          <div class="flex flex-col gap-1">
+            <label for="v3-notes" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Medical / Behavioral Notes</label>
+            <textarea id="v3-notes" name="notes" rows="4" placeholder="Known anxiety triggers, skin conditions, medications, mobility limitations, prior grooming incidents…" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8] resize-y"></textarea>
+            <p class="text-xs text-[#94A3B8]">This information is kept confidential and shared only with your care team</p>
+          </div>
+          <button type="submit" class="btn-teal text-sm py-3 w-full text-center">Submit Appointment Request</button>
+        </form>
+        <div id="v3-booking-success" class="hidden text-center py-12">
+          <div class="text-5xl mb-4">✅</div>
+          <h3 class="text-2xl font-bold text-[#0F172A] mb-2">Request Received</h3>
+          <p class="text-[#334155] text-sm">Thanks! We'll contact you within 24 hours to confirm your appointment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 px-4" style="background:#F8FAFC;">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10 border-b border-[#E2E8F0] pb-6">
+        <h2 class="text-3xl font-bold text-[#0F172A]">Location & Hours</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-10">
+        <div class="flex flex-col gap-5">
+          <div class="bg-white border border-[#E2E8F0] rounded-md p-5">
+            <h3 class="text-base font-bold text-[#0F172A] mb-4">Hours of Operation</h3>
+            <table class="w-full text-sm text-[#334155]">
+              <tbody>
+                <tr class="border-b border-[#E2E8F0]"><td class="py-2 font-medium">Monday – Friday</td><td class="py-2 text-right text-[#0E7490] font-semibold">{business.hours.weekdays}</td></tr>
+                <tr class="border-b border-[#E2E8F0]"><td class="py-2 font-medium">Saturday</td><td class="py-2 text-right text-[#0E7490] font-semibold">{business.hours.saturday}</td></tr>
+                <tr><td class="py-2 font-medium">Sunday</td><td class="py-2 text-right text-[#64748B]">{business.hours.sunday}</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="bg-white border border-[#E2E8F0] rounded-md p-5 flex flex-col gap-3">
+            <h3 class="text-base font-bold text-[#0F172A] mb-1">Contact</h3>
+            <a href={`tel:${business.phone}`} class="text-sm text-[#334155] hover:text-[#0E7490] flex items-center gap-2">📞 {business.phone}</a>
+            <a href={`mailto:${business.email}`} class="text-sm text-[#334155] hover:text-[#0E7490] flex items-center gap-2">✉️ {business.email}</a>
+            <p class="text-sm text-[#334155] flex items-start gap-2">📍 {business.address}</p>
+            <p class="text-sm text-[#64748B] flex items-center gap-2">🚨 {business.emergency}</p>
+            <p class="text-xs text-[#94A3B8] mt-2">{business.license}</p>
+          </div>
+        </div>
+        <div style="min-height:300px; border: 1px solid #E2E8F0;">
+          <iframe
+            title={`Map showing ${business.name} in ${business.neighborhood}, Seattle`}
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2687.37!2d-122.35!3d47.65!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490156de898b9a9%3A0x1!2sFremont%2C%20Seattle%2C%20WA!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+            width="100%" height="100%" style="border:0; min-height:300px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#0F172A;" class="py-14 px-4">
+    <div class="max-w-6xl mx-auto grid sm:grid-cols-4 gap-10">
+      <div class="sm:col-span-2">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xl">🩺</span>
+          <span class="font-semibold text-[#0E7490] text-base">{business.name}</span>
+        </div>
+        <p class="text-white/50 text-sm leading-relaxed mb-3">{business.description}</p>
+        <p class="text-white/30 text-xs">{business.license}</p>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold text-sm mb-4">Services</h4>
+        <ul class="space-y-2">
+          {services.map((s) => (
+            <li><a href="#services" class="text-white/50 hover:text-[#0E7490] text-sm transition-colors">{s.name}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-semibold text-sm mb-4">Contact</h4>
+        <ul class="space-y-2 text-sm text-white/50">
+          <li>{business.address}</li>
+          <li><a href={`tel:${business.phone}`} class="hover:text-[#0E7490] transition-colors">{business.phone}</a></li>
+          <li><a href={`mailto:${business.email}`} class="hover:text-[#0E7490] transition-colors">{business.email}</a></li>
+        </ul>
+        <p class="text-xs text-white/30 mt-6">© {new Date().getFullYear()} {business.name}</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.getElementById('v3-menu-btn');
+    const menu = document.getElementById('v3-mobile-menu');
+    if (btn && menu) btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    const form = document.getElementById('v3-booking-form') as HTMLFormElement | null;
+    const success = document.getElementById('v3-booking-success');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        form.classList.add('hidden');
+        if (success) success.classList.remove('hidden');
+      });
+    }
+  </script>
+</BaseLayout>
