@@ -306,6 +306,12 @@ import { gallery } from '../data/v1/gallery';
           </div>
         ))}
       </div>
+      <div class="text-center mt-10">
+        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-[#5C4033] hover:text-[#C17B50] transition-colors">
+          <span class="text-[#C17B50]">★★★★★</span> Read all 312 reviews on Google
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -368,10 +374,20 @@ import { gallery } from '../data/v1/gallery';
               <input id="v1-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(415) 000-0000" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
             </div>
           </div>
-          <div class="grid sm:grid-cols-2 gap-5">
+          <div class="grid sm:grid-cols-3 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v1-breed" class="text-sm font-semibold text-[#3D2B1F]">Breed</label>
               <input id="v1-breed" name="breed" type="text" placeholder="e.g. Goldendoodle" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="v1-size" class="text-sm font-semibold text-[#3D2B1F]">Size</label>
+              <select id="v1-size" name="size" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F]">
+                <option value="">Select size…</option>
+                <option value="small">Small (under 25 lbs)</option>
+                <option value="medium">Medium (25–55 lbs)</option>
+                <option value="large">Large (55–85 lbs)</option>
+                <option value="xlarge">Extra Large (85+ lbs)</option>
+              </select>
             </div>
             <div class="flex flex-col gap-1">
               <label for="v1-service" class="text-sm font-semibold text-[#3D2B1F]">Service <span class="text-[#C17B50]">*</span></label>

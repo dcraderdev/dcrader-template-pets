@@ -318,6 +318,12 @@ import { gallery } from '../data/v5/gallery';
           </div>
         ))}
       </div>
+      <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center gap-3 gold font-montserrat text-xs tracking-widest uppercase hover:opacity-70 transition-opacity">
+          <span>★★★★★</span> View all 194 reviews — Google & Yelp
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -385,10 +391,20 @@ import { gallery } from '../data/v5/gallery';
               <input id="v5-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(310) 000-0000" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
             </div>
           </div>
-          <div class="grid sm:grid-cols-2 gap-6">
+          <div class="grid sm:grid-cols-3 gap-6">
             <div class="flex flex-col gap-1.5">
               <label for="v5-breed" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Breed</label>
               <input id="v5-breed" name="breed" type="text" placeholder="e.g. Standard Poodle" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label for="v5-size" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Size</label>
+              <select id="v5-size" name="size" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] font-light">
+                <option value="">Select size…</option>
+                <option value="small">Small (under 25 lbs)</option>
+                <option value="medium">Medium (25–55 lbs)</option>
+                <option value="large">Large (55–85 lbs)</option>
+                <option value="xlarge">Extra Large (85+ lbs)</option>
+              </select>
             </div>
             <div class="flex flex-col gap-1.5">
               <label for="v5-service" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Service <span class="gold">*</span></label>
