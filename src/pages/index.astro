@@ -9,10 +9,11 @@ const variants = [
     location: 'San Francisco, CA',
     target: 'Boutique boarding, upscale neighborhood clientele',
     palette: ['#6B8F71', '#C17B50', '#3D2B1F', '#FAF6EF'],
-    bg: 'linear-gradient(135deg, #3D2B1F 60%, #6B8F71 100%)',
+    bg: 'linear-gradient(rgba(61,43,31,0.72), rgba(61,43,31,0.82)), url("https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=300&fit=crop&q=80") center/cover',
     accent: '#C17B50',
     fonts: 'Playfair Display + Lato',
     feel: 'Warm, artisanal, SF dog spa Instagram',
+    unique: 'Wave dividers · Packing guide · Stats strip',
   },
   {
     slug: '/v2-active-outdoor',
@@ -21,10 +22,11 @@ const variants = [
     location: 'Boulder, CO',
     target: 'Adventure dogs, high-drive breeds, active owners',
     palette: ['#1A4731', '#F5A623', '#E87B3A', '#F8F7F4'],
-    bg: 'linear-gradient(135deg, #1A4731 60%, #F5A623 100%)',
+    bg: 'linear-gradient(rgba(26,71,49,0.72), rgba(26,71,49,0.82)), url("https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=600&h=300&fit=crop&q=80") center/cover',
     accent: '#F5A623',
     fonts: 'Oswald + Open Sans',
     feel: 'Bold, outdoorsy, National Park energy',
+    unique: 'Diagonal clip-path · Trail levels · GPS stats',
   },
   {
     slug: '/v3-clinical-trust',
@@ -33,10 +35,11 @@ const variants = [
     location: 'Seattle, WA',
     target: 'Anxious dogs, medical grooming needs, discerning owners',
     palette: ['#0E7490', '#0D9488', '#CCFBF1', '#FFFFFF'],
-    bg: 'linear-gradient(135deg, #0E7490 60%, #0D9488 100%)',
+    bg: 'linear-gradient(rgba(14,116,144,0.80), rgba(14,116,144,0.90)), url("https://images.unsplash.com/photo-1560743641-3914f2c45636?w=600&h=300&fit=crop&q=80") center/cover',
     accent: '#0E7490',
     fonts: 'Inter throughout',
     feel: 'Clinical, clean, trustworthy, maximum credentials',
+    unique: 'Two-column hero · Credentials grid · Req. table',
   },
   {
     slug: '/v4-fun-bright',
@@ -49,6 +52,7 @@ const variants = [
     accent: '#F97316',
     fonts: 'Fredoka One + Nunito',
     feel: 'Playful, colorful, happiest page on the internet',
+    unique: 'Paw animation · Day timeline · Stats counter',
   },
   {
     slug: '/v5-luxury-resort',
@@ -57,10 +61,11 @@ const variants = [
     location: 'Beverly Hills, CA',
     target: 'Ultra-premium boarding, high-net-worth clientele',
     palette: ['#0F172A', '#D4AF37', '#B8860B', '#F8F5F0'],
-    bg: 'linear-gradient(135deg, #0F172A 60%, #B8860B 100%)',
+    bg: 'linear-gradient(rgba(15,23,42,0.82), rgba(15,23,42,0.90)), url("https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600&h=300&fit=crop&q=80") center/cover',
     accent: '#D4AF37',
     fonts: 'Cormorant Garamond + Montserrat',
     feel: 'Five-star hotel, maximum negative space, gold accents',
+    unique: 'Gold rules · Press strip · Split Experience section',
   },
 ];
 ---
@@ -119,11 +124,11 @@ const variants = [
               <p class="text-white text-sm">{v.fonts}</p>
             </div>
             <div>
-              <p class="text-[#94A3B8] text-xs font-semibold uppercase tracking-wider mb-1">Design Feel</p>
-              <p class="text-white/80 text-sm italic">{v.feel}</p>
+              <p class="text-[#94A3B8] text-xs font-semibold uppercase tracking-wider mb-1">Signature Features</p>
+              <p class="text-white/70 text-xs">{v.unique}</p>
             </div>
             <div class="pt-3 border-t border-white/10 flex items-center justify-between">
-              <span class="text-xs text-[#94A3B8]">8 sections · booking form</span>
+              <span class="text-xs text-[#94A3B8]">10+ sections · full booking form</span>
               <span class="text-sm font-semibold" style={`color:${v.accent};`}>Preview →</span>
             </div>
           </div>
@@ -148,16 +153,20 @@ const variants = [
     <!-- Sections breakdown -->
     <div class="mt-16 border border-white/10 rounded-2xl p-8">
       <h2 class="text-white font-bold text-xl mb-6 text-center">Every Template Includes</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {[
           { icon: '🖼️', name: 'Hero', desc: 'Full-screen with overlay' },
           { icon: '🐕', name: 'Services', desc: '4 service cards' },
-          { icon: '💳', name: 'Pricing', desc: '3 package tiers' },
-          { icon: '📸', name: 'Gallery', desc: '8-image layout' },
-          { icon: '👥', name: 'Team', desc: 'Bio + certifications' },
-          { icon: '⭐', name: 'Testimonials', desc: '3 star reviews' },
-          { icon: '📋', name: 'Booking Form', desc: 'JS success state' },
-          { icon: '📍', name: 'Contact', desc: 'Hours + map embed' },
+          { icon: '💳', name: 'Pricing', desc: '3 tiered packages' },
+          { icon: '📸', name: 'Gallery', desc: '8-photo masonry/grid' },
+          { icon: '👥', name: 'Team Bios', desc: 'Photo + certifications' },
+          { icon: '⭐', name: 'Testimonials', desc: 'Stars + Google CTA' },
+          { icon: '🏥', name: 'Requirements', desc: 'Vax + health policy' },
+          { icon: '❓', name: 'FAQ Accordion', desc: 'JS open/close' },
+          { icon: '📋', name: 'Booking Form', desc: 'Validation + success' },
+          { icon: '📍', name: 'Contact', desc: 'Hours + Google Maps' },
+          { icon: '📱', name: 'Mobile CTA Bar', desc: 'Fixed call + book' },
+          { icon: '🔍', name: 'OG / Twitter', desc: 'Social meta tags' },
         ].map((s) => (
           <div class="flex items-start gap-3 p-3 rounded-xl bg-white/5">
             <span class="text-2xl">{s.icon}</span>
