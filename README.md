@@ -12,8 +12,6 @@
 | V4 — Fun & Bright | Sniff & Snuggle Daycare (Austin) | [/v4-fun-bright](https://dcrader-template-pets.vercel.app/v4-fun-bright) |
 | V5 — Luxury Resort | The Hollow Pet Hotel & Spa (Beverly Hills) | [/v5-luxury-resort](https://dcrader-template-pets.vercel.app/v5-luxury-resort) |
 
-> URLs update to production after first deploy.
-
 ---
 
 ## The 5 Templates
