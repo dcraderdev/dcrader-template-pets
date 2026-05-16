@@ -1,10 +1,10 @@
 export const gallery = [
-  { url: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=400&fit=crop&q=80', alt: 'Golden retriever in sunny yard at Paws & Pine', caption: 'Morning yard time' },
-  { url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600&h=600&fit=crop&q=80', alt: 'Fluffy dog resting comfortably on cozy bed', caption: 'Suite life' },
-  { url: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&h=400&fit=crop&q=80', alt: 'Puppies playing together in safe space', caption: 'Puppy social hour' },
-  { url: 'https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=600&h=500&fit=crop&q=80', alt: 'Happy dog portrait after grooming session', caption: 'Post-spa glow' },
-  { url: 'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=600&h=400&fit=crop&q=80', alt: 'French bulldog lounging in boutique lounge', caption: 'Afternoon lounge' },
-  { url: 'https://images.unsplash.com/photo-1560743641-3914f2c45636?w=600&h=500&fit=crop&q=80', alt: 'Professional grooming spa bath', caption: 'Spa treatment' },
-  { url: 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600&h=600&fit=crop&q=80', alt: 'Husky dog portrait looking regal', caption: 'Our guest Hugo' },
-  { url: 'https://images.unsplash.com/photo-1530143584537-c7cc7da4b9b4?w=600&h=400&fit=crop&q=80', alt: 'Dogs playing happily in outdoor area', caption: 'Play group fun' },
+  { url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600&h=400&fit=crop&q=80', alt: 'Fluffy dog resting on plush boutique suite bed', caption: 'Suite life' },
+  { url: 'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=600&h=500&fit=crop&q=80', alt: 'Golden retriever with pink flower, dreamy spa morning', caption: 'Post-spa glow' },
+  { url: 'https://images.unsplash.com/photo-1560807707-8cc77767d783?w=600&h=400&fit=crop&q=80', alt: 'Cavalier King Charles Spaniel puppy peeking over ledge', caption: 'Sweet Rosie — Suite 3' },
+  { url: 'https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=600&h=600&fit=crop&q=80', alt: 'Jack Russell terrier portrait on clean pink background', caption: 'Boutique portrait hour' },
+  { url: 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600&h=400&fit=crop&q=80', alt: 'Husky dog looking regal and comfortable in suite', caption: 'Our guest Hugo' },
+  { url: 'https://images.unsplash.com/photo-1560743641-3914f2c45636?w=600&h=500&fit=crop&q=80', alt: 'Professional spa bath treatment for pampered pup', caption: 'Aromatherapy bath' },
+  { url: 'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=600&h=600&fit=crop&q=80', alt: 'French bulldog lounging in boutique lounge area', caption: 'Afternoon lounge' },
+  { url: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=400&fit=crop&q=80', alt: 'Golden retriever enjoying sunny private yard time', caption: 'Morning yard time' },
 ];

@@ -1,10 +1,10 @@
 export const gallery = [
-  { url: 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600&h=400&fit=crop&q=80', alt: 'Elegant husky in luxury hotel suite setting', caption: 'Suite 12 — Hugo' },
-  { url: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=500&fit=crop&q=80', alt: 'Golden retriever in luxury spa environment', caption: 'Spa morning' },
-  { url: 'https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=600&h=600&fit=crop&q=80', alt: 'Elegant dog portrait in premium setting', caption: 'Portrait hour' },
-  { url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600&h=400&fit=crop&q=80', alt: 'Fluffy white dog looking sophisticated', caption: 'The prima donna' },
-  { url: 'https://images.unsplash.com/photo-1560743641-3914f2c45636?w=600&h=500&fit=crop&q=80', alt: 'Dog receiving luxury grooming treatment', caption: 'Botanical bath' },
-  { url: 'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=600&h=400&fit=crop&q=80', alt: 'Distinguished dog in premium environment', caption: 'Room 7 — Valentino' },
-  { url: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&h=600&fit=crop&q=80', alt: 'Pampered pups in luxury daycare suite', caption: 'Suite guests' },
-  { url: 'https://images.unsplash.com/photo-1530143584537-c7cc7da4b9b4?w=600&h=400&fit=crop&q=80', alt: 'Dogs in elegant outdoor terrace setting', caption: 'Garden terrace' },
+  { url: 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600&h=400&fit=crop&q=80', alt: 'Elegant husky portrait — the very definition of distinguished', caption: 'Suite 12 — Hugo' },
+  { url: 'https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=600&h=500&fit=crop&q=80', alt: 'Chow Chow in designer sunglasses lounging at The Hollow', caption: 'Suite 7 — Valentino' },
+  { url: 'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=600&h=600&fit=crop&q=80', alt: 'Golden retriever with flower after morning botanical spa', caption: 'Botanical bath morning' },
+  { url: 'https://images.unsplash.com/photo-1560807707-8cc77767d783?w=600&h=400&fit=crop&q=80', alt: 'Cavalier King Charles Spaniel — our most distinguished suite guest', caption: 'Suite 4 — Duchess' },
+  { url: 'https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=600&h=500&fit=crop&q=80', alt: 'Jack Russell terrier portrait — poised and pampered', caption: 'Portrait hour' },
+  { url: 'https://images.unsplash.com/photo-1560743641-3914f2c45636?w=600&h=400&fit=crop&q=80', alt: 'Dog receiving signature botanical treatment at The Hollow', caption: 'Signature treatment' },
+  { url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600&h=600&fit=crop&q=80', alt: 'Fluffy dog at rest on premium suite bedding', caption: 'Afternoon repose' },
+  { url: 'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=600&h=400&fit=crop&q=80', alt: 'Distinguished French bulldog in The Hollow private lounge', caption: 'Lounge hour' },
 ];

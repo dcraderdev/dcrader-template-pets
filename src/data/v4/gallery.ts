@@ -1,10 +1,10 @@
 export const gallery = [
-  { url: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&h=400&fit=crop&q=80', alt: 'Puppies playing together at Sniff and Snuggle', caption: 'Puppy pile!' },
-  { url: 'https://images.unsplash.com/photo-1530143584537-c7cc7da4b9b4?w=600&h=500&fit=crop&q=80', alt: 'Dogs playing in outdoor yard', caption: 'Yard time fun' },
-  { url: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=600&fit=crop&q=80', alt: 'Golden retriever playing fetch with tennis ball', caption: 'Ball obsessed' },
-  { url: 'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=600&h=400&fit=crop&q=80', alt: 'Cute bulldog looking at camera, happy', caption: 'Camera ham' },
-  { url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=600&h=500&fit=crop&q=80', alt: 'Fluffy dog showing off after grooming', caption: 'Fresh and fluffy' },
-  { url: 'https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=600&h=400&fit=crop&q=80', alt: 'Happy dog portrait smiling in daycare', caption: 'Best day ever' },
-  { url: 'https://images.unsplash.com/photo-1560743641-3914f2c45636?w=600&h=600&fit=crop&q=80', alt: 'Dog getting fun grooming session', caption: 'Spa time' },
-  { url: 'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=600&h=400&fit=crop&q=80', alt: 'Dog class in action, puppies learning', caption: 'Kindergarten class' },
+  { url: 'https://images.unsplash.com/photo-1583511655826-05700d52f4d9?w=600&h=400&fit=crop&q=80', alt: 'Small dog in colorful Hawaiian shirt, big personality', caption: 'Dress code: optional' },
+  { url: 'https://images.unsplash.com/photo-1529472119196-cb724127a98e?w=600&h=500&fit=crop&q=80', alt: 'Crew of eight different dog breeds against bright pink wall', caption: 'Squad goals' },
+  { url: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&h=400&fit=crop&q=80', alt: 'Puppies tumbling over each other in daycare play yard', caption: 'Puppy pile!' },
+  { url: 'https://images.unsplash.com/photo-1530143584537-c7cc7da4b9b4?w=600&h=600&fit=crop&q=80', alt: 'Dogs chasing each other through the outdoor play yard', caption: 'Yard time!' },
+  { url: 'https://images.unsplash.com/photo-1505628346881-b72b27e84530?w=600&h=400&fit=crop&q=80', alt: 'Fluffy Chow Chow rocking sunglasses at daycare', caption: 'Too cool for school' },
+  { url: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=500&fit=crop&q=80', alt: 'Golden retriever mid-leap going for the tennis ball', caption: 'Ball obsessed' },
+  { url: 'https://images.unsplash.com/photo-1534361960057-19889db9621e?w=600&h=600&fit=crop&q=80', alt: 'Fluffy dog doing full zoomies in the grass', caption: 'Zoomie mode' },
+  { url: 'https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?w=600&h=400&fit=crop&q=80', alt: 'Happy corgi grinning in afternoon sunshine', caption: 'Best day ever' },
 ];
