@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dcrader-template-pets.vercel.app/sitemap.xml
