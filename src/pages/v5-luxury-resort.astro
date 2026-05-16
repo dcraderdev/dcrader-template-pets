@@ -328,6 +328,38 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+  <!-- CANINE CUISINE -->
+  <section class="py-20 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="gold font-montserrat text-xs tracking-widest uppercase mb-3">The Canine Kitchen</p>
+        <h2 class="font-cormorant text-5xl font-normal text-[#0F172A] italic">This Week's Menu</h2>
+        <div class="gold-rule mt-4 mb-4"></div>
+        <p class="text-[#94A3B8] font-montserrat text-xs tracking-wide max-w-lg mx-auto">Prepared fresh daily by our in-house canine nutritionist. All proteins are air-chilled, hormone-free, and sourced from California farms.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-[#E2E8F0]" style="border:1px solid #E2E8F0;">
+        {[
+          { day: 'Monday', meal: 'Pan-Seared Salmon', sides: 'Steamed broccoli · Brown rice · Omega oil drizzle', protein: 'Salmon', icon: '🐟' },
+          { day: 'Tuesday', meal: 'Grass-Fed Beef Medallion', sides: 'Sweet potato mash · Steamed green beans · Bone broth reduction', protein: 'Beef', icon: '🥩' },
+          { day: 'Wednesday', meal: 'Roasted Chicken Thigh', sides: 'Pumpkin purée · Quinoa · Parsley garnish', protein: 'Chicken', icon: '🍗' },
+          { day: 'Thursday', meal: 'Duck Breast Confit', sides: 'Blueberry compote · Wild rice · Spinach', protein: 'Duck', icon: '🦆' },
+          { day: 'Friday', meal: 'Lamb & Rosemary Patty', sides: 'Carrot purée · Lentils · Mint oil', protein: 'Lamb', icon: '🌿' },
+          { day: 'Weekend', meal: 'Chef\'s Selection', sides: 'Rotating seasonal menu curated by Marcus Chen, Certified Canine Nutritionist', protein: 'Seasonal', icon: '👨‍🍳' },
+        ].map((item) => (
+          <div class="bg-white p-8 flex items-start gap-5">
+            <div class="text-3xl flex-shrink-0 mt-1">{item.icon}</div>
+            <div>
+              <p class="gold font-montserrat text-xs tracking-widest uppercase mb-1">{item.day}</p>
+              <h3 class="font-cormorant text-xl italic text-[#0F172A] mb-1">{item.meal}</h3>
+              <p class="text-xs text-[#94A3B8] font-light leading-relaxed">{item.sides}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p class="text-center text-xs text-[#94A3B8] font-montserrat mt-6 tracking-wide">Meals adjusted for dietary restrictions, allergies, and veterinary recommendations · Portions calculated by weight</p>
+    </div>
+  </section>
+
   <!-- TEAM -->
   <section id="team" class="py-20 px-4 amenity-strip">
     <div class="max-w-6xl mx-auto">

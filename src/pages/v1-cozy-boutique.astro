@@ -444,6 +444,33 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+  <!-- INSTAGRAM FEED -->
+  <section class="py-16 px-4" style="background:#3D2B1F;">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+        <div>
+          <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Follow Along</p>
+          <h2 class="font-playfair text-3xl font-bold text-white">@pawsandpine</h2>
+        </div>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-sm text-[#C17B50] hover:text-white transition-colors font-semibold">View on Instagram →</a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+        {[
+          { url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=300&h=300&fit=crop&q=80', alt: 'Suite life at Paws and Pine' },
+          { url: 'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=300&h=300&fit=crop&q=80', alt: 'Morning spa glow' },
+          { url: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=300&h=300&fit=crop&q=80', alt: 'Sunny yard time' },
+          { url: 'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=300&h=300&fit=crop&q=80', alt: 'Afternoon lounge vibes' },
+          { url: 'https://images.unsplash.com/photo-1560807707-8cc77767d783?w=300&h=300&fit=crop&q=80', alt: 'Sweet new guest' },
+          { url: 'https://images.unsplash.com/photo-1560743641-3914f2c45636?w=300&h=300&fit=crop&q=80', alt: 'Spa treatment day' },
+        ].map((img) => (
+          <div class="overflow-hidden group" style="aspect-ratio:1;">
+            <img src={img.url} alt={img.alt} loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100" />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="py-16 px-4" style="background:#FAF6EF;">
     <div class="max-w-3xl mx-auto">
