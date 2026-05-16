@@ -5,6 +5,13 @@ import { services, packages } from '../data/v2/services';
 import { gallery } from '../data/v2/gallery';
 ---
 <BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div id="v2-banner" style="background:#1A4731;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative border-b-2 border-[#F5A623]">
+    <span>🏔️ Summer hike packs now open — book before June 30, save 15% · (720) 443-8821</span>
+    <button onclick="document.getElementById('v2-banner').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg leading-none font-bold" aria-label="Close banner">×</button>
+  </div>
+
   <style>
     body { font-family: 'Open Sans', sans-serif; background: #F8F7F4; color: #2D3A2A; }
     .font-oswald { font-family: 'Oswald', sans-serif; }
@@ -69,10 +76,10 @@ import { gallery } from '../data/v2/gallery';
       </div>
       <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6">
         {[
-          { icon: '🛰️', label: 'GPS Live Tracked' },
-          { icon: '🏔️', label: '400+ Trails Hiked' },
-          { icon: '🐕', label: 'Max 5 Dogs/Guide' },
-          { icon: '🌿', label: 'Fear Free Methods' },
+          { icon: '🛰️', label: 'GPS Tracked Every Hike' },
+          { icon: '🏔️', label: '420+ Trails Completed' },
+          { icon: '🐕', label: 'Max 5 Dogs / Guide' },
+          { icon: '⭐', label: '4.9 · 218 Reviews' },
         ].map((b) => (
           <div class="text-center">
             <div class="text-3xl mb-1">{b.icon}</div>
@@ -106,6 +113,32 @@ import { gallery } from '../data/v2/gallery';
             </ul>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HEALTH & REQUIREMENTS -->
+  <section class="py-16 px-4" style="background:#F8F7F4;">
+    <div class="max-w-4xl mx-auto">
+      <div class="rounded-sm p-8 md:p-10" style="background:#fff; border-left:5px solid #1A4731; border:1px solid #ddd; border-left-width:5px; border-left-color:#1A4731;">
+        <h2 class="font-oswald text-3xl md:text-4xl font-bold text-[#1A4731] uppercase mb-2">Health &amp; Requirements</h2>
+        <p class="text-[#2D3A2A]/60 mb-8 text-sm">Every dog on the trail must meet these standards — no exceptions.</p>
+        <div class="grid sm:grid-cols-2 gap-6">
+          {[
+            { n: '01', title: 'Vaccination Requirements', body: 'Current Rabies, Bordetella (within 6 months), and DHPP/DA2PP required. Records verified before first hike.' },
+            { n: '02', title: 'Temperament Assessment', body: 'New dogs complete a free 30-min meet & greet. We match trail intensity to the dog — never the other way around.' },
+            { n: '03', title: 'Health on Hike Day', body: 'Dogs must be flea/tick treated, not in heat, and free of contagious illness on every hike day.' },
+            { n: '04', title: 'Emergency Protocol', body: '24/7 vet partner on call. GPS tracking means we know exactly where your dog is at all times. You\'re notified immediately of any incident.' },
+          ].map((item) => (
+            <div class="flex gap-4">
+              <div class="font-oswald text-4xl font-bold text-[#F5A623] flex-shrink-0 leading-none">{item.n}</div>
+              <div>
+                <h3 class="font-oswald text-lg font-bold text-[#1A4731] uppercase mb-1">{item.title}</h3>
+                <p class="text-sm text-[#2D3A2A] leading-relaxed">{item.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </section>
@@ -167,6 +200,33 @@ import { gallery } from '../data/v2/gallery';
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="py-16 px-4" style="background:#F8F7F4;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-oswald text-4xl md:text-5xl font-bold text-[#1A4731] uppercase">Getting Started</h2>
+        <div class="mt-3 w-16 h-1 bg-[#F5A623] mx-auto"></div>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div class="text-center flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-sm flex items-center justify-center text-2xl font-bold font-oswald text-[#1A4731]" style="background:#F5A623;">1</div>
+          <h3 class="font-oswald text-xl font-bold text-[#1A4731] uppercase">Tell Us About Your Dog</h3>
+          <p class="text-sm text-[#2D3A2A] leading-relaxed">Submit your dog's info, fitness level, and any behavioral notes. Takes 3 minutes.</p>
+        </div>
+        <div class="text-center flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-sm flex items-center justify-center text-2xl font-bold font-oswald text-white" style="background:#1A4731;">2</div>
+          <h3 class="font-oswald text-xl font-bold text-[#1A4731] uppercase">Temperament Hike</h3>
+          <p class="text-sm text-[#2D3A2A] leading-relaxed">Your dog joins a trial hike. We assess fitness, recall, and pack compatibility on real terrain.</p>
+        </div>
+        <div class="text-center flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-sm flex items-center justify-center text-2xl font-bold font-oswald text-[#1A4731]" style="background:#F5A623;">3</div>
+          <h3 class="font-oswald text-xl font-bold text-[#1A4731] uppercase">Join the Pack</h3>
+          <p class="text-sm text-[#2D3A2A] leading-relaxed">You're in. Book hikes weekly, track GPS live, and get a post-hike report every time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TEAM -->
   <section id="team" class="py-20 px-4" style="background:#F8F7F4;">
     <div class="max-w-5xl mx-auto">
@@ -212,6 +272,35 @@ import { gallery } from '../data/v2/gallery';
             <div>
               <p class="font-oswald text-white uppercase tracking-wide">{t.name}</p>
               <p class="text-xs text-white/50">{t.breed} · {t.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-4" style="background:#F8F7F4;">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-oswald text-4xl md:text-5xl font-bold text-[#1A4731] uppercase">Common Questions</h2>
+        <div class="mt-3 w-16 h-1 bg-[#F5A623] mx-auto"></div>
+      </div>
+      <div class="flex flex-col gap-2" id="v2-faq">
+        {[
+          { q: 'What fitness level do dogs need?', a: 'We assess every dog. Puppies do shorter routes; seniors get flat trails. We match the trail to the dog.' },
+          { q: 'Is hiking off-leash?', a: 'Off-leash only on designated trails where it\'s safe and legal. Your dog must have a solid recall.' },
+          { q: 'What if it rains?', a: 'We hike in rain. Dogs are dogs. We skip lightning and extreme conditions only.' },
+          { q: 'What vaccinations are required?', a: 'Current Rabies, Bordetella (within 6 months), and DHPP. We verify records before first hike.' },
+          { q: 'Do you accept reactive dogs?', a: 'Case by case. Emma does private sessions specifically for reactive dogs—reach out to discuss.' },
+        ].map((item, i) => (
+          <div style="background:#1A4731;" class="rounded-sm overflow-hidden">
+            <button class="faq-trigger w-full text-left px-6 py-4 flex items-center justify-between gap-4 font-oswald text-lg font-bold text-white uppercase hover:text-[#F5A623] transition-colors" data-idx={i}>
+              <span>{item.q}</span>
+              <span class="faq-caret text-[#F5A623] text-2xl flex-shrink-0 transition-transform duration-300">▾</span>
+            </button>
+            <div class="faq-answer overflow-hidden" style="max-height:0; transition:max-height 0.35s ease; background:#0F2A1D;">
+              <p class="px-6 py-4 text-sm text-white/80 leading-relaxed">{item.a}</p>
             </div>
           </div>
         ))}
@@ -321,7 +410,7 @@ import { gallery } from '../data/v2/gallery';
   </section>
 
   <!-- FOOTER -->
-  <footer style="background:#0F2A1D; border-top:2px solid #1A4731;" class="py-14 px-4">
+  <footer style="background:#0F2A1D; border-top:2px solid #1A4731;" class="py-14 px-4 pb-16 md:pb-14">
     <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-10">
       <div>
         <div class="flex items-center gap-2 mb-4">
@@ -351,6 +440,16 @@ import { gallery } from '../data/v2/gallery';
     </div>
   </footer>
 
+  <!-- MOBILE CTA BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 flex md:hidden" style="height:56px;">
+    <a href="tel:7204438821" class="flex-1 flex items-center justify-center gap-2 text-white font-bold font-oswald uppercase tracking-wide text-sm" style="background:#0F2A1D;">
+      <span>📞</span> (720) 443-8821
+    </a>
+    <a href="#booking" class="flex-1 flex items-center justify-center gap-2 text-[#1A4731] font-bold font-oswald uppercase tracking-wide text-sm" style="background:#F5A623;">
+      Book a Hike
+    </a>
+  </div>
+
   <script>
     const btn = document.getElementById('v2-menu-btn');
     const menu = document.getElementById('v2-mobile-menu');
@@ -369,5 +468,30 @@ import { gallery } from '../data/v2/gallery';
         if (success) success.classList.remove('hidden');
       });
     }
+    // FAQ accordion
+    document.querySelectorAll('.faq-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const parent = trigger.parentElement;
+        if (!parent) return;
+        const answer = parent.querySelector('.faq-answer') as HTMLElement | null;
+        const caret = trigger.querySelector('.faq-caret') as HTMLElement | null;
+        const isOpen = trigger.classList.contains('faq-open');
+        document.querySelectorAll('.faq-trigger').forEach((t) => {
+          t.classList.remove('faq-open');
+          const p = t.parentElement;
+          if (p) {
+            const a = p.querySelector('.faq-answer') as HTMLElement | null;
+            const c = t.querySelector('.faq-caret') as HTMLElement | null;
+            if (a) a.style.maxHeight = '0';
+            if (c) c.style.transform = 'rotate(0deg)';
+          }
+        });
+        if (!isOpen && answer && caret) {
+          trigger.classList.add('faq-open');
+          answer.style.maxHeight = '500px';
+          caret.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
   </script>
 </BaseLayout>

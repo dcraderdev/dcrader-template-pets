@@ -5,6 +5,13 @@ import { services, packages } from '../data/v3/services';
 import { gallery } from '../data/v3/gallery';
 ---
 <BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div id="v3-banner" style="background:#0E7490;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative">
+    <span>🩺 Now accepting new patients · Free intake assessment this month · (206) 514-7730</span>
+    <button onclick="document.getElementById('v3-banner').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg leading-none font-bold" aria-label="Close banner">×</button>
+  </div>
+
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; background: #FFFFFF; color: #334155; }
     .font-inter { font-family: 'Inter', system-ui, sans-serif; }
@@ -62,10 +69,10 @@ import { gallery } from '../data/v3/gallery';
           <!-- Trust badges -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
-              { icon: '🏥', label: 'NAVTA Member' },
-              { icon: '✅', label: 'Fear Free Certified' },
-              { icon: '📋', label: 'WA Licensed Facility' },
-              { icon: '👩‍⚕️', label: 'Vet Supervised' },
+              { icon: '🏥', label: 'NAVTA Member · 2020–Present' },
+              { icon: '✅', label: 'Fear Free Pro · Recertified 2025' },
+              { icon: '📋', label: 'WA Lic. #VF-20208841' },
+              { icon: '👩‍⚕️', label: 'DVM On-Staff' },
             ].map((b) => (
               <div class="bg-white border border-[#E2E8F0] rounded-md p-3 text-center shadow-sm">
                 <div class="text-xl mb-1">{b.icon}</div>
@@ -120,6 +127,38 @@ import { gallery } from '../data/v3/gallery';
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HEALTH & REQUIREMENTS -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="border border-[#E2E8F0] rounded-md overflow-hidden">
+        <div class="px-6 py-4 border-b border-[#E2E8F0]" style="background:#F8FAFC;">
+          <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-1">Policy</p>
+          <h2 class="text-2xl font-bold text-[#0F172A]">Health &amp; Requirements</h2>
+        </div>
+        <table class="w-full text-sm">
+          <tbody>
+            <tr class="border-b border-[#E2E8F0]">
+              <td class="px-6 py-4 font-semibold text-[#0F172A] align-top w-48">Vaccination Requirements</td>
+              <td class="px-6 py-4 text-[#334155] leading-relaxed">Current <strong>Rabies</strong>, <strong>Bordetella</strong> (within 6 months), and <strong>DHPP/DA2PP</strong> required for all breeds. Records must be submitted prior to first appointment.</td>
+            </tr>
+            <tr class="border-b border-[#E2E8F0]">
+              <td class="px-6 py-4 font-semibold text-[#0F172A] align-top">Temperament Assessment</td>
+              <td class="px-6 py-4 text-[#334155] leading-relaxed">All new dogs require a complimentary 30-minute behavioral meet &amp; greet before their first booking. This is non-negotiable.</td>
+            </tr>
+            <tr class="border-b border-[#E2E8F0]">
+              <td class="px-6 py-4 font-semibold text-[#0F172A] align-top">Health on Appointment Day</td>
+              <td class="px-6 py-4 text-[#334155] leading-relaxed">Dogs must be flea/tick free, not in heat, and free of any contagious illness or active skin infection on the day of service.</td>
+            </tr>
+            <tr>
+              <td class="px-6 py-4 font-semibold text-[#0F172A] align-top">Emergency Protocol</td>
+              <td class="px-6 py-4 text-[#334155] leading-relaxed">24/7 veterinary partner is on call. Owners are contacted immediately — before any treatment decision is made. All incidents are documented in the patient record.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -211,6 +250,33 @@ import { gallery } from '../data/v3/gallery';
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-10 border-b border-[#E2E8F0] pb-6">
+        <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">The Process</p>
+        <h2 class="text-3xl font-bold text-[#0F172A]">How It Works</h2>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div class="flex flex-col gap-3">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold text-white" style="background:#0E7490;">1</div>
+          <h3 class="text-lg font-bold text-[#0F172A]">Request Intake</h3>
+          <p class="text-sm text-[#334155] leading-relaxed">Submit the online intake form with your dog's full medical history, prior grooming experiences, and any known behavioral triggers.</p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold text-white" style="background:#0D9488;">2</div>
+          <h3 class="text-lg font-bold text-[#0F172A]">Behavioral Assessment</h3>
+          <p class="text-sm text-[#334155] leading-relaxed">Dr. Santos or a certified technician conducts a 30-minute behavioral evaluation. We identify sensitivities and design a care protocol accordingly.</p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="w-12 h-12 rounded-full flex items-center justify-center text-xl font-bold text-white" style="background:#0E7490;">3</div>
+          <h3 class="text-lg font-bold text-[#0F172A]">Tailored First Appointment</h3>
+          <p class="text-sm text-[#334155] leading-relaxed">Your dog's first service is paced to their comfort level. Every step is documented. You receive a full report at pickup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TEAM -->
   <section id="team" class="py-16 px-4 bg-white">
     <div class="max-w-6xl mx-auto">
@@ -261,6 +327,35 @@ import { gallery } from '../data/v3/gallery';
             <div>
               <p class="font-bold text-[#0F172A] text-sm">{t.name}</p>
               <p class="text-xs text-[#64748B]">{t.breed} · {t.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-4" style="background:#F8FAFC;">
+    <div class="max-w-3xl mx-auto">
+      <div class="mb-10 border-b border-[#E2E8F0] pb-6">
+        <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Patient FAQs</p>
+        <h2 class="text-3xl font-bold text-[#0F172A]">Frequently Asked</h2>
+      </div>
+      <div class="flex flex-col gap-2" id="v3-faq">
+        {[
+          { q: 'My dog has bitten groomers before. Can you help?', a: 'Possibly. We schedule a free behavioral consultation with Dr. Santos first. We never guarantee outcomes but we\'ve successfully groomed many bite-risk dogs.' },
+          { q: 'Do you use muzzles?', a: 'Only if the dog and owner agree in advance, and only basket muzzles that allow panting. Never as restraint.' },
+          { q: 'How long does a full groom take?', a: '2–3 hours for anxious dogs. We don\'t rush. You\'ll get a time window and a text when we\'re wrapping up.' },
+          { q: 'Can I stay during the appointment?', a: 'For the first visit, yes. After that, dog-only is typically better—they\'re calmer without parental anxiety in the room.' },
+          { q: 'Do you groom cats?', a: 'Not at this time. Dogs only.' },
+        ].map((item, i) => (
+          <div class="bg-white border border-[#E2E8F0] rounded-md overflow-hidden hover:shadow-sm transition-shadow">
+            <button class="faq-trigger w-full text-left px-6 py-4 flex items-center justify-between gap-4 text-sm font-semibold text-[#0F172A] hover:text-[#0E7490] transition-colors" data-idx={i}>
+              <span>{item.q}</span>
+              <span class="faq-caret text-[#0E7490] text-lg flex-shrink-0 transition-transform duration-300 font-bold">+</span>
+            </button>
+            <div class="faq-answer overflow-hidden" style="max-height:0; transition:max-height 0.35s ease;">
+              <p class="px-6 pb-4 text-sm text-[#334155] leading-relaxed border-t border-[#E2E8F0] pt-3">{item.a}</p>
             </div>
           </div>
         ))}
@@ -372,7 +467,7 @@ import { gallery } from '../data/v3/gallery';
   </section>
 
   <!-- FOOTER -->
-  <footer style="background:#0F172A;" class="py-14 px-4">
+  <footer style="background:#0F172A;" class="py-14 px-4 pb-16 md:pb-14">
     <div class="max-w-6xl mx-auto grid sm:grid-cols-4 gap-10">
       <div class="sm:col-span-2">
         <div class="flex items-center gap-2 mb-3">
@@ -402,6 +497,16 @@ import { gallery } from '../data/v3/gallery';
     </div>
   </footer>
 
+  <!-- MOBILE CTA BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 flex md:hidden" style="height:56px;">
+    <a href="tel:2065147730" class="flex-1 flex items-center justify-center gap-2 text-white font-semibold text-sm" style="background:#0F172A;">
+      <span>📞</span> (206) 514-7730
+    </a>
+    <a href="#booking" class="flex-1 flex items-center justify-center gap-2 text-white font-semibold text-sm" style="background:#0E7490;">
+      Book Now
+    </a>
+  </div>
+
   <script>
     const btn = document.getElementById('v3-menu-btn');
     const menu = document.getElementById('v3-mobile-menu');
@@ -420,5 +525,31 @@ import { gallery } from '../data/v3/gallery';
         if (success) success.classList.remove('hidden');
       });
     }
+    // FAQ accordion
+    document.querySelectorAll('.faq-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const parent = trigger.parentElement;
+        if (!parent) return;
+        const answer = parent.querySelector('.faq-answer') as HTMLElement | null;
+        const caret = trigger.querySelector('.faq-caret') as HTMLElement | null;
+        const isOpen = trigger.classList.contains('faq-open');
+        document.querySelectorAll('.faq-trigger').forEach((t) => {
+          t.classList.remove('faq-open');
+          const p = t.parentElement;
+          if (p) {
+            const a = p.querySelector('.faq-answer') as HTMLElement | null;
+            const c = t.querySelector('.faq-caret') as HTMLElement | null;
+            if (a) a.style.maxHeight = '0';
+            if (c) { c.textContent = '+'; c.style.transform = 'rotate(0deg)'; }
+          }
+        });
+        if (!isOpen && answer && caret) {
+          trigger.classList.add('faq-open');
+          answer.style.maxHeight = '500px';
+          caret.textContent = '−';
+          caret.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
   </script>
 </BaseLayout>

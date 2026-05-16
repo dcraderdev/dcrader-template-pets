@@ -5,6 +5,13 @@ import { services, packages } from '../data/v4/services';
 import { gallery } from '../data/v4/gallery';
 ---
 <BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div id="v4-banner" style="background:#F97316;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative font-bold">
+    <span>🎉 New pups! First daycare day just $10 — Sniff &amp; Snuggle Intro Special · Book today!</span>
+    <button onclick="document.getElementById('v4-banner').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg leading-none font-bold" aria-label="Close banner">×</button>
+  </div>
+
   <style>
     body { font-family: 'Nunito', sans-serif; background: #FFFBF7; color: #475569; }
     .font-fredoka { font-family: 'Fredoka One', cursive; }
@@ -106,13 +113,40 @@ import { gallery } from '../data/v4/gallery';
     </div>
   </section>
 
+  <!-- HEALTH & REQUIREMENTS -->
+  <section class="py-16 px-4" style="background:#FFFBF7;">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-[#F97316] font-extrabold uppercase tracking-wider text-sm mb-2">House Rules 📋</p>
+        <h2 class="font-fredoka text-4xl text-[#1E293B] mb-3">Health &amp; Requirements</h2>
+        <p class="text-[#475569] max-w-lg mx-auto text-sm">We need all the shots! 💉 Here's what every pup needs to join the fun.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-5">
+        {[
+          { emoji: '💉', color: '#F97316', bg: '#FFF7ED', title: 'Vaccination Requirements', body: 'Current Rabies, Bordetella (within 6 months), and DHPP/DA2PP required. Records uploaded before Day 1.' },
+          { emoji: '🤝', color: '#06B6D4', bg: '#ECFEFF', title: 'Temperament Assessment', body: 'New pups do a free 30-min meet & greet in the yard before their first booking. We want everyone to get along!' },
+          { emoji: '🛡️', color: '#FCD34D', bg: '#FEFCE8', title: 'Health Guarantee', body: 'Dogs must be flea/tick free, not in heat, and free of any contagious illness on every drop-off day.' },
+          { emoji: '🚨', color: '#34D399', bg: '#F0FDF4', title: 'Emergency Protocol', body: "24/7 vet partner on call. You're called immediately — before any treatment decision. We don't wait." },
+        ].map((card) => (
+          <div class="rounded-3xl p-6 flex gap-4 items-start" style={`background:${card.bg}; border-top: 5px solid ${card.color};`}>
+            <div class="text-3xl flex-shrink-0">{card.emoji}</div>
+            <div>
+              <h3 class="font-fredoka text-xl text-[#1E293B] mb-1">{card.title}</h3>
+              <p class="text-sm text-[#475569] leading-relaxed">{card.body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- STATS SECTION "Why Dogs Love Us" -->
   <section class="py-16 px-4" style="background:#1E293B;">
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-5xl mx-auto">
       <h2 class="font-fredoka text-4xl text-white text-center mb-12">Why Dogs Love Us 🐶</h2>
-      <div class="grid sm:grid-cols-3 gap-8 text-center">
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
         <div>
-          <div class="font-fredoka text-6xl text-[#F97316] mb-2">127</div>
+          <div class="font-fredoka text-6xl text-[#F97316] mb-2">143</div>
           <p class="text-white font-bold text-lg">Happy Dogs / Week</p>
           <p class="text-white/50 text-sm mt-1">Sniffed, snuggled & loved</p>
         </div>
@@ -125,6 +159,11 @@ import { gallery } from '../data/v4/gallery';
           <div class="font-fredoka text-6xl text-[#FCD34D] mb-2">24/7</div>
           <p class="text-white font-bold text-lg">Live Webcam Streams</p>
           <p class="text-white/50 text-sm mt-1">Watch your pup anytime</p>
+        </div>
+        <div>
+          <div class="font-fredoka text-6xl text-[#34D399] mb-2">6</div>
+          <p class="text-white font-bold text-lg">🎓 Puppy Classes / Month</p>
+          <p class="text-white/50 text-sm mt-1">Small groups, big progress</p>
         </div>
       </div>
     </div>
@@ -193,6 +232,33 @@ import { gallery } from '../data/v4/gallery';
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="py-16 px-4" style="background:#FFFBF7;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-[#06B6D4] font-extrabold uppercase tracking-wider text-sm mb-2">Super Easy 🎈</p>
+        <h2 class="font-fredoka text-5xl text-[#1E293B] mb-3">How It Works</h2>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div class="text-center flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold font-fredoka text-white grad-coral">1</div>
+          <h3 class="font-fredoka text-2xl text-[#1E293B]">Fill Out the Form 📝</h3>
+          <p class="text-sm text-[#475569] leading-relaxed">Quick 3-minute form tells us about your pup — energy level, breed, dietary needs, favorite toy.</p>
+        </div>
+        <div class="text-center flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold font-fredoka text-white grad-teal">2</div>
+          <h3 class="font-fredoka text-2xl text-[#1E293B]">Meet &amp; Greet at the Yard 🏠</h3>
+          <p class="text-sm text-[#475569] leading-relaxed">Come by for a free sniff session! We meet your pup, you meet the team, and everyone gets excited.</p>
+        </div>
+        <div class="text-center flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold font-fredoka text-white" style="background:linear-gradient(135deg,#FCD34D,#F97316);">3</div>
+          <h3 class="font-fredoka text-2xl text-[#1E293B]">First Day Free! 🎉</h3>
+          <p class="text-sm text-[#475569] leading-relaxed">New clients get their first day for just $10. Drop off, check the webcam, and smile all day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TEAM -->
   <section id="team" class="py-20 px-4" style="background:#FFFBF7;">
     <div class="max-w-5xl mx-auto">
@@ -245,6 +311,39 @@ import { gallery } from '../data/v4/gallery';
               <div>
                 <p class="font-extrabold text-[#1E293B]">{t.name}</p>
                 <p class="text-xs text-[#475569]">{t.breed} · {t.date}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-4" style="background:#FFFBF7;">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-[#F97316] font-extrabold uppercase tracking-wider text-sm mb-2">Good Questions! 🐾</p>
+        <h2 class="font-fredoka text-5xl text-[#1E293B] mb-3">FAQs</h2>
+      </div>
+      <div class="flex flex-col gap-3" id="v4-faq">
+        {[
+          { q: 'How do I access the webcam?', a: 'We email you a unique stream link on your first drop-off morning. It\'s your link forever.' },
+          { q: 'What\'s the dog-to-staff ratio?', a: 'Max 8 dogs per staff member during active play. Rest time is supervised but lower staffing.' },
+          { q: 'My dog isn\'t spayed/neutered. Is that OK?', a: 'Intact males over 6 months need a temperament assessment. Females in heat cannot attend daycare.' },
+          { q: 'What if my dog doesn\'t get along with others?', a: 'We do a free meet-and-greet before the first full day. Dogs who don\'t pass our temperament screen aren\'t admitted—this protects everyone.' },
+          { q: 'Can I bring my dog\'s food?', a: 'Yes! We have labeled storage for all personal food and medications. Feeding on your schedule.' },
+        ].map((item, i) => {
+          const colors = ['#F97316', '#06B6D4', '#FCD34D', '#34D399', '#F97316'];
+          const bgs = ['#FFF7ED', '#ECFEFF', '#FEFCE8', '#F0FDF4', '#FFF7ED'];
+          return (
+            <div class="rounded-3xl overflow-hidden" style={`background:${bgs[i]}; border-top: 4px solid ${colors[i]};`}>
+              <button class="faq-trigger w-full text-left px-6 py-4 flex items-center justify-between gap-4 font-fredoka text-xl text-[#1E293B] hover:opacity-80 transition-opacity" data-idx={i}>
+                <span>{item.q}</span>
+                <span class="faq-caret text-2xl flex-shrink-0 transition-transform duration-300" style={`color:${colors[i]};`}>🐾</span>
+              </button>
+              <div class="faq-answer overflow-hidden" style="max-height:0; transition:max-height 0.35s ease; background:#fff;">
+                <p class="px-6 py-4 text-sm text-[#475569] leading-relaxed font-semibold">{item.a}</p>
               </div>
             </div>
           );
@@ -355,7 +454,7 @@ import { gallery } from '../data/v4/gallery';
   </section>
 
   <!-- FOOTER -->
-  <footer style="background:#1E293B;" class="py-14 px-4">
+  <footer style="background:#1E293B;" class="py-14 px-4 pb-16 md:pb-14">
     <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-10">
       <div>
         <div class="flex items-center gap-2 mb-4">
@@ -385,6 +484,16 @@ import { gallery } from '../data/v4/gallery';
     </div>
   </footer>
 
+  <!-- MOBILE CTA BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 flex md:hidden" style="height:56px;">
+    <a href="tel:5127019224" class="flex-1 flex items-center justify-center gap-2 text-white font-extrabold text-sm" style="background:#1E293B;">
+      <span>📞</span> Call Us!
+    </a>
+    <a href="#booking" class="flex-1 flex items-center justify-center gap-2 text-white font-extrabold text-sm" style="background:#F97316;">
+      Book Now 🎉
+    </a>
+  </div>
+
   <script>
     const btn = document.getElementById('v4-menu-btn');
     const menu = document.getElementById('v4-mobile-menu');
@@ -403,5 +512,26 @@ import { gallery } from '../data/v4/gallery';
         if (success) success.classList.remove('hidden');
       });
     }
+    // FAQ accordion
+    document.querySelectorAll('.faq-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const parent = trigger.parentElement;
+        if (!parent) return;
+        const answer = parent.querySelector('.faq-answer') as HTMLElement | null;
+        const isOpen = trigger.classList.contains('faq-open');
+        document.querySelectorAll('.faq-trigger').forEach((t) => {
+          t.classList.remove('faq-open');
+          const p = t.parentElement;
+          if (p) {
+            const a = p.querySelector('.faq-answer') as HTMLElement | null;
+            if (a) a.style.maxHeight = '0';
+          }
+        });
+        if (!isOpen && answer) {
+          trigger.classList.add('faq-open');
+          answer.style.maxHeight = '500px';
+        }
+      });
+    });
   </script>
 </BaseLayout>

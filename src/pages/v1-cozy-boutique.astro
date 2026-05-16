@@ -5,6 +5,13 @@ import { services, packages } from '../data/v1/services';
 import { gallery } from '../data/v1/gallery';
 ---
 <BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+
+  <!-- ANNOUNCEMENT BANNER -->
+  <div id="v1-banner" style="background:#6B8F71;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative">
+    <span>🐾 New clients: First day of daycare FREE with overnight booking · Limited spots · (415) 882-3047</span>
+    <button onclick="document.getElementById('v1-banner').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg leading-none font-bold" aria-label="Close banner">×</button>
+  </div>
+
   <style>
     :root {
       --cream: #FAF6EF;
@@ -77,9 +84,9 @@ import { gallery } from '../data/v1/gallery';
         <a href="#services" class="border-2 border-white text-white rounded-full px-8 py-4 font-bold hover:bg-white hover:text-[#3D2B1F] transition-all">Explore Services</a>
       </div>
       <div class="mt-12 flex flex-wrap justify-center gap-6 text-white/80 text-sm">
-        <span>⭐ 5-Star Rated</span>
+        <span>⭐ 4.9 (312 reviews)</span>
         <span>🔒 Licensed & Insured</span>
-        <span>📸 Daily Photo Updates</span>
+        <span>📸 Photo updates twice daily</span>
         <span>🏥 Fear Free Certified</span>
       </div>
     </div>
@@ -116,6 +123,34 @@ import { gallery } from '../data/v1/gallery';
             </ul>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HEALTH & REQUIREMENTS -->
+  <section class="py-16 px-4" style="background:#FAF6EF;">
+    <div class="max-w-4xl mx-auto">
+      <div class="rounded-2xl p-8 md:p-10" style="background:#F2EAD8; border:2px solid #6B8F71;">
+        <h2 class="font-playfair text-3xl md:text-4xl font-bold text-[#3D2B1F] mb-2">Health & Requirements</h2>
+        <p class="text-[#9C7B6C] mb-8 text-sm">For the safety and wellbeing of every dog in our care.</p>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div>
+            <h3 class="font-playfair text-lg font-bold text-[#3D2B1F] mb-2">💉 Vaccination Requirements</h3>
+            <p class="text-sm text-[#5C4033] leading-relaxed">All breeds must have current <strong>Rabies</strong>, <strong>Bordetella</strong> (within 6 months), and <strong>DHPP/DA2PP</strong>. Records required before first visit.</p>
+          </div>
+          <div>
+            <h3 class="font-playfair text-lg font-bold text-[#3D2B1F] mb-2">🤝 Temperament Assessment</h3>
+            <p class="text-sm text-[#5C4033] leading-relaxed">New dogs require a free 30-minute meet &amp; greet before their first booking. We want everyone to feel at home.</p>
+          </div>
+          <div>
+            <h3 class="font-playfair text-lg font-bold text-[#3D2B1F] mb-2">🛡️ Health Guarantee</h3>
+            <p class="text-sm text-[#5C4033] leading-relaxed">Dogs must be flea/tick free, not in heat, and free of any contagious illness on the day of arrival.</p>
+          </div>
+          <div>
+            <h3 class="font-playfair text-lg font-bold text-[#3D2B1F] mb-2">🚨 Emergency Protocol</h3>
+            <p class="text-sm text-[#5C4033] leading-relaxed">24/7 vet partner is two blocks away. You are notified immediately of any incident — no exceptions, no delays.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -190,6 +225,33 @@ import { gallery } from '../data/v1/gallery';
     </div>
   </section>
 
+  <!-- HOW IT WORKS -->
+  <section class="py-16 px-4" style="background:#FAF6EF;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Getting Started</p>
+        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F]">How It Works</h2>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div class="text-center flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold font-playfair text-white" style="background:#6B8F71;">1</div>
+          <h3 class="font-playfair text-xl font-bold text-[#3D2B1F]">Apply Online</h3>
+          <p class="text-sm text-[#5C4033] leading-relaxed">Fill out our quick new-client form. Takes about 3 minutes and tells us everything we need to know about your pup.</p>
+        </div>
+        <div class="text-center flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold font-playfair text-white" style="background:#C17B50;">2</div>
+          <h3 class="font-playfair text-xl font-bold text-[#3D2B1F]">Free Meet &amp; Greet</h3>
+          <p class="text-sm text-[#5C4033] leading-relaxed">Come by for a complimentary 30-minute visit so we can get to know each other. No commitment required.</p>
+        </div>
+        <div class="text-center flex flex-col items-center gap-4">
+          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold font-playfair text-white" style="background:#6B8F71;">3</div>
+          <h3 class="font-playfair text-xl font-bold text-[#3D2B1F]">Bon Voyage!</h3>
+          <p class="text-sm text-[#5C4033] leading-relaxed">Drop off knowing your dog is safe, loved, and already making friends. Photo updates arrive at 8am and 5pm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TEAM -->
   <section id="team" class="py-20 px-4" style="background:#F2EAD8;">
     <div class="max-w-5xl mx-auto">
@@ -236,6 +298,35 @@ import { gallery } from '../data/v1/gallery';
             <div>
               <p class="font-bold text-[#3D2B1F]">{t.name}</p>
               <p class="text-xs text-[#9C7B6C]">{t.breed} · {t.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 px-4" style="background:#FAF6EF;">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Questions</p>
+        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F]">Frequently Asked</h2>
+      </div>
+      <div class="flex flex-col gap-3" id="v1-faq">
+        {[
+          { q: 'How many dogs do you board at once?', a: 'We cap overnight boarding at 12 dogs total—never more. Small is intentional.' },
+          { q: 'Do you have cameras I can check?', a: 'We send photo updates at 8am and 5pm daily. We\'re exploring live feeds for 2026.' },
+          { q: 'Can my dog sleep in a bed?', a: 'Absolutely. Every suite has an orthopedic dog bed. Bring their blanket—familiar smells help.' },
+          { q: 'What if my dog gets sick?', a: 'We have a vet partner two blocks away. Any concern is addressed immediately and you\'re called first.' },
+          { q: 'Do you accept intact dogs?', a: 'We accept intact males under 1 year in daycare only. Intact females in heat are not accepted for safety reasons.' },
+        ].map((item, i) => (
+          <div class="rounded-2xl overflow-hidden" style="background:#F2EAD8; border:1px solid #e0d4bc;">
+            <button class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-playfair text-lg font-bold text-[#3D2B1F] hover:text-[#6B8F71] transition-colors" data-idx={i}>
+              <span>{item.q}</span>
+              <span class="faq-caret text-[#6B8F71] text-xl flex-shrink-0 transition-transform duration-300">+</span>
+            </button>
+            <div class="faq-answer overflow-hidden" style="max-height:0; transition:max-height 0.35s ease;">
+              <p class="px-6 pb-5 text-sm text-[#5C4033] leading-relaxed border-l-4 ml-6 mb-5" style="border-color:#6B8F71;">{item.a}</p>
             </div>
           </div>
         ))}
@@ -356,7 +447,7 @@ import { gallery } from '../data/v1/gallery';
   </section>
 
   <!-- FOOTER -->
-  <footer style="background:#3D2B1F;" class="py-14 px-4">
+  <footer style="background:#3D2B1F;" class="py-14 px-4 pb-16 md:pb-14">
     <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-10">
       <div>
         <div class="flex items-center gap-2 mb-4">
@@ -388,6 +479,16 @@ import { gallery } from '../data/v1/gallery';
     </div>
   </footer>
 
+  <!-- MOBILE CTA BAR -->
+  <div class="fixed bottom-0 left-0 right-0 z-50 flex md:hidden" style="height:56px;">
+    <a href="tel:4158823047" class="flex-1 flex items-center justify-center gap-2 text-white font-bold text-sm" style="background:#3D2B1F;">
+      <span>📞</span> (415) 882-3047
+    </a>
+    <a href="#booking" class="flex-1 flex items-center justify-center gap-2 text-white font-bold text-sm" style="background:#C17B50;">
+      Book Now
+    </a>
+  </div>
+
   <script>
     const btn = document.getElementById('v1-menu-btn');
     const menu = document.getElementById('v1-mobile-menu');
@@ -407,5 +508,32 @@ import { gallery } from '../data/v1/gallery';
         if (success) success.classList.remove('hidden');
       });
     }
+    // FAQ accordion
+    document.querySelectorAll('.faq-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const parent = trigger.parentElement;
+        if (!parent) return;
+        const answer = parent.querySelector('.faq-answer') as HTMLElement | null;
+        const caret = trigger.querySelector('.faq-caret') as HTMLElement | null;
+        const isOpen = trigger.classList.contains('faq-open');
+        // close all
+        document.querySelectorAll('.faq-trigger').forEach((t) => {
+          t.classList.remove('faq-open');
+          const p = t.parentElement;
+          if (p) {
+            const a = p.querySelector('.faq-answer') as HTMLElement | null;
+            const c = t.querySelector('.faq-caret') as HTMLElement | null;
+            if (a) a.style.maxHeight = '0';
+            if (c) { c.textContent = '+'; c.style.transform = 'rotate(0deg)'; }
+          }
+        });
+        if (!isOpen && answer && caret) {
+          trigger.classList.add('faq-open');
+          answer.style.maxHeight = '500px';
+          caret.textContent = '−';
+          caret.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
   </script>
 </BaseLayout>
