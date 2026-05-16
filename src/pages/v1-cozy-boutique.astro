@@ -581,6 +581,35 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+  <!-- THE NEIGHBORHOOD -->
+  <section class="py-16 px-4" style="background:#FAF6EF;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Hayes Valley, SF</p>
+        <h2 class="font-playfair text-4xl font-bold text-[#3D2B1F]">A Dog's Favorite Neighborhood</h2>
+        <p class="text-[#9C7B6C] mt-3 max-w-lg mx-auto">Everything your pup needs is within a short walk of our front door.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { icon: '🌳', name: 'Duboce Park', desc: 'Off-leash area & splash pad', dist: '0.4 mi', type: 'Dog Park' },
+          { icon: '🏥', name: 'SF SPCA Clinic', desc: '24-hour emergency veterinary care', dist: '0.6 mi', type: 'Vet' },
+          { icon: '🛍️', name: 'Noe Valley Pet', desc: 'Premium food, toys & accessories', dist: '0.8 mi', type: 'Pet Store' },
+          { icon: '☕', name: 'Sightglass Coffee', desc: 'Dog-friendly patio — bring yours!', dist: '0.3 mi', type: 'Café' },
+        ].map((place) => (
+          <div class="bg-white rounded-xl p-5 shadow-sm flex flex-col gap-3 hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between">
+              <span class="text-3xl">{place.icon}</span>
+              <span class="text-xs font-semibold uppercase tracking-wide text-[#C17B50]">{place.type}</span>
+            </div>
+            <h3 class="font-playfair text-lg font-bold text-[#3D2B1F]">{place.name}</h3>
+            <p class="text-sm text-[#5C4033] leading-relaxed flex-grow">{place.desc}</p>
+            <p class="text-xs text-[#9C7B6C] font-semibold">{place.dist} from us</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-5xl mx-auto">
