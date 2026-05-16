@@ -75,6 +75,7 @@ const schemaJson = JSON.stringify({
       <a href="#services" class="text-[#F5A623] text-sm font-semibold uppercase font-oswald">Services</a>
       <a href="#pricing" class="text-[#F5A623] text-sm font-semibold uppercase font-oswald">Pricing</a>
       <a href="#gallery" class="text-[#F5A623] text-sm font-semibold uppercase font-oswald">Gallery</a>
+      <a href="#safety" class="text-[#F5A623] text-sm font-semibold uppercase font-oswald">Safety</a>
       <a href="#team" class="text-[#F5A623] text-sm font-semibold uppercase font-oswald">Team</a>
       <a href="#booking" class="btn-yellow text-sm py-2 px-5 text-center">Join the Pack</a>
     </div>
@@ -304,6 +305,28 @@ const schemaJson = JSON.stringify({
           </div>
         ))}
       </div>
+    </div>
+  </section>
+
+  <!-- BREEDS WE RUN WITH -->
+  <section class="py-14 px-4" style="background:#F8F7F4;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="font-oswald text-3xl font-bold text-[#1A4731] uppercase mb-2">Breeds We Run With</h2>
+        <div class="w-12 h-1 mx-auto" style="background:#F5A623;"></div>
+        <p class="text-[#2D3A2A] text-sm mt-4 max-w-md mx-auto">We specialize in high-drive, working, and sporting breeds. If your dog has more energy than you — we're the solution.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        {[
+          'Australian Shepherd', 'Border Collie', 'Belgian Malinois', 'Vizsla',
+          'Weimaraner', 'German Shepherd', 'Siberian Husky', 'Alaskan Malamute',
+          'Rhodesian Ridgeback', 'German Shorthaired Pointer', 'Labrador Retriever',
+          'Golden Retriever', 'Irish Setter', 'Dalmatian', 'Standard Poodle',
+        ].map((breed) => (
+          <span class="font-oswald text-sm uppercase tracking-wide px-4 py-2 border border-[#1A4731] text-[#1A4731] hover:bg-[#1A4731] hover:text-white transition-colors">{breed}</span>
+        ))}
+      </div>
+      <p class="text-center text-xs text-[#6B7280] mt-6">Not on the list? Contact us — we assess all dogs individually based on fitness and temperament, not breed alone.</p>
     </div>
   </section>
 

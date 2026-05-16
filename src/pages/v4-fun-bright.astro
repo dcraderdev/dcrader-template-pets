@@ -411,6 +411,41 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+  <!-- PUP OF THE MONTH -->
+  <section class="py-14 px-4" style="background:#FFFBF7;">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-8">
+        <p class="text-[#F97316] font-extrabold uppercase tracking-wider text-sm mb-2">⭐ Staff Pick</p>
+        <h2 class="font-fredoka text-5xl text-[#1E293B]">Pup of the Month 🏆</h2>
+      </div>
+      <div class="rounded-3xl overflow-hidden bg-white shadow-xl flex flex-col md:flex-row">
+        <div class="md:w-72 flex-shrink-0">
+          <img
+            src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=400&h=400&fit=crop&q=80"
+            alt="Biscuit the Golden Retriever, Sniff and Snuggle Pup of the Month"
+            class="w-full h-64 md:h-full object-cover"
+          />
+        </div>
+        <div class="p-8 flex flex-col justify-center gap-4">
+          <div class="flex items-center gap-3">
+            <div class="text-3xl">🥇</div>
+            <div>
+              <h3 class="font-fredoka text-3xl text-[#1E293B]">Biscuit</h3>
+              <p class="text-[#F97316] font-bold text-sm">Golden Retriever · 2 years old</p>
+            </div>
+          </div>
+          <p class="text-[#475569] leading-relaxed">Biscuit joined our pack in January and has not stopped smiling since. He holds the all-time record for "most tennis balls carried simultaneously" (four, don't ask how) and is the unofficial greeter for every new pup who walks in the door.</p>
+          <div class="flex flex-wrap gap-2">
+            {['Longest zoomie streak', 'Friendliest with puppies', 'Pro napper', 'Fetch champion'].map((badge) => (
+              <span class="text-xs font-bold px-3 py-1.5 rounded-full" style="background:#FEF3C7; color:#D97706;">{badge}</span>
+            ))}
+          </div>
+          <p class="text-xs text-[#94A3B8] mt-1">Biscuit's human: Sarah T. · Member since 2025</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TESTIMONIALS -->
   <section id="testimonials" class="py-20 px-4" style="background:#1E293B;">
     <div class="max-w-5xl mx-auto">
