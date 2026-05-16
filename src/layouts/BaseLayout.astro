@@ -40,5 +40,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://pets.dcr
   </head>
   <body>
     <slot />
+    <button id="back-to-top" aria-label="Back to top" style="position:fixed;bottom:72px;right:18px;z-index:40;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:18px;display:none;align-items:center;justify-content:center;cursor:pointer;transition:opacity 0.2s,transform 0.2s;" onmouseenter="this.style.opacity='0.8'" onmouseleave="this.style.opacity='1'">↑</button>
+    <script is:inline>
+      const btn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (btn) btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+      });
+      if (btn) btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
   </body>
 </html>

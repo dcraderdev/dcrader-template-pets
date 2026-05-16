@@ -150,8 +150,31 @@ const variants = [
       </div>
     </div>
 
+    <!-- Which template is right for you -->
+    <div class="mt-16 rounded-2xl overflow-hidden border border-white/10">
+      <div class="bg-white/5 px-8 py-6 border-b border-white/10">
+        <h2 class="text-white font-bold text-xl">Which Template Is Right For You?</h2>
+        <p class="text-[#94A3B8] text-sm mt-1">Match your business type to the right starting point.</p>
+      </div>
+      <div class="divide-y divide-white/5">
+        {[
+          { icon: '🏡', label: 'Boutique boarding, small & curated clientele', pick: 'V1 — Paws & Pine', slug: '/v1-cozy-boutique', accent: '#C17B50' },
+          { icon: '🏔️', label: 'Adventure hikes, daycare for high-drive breeds', pick: 'V2 — Trail Tails', slug: '/v2-active-outdoor', accent: '#F5A623' },
+          { icon: '🩺', label: 'Grooming for anxious or medically complex dogs', pick: 'V3 — Calm Coat', slug: '/v3-clinical-trust', accent: '#0E7490' },
+          { icon: '🎉', label: 'High-energy daycare, puppy classes, young families', pick: 'V4 — Sniff & Snuggle', slug: '/v4-fun-bright', accent: '#F97316' },
+          { icon: '👑', label: 'Ultra-premium boarding, concierge, high-net-worth clients', pick: 'V5 — The Hollow', slug: '/v5-luxury-resort', accent: '#D4AF37' },
+        ].map((r) => (
+          <a href={r.slug} class="flex items-center gap-5 px-8 py-5 hover:bg-white/5 transition-colors group no-underline">
+            <span class="text-2xl flex-shrink-0">{r.icon}</span>
+            <p class="text-[#94A3B8] text-sm flex-grow">{r.label}</p>
+            <span class="text-sm font-semibold whitespace-nowrap group-hover:underline" style={`color:${r.accent};`}>{r.pick} →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
     <!-- Sections breakdown -->
-    <div class="mt-16 border border-white/10 rounded-2xl p-8">
+    <div class="mt-8 border border-white/10 rounded-2xl p-8">
       <h2 class="text-white font-bold text-xl mb-6 text-center">Every Template Includes</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {[
@@ -167,6 +190,7 @@ const variants = [
           { icon: '📍', name: 'Contact', desc: 'Hours + Google Maps' },
           { icon: '📱', name: 'Mobile CTA Bar', desc: 'Fixed call + book' },
           { icon: '🔍', name: 'OG / Twitter', desc: 'Social meta tags' },
+          { icon: '📊', name: 'JSON-LD Schema', desc: 'LocalBusiness structured data' },
         ].map((s) => (
           <div class="flex items-start gap-3 p-3 rounded-xl bg-white/5">
             <span class="text-2xl">{s.icon}</span>
