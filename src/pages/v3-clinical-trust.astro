@@ -4,7 +4,11 @@ import { business, team, testimonials } from '../data/v3/business';
 import { services, packages } from '../data/v3/services';
 import { gallery } from '../data/v3/gallery';
 ---
-<BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+<BaseLayout
+  title={`${business.name} — ${business.tagline}`}
+  description={business.description}
+  ogImage="https://images.unsplash.com/photo-1560743641-3914f2c45636?w=1200&h=630&fit=crop&q=80"
+>
 
   <!-- ANNOUNCEMENT BANNER -->
   <div id="v3-banner" style="background:#0E7490;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative">
@@ -88,6 +92,7 @@ import { gallery } from '../data/v3/gallery';
               alt="Professional therapeutic grooming at Calm Coat Veterinary Grooming"
               class="w-full object-cover"
               style="height:420px;"
+              fetchpriority="high"
             />
           </div>
           <div class="mt-3 p-3 bg-[#CCFBF1] rounded-md flex items-start gap-2">
@@ -376,7 +381,7 @@ import { gallery } from '../data/v3/gallery';
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v3-owner-name" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Owner Name <span class="text-red-500">*</span></label>
-              <input id="v3-owner-name" name="ownerName" type="text" required placeholder="Your full name" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+              <input id="v3-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
               <p class="text-xs text-[#94A3B8]">Legal name for records</p>
             </div>
             <div class="flex flex-col gap-1">
@@ -388,11 +393,11 @@ import { gallery } from '../data/v3/gallery';
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v3-email" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Email <span class="text-red-500">*</span></label>
-              <input id="v3-email" name="email" type="email" required placeholder="you@email.com" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+              <input id="v3-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
             </div>
             <div class="flex flex-col gap-1">
               <label for="v3-phone" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Phone <span class="text-red-500">*</span></label>
-              <input id="v3-phone" name="phone" type="tel" required placeholder="(206) 000-0000" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+              <input id="v3-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(206) 000-0000" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-5">
@@ -508,6 +513,9 @@ import { gallery } from '../data/v3/gallery';
   </div>
 
   <script>
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach((el) => (el as HTMLInputElement).setAttribute('min', today));
+
     const btn = document.getElementById('v3-menu-btn');
     const menu = document.getElementById('v3-mobile-menu');
     if (btn && menu) {

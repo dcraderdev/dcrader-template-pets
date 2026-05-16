@@ -4,7 +4,12 @@ import { business, team, testimonials } from '../data/v5/business';
 import { services, packages } from '../data/v5/services';
 import { gallery } from '../data/v5/gallery';
 ---
-<BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+<BaseLayout
+  title={`${business.name} — ${business.tagline}`}
+  description={business.description}
+  ogImage="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1200&h=630&fit=crop&q=80"
+  heroImage="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1600&h=900&fit=crop&q=80"
+>
 
   <!-- ANNOUNCEMENT BANNER -->
   <div id="v5-banner" style="background:#0F172A; border-bottom:1px solid #D4AF37;" class="w-full text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative">
@@ -363,7 +368,7 @@ import { gallery } from '../data/v5/gallery';
           <div class="grid sm:grid-cols-2 gap-6">
             <div class="flex flex-col gap-1.5">
               <label for="v5-owner-name" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Guest's Name <span class="gold">*</span></label>
-              <input id="v5-owner-name" name="ownerName" type="text" required placeholder="Your full name" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
+              <input id="v5-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
             </div>
             <div class="flex flex-col gap-1.5">
               <label for="v5-pet-name" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Pet's Name <span class="gold">*</span></label>
@@ -373,11 +378,11 @@ import { gallery } from '../data/v5/gallery';
           <div class="grid sm:grid-cols-2 gap-6">
             <div class="flex flex-col gap-1.5">
               <label for="v5-email" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Email <span class="gold">*</span></label>
-              <input id="v5-email" name="email" type="email" required placeholder="you@email.com" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
+              <input id="v5-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
             </div>
             <div class="flex flex-col gap-1.5">
               <label for="v5-phone" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Phone <span class="gold">*</span></label>
-              <input id="v5-phone" name="phone" type="tel" required placeholder="(310) 000-0000" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
+              <input id="v5-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(310) 000-0000" class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#CBD5E1] font-light" />
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-6">
@@ -393,9 +398,15 @@ import { gallery } from '../data/v5/gallery';
               </select>
             </div>
           </div>
-          <div class="flex flex-col gap-1.5">
-            <label for="v5-date" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Arrival Date <span class="gold">*</span></label>
-            <input id="v5-date" name="date" type="date" required class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] font-light" />
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex flex-col gap-1.5">
+              <label for="v5-date" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Arrival Date <span class="gold">*</span></label>
+              <input id="v5-date" name="date" type="date" required class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] font-light" />
+            </div>
+            <div class="flex flex-col gap-1.5">
+              <label for="v5-end-date" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Departure Date <span class="gold">*</span></label>
+              <input id="v5-end-date" name="endDate" type="date" required class="border border-[#E2E8F0] px-4 py-3 text-sm text-[#0F172A] font-light" />
+            </div>
           </div>
           <div class="flex flex-col gap-1.5">
             <label for="v5-notes" class="font-montserrat text-xs uppercase tracking-widest text-[#0F172A] font-semibold">Special Requirements</label>
@@ -502,6 +513,9 @@ import { gallery } from '../data/v5/gallery';
   </div>
 
   <script>
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach((el) => (el as HTMLInputElement).setAttribute('min', today));
+
     const btn = document.getElementById('v5-menu-btn');
     const menu = document.getElementById('v5-mobile-menu');
     if (btn && menu) {

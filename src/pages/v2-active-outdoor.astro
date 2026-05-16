@@ -4,7 +4,12 @@ import { business, team, testimonials } from '../data/v2/business';
 import { services, packages } from '../data/v2/services';
 import { gallery } from '../data/v2/gallery';
 ---
-<BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+<BaseLayout
+  title={`${business.name} — ${business.tagline}`}
+  description={business.description}
+  ogImage="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=1200&h=630&fit=crop&q=80"
+  heroImage="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=1600&h=900&fit=crop&q=80"
+>
 
   <!-- ANNOUNCEMENT BANNER -->
   <div id="v2-banner" style="background:#1A4731;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative border-b-2 border-[#F5A623]">
@@ -320,7 +325,7 @@ import { gallery } from '../data/v2/gallery';
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v2-owner-name" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Owner Name <span class="text-[#E87B3A]">*</span></label>
-              <input id="v2-owner-name" name="ownerName" type="text" required placeholder="Your full name" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
+              <input id="v2-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
             </div>
             <div class="flex flex-col gap-1">
               <label for="v2-pet-name" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Dog's Name <span class="text-[#E87B3A]">*</span></label>
@@ -330,11 +335,11 @@ import { gallery } from '../data/v2/gallery';
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v2-email" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Email <span class="text-[#E87B3A]">*</span></label>
-              <input id="v2-email" name="email" type="email" required placeholder="you@email.com" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
+              <input id="v2-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
             </div>
             <div class="flex flex-col gap-1">
               <label for="v2-phone" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Phone <span class="text-[#E87B3A]">*</span></label>
-              <input id="v2-phone" name="phone" type="tel" required placeholder="(720) 000-0000" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
+              <input id="v2-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(720) 000-0000" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-5">
@@ -451,6 +456,9 @@ import { gallery } from '../data/v2/gallery';
   </div>
 
   <script>
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach((el) => (el as HTMLInputElement).setAttribute('min', today));
+
     const btn = document.getElementById('v2-menu-btn');
     const menu = document.getElementById('v2-mobile-menu');
     if (btn && menu) {

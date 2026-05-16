@@ -4,7 +4,11 @@ import { business, team, testimonials } from '../data/v4/business';
 import { services, packages } from '../data/v4/services';
 import { gallery } from '../data/v4/gallery';
 ---
-<BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+<BaseLayout
+  title={`${business.name} — ${business.tagline}`}
+  description={business.description}
+  ogImage="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&h=630&fit=crop&q=80"
+>
 
   <!-- ANNOUNCEMENT BANNER -->
   <div id="v4-banner" style="background:#F97316;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative font-bold">
@@ -23,6 +27,7 @@ import { gallery } from '../data/v4/gallery';
     input:focus, select:focus, textarea:focus { outline: 3px solid #F97316; outline-offset: 2px; }
     @keyframes paw-bounce { 0%,100% { transform: translateY(0) rotate(-5deg); } 50% { transform: translateY(-12px) rotate(5deg); } }
     .paw-bounce { animation: paw-bounce 1.8s ease-in-out infinite; display: inline-block; }
+    @media (prefers-reduced-motion: reduce) { .paw-bounce { animation: none; } }
     .grad-coral { background: linear-gradient(135deg, #F97316, #FCD34D); }
     .grad-teal { background: linear-gradient(135deg, #06B6D4, #34D399); }
     .grad-yellow { background: linear-gradient(135deg, #FCD34D, #F97316); }
@@ -364,7 +369,7 @@ import { gallery } from '../data/v4/gallery';
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v4-owner-name" class="text-sm font-extrabold text-[#1E293B]">Your Name <span class="text-[#F97316]">*</span></label>
-              <input id="v4-owner-name" name="ownerName" type="text" required placeholder="Your full name" class="rounded-2xl border-2 border-orange-100 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400 focus:border-[#F97316]" />
+              <input id="v4-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name" class="rounded-2xl border-2 border-orange-100 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400 focus:border-[#F97316]" />
             </div>
             <div class="flex flex-col gap-1">
               <label for="v4-pet-name" class="text-sm font-extrabold text-[#1E293B]">Dog's Name <span class="text-[#F97316]">*</span></label>
@@ -374,11 +379,11 @@ import { gallery } from '../data/v4/gallery';
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v4-email" class="text-sm font-extrabold text-[#1E293B]">Email <span class="text-[#F97316]">*</span></label>
-              <input id="v4-email" name="email" type="email" required placeholder="you@email.com" class="rounded-2xl border-2 border-orange-100 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400 focus:border-[#F97316]" />
+              <input id="v4-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="rounded-2xl border-2 border-orange-100 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400 focus:border-[#F97316]" />
             </div>
             <div class="flex flex-col gap-1">
               <label for="v4-phone" class="text-sm font-extrabold text-[#1E293B]">Phone <span class="text-[#F97316]">*</span></label>
-              <input id="v4-phone" name="phone" type="tel" required placeholder="(512) 000-0000" class="rounded-2xl border-2 border-orange-100 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400 focus:border-[#F97316]" />
+              <input id="v4-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(512) 000-0000" class="rounded-2xl border-2 border-orange-100 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400 focus:border-[#F97316]" />
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-5">
@@ -487,7 +492,7 @@ import { gallery } from '../data/v4/gallery';
   <!-- MOBILE CTA BAR -->
   <div class="fixed bottom-0 left-0 right-0 z-50 flex md:hidden" style="height:56px;">
     <a href="tel:+15127019224" class="flex-1 flex items-center justify-center gap-2 text-white font-extrabold text-sm" style="background:#1E293B;">
-      <span>📞</span> Call Us!
+      <span>📞</span> (512) 701-9224
     </a>
     <a href="#booking" class="flex-1 flex items-center justify-center gap-2 text-white font-extrabold text-sm" style="background:#F97316;">
       Book Now 🎉
@@ -495,6 +500,9 @@ import { gallery } from '../data/v4/gallery';
   </div>
 
   <script>
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach((el) => (el as HTMLInputElement).setAttribute('min', today));
+
     const btn = document.getElementById('v4-menu-btn');
     const menu = document.getElementById('v4-mobile-menu');
     if (btn && menu) {
@@ -524,12 +532,16 @@ import { gallery } from '../data/v4/gallery';
           const p = t.parentElement;
           if (p) {
             const a = p.querySelector('.faq-answer') as HTMLElement | null;
+            const c = t.querySelector('.faq-caret') as HTMLElement | null;
             if (a) a.style.maxHeight = '0';
+            if (c) c.style.transform = 'rotate(0deg)';
           }
         });
         if (!isOpen && answer) {
+          const caret = trigger.querySelector('.faq-caret') as HTMLElement | null;
           trigger.classList.add('faq-open');
           answer.style.maxHeight = '500px';
+          if (caret) caret.style.transform = 'rotate(90deg)';
         }
       });
     });

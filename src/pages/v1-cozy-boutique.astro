@@ -4,7 +4,12 @@ import { business, team, testimonials } from '../data/v1/business';
 import { services, packages } from '../data/v1/services';
 import { gallery } from '../data/v1/gallery';
 ---
-<BaseLayout title={`${business.name} — ${business.tagline}`} description={business.description}>
+<BaseLayout
+  title={`${business.name} — ${business.tagline}`}
+  description={business.description}
+  ogImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=630&fit=crop&q=80"
+  heroImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600&h=900&fit=crop&q=80"
+>
 
   <!-- ANNOUNCEMENT BANNER -->
   <div id="v1-banner" style="background:#6B8F71;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative">
@@ -346,7 +351,7 @@ import { gallery } from '../data/v1/gallery';
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v1-owner-name" class="text-sm font-semibold text-[#3D2B1F]">Owner Name <span class="text-[#C17B50]">*</span></label>
-              <input id="v1-owner-name" name="ownerName" type="text" required placeholder="Your full name" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
+              <input id="v1-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
             </div>
             <div class="flex flex-col gap-1">
               <label for="v1-pet-name" class="text-sm font-semibold text-[#3D2B1F]">Pet Name <span class="text-[#C17B50]">*</span></label>
@@ -356,11 +361,11 @@ import { gallery } from '../data/v1/gallery';
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v1-email" class="text-sm font-semibold text-[#3D2B1F]">Email <span class="text-[#C17B50]">*</span></label>
-              <input id="v1-email" name="email" type="email" required placeholder="you@email.com" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
+              <input id="v1-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
             </div>
             <div class="flex flex-col gap-1">
               <label for="v1-phone" class="text-sm font-semibold text-[#3D2B1F]">Phone <span class="text-[#C17B50]">*</span></label>
-              <input id="v1-phone" name="phone" type="tel" required placeholder="(415) 000-0000" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
+              <input id="v1-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(415) 000-0000" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-5">
@@ -376,9 +381,15 @@ import { gallery } from '../data/v1/gallery';
               </select>
             </div>
           </div>
-          <div class="flex flex-col gap-1">
-            <label for="v1-date" class="text-sm font-semibold text-[#3D2B1F]">Preferred Start Date <span class="text-[#C17B50]">*</span></label>
-            <input id="v1-date" name="date" type="date" required class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F]" />
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-1">
+              <label for="v1-date" class="text-sm font-semibold text-[#3D2B1F]">Drop-off Date <span class="text-[#C17B50]">*</span></label>
+              <input id="v1-date" name="date" type="date" required class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F]" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="v1-end-date" class="text-sm font-semibold text-[#3D2B1F]">Pick-up Date <span class="text-[#C17B50]">*</span></label>
+              <input id="v1-end-date" name="endDate" type="date" required class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F]" />
+            </div>
           </div>
           <div class="flex flex-col gap-1">
             <label for="v1-notes" class="text-sm font-semibold text-[#3D2B1F]">Special Needs / Notes</label>
@@ -489,6 +500,9 @@ import { gallery } from '../data/v1/gallery';
   </div>
 
   <script>
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach((el) => (el as HTMLInputElement).setAttribute('min', today));
+
     const btn = document.getElementById('v1-menu-btn');
     const menu = document.getElementById('v1-mobile-menu');
     if (btn && menu) {
