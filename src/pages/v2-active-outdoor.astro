@@ -17,85 +17,168 @@ const schemaJson = JSON.stringify({
   "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "218" },
   "openingHours": ["Mo-Fr 06:00-19:00", "Sa 06:00-18:00", "Su 07:00-17:00"],
 });
+
+const biz = {
+  name: 'Trail Tails Adventure Dog Hiking',
+  tagline: "Boulder's most adventurous dog care",
+  phone: '(720) 443-8821',
+  email: 'go@trailtrailshiking.com',
+  address: '2847 Wilderness Ave, Boulder, CO 80302',
+  neighborhood: 'Table Mesa',
+  hours: { weekdays: '6:00 AM – 7:00 PM', saturday: '6:00 AM – 6:00 PM', sunday: '7:00 AM – 5:00 PM' },
+  emergency: '(720) 443-8822',
+  instagram: '@trailtrails',
+  founded: 2018,
+  license: 'CO Animal Handler License #AH-20188821',
+};
 ---
 <BaseLayout
-  title={`${business.name} — ${business.tagline}`}
-  description={business.description}
+  title={`${biz.name} — ${biz.tagline}`}
+  description="GPS-tracked adventure hikes through Boulder's best trails. Max 5 dogs per guide. Wilderness First Aid certified. Book your dog's next adventure."
   ogImage="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=1200&h=630&fit=crop&q=80"
   heroImage="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=1600&h=900&fit=crop&q=80"
   schemaJson={schemaJson}
 >
 
-  <!-- ANNOUNCEMENT BANNER -->
-  <div id="v2-banner" style="background:#1A4731;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative border-b-2 border-[#F5A623]">
-    <span>🏔️ Summer hike packs now open — book before June 30, save 15% · (720) 443-8821</span>
-    <button onclick="document.getElementById('v2-banner').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg leading-none font-bold" aria-label="Close banner">×</button>
-  </div>
-
   <style>
     body { font-family: 'Open Sans', sans-serif; background: #F8F7F4; color: #2D3A2A; }
     .font-oswald { font-family: 'Oswald', sans-serif; }
+
+    /* Hero */
     .hero-bg-v2 {
-      background-image: linear-gradient(rgba(26,71,49,0.52), rgba(26,71,49,0.62)),
+      background-image:
+        linear-gradient(rgba(15,42,29,0.65), rgba(26,71,49,0.72)),
         url('https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?w=1600&h=900&fit=crop&q=80');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
+      position: relative;
     }
-    .skew-down { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-    .skew-up { clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%); margin-top: -5rem; }
-    .btn-yellow { background: #F5A623; color: #1A4731; border-radius: 4px; padding: 0.85rem 2rem; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; transition: background 0.2s; display: inline-block; }
-    .btn-yellow:hover { background: #e09610; }
-    .btn-green { background: #1A4731; color: #fff; border-radius: 4px; padding: 0.85rem 2rem; font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 1rem; letter-spacing: 0.05em; text-transform: uppercase; transition: background 0.2s; display: inline-block; }
+    .topo-overlay {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cellipse cx='100' cy='100' rx='90' ry='70' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.15'/%3E%3Cellipse cx='100' cy='100' rx='75' ry='55' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.15'/%3E%3Cellipse cx='100' cy='100' rx='60' ry='40' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.15'/%3E%3Cellipse cx='100' cy='100' rx='45' ry='25' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.15'/%3E%3Cellipse cx='100' cy='100' rx='30' ry='10' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.15'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+      opacity: 0.08;
+    }
+
+    /* Clip paths */
+    .skew-down { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); padding-bottom: 8rem; }
+    .skew-up   { clip-path: polygon(0 4%, 100% 0, 100% 100%, 0 100%); margin-top: -4rem; padding-top: 8rem; }
+
+    /* Buttons */
+    .btn-yellow {
+      background: #F5A623; color: #1A4731;
+      border-radius: 2px; padding: 0.85rem 2rem;
+      font-family: 'Oswald', sans-serif; font-weight: 600;
+      font-size: 1rem; letter-spacing: 0.07em; text-transform: uppercase;
+      transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-yellow:hover { background: #e09610; transform: translateY(-1px); }
+    .btn-outline-yellow {
+      border: 2px solid #F5A623; color: #F5A623;
+      border-radius: 2px; padding: 0.82rem 2rem;
+      font-family: 'Oswald', sans-serif; font-weight: 600;
+      font-size: 1rem; letter-spacing: 0.07em; text-transform: uppercase;
+      transition: background 0.2s, color 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-outline-yellow:hover { background: #F5A623; color: #1A4731; transform: translateY(-1px); }
+    .btn-green {
+      background: #1A4731; color: #fff;
+      border-radius: 2px; padding: 0.85rem 2rem;
+      font-family: 'Oswald', sans-serif; font-weight: 600;
+      font-size: 1rem; letter-spacing: 0.07em; text-transform: uppercase;
+      transition: background 0.2s; display: inline-block;
+    }
     .btn-green:hover { background: #0F2A1D; }
+
+    /* Horizontal scroll */
+    .services-scroll { overflow-x: auto; display: flex; flex-wrap: nowrap; gap: 1rem; padding-bottom: 1rem; -webkit-overflow-scrolling: touch; }
+    .services-scroll::-webkit-scrollbar { height: 4px; }
+    .services-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); }
+    .services-scroll::-webkit-scrollbar-thumb { background: #F5A623; border-radius: 2px; }
+
+    /* Trail marker */
+    .trail-marker {
+      position: absolute; top: -14px; right: 12px;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: #F5A623; color: #1A4731;
+      font-family: 'Oswald', sans-serif; font-weight: 700;
+      font-size: 0.85rem; display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Glass card */
+    .glass-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Form */
     input:focus, select:focus, textarea:focus { outline: 2px solid #F5A623; outline-offset: 2px; }
-  html { scroll-behavior: smooth; }
-  section[id] { scroll-margin-top: 5rem; }
-  @media (max-width: 768px) { .hero-bg-v2 { background-attachment: scroll; } }
+    html { scroll-behavior: smooth; }
+    section[id] { scroll-margin-top: 5rem; }
+
+    @media (max-width: 768px) {
+      .hero-bg-v2 { background-attachment: scroll; }
+    }
   </style>
 
-  <!-- NAV -->
-  <nav style="background:#1A4731;" class="sticky top-0 z-50 shadow-lg">
+  <!-- ===== NAV ===== -->
+  <nav style="background:#0F2A1D;" class="sticky top-0 z-50 shadow-lg">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#hero" class="flex items-center gap-2">
+      <a href="#hero" class="flex items-center gap-2 shrink-0">
         <span class="text-2xl">⛰️</span>
-        <span class="font-oswald text-xl font-bold text-white tracking-wider uppercase">{business.name}</span>
+        <span class="font-oswald text-xl font-bold text-white tracking-wider uppercase">Trail Tails</span>
       </a>
-      <div class="hidden md:flex items-center gap-6 text-sm font-semibold">
-        <a href="#services" class="text-[#F5A623] hover:text-white transition-colors uppercase tracking-wide font-oswald">Services</a>
-        <a href="#pricing" class="text-[#F5A623] hover:text-white transition-colors uppercase tracking-wide font-oswald">Pricing</a>
-        <a href="#gallery" class="text-[#F5A623] hover:text-white transition-colors uppercase tracking-wide font-oswald">Gallery</a>
-        <a href="#safety" class="text-[#F5A623] hover:text-white transition-colors uppercase tracking-wide font-oswald">Safety</a>
-        <a href="#team" class="text-[#F5A623] hover:text-white transition-colors uppercase tracking-wide font-oswald">Team</a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#services" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623] hover:text-white transition-colors">Services</a>
+        <a href="#pricing" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623] hover:text-white transition-colors">Pricing</a>
+        <a href="#gallery" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623] hover:text-white transition-colors">Gallery</a>
+        <a href="#safety" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623] hover:text-white transition-colors">Safety</a>
+        <a href="#team" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623] hover:text-white transition-colors">Team</a>
         <a href="#booking" class="btn-yellow text-sm py-2 px-5">Join the Pack</a>
       </div>
-      <button id="v2-menu-btn" class="md:hidden text-white text-2xl" aria-label="Open menu">☰</button>
+      <button id="v2-menu-btn" class="md:hidden text-white text-2xl leading-none" aria-label="Open menu">☰</button>
     </div>
-    <div id="v2-mobile-menu" class="hidden md:hidden px-4 pb-4 flex flex-col gap-3">
-      <a href="#services" class="text-[#F5A623] text-sm font-semibold uppercase font-oswald">Services</a>
-      <a href="#pricing" class="text-[#F5A623] text-sm font-semibold uppercase font-oswald">Pricing</a>
-      <a href="#gallery" class="text-[#F5A623] text-sm font-semibold uppercase font-oswald">Gallery</a>
-      <a href="#safety" class="text-[#F5A623] text-sm font-semibold uppercase font-oswald">Safety</a>
-      <a href="#team" class="text-[#F5A623] text-sm font-semibold uppercase font-oswald">Team</a>
-      <a href="#booking" class="btn-yellow text-sm py-2 px-5 text-center">Join the Pack</a>
+    <!-- Mobile menu -->
+    <div id="v2-mobile-menu" class="hidden md:hidden px-4 pb-4 flex flex-col gap-3 border-t border-white/10">
+      <a href="#services" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623] pt-3">Services</a>
+      <a href="#pricing" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623]">Pricing</a>
+      <a href="#gallery" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623]">Gallery</a>
+      <a href="#safety" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623]">Safety</a>
+      <a href="#team" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623]">Team</a>
+      <a href="#booking" class="btn-yellow text-sm py-2 px-5 text-center mt-1">Join the Pack</a>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section id="hero" class="hero-bg-v2 min-h-screen flex items-center px-4">
-    <div class="max-w-4xl mx-auto">
-      <p class="text-[#F5A623] font-oswald tracking-widest uppercase text-sm mb-4 font-semibold">Boulder, CO · Est. {business.founded}</p>
-      <h1 class="font-oswald text-6xl md:text-8xl font-bold text-white leading-none uppercase mb-6">
+  <!-- CERTIFICATION STRIP (non-sticky, one-time) -->
+  <div style="background:#F5A623; color:#0F2A1D;" class="py-2 overflow-x-hidden">
+    <p class="font-oswald text-xs uppercase tracking-widest text-center whitespace-nowrap">
+      CO Animal Handler Licensed &nbsp;·&nbsp; Wilderness First Aid Certified &nbsp;·&nbsp; GPS Tracked Every Hike &nbsp;·&nbsp; 6 Years Zero Trail Incidents
+    </p>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="hero-bg-v2 min-h-screen flex items-center px-4 py-20">
+    <div class="topo-overlay" aria-hidden="true"></div>
+    <div class="max-w-4xl mx-auto relative z-10">
+      <p class="font-oswald text-[#F5A623] uppercase tracking-widest text-sm mb-5 font-semibold">
+        Boulder, CO &nbsp;·&nbsp; Est. {biz.founded}
+      </p>
+      <h1 class="font-oswald font-bold text-white leading-none uppercase mb-8" style="font-size:clamp(3rem,9vw,6rem);">
         Real Trails.<br/>
         <span style="color:#F5A623;">Real Exercise.</span><br/>
         Happy Dogs.
       </h1>
-      <p class="text-white/85 text-xl mb-4 max-w-xl">GPS-tracked adventure hikes starting at $45 · {business.neighborhood}</p>
-      <p class="text-white/70 text-base mb-10 max-w-lg">{business.description}</p>
+      <p class="text-white/85 text-xl mb-3 max-w-xl">GPS-tracked adventure hikes through Boulder's most stunning terrain. Starting at $45.</p>
+      <p class="text-white/65 text-base mb-10 max-w-lg">Small packs of 5 dogs max. Wilderness-certified guides. Every trail, every time.</p>
       <div class="flex flex-col sm:flex-row gap-4">
         <a href="#booking" class="btn-yellow text-base px-10 py-4">Book a Hike</a>
-        <a href="#services" class="border-2 border-[#F5A623] text-[#F5A623] font-oswald uppercase tracking-wide px-10 py-4 hover:bg-[#F5A623] hover:text-[#1A4731] transition-all text-base">Our Services</a>
+        <a href="#services" class="btn-outline-yellow text-base px-10 py-4">Our Services</a>
       </div>
+      <!-- Hero stats row -->
       <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6">
         {[
           { icon: '🛰️', label: 'GPS Tracked Every Hike' },
@@ -104,7 +187,7 @@ const schemaJson = JSON.stringify({
           { icon: '⭐', label: '4.9 · 218 Reviews' },
         ].map((b) => (
           <div class="text-center">
-            <div class="text-3xl mb-1">{b.icon}</div>
+            <div class="text-3xl mb-2">{b.icon}</div>
             <p class="text-white/80 text-xs font-semibold uppercase tracking-wider">{b.label}</p>
           </div>
         ))}
@@ -112,61 +195,160 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- SERVICES -->
-  <section id="services" class="py-20 px-4 skew-down" style="background:#1A4731; padding-bottom:7rem;">
+  <!-- ===== SERVICES — HORIZONTAL SCROLL STRIP ===== -->
+  <section id="services" class="skew-down px-4 pt-20" style="background:#1A4731;">
     <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-14">
+      <div class="mb-12">
         <h2 class="font-oswald text-5xl font-bold text-white uppercase mb-3">What We Do</h2>
-        <p class="text-white/70 max-w-xl mx-auto">Every service is designed for dogs who need more than a walk around the block.</p>
+        <p class="text-white/65 max-w-xl">Every service is designed for dogs who need more than a walk around the block.</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="services-scroll">
         {services.map((s, i) => (
-          <div class="bg-white rounded-sm p-6 flex flex-col gap-3 hover:shadow-xl transition-shadow group" style={`border-top: 5px solid ${i % 2 === 0 ? '#1A4731' : '#F5A623'};`}>
-            <div class="text-4xl group-hover:scale-110 transition-transform">{s.icon}</div>
-            <h3 class="font-oswald text-xl font-bold text-[#1A4731] uppercase">{s.name}</h3>
-            <p class="text-sm text-[#2D3A2A] leading-relaxed flex-grow">{s.description}</p>
-            <span class="inline-block bg-[#F5A623] text-[#1A4731] font-oswald font-bold text-sm px-3 py-1 self-start">{s.price}</span>
-            <ul class="space-y-1 mt-1">
-              {s.highlights.map((h) => (
-                <li class="text-xs text-[#2D3A2A] flex items-center gap-2">
-                  <span class="text-[#1A4731] font-bold">→</span> {h}
-                </li>
-              ))}
-            </ul>
+          <div class="bg-white flex flex-col gap-3 hover:shadow-xl transition-shadow group relative" style="min-width:280px; border-top: 5px solid #F5A623;">
+            <div class="trail-marker">{i + 1}</div>
+            <div class="p-6 flex flex-col gap-3 flex-grow">
+              <div class="text-4xl group-hover:scale-110 transition-transform">{s.icon}</div>
+              <h3 class="font-oswald text-xl font-bold text-[#1A4731] uppercase">{s.name}</h3>
+              <p class="text-sm text-[#2D3A2A] leading-relaxed flex-grow">{s.description}</p>
+              <span class="inline-block bg-[#F5A623] text-[#1A4731] font-oswald font-bold text-sm px-3 py-1 self-start">{s.price}</span>
+              <ul class="space-y-1 mt-1">
+                {s.highlights.map((h) => (
+                  <li class="text-xs text-[#2D3A2A] flex items-center gap-2">
+                    <span class="text-[#1A4731] font-bold">→</span> {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- HEALTH & REQUIREMENTS -->
-  <section class="py-16 px-4" style="background:#F8F7F4;">
-    <div class="max-w-4xl mx-auto">
-      <div class="rounded-sm p-8 md:p-10" style="background:#fff; border-left:5px solid #1A4731; border:1px solid #ddd; border-left-width:5px; border-left-color:#1A4731;">
-        <h2 class="font-oswald text-3xl md:text-4xl font-bold text-[#1A4731] uppercase mb-2">Health &amp; Requirements</h2>
-        <p class="text-[#2D3A2A]/60 mb-8 text-sm">Every dog on the trail must meet these standards — no exceptions.</p>
-        <div class="grid sm:grid-cols-2 gap-6">
-          {[
-            { n: '01', title: 'Vaccination Requirements', body: 'Current Rabies, Bordetella (within 6 months), and DHPP/DA2PP required. Records verified before first hike.' },
-            { n: '02', title: 'Temperament Assessment', body: 'New dogs complete a free 30-min meet & greet. We match trail intensity to the dog — never the other way around.' },
-            { n: '03', title: 'Health on Hike Day', body: 'Dogs must be flea/tick treated, not in heat, and free of contagious illness on every hike day.' },
-            { n: '04', title: 'Emergency Protocol', body: '24/7 vet partner on call. GPS tracking means we know exactly where your dog is at all times. You\'re notified immediately of any incident.' },
-          ].map((item) => (
-            <div class="flex gap-4">
-              <div class="font-oswald text-4xl font-bold text-[#F5A623] flex-shrink-0 leading-none">{item.n}</div>
-              <div>
-                <h3 class="font-oswald text-lg font-bold text-[#1A4731] uppercase mb-1">{item.title}</h3>
-                <p class="text-sm text-[#2D3A2A] leading-relaxed">{item.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+  <!-- ===== ANIMATED STAT COUNTERS ===== -->
+  <section id="v2-stats" class="py-14 px-4" style="background:#F5A623;">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+      <div>
+        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2" data-count="4800" data-suffix="+">0</div>
+        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Miles Hiked with Dogs</p>
+      </div>
+      <div>
+        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2" data-count="49" data-suffix="★" data-decimal="0.1">0</div>
+        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">218 Reviews</p>
+      </div>
+      <div>
+        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2" data-count="6" data-suffix=" yrs">0</div>
+        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Zero Trail Incidents</p>
+      </div>
+      <div>
+        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2" data-count="15" data-suffix="+">0</div>
+        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Certified Trail Routes</p>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section id="pricing" class="py-20 px-4" style="background:#F8F7F4; padding-top:7rem;">
+  <!-- ===== TRAIL LEVELS GRID ===== -->
+  <section class="py-16 px-4" style="background:#0F2A1D;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-oswald text-4xl md:text-5xl font-bold text-white uppercase mb-3">We Hike Every Level</h2>
+        <div class="w-16 h-1 mx-auto" style="background:#F5A623;"></div>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {[
+          { level: 'Rookie', color: '#4ADE80', bg: 'rgba(74,222,128,0.10)', icon: '🐾', miles: '1–3 miles', terrain: 'Flat park trails & soft paths', dogs: 'Puppies, seniors, first-timers' },
+          { level: 'Trailblazer', color: '#F5A623', bg: 'rgba(245,166,35,0.10)', icon: '🏃', miles: '3–6 miles', terrain: 'Rolling hills, some elevation', dogs: 'Adult dogs, moderate fitness' },
+          { level: 'Summit', color: '#F87171', bg: 'rgba(248,113,113,0.10)', icon: '🏔️', miles: '6–12 miles', terrain: 'Technical trails, steep gains', dogs: 'Athletic, high-energy breeds' },
+          { level: 'Custom', color: '#C084FC', bg: 'rgba(192,132,252,0.10)', icon: '🗺️', miles: 'Any distance', terrain: "Your dog's pace, your route", dogs: 'Private groups, special needs' },
+        ].map((t) => (
+          <div class="p-6 flex flex-col gap-3 rounded-sm" style={`background:${t.bg}; border: 1px solid ${t.color}40;`}>
+            <div class="text-3xl">{t.icon}</div>
+            <span class="font-oswald text-xl font-bold uppercase" style={`color:${t.color};`}>{t.level}</span>
+            <div class="text-sm text-white/70 space-y-1 flex-grow">
+              <p>📏 {t.miles}</p>
+              <p>🌲 {t.terrain}</p>
+              <p>🐕 {t.dogs}</p>
+            </div>
+            <a href="#booking" class="text-xs font-oswald font-bold uppercase tracking-wider" style={`color:${t.color};`}>Book This Level →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SAFETY ===== -->
+  <section id="safety" class="py-16 px-4" style="background:#1A4731;">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-oswald text-4xl md:text-5xl font-bold text-white uppercase mb-3">Safety First. Always.</h2>
+        <div class="w-16 h-1 mx-auto mb-4" style="background:#F5A623;"></div>
+        <p class="text-white/60 max-w-xl mx-auto text-sm">Before your dog takes a single step on trail, we've already planned for every scenario.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {[
+          { icon: '🗺️', title: 'Pre-Hike Route Plan', desc: 'Every hike is mapped before departure. Trailhead, waypoints, emergency exit routes, and estimated return time all shared with our base coordinator.' },
+          { icon: '📡', title: 'Live GPS Tracking', desc: 'Every guide carries a GPS beacon. Real-time location is visible to our office team throughout the hike. Owners can request a location update anytime.' },
+          { icon: '🩺', title: 'Wilderness First Aid', desc: 'All guides hold current Wilderness First Responder or WFA certification. Field-grade first aid kit on every hike, including canine-specific supplies.' },
+          { icon: '📞', title: '2-Min Check-In Protocol', desc: 'If any dog shows distress or weather changes rapidly, our guide radios base within 2 minutes. Emergency vet on speed dial. Owner notified immediately.' },
+        ].map((item) => (
+          <div class="p-6 flex flex-col gap-3" style="border: 1px solid rgba(245,166,35,0.2); background:rgba(255,255,255,0.05);">
+            <div class="text-4xl">{item.icon}</div>
+            <h3 class="font-oswald text-xl font-bold text-[#F5A623] uppercase">{item.title}</h3>
+            <p class="text-white/60 text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="mt-10 text-center">
+        <p class="text-white/35 font-oswald text-xs uppercase tracking-widest">CO Animal Handler Licensed · Wilderness First Aid Certified · Insured & Bonded</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BREEDS ===== -->
+  <section class="py-14 px-4" style="background:#F8F7F4;">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="font-oswald text-3xl font-bold text-[#1A4731] uppercase mb-2">Breeds We Run With</h2>
+        <div class="w-12 h-1 mx-auto mb-4" style="background:#F5A623;"></div>
+        <p class="text-[#2D3A2A] text-sm max-w-md mx-auto">We specialize in high-drive, working, and sporting breeds. If your dog has more energy than you — we're the solution.</p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-3">
+        {[
+          'Australian Shepherd', 'Border Collie', 'Belgian Malinois', 'Vizsla',
+          'Weimaraner', 'German Shepherd', 'Siberian Husky', 'Alaskan Malamute',
+          'Rhodesian Ridgeback', 'German Shorthaired Pointer', 'Labrador Retriever',
+          'Golden Retriever', 'Irish Setter', 'Dalmatian', 'Standard Poodle',
+        ].map((breed) => (
+          <span class="font-oswald text-sm uppercase tracking-wide px-4 py-2 border border-[#1A4731] text-[#1A4731] hover:bg-[#1A4731] hover:text-white transition-colors cursor-default">{breed}</span>
+        ))}
+      </div>
+      <p class="text-center text-xs text-[#6B7280] mt-6">Not on the list? Contact us — we assess all dogs individually based on fitness and temperament, not breed alone.</p>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section id="gallery" class="skew-up px-4 pb-16" style="background:#0F2A1D;">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <h2 class="font-oswald text-5xl font-bold text-white uppercase mb-3">On the Trail</h2>
+        <p class="text-white/55 max-w-xl mx-auto">Real adventures. Real dogs. Real exhaustion (the good kind).</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
+        {gallery.map((img) => (
+          <div class="group overflow-hidden relative" style="aspect-ratio:1;">
+            <img src={img.url} alt={img.alt} loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500" />
+            <div class="absolute inset-0 bg-[#1A4731]/0 group-hover:bg-[#1A4731]/55 transition-all flex items-end p-3">
+              <p class="text-white text-xs font-oswald uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">{img.caption}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRICING ===== -->
+  <section id="pricing" class="py-20 px-4" style="background:#F8F7F4;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
         <h2 class="font-oswald text-5xl font-bold text-[#1A4731] uppercase mb-3">Memberships</h2>
@@ -174,24 +356,25 @@ const schemaJson = JSON.stringify({
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         {packages.map((pkg) => (
-          <div class={`rounded-sm flex flex-col gap-4 overflow-hidden ${pkg.featured ? 'shadow-2xl' : 'shadow-sm'}`}
+          <div class={`rounded-sm flex flex-col overflow-hidden ${pkg.featured ? 'shadow-2xl' : 'shadow-sm'}`}
                style={pkg.featured ? 'background:#1A4731;' : 'background:#fff; border: 1px solid #ddd;'}>
             {pkg.featured && <div class="bg-[#F5A623] text-[#1A4731] text-xs font-oswald font-bold py-2 px-4 text-center uppercase tracking-wider">Best Value — Summit Pass</div>}
             <div class="p-8 flex flex-col gap-4 flex-grow">
               <div>
                 <h3 class="font-oswald text-2xl font-bold uppercase mb-1" style={pkg.featured ? 'color:#fff' : 'color:#1A4731'}>{pkg.name}</h3>
-                <p class="text-sm" style={pkg.featured ? 'color:rgba(255,255,255,0.7)' : 'color:#888'}>{pkg.period}</p>
+                <p class="text-sm" style={pkg.featured ? 'color:rgba(255,255,255,0.65)' : 'color:#888'}>{pkg.period}</p>
               </div>
               <div class="text-5xl font-oswald font-bold" style={pkg.featured ? 'color:#F5A623' : 'color:#1A4731'}>{pkg.price}</div>
               <p class="text-sm" style={pkg.featured ? 'color:rgba(255,255,255,0.8)' : 'color:#2D3A2A'}>{pkg.description}</p>
               <ul class="space-y-2 flex-grow">
                 {pkg.features.map((f) => (
                   <li class="text-sm flex items-start gap-2" style={pkg.featured ? 'color:rgba(255,255,255,0.9)' : 'color:#2D3A2A'}>
-                    <span style={pkg.featured ? 'color:#F5A623' : 'color:#E87B3A'} class="font-bold mt-0.5">✓</span> {f}
+                    <span style={pkg.featured ? 'color:#F5A623' : 'color:#1A4731'} class="font-bold mt-0.5 shrink-0">✓</span> {f}
                   </li>
                 ))}
               </ul>
-              <a href="#booking" class={`text-center font-oswald uppercase tracking-wide py-3 px-6 text-base transition-all mt-2 ${pkg.featured ? 'btn-yellow' : 'btn-green'}`}>
+              <a href="#booking"
+                class={`text-center font-oswald uppercase tracking-wide py-3 px-6 text-base transition-all mt-2 ${pkg.featured ? 'btn-yellow' : 'btn-green'}`}>
                 Get Started
               </a>
             </div>
@@ -201,170 +384,24 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- GALLERY -->
-  <section id="gallery" class="py-20 px-4 skew-up" style="background:#0F2A1D; padding-top:8rem; padding-bottom:6rem;">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <h2 class="font-oswald text-5xl font-bold text-white uppercase mb-3">On the Trail</h2>
-        <p class="text-white/60 max-w-xl mx-auto">Real adventures. Real dogs. Real exhaustion (the good kind).</p>
-      </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        {gallery.map((img) => (
-          <div class="group overflow-hidden relative" style="aspect-ratio:1;">
-            <img src={img.url} alt={img.alt} loading="lazy"
-              class="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-500" />
-            <div class="absolute inset-0 bg-[#1A4731]/0 group-hover:bg-[#1A4731]/50 transition-all flex items-end p-3">
-              <p class="text-white text-xs font-oswald uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">{img.caption}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="py-16 px-4" style="background:#F8F7F4;">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="font-oswald text-4xl md:text-5xl font-bold text-[#1A4731] uppercase">Getting Started</h2>
-        <div class="mt-3 w-16 h-1 bg-[#F5A623] mx-auto"></div>
-      </div>
-      <div class="grid sm:grid-cols-3 gap-8">
-        <div class="text-center flex flex-col items-center gap-4">
-          <div class="w-16 h-16 rounded-sm flex items-center justify-center text-2xl font-bold font-oswald text-[#1A4731]" style="background:#F5A623;">1</div>
-          <h3 class="font-oswald text-xl font-bold text-[#1A4731] uppercase">Tell Us About Your Dog</h3>
-          <p class="text-sm text-[#2D3A2A] leading-relaxed">Submit your dog's info, fitness level, and any behavioral notes. Takes 3 minutes.</p>
-        </div>
-        <div class="text-center flex flex-col items-center gap-4">
-          <div class="w-16 h-16 rounded-sm flex items-center justify-center text-2xl font-bold font-oswald text-white" style="background:#1A4731;">2</div>
-          <h3 class="font-oswald text-xl font-bold text-[#1A4731] uppercase">Temperament Hike</h3>
-          <p class="text-sm text-[#2D3A2A] leading-relaxed">Your dog joins a trial hike. We assess fitness, recall, and pack compatibility on real terrain.</p>
-        </div>
-        <div class="text-center flex flex-col items-center gap-4">
-          <div class="w-16 h-16 rounded-sm flex items-center justify-center text-2xl font-bold font-oswald text-[#1A4731]" style="background:#F5A623;">3</div>
-          <h3 class="font-oswald text-xl font-bold text-[#1A4731] uppercase">Join the Pack</h3>
-          <p class="text-sm text-[#2D3A2A] leading-relaxed">You're in. Book hikes weekly, track GPS live, and get a post-hike report every time.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SAFETY & PREPAREDNESS -->
-  <section id="safety" class="py-16 px-4" style="background:#0F2A1D;">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="font-oswald text-4xl md:text-5xl font-bold text-white uppercase mb-3">Safety First. Always.</h2>
-        <div class="w-16 h-1 mx-auto mb-4" style="background:#F5A623;"></div>
-        <p class="text-white/60 max-w-xl mx-auto">Before your dog takes a single step on trail, we've already planned for every scenario.</p>
-      </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {[
-          { icon: '🗺️', title: 'Pre-Hike Route Plan', desc: 'Every hike is mapped before departure. Trailhead, waypoints, emergency exit routes, and estimated return time all shared with our base coordinator.' },
-          { icon: '📡', title: 'Live GPS Tracking', desc: 'Every guide carries a GPS beacon. Real-time location is visible to our office team throughout the hike. Owners can request a location update anytime.' },
-          { icon: '🩺', title: 'Wilderness First Aid', desc: 'All guides hold current Wilderness First Responder or WFA certification. Field-grade first aid kit on every hike, including canine-specific supplies.' },
-          { icon: '📞', title: '2-Min Check-In Protocol', desc: 'If any dog shows distress or weather changes rapidly, our guide radios base within 2 minutes. Emergency vet on speed dial. Owner notified immediately.' },
-        ].map((item) => (
-          <div class="p-6 flex flex-col gap-3" style="border: 1px solid rgba(245,166,35,0.25); background:rgba(255,255,255,0.04);">
-            <div class="text-4xl">{item.icon}</div>
-            <h3 class="font-oswald text-xl font-bold text-[#F5A623] uppercase">{item.title}</h3>
-            <p class="text-white/60 text-sm leading-relaxed">{item.desc}</p>
-          </div>
-        ))}
-      </div>
-      <div class="mt-10 text-center">
-        <p class="text-white/40 font-oswald text-sm uppercase tracking-widest">CO Animal Handler Licensed · Wilderness First Aid Certified · Insured & Bonded</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRAIL LEVELS -->
-  <section class="py-16 px-4" style="background:#1A4731;">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="font-oswald text-4xl font-bold text-white uppercase mb-3">We Hike Every Level</h2>
-        <div class="w-16 h-1 bg-[#F5A623] mx-auto"></div>
-      </div>
-      <div class="grid sm:grid-cols-4 gap-4">
-        {[
-          { level: 'Rookie', color: '#4ADE80', bg: 'rgba(74,222,128,0.12)', icon: '🐾', miles: '1–3 miles', terrain: 'Flat park trails & soft paths', dogs: 'Puppies, seniors, first-timers' },
-          { level: 'Trailblazer', color: '#F5A623', bg: 'rgba(245,166,35,0.12)', icon: '🏃', miles: '3–6 miles', terrain: 'Rolling hills with some elevation', dogs: 'Adult dogs, moderate fitness' },
-          { level: 'Summit', color: '#F87171', bg: 'rgba(248,113,113,0.12)', icon: '🏔️', miles: '6–12 miles', terrain: 'Technical trails, steep gains', dogs: 'Athletic, high-energy breeds' },
-          { level: 'Custom', color: '#C084FC', bg: 'rgba(192,132,252,0.12)', icon: '🗺️', miles: 'Any distance', terrain: 'Your dog\'s pace, your route choice', dogs: 'Private groups, special needs' },
-        ].map((t) => (
-          <div class="p-6 flex flex-col gap-3 rounded-sm" style={`background:${t.bg}; border: 1px solid ${t.color}40;`}>
-            <div class="text-3xl">{t.icon}</div>
-            <div>
-              <span class="font-oswald text-xl font-bold uppercase" style={`color:${t.color};`}>{t.level}</span>
-            </div>
-            <div class="text-sm text-white/75 space-y-1 flex-grow">
-              <p>📏 {t.miles}</p>
-              <p>🌲 {t.terrain}</p>
-              <p>🐕 {t.dogs}</p>
-            </div>
-            <a href="#booking" class="text-xs font-oswald font-bold uppercase tracking-wider transition-colors" style={`color:${t.color};`}>Book This Level →</a>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- BREEDS WE RUN WITH -->
-  <section class="py-14 px-4" style="background:#F8F7F4;">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-10">
-        <h2 class="font-oswald text-3xl font-bold text-[#1A4731] uppercase mb-2">Breeds We Run With</h2>
-        <div class="w-12 h-1 mx-auto" style="background:#F5A623;"></div>
-        <p class="text-[#2D3A2A] text-sm mt-4 max-w-md mx-auto">We specialize in high-drive, working, and sporting breeds. If your dog has more energy than you — we're the solution.</p>
-      </div>
-      <div class="flex flex-wrap justify-center gap-3">
-        {[
-          'Australian Shepherd', 'Border Collie', 'Belgian Malinois', 'Vizsla',
-          'Weimaraner', 'German Shepherd', 'Siberian Husky', 'Alaskan Malamute',
-          'Rhodesian Ridgeback', 'German Shorthaired Pointer', 'Labrador Retriever',
-          'Golden Retriever', 'Irish Setter', 'Dalmatian', 'Standard Poodle',
-        ].map((breed) => (
-          <span class="font-oswald text-sm uppercase tracking-wide px-4 py-2 border border-[#1A4731] text-[#1A4731] hover:bg-[#1A4731] hover:text-white transition-colors">{breed}</span>
-        ))}
-      </div>
-      <p class="text-center text-xs text-[#6B7280] mt-6">Not on the list? Contact us — we assess all dogs individually based on fitness and temperament, not breed alone.</p>
-    </div>
-  </section>
-
-  <!-- STATS STRIP -->
-  <section class="py-12 px-4" style="background:#F5A623;">
-    <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-      {[
-        { n: '4,800+', label: 'Miles Hiked with Dogs' },
-        { n: '4.9 ★', label: '218 Reviews' },
-        { n: '6 yrs', label: 'Zero Trail Incidents' },
-        { n: '15+', label: 'Certified Trail Routes' },
-      ].map((s) => (
-        <div>
-          <div class="font-oswald text-4xl font-bold text-[#1A4731] mb-1">{s.n}</div>
-          <p class="text-[#1A4731]/70 text-xs font-semibold uppercase tracking-wider">{s.label}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- TEAM -->
-  <section id="team" class="py-20 px-4" style="background:#F8F7F4;">
+  <!-- ===== TEAM ===== -->
+  <section id="team" class="py-20 px-4" style="background:#1A4731;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <h2 class="font-oswald text-5xl font-bold text-[#1A4731] uppercase mb-3">Your Guides</h2>
-        <p class="text-[#2D3A2A] max-w-xl mx-auto">Wilderness-certified professionals who love dogs as much as they love the mountains.</p>
+        <h2 class="font-oswald text-5xl font-bold text-white uppercase mb-3">Your Guides</h2>
+        <p class="text-white/60 max-w-xl mx-auto">Wilderness-certified professionals who love dogs as much as they love the mountains.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {team.map((member) => (
-          <div class="rounded-sm overflow-hidden" style="background:#1A4731;">
-            <img src={member.photo} alt={`Photo of ${member.name}, ${member.role} at ${business.name}`} class="w-full h-52 object-cover" />
+          <div class="rounded-sm overflow-hidden" style="background:#0F2A1D;">
+            <img src={member.photo} alt={`Photo of ${member.name}, ${member.role} at ${biz.name}`} class="w-full h-52 object-cover" />
             <div class="p-6">
               <h3 class="font-oswald text-2xl font-bold text-white uppercase mb-1">{member.name}</h3>
               <p class="text-[#F5A623] font-oswald text-sm uppercase tracking-wider mb-3">{member.role}</p>
-              <p class="text-sm text-white/75 leading-relaxed mb-4">{member.bio}</p>
+              <p class="text-sm text-white/70 leading-relaxed mb-4">{member.bio}</p>
               <div class="flex flex-wrap gap-2">
                 {member.certifications.map((cert) => (
-                  <span class="text-xs bg-white/10 text-white/80 rounded-sm px-3 py-1">{cert}</span>
+                  <span class="text-xs bg-white/10 text-white/75 rounded-sm px-3 py-1">{cert}</span>
                 ))}
               </div>
             </div>
@@ -374,30 +411,30 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="py-20 px-4" style="background:#1A4731;">
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials" class="py-20 px-4" style="background:#0F2A1D;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
         <h2 class="font-oswald text-5xl font-bold text-white uppercase mb-3">The Pack Speaks</h2>
-        <p class="text-white/60 max-w-xl mx-auto">From the owners of the happiest, most-tired dogs in Boulder.</p>
+        <p class="text-white/55 max-w-xl mx-auto">From the owners of the happiest, most-tired dogs in Boulder.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {testimonials.map((t) => (
-          <div class="p-8 flex flex-col gap-4" style="background:rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);">
-            <div class="text-[#F5A623] text-5xl font-oswald leading-none">"</div>
+          <div class="glass-card p-8 flex flex-col gap-4">
+            <div class="font-oswald text-[#F5A623] leading-none" style="font-size:4rem;">"</div>
             <blockquote class="text-white/85 leading-relaxed flex-grow italic text-sm">{t.text}</blockquote>
-            <div class="flex gap-1 text-[#F5A623]" aria-label={`${t.stars} out of 5 stars`}>
+            <div class="flex gap-0.5 text-[#F5A623] text-base" aria-label={`${t.stars} out of 5 stars`}>
               {'★'.repeat(t.stars)}
             </div>
             <div>
               <p class="font-oswald text-white uppercase tracking-wide">{t.name}</p>
-              <p class="text-xs text-white/50">{t.breed} · {t.date}</p>
+              <p class="text-xs text-white/45">{t.breed} · {t.date}</p>
             </div>
           </div>
         ))}
       </div>
       <div class="text-center mt-10">
-        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-white/60 hover:text-[#F5A623] transition-colors font-oswald uppercase tracking-wider">
+        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-white/55 hover:text-[#F5A623] transition-colors font-oswald uppercase tracking-wider">
           <span class="text-[#F5A623]">★★★★★</span> Read all 218 reviews on Google
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
@@ -405,7 +442,7 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- FAQ -->
+  <!-- ===== FAQ ===== -->
   <section class="py-16 px-4" style="background:#F8F7F4;">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-12">
@@ -414,16 +451,16 @@ const schemaJson = JSON.stringify({
       </div>
       <div class="flex flex-col gap-2" id="v2-faq">
         {[
-          { q: 'What fitness level do dogs need?', a: 'We assess every dog. Puppies do shorter routes; seniors get flat trails. We match the trail to the dog.' },
-          { q: 'Is hiking off-leash?', a: 'Off-leash only on designated trails where it\'s safe and legal. Your dog must have a solid recall.' },
-          { q: 'What if it rains?', a: 'We hike in rain. Dogs are dogs. We skip lightning and extreme conditions only.' },
-          { q: 'What vaccinations are required?', a: 'Current Rabies, Bordetella (within 6 months), and DHPP. We verify records before first hike.' },
-          { q: 'Do you accept reactive dogs?', a: 'Case by case. Emma does private sessions specifically for reactive dogs—reach out to discuss.' },
+          { q: 'What fitness level do dogs need?', a: "We assess every dog individually. Puppies do shorter, flatter routes; seniors get easy terrain. We match the trail intensity to the dog — never the other way around." },
+          { q: 'Is hiking off-leash?', a: "Off-leash only on designated trails where it's safe and legal. Your dog must have a solid recall to participate in off-leash segments." },
+          { q: 'What if it rains?', a: "We hike in rain. Dogs are dogs. We only cancel for lightning, extreme heat above 90°F, or trail closures. You'll always be notified by 5:30 AM on hike day." },
+          { q: 'What vaccinations are required?', a: "Current Rabies, Bordetella (within 6 months), and DHPP/DA2PP are all required. We verify records before the first hike." },
+          { q: 'Do you accept reactive dogs?', a: "Case by case. We offer private hike sessions specifically for dogs with reactivity — reach out to discuss your dog's triggers and history." },
         ].map((item, i) => (
-          <div style="background:#1A4731;" class="rounded-sm overflow-hidden">
-            <button class="faq-trigger w-full text-left px-6 py-4 flex items-center justify-between gap-4 font-oswald text-lg font-bold text-white uppercase hover:text-[#F5A623] transition-colors" data-idx={i}>
+          <div style="background:#1A4731;" class="overflow-hidden">
+            <button class="faq-trigger w-full text-left px-6 py-4 flex items-center justify-between gap-4 font-oswald text-base font-bold text-white uppercase hover:text-[#F5A623] transition-colors" data-idx={i}>
               <span>{item.q}</span>
-              <span class="faq-caret text-[#F5A623] text-2xl flex-shrink-0 transition-transform duration-300">▾</span>
+              <span class="faq-caret text-[#F5A623] text-xl flex-shrink-0 transition-transform duration-300">▾</span>
             </button>
             <div class="faq-answer overflow-hidden" style="max-height:0; transition:max-height 0.35s ease; background:#0F2A1D;">
               <p class="px-6 py-4 text-sm text-white/80 leading-relaxed">{item.a}</p>
@@ -434,57 +471,63 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- BOOKING FORM -->
+  <!-- ===== BOOKING FORM ===== -->
   <section id="booking" class="py-20 px-4" style="background:#F8F7F4;">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-12">
         <h2 class="font-oswald text-5xl font-bold text-[#1A4731] uppercase mb-3">Join the Pack</h2>
         <p class="text-[#2D3A2A]">Tell us about your dog and we'll match them with the perfect adventure.</p>
       </div>
-      <div id="v2-form-wrap" class="rounded-sm p-8 shadow-md" style="background:#fff; border:1px solid #ddd;">
+      <div id="v2-form-wrap" class="p-8 shadow-md" style="background:#fff; border:1px solid #ddd; border-radius:2px;">
         <form id="v2-booking-form" class="flex flex-col gap-5" novalidate>
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
-              <label for="v2-owner-name" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Owner Name <span class="text-[#E87B3A]">*</span></label>
-              <input id="v2-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
+              <label for="v2-owner-name" class="text-xs font-bold text-[#1A4731] uppercase tracking-wide font-oswald">Owner Name <span class="text-[#E87B3A]">*</span></label>
+              <input id="v2-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name"
+                class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400" style="border-radius:2px;" />
             </div>
             <div class="flex flex-col gap-1">
-              <label for="v2-pet-name" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Dog's Name <span class="text-[#E87B3A]">*</span></label>
-              <input id="v2-pet-name" name="petName" type="text" required placeholder="Your dog's name" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
-            </div>
-          </div>
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div class="flex flex-col gap-1">
-              <label for="v2-email" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Email <span class="text-[#E87B3A]">*</span></label>
-              <input id="v2-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
-            </div>
-            <div class="flex flex-col gap-1">
-              <label for="v2-phone" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Phone <span class="text-[#E87B3A]">*</span></label>
-              <input id="v2-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(720) 000-0000" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
+              <label for="v2-pet-name" class="text-xs font-bold text-[#1A4731] uppercase tracking-wide font-oswald">Dog's Name <span class="text-[#E87B3A]">*</span></label>
+              <input id="v2-pet-name" name="petName" type="text" required placeholder="Your dog's name"
+                class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400" style="border-radius:2px;" />
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
-              <label for="v2-breed" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Breed</label>
-              <input id="v2-breed" name="breed" type="text" placeholder="e.g. Australian Shepherd" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm" />
+              <label for="v2-email" class="text-xs font-bold text-[#1A4731] uppercase tracking-wide font-oswald">Email <span class="text-[#E87B3A]">*</span></label>
+              <input id="v2-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com"
+                class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400" style="border-radius:2px;" />
             </div>
             <div class="flex flex-col gap-1">
-              <label for="v2-service" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Service <span class="text-[#E87B3A]">*</span></label>
-              <select id="v2-service" name="service" required class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] rounded-sm">
+              <label for="v2-phone" class="text-xs font-bold text-[#1A4731] uppercase tracking-wide font-oswald">Phone <span class="text-[#E87B3A]">*</span></label>
+              <input id="v2-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(720) 000-0000"
+                class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400" style="border-radius:2px;" />
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-1">
+              <label for="v2-breed" class="text-xs font-bold text-[#1A4731] uppercase tracking-wide font-oswald">Breed</label>
+              <input id="v2-breed" name="breed" type="text" placeholder="e.g. Australian Shepherd"
+                class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400" style="border-radius:2px;" />
+            </div>
+            <div class="flex flex-col gap-1">
+              <label for="v2-service" class="text-xs font-bold text-[#1A4731] uppercase tracking-wide font-oswald">Service <span class="text-[#E87B3A]">*</span></label>
+              <select id="v2-service" name="service" required class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A]" style="border-radius:2px;">
                 <option value="">Select a service…</option>
                 {services.map((s) => <option value={s.name}>{s.name}</option>)}
               </select>
             </div>
           </div>
           <div class="flex flex-col gap-1">
-            <label for="v2-date" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Preferred Date <span class="text-[#E87B3A]">*</span></label>
-            <input id="v2-date" name="date" type="date" required class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] rounded-sm" />
+            <label for="v2-date" class="text-xs font-bold text-[#1A4731] uppercase tracking-wide font-oswald">Preferred Date <span class="text-[#E87B3A]">*</span></label>
+            <input id="v2-date" name="date" type="date" required class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A]" style="border-radius:2px;" />
           </div>
           <div class="flex flex-col gap-1">
-            <label for="v2-notes" class="text-sm font-semibold text-[#1A4731] uppercase tracking-wide font-oswald">Special Needs / Notes</label>
-            <textarea id="v2-notes" name="notes" rows="4" placeholder="Fitness level, reactivity, dietary needs, anything we should know…" class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 rounded-sm resize-y"></textarea>
+            <label for="v2-notes" class="text-xs font-bold text-[#1A4731] uppercase tracking-wide font-oswald">Special Needs / Notes</label>
+            <textarea id="v2-notes" name="notes" rows="4" placeholder="Fitness level, reactivity, dietary needs, anything we should know…"
+              class="border border-gray-300 px-4 py-3 text-sm text-[#2D3A2A] placeholder:text-gray-400 resize-y" style="border-radius:2px;"></textarea>
           </div>
-          <button type="submit" class="btn-yellow text-base py-4 text-center rounded-sm font-oswald uppercase tracking-wider">
+          <button type="submit" class="btn-yellow text-base py-4 text-center w-full">
             Request Adventure
           </button>
         </form>
@@ -497,7 +540,7 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- ===== CONTACT ===== -->
   <section id="contact" class="py-20 px-4" style="background:#0F2A1D;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
@@ -505,28 +548,28 @@ const schemaJson = JSON.stringify({
       </div>
       <div class="grid md:grid-cols-2 gap-10">
         <div class="flex flex-col gap-6">
-          <div class="p-6" style="background:rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);">
+          <div class="glass-card p-6">
             <h3 class="font-oswald text-xl font-bold text-white uppercase mb-4">Hours</h3>
-            <table class="w-full text-sm text-white/75">
+            <table class="w-full text-sm text-white/70">
               <tbody>
-                <tr class="border-b border-white/10"><td class="py-2 font-semibold">Monday – Friday</td><td class="py-2 text-right">{business.hours.weekdays}</td></tr>
-                <tr class="border-b border-white/10"><td class="py-2 font-semibold">Saturday</td><td class="py-2 text-right">{business.hours.saturday}</td></tr>
-                <tr><td class="py-2 font-semibold">Sunday</td><td class="py-2 text-right">{business.hours.sunday}</td></tr>
+                <tr class="border-b border-white/10"><td class="py-2 font-semibold">Monday – Friday</td><td class="py-2 text-right">{biz.hours.weekdays}</td></tr>
+                <tr class="border-b border-white/10"><td class="py-2 font-semibold">Saturday</td><td class="py-2 text-right">{biz.hours.saturday}</td></tr>
+                <tr><td class="py-2 font-semibold">Sunday</td><td class="py-2 text-right">{biz.hours.sunday}</td></tr>
               </tbody>
             </table>
           </div>
-          <div class="p-6 flex flex-col gap-4" style="background:rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);">
+          <div class="glass-card p-6 flex flex-col gap-4">
             <h3 class="font-oswald text-xl font-bold text-white uppercase mb-1">Contact</h3>
-            <a href={`tel:${business.phone}`} class="flex items-center gap-3 text-white/75 hover:text-[#F5A623] transition-colors text-sm">📞 {business.phone}</a>
-            <a href={`mailto:${business.email}`} class="flex items-center gap-3 text-white/75 hover:text-[#F5A623] transition-colors text-sm">✉️ {business.email}</a>
-            <p class="text-sm text-white/75">📍 {business.address}</p>
-            <p class="text-sm text-white/50">🚨 Emergency: {business.emergency}</p>
-            <p class="text-xs text-white/40 mt-2">{business.license}</p>
+            <a href={`tel:${biz.phone}`} class="flex items-center gap-3 text-white/70 hover:text-[#F5A623] transition-colors text-sm">📞 {biz.phone}</a>
+            <a href={`mailto:${biz.email}`} class="flex items-center gap-3 text-white/70 hover:text-[#F5A623] transition-colors text-sm">✉️ {biz.email}</a>
+            <p class="text-sm text-white/70">📍 {biz.address}</p>
+            <p class="text-sm text-white/45">🚨 Emergency: {biz.emergency}</p>
+            <p class="text-xs text-white/30 mt-1">{biz.license}</p>
           </div>
         </div>
-        <div style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.12); min-height:300px;">
+        <div class="glass-card overflow-hidden" style="min-height:300px;">
           <iframe
-            title={`Map showing location of ${business.name}`}
+            title={`Map showing location of ${biz.name}`}
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3055.4444!2d-105.28!3d40.0274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876bed8b88b7706f%3A0x5c5e3b7e2eb3e152!2sBoulder%2C%20CO!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
             width="100%" height="100%" style="border:0; min-height:300px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
           </iframe>
@@ -535,41 +578,41 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ===== FOOTER ===== -->
   <footer style="background:#0F2A1D; border-top:2px solid #1A4731;" class="py-14 px-4 pb-16 md:pb-14">
     <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-10">
       <div>
         <div class="flex items-center gap-2 mb-4">
           <span class="text-2xl">⛰️</span>
-          <span class="font-oswald text-xl font-bold text-white uppercase tracking-wider">{business.name}</span>
+          <span class="font-oswald text-xl font-bold text-white uppercase tracking-wider">{biz.name}</span>
         </div>
-        <p class="text-white/50 text-sm leading-relaxed">{business.description}</p>
-        <p class="text-[#F5A623] text-xs mt-4">{business.instagram}</p>
+        <p class="text-white/45 text-sm leading-relaxed">GPS-tracked adventure hikes through Boulder's best trails. Small packs, big adventures.</p>
+        <p class="text-[#F5A623] text-xs mt-4 font-oswald">{biz.instagram}</p>
       </div>
       <div>
         <h4 class="font-oswald text-base font-bold text-white uppercase tracking-wider mb-4">Explore</h4>
         <ul class="space-y-2 text-sm">
           {['#services', '#pricing', '#gallery', '#team', '#booking'].map((href, i) => (
-            <li><a href={href} class="text-white/50 hover:text-[#F5A623] transition-colors uppercase font-oswald text-xs tracking-wider">{['Services','Pricing','Gallery','Team','Book Now'][i]}</a></li>
+            <li><a href={href} class="text-white/45 hover:text-[#F5A623] transition-colors uppercase font-oswald text-xs tracking-wider">{['Services','Pricing','Gallery','Team','Book Now'][i]}</a></li>
           ))}
         </ul>
       </div>
       <div>
         <h4 class="font-oswald text-base font-bold text-white uppercase tracking-wider mb-4">Reach Us</h4>
-        <ul class="space-y-2 text-sm text-white/50">
-          <li>{business.address}</li>
-          <li><a href={`tel:${business.phone}`} class="hover:text-[#F5A623] transition-colors">{business.phone}</a></li>
-          <li><a href={`mailto:${business.email}`} class="hover:text-[#F5A623] transition-colors">{business.email}</a></li>
+        <ul class="space-y-2 text-sm text-white/45">
+          <li>{biz.address}</li>
+          <li><a href={`tel:${biz.phone}`} class="hover:text-[#F5A623] transition-colors">{biz.phone}</a></li>
+          <li><a href={`mailto:${biz.email}`} class="hover:text-[#F5A623] transition-colors">{biz.email}</a></li>
         </ul>
-        <p class="text-xs text-white/30 mt-6">© {new Date().getFullYear()} {business.name}</p>
+        <p class="text-xs text-white/25 mt-6">© {new Date().getFullYear()} {biz.name}</p>
       </div>
     </div>
   </footer>
 
   <!-- MOBILE CTA BAR -->
   <div class="fixed bottom-0 left-0 right-0 z-50 flex md:hidden" style="height:56px;">
-    <a href="tel:+17204438821" class="flex-1 flex items-center justify-center gap-2 text-white font-bold font-oswald uppercase tracking-wide text-sm" style="background:#0F2A1D;">
-      <span>📞</span> (720) 443-8821
+    <a href={`tel:${biz.phone.replace(/[^0-9]/g, '')}`} class="flex-1 flex items-center justify-center gap-2 text-white font-bold font-oswald uppercase tracking-wide text-sm" style="background:#0F2A1D;">
+      <span>📞</span> {biz.phone}
     </a>
     <a href="#booking" class="flex-1 flex items-center justify-center gap-2 text-[#1A4731] font-bold font-oswald uppercase tracking-wide text-sm" style="background:#F5A623;">
       Book a Hike
@@ -577,9 +620,11 @@ const schemaJson = JSON.stringify({
   </div>
 
   <script>
+    // ── Date min ──
     const today = new Date().toISOString().split('T')[0];
     document.querySelectorAll('input[type="date"]').forEach((el) => (el as HTMLInputElement).setAttribute('min', today));
 
+    // ── Mobile nav ──
     const btn = document.getElementById('v2-menu-btn');
     const menu = document.getElementById('v2-mobile-menu');
     if (btn && menu) {
@@ -588,6 +633,8 @@ const schemaJson = JSON.stringify({
         link.addEventListener('click', () => menu.classList.add('hidden'));
       });
     }
+
+    // ── Form submit ──
     const form = document.getElementById('v2-booking-form') as HTMLFormElement | null;
     const success = document.getElementById('v2-booking-success');
     if (form) {
@@ -597,7 +644,8 @@ const schemaJson = JSON.stringify({
         if (success) success.classList.remove('hidden');
       });
     }
-    // FAQ accordion
+
+    // ── FAQ accordion ──
     document.querySelectorAll('.faq-trigger').forEach((trigger) => {
       trigger.addEventListener('click', () => {
         const parent = trigger.parentElement;
@@ -605,6 +653,7 @@ const schemaJson = JSON.stringify({
         const answer = parent.querySelector('.faq-answer') as HTMLElement | null;
         const caret = trigger.querySelector('.faq-caret') as HTMLElement | null;
         const isOpen = trigger.classList.contains('faq-open');
+        // Close all
         document.querySelectorAll('.faq-trigger').forEach((t) => {
           t.classList.remove('faq-open');
           const p = t.parentElement;
@@ -615,6 +664,7 @@ const schemaJson = JSON.stringify({
             if (c) c.style.transform = 'rotate(0deg)';
           }
         });
+        // Open clicked (if it wasn't already open)
         if (!isOpen && answer && caret) {
           trigger.classList.add('faq-open');
           answer.style.maxHeight = '500px';
@@ -622,5 +672,41 @@ const schemaJson = JSON.stringify({
         }
       });
     });
+
+    // ── Count-up animation ──
+    function countUp(el: HTMLElement, target: number, duration: number, suffix: string) {
+      const start = Date.now();
+      const tick = () => {
+        const elapsed = Date.now() - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const val = Math.floor(progress * target);
+        // Special-case the 4.9 rating counter (data-count="49" → display as 4.9)
+        if (el.dataset.decimal) {
+          const divisor = parseFloat(el.dataset.decimal);
+          el.textContent = (val * divisor).toFixed(1) + '★';
+        } else {
+          el.textContent = val + suffix;
+        }
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+
+    const statsEl = document.getElementById('v2-stats');
+    if (statsEl) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
+              const target = parseInt(el.dataset.count || '0', 10);
+              const suffix = el.dataset.suffix || '';
+              countUp(el, target, 1500, suffix);
+            });
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(statsEl);
+    }
   </script>
 </BaseLayout>

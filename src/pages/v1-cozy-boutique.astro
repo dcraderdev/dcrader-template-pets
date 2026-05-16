@@ -33,199 +33,285 @@ const schemaJson = JSON.stringify({
   </div>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap');
+
     :root {
       --cream: #FAF6EF;
       --card: #F2EAD8;
       --sage: #6B8F71;
+      --blush: #E8B4B8;
       --terra: #C17B50;
       --brown-dark: #3D2B1F;
       --brown-body: #5C4033;
       --muted: #9C7B6C;
     }
     html { scroll-behavior: smooth; }
-    body { background: var(--cream); font-family: 'Lato', sans-serif; color: var(--brown-body); }
-    .font-playfair { font-family: 'Playfair Display', Georgia, serif; }
-    .hero-bg {
-      background-image: linear-gradient(rgba(61,43,31,0.42), rgba(61,43,31,0.52)),
-        url('https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600&h=900&fit=crop&q=80');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-    }
-    .wave-divider { overflow: hidden; line-height: 0; }
-    .btn-sage { background: #6B8F71; color: #fff; border-radius: 9999px; padding: 0.75rem 2rem; font-weight: 700; transition: background 0.2s; display: inline-block; }
+    body { background: var(--cream); font-family: 'Inter', system-ui, sans-serif; color: var(--brown-body); }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .btn-sage { background: #6B8F71; color: #fff; border-radius: 9999px; padding: 0.75rem 2rem; font-weight: 700; transition: background 0.2s; display: inline-block; font-family: 'Inter', system-ui, sans-serif; }
     .btn-sage:hover { background: #557260; }
-    .btn-terra { background: #C17B50; color: #fff; border-radius: 9999px; padding: 0.75rem 2rem; font-weight: 700; transition: background 0.2s; display: inline-block; }
+    .btn-terra { background: #C17B50; color: #fff; border-radius: 9999px; padding: 0.75rem 2rem; font-weight: 700; transition: background 0.2s; display: inline-block; font-family: 'Inter', system-ui, sans-serif; }
     .btn-terra:hover { background: #a56540; }
     input:focus, select:focus, textarea:focus { outline: 2px solid #6B8F71; outline-offset: 2px; }
-    @keyframes pawBounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
     section[id] { scroll-margin-top: 5rem; }
-    @media (max-width: 768px) { .hero-bg { background-attachment: scroll; } }
+
+    /* Split nav */
+    .nav-split { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+
+    /* Polaroid frames */
+    .polaroid {
+      background: #fff;
+      padding: 8px 8px 32px 8px;
+      box-shadow: 0 4px 20px rgba(61,43,31,0.25);
+      position: absolute;
+    }
+    .polaroid img { display: block; width: 200px; height: 200px; object-fit: cover; }
+
+    /* Sticky note cards */
+    .sticky-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .sticky-card:hover {
+      transform: rotate(0deg) !important;
+      box-shadow: 0 12px 32px rgba(61,43,31,0.18);
+    }
+
+    /* Polaroid gallery */
+    .gallery-polaroid {
+      background: #fff;
+      padding: 10px 10px 36px 10px;
+      box-shadow: 0 4px 16px rgba(61,43,31,0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: block;
+    }
+    .gallery-polaroid:hover {
+      box-shadow: 0 10px 32px rgba(61,43,31,0.28);
+      transform: scale(1.04) rotate(0deg) !important;
+    }
+    .gallery-polaroid img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; }
+
+    /* Tape effect for testimonials */
+    .tape-strip {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 60px;
+      height: 20px;
+      background: rgba(107,143,113,0.35);
+      border-radius: 2px;
+    }
+
+    /* Scrapbook paw print */
+    .paw-scatter {
+      position: absolute;
+      opacity: 0.18;
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    /* Form reservation card */
+    .reservation-card {
+      background: var(--cream);
+      border: 1.5px solid #d4c9b5;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(61,43,31,0.10);
+    }
+
+    @media (max-width: 768px) {
+      .nav-split { display: flex; justify-content: space-between; }
+      .nav-links-left, .nav-links-right { display: none; }
+    }
   </style>
 
-  <!-- NAV -->
+  <!-- NAV — SPLIT/CENTERED LOGO -->
   <nav style="background:#3D2B1F;" class="sticky top-0 z-50 shadow-lg">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#hero" class="flex items-center gap-2">
-        <span class="text-2xl">🐾</span>
-        <span class="font-playfair text-xl font-bold text-white">{business.name}</span>
-      </a>
-      <div class="hidden md:flex items-center gap-6 text-sm font-semibold">
-        <a href="#services" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Services</a>
-        <a href="#suites" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Suites</a>
-        <a href="#pricing" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Pricing</a>
-        <a href="#gallery" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Gallery</a>
-        <a href="#team" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Team</a>
-        <a href="#booking" class="btn-terra text-sm py-2 px-5">Book Now</a>
+    <div class="max-w-7xl mx-auto px-6 py-4 nav-split">
+      <!-- Left links -->
+      <div class="nav-links-left hidden md:flex items-center gap-6 text-sm font-semibold">
+        <a href="#v1-services" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Services</a>
+        <a href="#v1-suites" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Suites</a>
+        <a href="#v1-pricing" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Pricing</a>
       </div>
+      <!-- Mobile: logo left -->
+      <a href="#" class="flex items-center gap-2 md:hidden">
+        <span class="text-xl">🐾</span>
+        <span style="font-family:'Cormorant Garamond',Georgia,serif;" class="text-lg font-bold text-white">{business.name}</span>
+      </a>
+      <!-- Center logo (desktop only) -->
+      <a href="#" class="hidden md:flex items-center justify-center gap-2">
+        <span class="text-2xl">🐾</span>
+        <span style="font-family:'Cormorant Garamond',Georgia,serif;" class="text-xl font-bold text-white tracking-wide">{business.name}</span>
+      </a>
+      <!-- Right links -->
+      <div class="nav-links-right hidden md:flex items-center gap-6 text-sm font-semibold justify-end">
+        <a href="#v1-gallery" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Gallery</a>
+        <a href="#v1-team" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Team</a>
+        <a href="#v1-booking" class="btn-sage text-sm py-2 px-5">Book Now →</a>
+      </div>
+      <!-- Mobile hamburger -->
       <button id="v1-menu-btn" class="md:hidden text-white text-2xl" aria-label="Open menu">☰</button>
     </div>
-    <div id="v1-mobile-menu" class="hidden md:hidden px-4 pb-4 flex flex-col gap-3">
-      <a href="#services" class="text-[#F2EAD8] text-sm font-semibold">Services</a>
-      <a href="#suites" class="text-[#F2EAD8] text-sm font-semibold">Suites</a>
-      <a href="#pricing" class="text-[#F2EAD8] text-sm font-semibold">Pricing</a>
-      <a href="#gallery" class="text-[#F2EAD8] text-sm font-semibold">Gallery</a>
-      <a href="#team" class="text-[#F2EAD8] text-sm font-semibold">Team</a>
-      <a href="#contact" class="text-[#F2EAD8] text-sm font-semibold">Contact</a>
-      <a href="#booking" class="btn-terra text-sm py-2 px-5 text-center">Book Now</a>
+    <!-- Mobile menu -->
+    <div id="v1-mobile-menu" class="hidden md:hidden px-6 pb-5 flex flex-col gap-3">
+      <a href="#v1-services" class="text-[#F2EAD8] text-sm font-semibold py-1 border-b border-white/10">Services</a>
+      <a href="#v1-suites" class="text-[#F2EAD8] text-sm font-semibold py-1 border-b border-white/10">Suites</a>
+      <a href="#v1-pricing" class="text-[#F2EAD8] text-sm font-semibold py-1 border-b border-white/10">Pricing</a>
+      <a href="#v1-gallery" class="text-[#F2EAD8] text-sm font-semibold py-1 border-b border-white/10">Gallery</a>
+      <a href="#v1-team" class="text-[#F2EAD8] text-sm font-semibold py-1 border-b border-white/10">Team</a>
+      <a href="#v1-booking" class="btn-sage text-sm py-2 px-5 text-center mt-2">Book Now →</a>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section id="hero" class="hero-bg min-h-screen flex items-center justify-center text-center px-4">
-    <div class="max-w-3xl mx-auto">
-      <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-4">Est. {business.founded} · {business.neighborhood}, San Francisco</p>
-      <h1 class="font-playfair text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
-        Where Every Dog<br/><em>Stays Like a Guest</em>
+  <!-- HERO — ASYMMETRIC SPLIT -->
+  <section id="v1-hero" style="display:grid; grid-template-columns:55fr 45fr; min-height:90vh;">
+    <!-- LEFT: cream content panel -->
+    <div style="background:#FAF6EF; padding:120px 56px 80px 56px;" class="flex flex-col justify-center">
+      <p style="color:#6B8F71; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:1.5rem;">Est. {business.founded} · Hayes Valley, San Francisco</p>
+      <h1 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(3rem,5.5vw,5rem); font-weight:700; color:#3D2B1F; line-height:1.08; margin-bottom:1rem;">
+        Where Every Dog<br/>Stays Like<br/>A Guest
       </h1>
-      <p class="text-white/90 text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed">{business.tagline}</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#booking" class="btn-terra text-base px-8 py-4">Reserve a Stay</a>
-        <a href="#services" class="border-2 border-white text-white rounded-full px-8 py-4 font-bold hover:bg-white hover:text-[#3D2B1F] transition-all">Explore Services</a>
+      <!-- Squiggly SVG underline decoration -->
+      <svg width="260" height="18" viewBox="0 0 260 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1.75rem; margin-top:-0.25rem;">
+        <path d="M2 14 C20 4, 40 18, 60 10 C80 2, 100 16, 120 9 C140 2, 160 16, 180 9 C200 2, 220 16, 240 8 C250 4, 256 10, 258 8" stroke="#6B8F71" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <p style="font-family:'Inter',system-ui,sans-serif; color:#5C4033; font-size:1.125rem; line-height:1.7; max-width:400px; margin-bottom:2.5rem;">{business.tagline}</p>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:2.5rem;">
+        <a href="#v1-booking" class="btn-sage" style="font-size:1rem; padding:0.85rem 2.25rem;">Reserve a Stay</a>
+        <a href="#v1-services" style="border:2px solid #3D2B1F; color:#3D2B1F; border-radius:9999px; padding:0.85rem 2.25rem; font-weight:700; font-family:'Inter',system-ui,sans-serif; font-size:1rem; transition:all 0.2s; display:inline-block;" class="hover:bg-[#3D2B1F] hover:text-white transition-all">Explore Services</a>
       </div>
-      <div class="mt-12 flex flex-wrap justify-center gap-6 text-white/80 text-sm">
+      <!-- Trust row -->
+      <div style="display:flex; flex-wrap:wrap; gap:1.25rem; font-size:0.8rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif;">
         <span>⭐ 4.9 (312 reviews)</span>
         <span>🔒 Licensed & Insured</span>
-        <span>📸 Photo updates twice daily</span>
+        <span>📸 Photo updates daily</span>
         <span>🏥 Fear Free Certified</span>
       </div>
     </div>
+    <!-- RIGHT: dark scrapbook panel -->
+    <div style="background:#3D2B1F; position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:500px;">
+      <!-- Scattered paw prints -->
+      <span class="paw-scatter" style="top:8%; left:10%; transform:rotate(20deg);">🐾</span>
+      <span class="paw-scatter" style="bottom:12%; right:8%; transform:rotate(-30deg);">🐾</span>
+      <span class="paw-scatter" style="top:55%; left:5%; transform:rotate(10deg);">🐾</span>
+      <span class="paw-scatter" style="top:20%; right:6%; transform:rotate(-15deg);">🐾</span>
+
+      <!-- Polaroid collage -->
+      <div style="position:relative; width:340px; height:360px; margin:0 auto;">
+        <!-- Photo 1: top-left, tilted left -->
+        <div class="polaroid" style="top:0; left:0; transform:rotate(-3deg); z-index:1;">
+          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=300&h=300&fit=crop" alt="Happy dog guest at Paws and Pine" width="200" height="200" />
+        </div>
+        <!-- Photo 2: center-right, tilted right -->
+        <div class="polaroid" style="top:40px; right:0; transform:rotate(2deg); z-index:2;">
+          <img src="https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=300&h=300&fit=crop" alt="Dog playing at Paws and Pine" width="200" height="200" />
+        </div>
+        <!-- Photo 3: bottom-left, slight tilt -->
+        <div class="polaroid" style="bottom:0; left:30px; transform:rotate(-1.5deg); z-index:3;">
+          <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=300&h=300&fit=crop" alt="Cozy dog lounging at Paws and Pine" width="200" height="200" />
+        </div>
+      </div>
+
+      <!-- Caption below polaroids -->
+      <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:rgba(250,246,239,0.6); font-size:1rem; margin-top:1.5rem; text-align:center; letter-spacing:0.03em;">Real guests. Real love.</p>
+    </div>
   </section>
+  <!-- Mobile hero fix: stack on small screens -->
+  <style>
+    @media (max-width: 768px) {
+      #v1-hero { grid-template-columns: 1fr !important; }
+      #v1-hero > div:first-child { padding: 72px 24px 48px 24px !important; }
+      #v1-hero > div:last-child { min-height: 420px !important; }
+    }
+  </style>
 
-  <!-- WAVE DIVIDER -->
-  <div class="wave-divider bg-[#3D2B1F]">
-    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:60px;">
-      <path d="M0,60 L1440,60 L1440,30 C1080,0 360,60 0,30 Z" fill="#FAF6EF"/>
-    </svg>
-  </div>
-
-  <!-- SERVICES -->
-  <section id="services" class="py-20 px-4" style="background:#FAF6EF;">
+  <!-- SERVICES — STICKY NOTE CARDS -->
+  <section id="v1-services" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">What We Offer</p>
-        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F] mb-4">Our Services</h2>
-        <p class="text-[#5C4033] max-w-xl mx-auto text-lg">Tailored care for every dog, every visit. Because your pet deserves more than the basics.</p>
+        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">What We Offer</p>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">Our Services</h2>
+        <!-- Squiggly underline -->
+        <svg width="180" height="14" viewBox="0 0 180 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto 1rem;">
+          <path d="M2 10 C18 2, 35 14, 52 7 C69 0, 86 13, 103 6 C120 0, 137 13, 154 6 C164 2, 174 9, 178 7" stroke="#6B8F71" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <p style="color:#5C4033; max-width:480px; margin:0 auto; font-size:1.05rem; font-family:'Inter',system-ui,sans-serif;">Tailored care for every dog, every visit. Because your pet deserves more than the basics.</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {services.map((s) => (
-          <div class="rounded-2xl p-6 flex flex-col gap-3 shadow-sm hover:shadow-md transition-shadow" style="background:#F2EAD8; border:1px solid #e0d4bc;">
-            <div class="text-4xl">{s.icon}</div>
-            <h3 class="font-playfair text-xl font-bold text-[#3D2B1F]">{s.name}</h3>
-            <p class="text-sm text-[#5C4033] leading-relaxed flex-grow">{s.description}</p>
-            <p class="font-bold text-[#C17B50] text-lg">{s.price}</p>
-            <ul class="space-y-1">
-              {s.highlights.map((h) => (
-                <li class="text-xs text-[#5C4033] flex items-center gap-2">
-                  <span class="text-[#6B8F71] font-bold">✓</span> {h}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1.5rem;">
+        {services.map((s, i) => {
+          const rotations = ['-1deg', '1.5deg', '-0.5deg', '2deg'];
+          const bgs = ['#FAF6EF', '#F9EAEB', '#EEF3EF', '#FFFDF8'];
+          const rot = rotations[i % rotations.length];
+          const bg = bgs[i % bgs.length];
+          return (
+            <div class="sticky-card rounded-2xl p-6 flex flex-col gap-3 shadow-sm" style={`background:${bg}; border:1px solid #e0d4bc; transform:rotate(${rot});`}>
+              <div style="font-size:2.25rem;">{s.icon}</div>
+              <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.35rem; font-weight:700; color:#3D2B1F;">{s.name}</h3>
+              <p style="font-size:0.875rem; color:#5C4033; line-height:1.65; flex-grow:1;">{s.description}</p>
+              <p style="font-weight:700; color:#C17B50; font-size:1.1rem; font-family:'Cormorant Garamond',Georgia,serif;">{s.price}</p>
+              <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.35rem;">
+                {s.highlights.map((h) => (
+                  <li style="font-size:0.78rem; color:#5C4033; display:flex; align-items:flex-start; gap:0.5rem;">
+                    <span style="color:#6B8F71; font-weight:700; flex-shrink:0;">✓</span> {h}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>
 
-  <!-- STATS STRIP -->
-  <section class="py-10 px-4" style="background:#3D2B1F;">
-    <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+  <!-- STATS STRIP — DARK HORIZONTAL BAND -->
+  <section style="background:#3D2B1F; padding:3rem 1rem;">
+    <div class="max-w-5xl mx-auto" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1.5rem; text-align:center;">
       {[
         { n: '5,000+', label: 'Dog-Nights Booked' },
-        { n: '4.9 ★', label: '312 Google Reviews' },
+        { n: '4.9★', label: '312 Reviews' },
         { n: '12', label: 'Max Dogs at Once' },
         { n: '2×', label: 'Daily Photo Updates' },
       ].map((s) => (
         <div>
-          <div class="font-playfair text-3xl font-bold text-[#C17B50] mb-1">{s.n}</div>
-          <p class="text-[#F2EAD8]/70 text-xs tracking-wider uppercase">{s.label}</p>
+          <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2rem,4vw,3.25rem); font-weight:700; color:#C17B50; line-height:1.1;">{s.n}</div>
+          <p style="color:rgba(250,246,239,0.65); font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; margin-top:0.35rem; font-family:'Inter',system-ui,sans-serif;">{s.label}</p>
         </div>
       ))}
     </div>
+    <style>
+      @media (max-width: 640px) {
+        #v1-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      }
+    </style>
   </section>
 
-  <!-- HEALTH & REQUIREMENTS -->
-  <section class="py-16 px-4" style="background:#FAF6EF;">
-    <div class="max-w-4xl mx-auto">
-      <div class="rounded-2xl p-8 md:p-10" style="background:#F2EAD8; border:2px solid #6B8F71;">
-        <h2 class="font-playfair text-3xl md:text-4xl font-bold text-[#3D2B1F] mb-2">Health & Requirements</h2>
-        <p class="text-[#9C7B6C] mb-8 text-sm">For the safety and wellbeing of every dog in our care.</p>
-        <div class="grid sm:grid-cols-2 gap-6">
-          <div>
-            <h3 class="font-playfair text-lg font-bold text-[#3D2B1F] mb-2">💉 Vaccination Requirements</h3>
-            <p class="text-sm text-[#5C4033] leading-relaxed">All breeds must have current <strong>Rabies</strong>, <strong>Bordetella</strong> (within 6 months), and <strong>DHPP/DA2PP</strong>. Records required before first visit.</p>
-          </div>
-          <div>
-            <h3 class="font-playfair text-lg font-bold text-[#3D2B1F] mb-2">🤝 Temperament Assessment</h3>
-            <p class="text-sm text-[#5C4033] leading-relaxed">New dogs require a free 30-minute meet &amp; greet before their first booking. We want everyone to feel at home.</p>
-          </div>
-          <div>
-            <h3 class="font-playfair text-lg font-bold text-[#3D2B1F] mb-2">🛡️ Health Guarantee</h3>
-            <p class="text-sm text-[#5C4033] leading-relaxed">Dogs must be flea/tick free, not in heat, and free of any contagious illness on the day of arrival.</p>
-          </div>
-          <div>
-            <h3 class="font-playfair text-lg font-bold text-[#3D2B1F] mb-2">🚨 Emergency Protocol</h3>
-            <p class="text-sm text-[#5C4033] leading-relaxed">24/7 vet partner is two blocks away. You are notified immediately of any incident — no exceptions, no delays.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WAVE DIVIDER CREAM→CARD -->
-  <div class="wave-divider" style="background:#F2EAD8;">
-    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:60px;">
-      <path d="M0,0 C360,60 1080,0 1440,60 L1440,0 L0,0 Z" fill="#FAF6EF"/>
-    </svg>
-  </div>
-
-  <!-- PRICING -->
-  <section id="pricing" class="py-20 px-4" style="background:#F2EAD8;">
+  <!-- PRICING — PACKAGE CARDS -->
+  <section id="v1-pricing" class="py-20 px-4" style="background:#F2EAD8;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Packages</p>
-        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F] mb-4">Choose Your Stay</h2>
-        <p class="text-[#5C4033] max-w-xl mx-auto">Bundle and save — every package includes our standard of attentive, personal care.</p>
+        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Packages</p>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">Choose Your Stay</h2>
+        <p style="color:#5C4033; max-width:480px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Bundle and save — every package includes our standard of attentive, personal care.</p>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-3 gap-6 items-start">
         {packages.map((pkg) => (
           <div class={`rounded-2xl p-8 flex flex-col gap-4 relative ${pkg.featured ? 'shadow-2xl scale-105' : 'shadow-sm'}`}
                style={pkg.featured ? 'background:#6B8F71; color:#fff;' : 'background:#FAF6EF; border:1px solid #e0d4bc;'}>
-            {pkg.featured && <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#C17B50] text-white text-xs font-bold py-1 px-4 rounded-full">Most Popular</div>}
+            {pkg.featured && <div style="position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:#C17B50; color:#fff; font-size:0.7rem; font-weight:700; padding:4px 16px; border-radius:9999px; white-space:nowrap; font-family:'Inter',system-ui,sans-serif;">Most Popular</div>}
             <div>
-              <h3 class="font-playfair text-2xl font-bold mb-1" style={pkg.featured ? 'color:#fff' : 'color:#3D2B1F'}>{pkg.name}</h3>
-              <p class="text-sm" style={pkg.featured ? 'color:rgba(255,255,255,0.8)' : 'color:#9C7B6C'}>{pkg.period}</p>
+              <h3 style={`font-family:'Cormorant Garamond',Georgia,serif; font-size:1.6rem; font-weight:700; margin-bottom:0.25rem; color:${pkg.featured ? '#fff' : '#3D2B1F'};`}>{pkg.name}</h3>
+              <p style={`font-size:0.8rem; font-family:'Inter',system-ui,sans-serif; color:${pkg.featured ? 'rgba(255,255,255,0.75)' : '#9C7B6C'};`}>{pkg.period}</p>
             </div>
-            <div class="text-4xl font-bold" style={pkg.featured ? 'color:#fff' : 'color:#C17B50'}>{pkg.price}</div>
-            <p class="text-sm" style={pkg.featured ? 'color:rgba(255,255,255,0.85)' : 'color:#5C4033'}>{pkg.description}</p>
-            <ul class="space-y-2 flex-grow">
+            <div style={`font-family:'Cormorant Garamond',Georgia,serif; font-size:2.5rem; font-weight:700; color:${pkg.featured ? '#fff' : '#C17B50'};`}>{pkg.price}</div>
+            <p style={`font-size:0.875rem; font-family:'Inter',system-ui,sans-serif; color:${pkg.featured ? 'rgba(255,255,255,0.85)' : '#5C4033'};`}>{pkg.description}</p>
+            <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem; flex-grow:1;">
               {pkg.features.map((f) => (
-                <li class="text-sm flex items-start gap-2" style={pkg.featured ? 'color:rgba(255,255,255,0.9)' : 'color:#5C4033'}>
-                  <span style={pkg.featured ? 'color:#F2EAD8' : 'color:#6B8F71'} class="font-bold mt-0.5">✓</span> {f}
+                <li style={`font-size:0.875rem; display:flex; align-items:flex-start; gap:0.5rem; font-family:'Inter',system-ui,sans-serif; color:${pkg.featured ? 'rgba(255,255,255,0.9)' : '#5C4033'};`}>
+                  <span style={`color:${pkg.featured ? '#F2EAD8' : '#6B8F71'}; font-weight:700; flex-shrink:0; margin-top:1px;`}>✓</span> {f}
                 </li>
               ))}
             </ul>
-            <a href="#booking" class={`text-center rounded-full py-3 px-6 font-bold text-sm transition-all mt-2 ${pkg.featured ? 'bg-white text-[#6B8F71] hover:bg-[#F2EAD8]' : 'btn-sage'}`}>
+            <a href="#v1-booking" class={pkg.featured ? '' : 'btn-sage'} style={pkg.featured ? 'display:block; text-align:center; background:#fff; color:#6B8F71; border-radius:9999px; padding:0.75rem 1.5rem; font-weight:700; font-family:Inter,system-ui,sans-serif; font-size:0.9rem; margin-top:0.5rem;' : 'text-align:center; font-size:0.9rem; margin-top:0.5rem;'}>
               Book This Package
             </a>
           </div>
@@ -234,177 +320,53 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- WAVE DIVIDER CARD→CREAM -->
-  <div class="wave-divider" style="background:#FAF6EF;">
-    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:60px;">
-      <path d="M0,60 C360,0 1080,60 1440,0 L1440,0 L0,0 Z" fill="#F2EAD8"/>
-    </svg>
-  </div>
-
-  <!-- GALLERY -->
-  <section id="gallery" class="py-20 px-4" style="background:#FAF6EF;">
+  <!-- GALLERY — POLAROID MASONRY -->
+  <section id="v1-gallery" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Life at Paws & Pine</p>
-        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F] mb-4">The Gallery</h2>
-        <p class="text-[#5C4033] max-w-xl mx-auto">A glimpse of everyday joy — real guests, real moments.</p>
+        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Life at Paws & Pine</p>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">The Gallery</h2>
+        <p style="color:#5C4033; max-width:440px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">A glimpse of everyday joy — real guests, real moments.</p>
       </div>
-      <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-        {gallery.map((img, i) => (
-          <div class="break-inside-avoid group relative overflow-hidden rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-            <img src={img.url} alt={img.alt} loading="lazy" class="w-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-              <p class="text-white text-sm font-semibold">{img.caption}</p>
+      <div style="columns:3; column-gap:1.5rem;" class="v1-gallery-columns">
+        {gallery.map((img, i) => {
+          const rot = i % 2 === 0 ? '1.5deg' : '-1.5deg';
+          return (
+            <div style={`break-inside:avoid; margin-bottom:1.5rem;`}>
+              <div class="gallery-polaroid" style={`transform:rotate(${rot});`}>
+                <img src={img.url} alt={img.alt} loading="lazy" style="display:block; width:100%; aspect-ratio:1; object-fit:cover;" />
+                <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#9C7B6C; font-size:0.8rem; text-align:center; padding-top:6px; margin:0;">{img.caption}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
+      <style>
+        @media (max-width: 768px) { .v1-gallery-columns { columns: 2 !important; } }
+        @media (max-width: 480px) { .v1-gallery-columns { columns: 1 !important; } }
+      </style>
     </div>
   </section>
 
-  <!-- SUITE TYPES -->
-  <section id="suites" class="py-16 px-4" style="background:#F2EAD8;">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Where They Stay</p>
-        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F]">Our Suites</h2>
-        <p class="text-[#9C7B6C] mt-3 max-w-lg mx-auto">No cages. No kennels. Every dog sleeps in a real room — because that's what they deserve.</p>
-      </div>
-      <div class="grid sm:grid-cols-3 gap-6">
-        {[
-          {
-            name: 'Cozy Den',
-            size: '80 sq ft',
-            icon: '🛏️',
-            price: 'from $89/night',
-            features: ['Queen-sized dog bed', 'Soft lighting', 'White noise machine', 'Daily photo update', 'Morning & evening yard time'],
-            color: '#6B8F71',
-          },
-          {
-            name: 'Garden Suite',
-            size: '120 sq ft + private yard',
-            icon: '🌿',
-            price: 'from $129/night',
-            features: ['King-sized memory foam', 'Private outdoor enclosure', 'Webcam access', 'Twice-daily enrichment', 'Aromatherapy diffuser'],
-            color: '#C17B50',
-            featured: true,
-          },
-          {
-            name: 'Premium Suite',
-            size: '200 sq ft + terrace',
-            icon: '✨',
-            price: 'from $175/night',
-            features: ['Orthopedic luxury bed', 'Private terrace access', 'Live 24/7 camera', 'Three enrichment sessions', 'Spa add-on included'],
-            color: '#3D2B1F',
-          },
-        ].map((suite) => (
-          <div class={`rounded-2xl overflow-hidden bg-white shadow-md flex flex-col ${suite.featured ? 'ring-2 ring-[#C17B50] scale-[1.02]' : ''}`}>
-            {suite.featured && <div class="text-center py-2 text-xs font-bold uppercase tracking-widest text-white" style="background:#C17B50;">Most Popular</div>}
-            <div class="p-6 text-center border-b border-[#F2EAD8]">
-              <div class="text-4xl mb-3">{suite.icon}</div>
-              <h3 class="font-playfair text-2xl font-bold text-[#3D2B1F] mb-1">{suite.name}</h3>
-              <p class="text-[#9C7B6C] text-xs mb-3">{suite.size}</p>
-              <p class="font-bold text-lg" style={`color:${suite.color};`}>{suite.price}</p>
-            </div>
-            <ul class="p-6 flex flex-col gap-3 flex-grow">
-              {suite.features.map((f) => (
-                <li class="text-sm text-[#5C4033] flex items-start gap-2">
-                  <span style={`color:${suite.color};`} class="font-bold mt-0.5">✓</span> {f}
-                </li>
-              ))}
-            </ul>
-            <div class="px-6 pb-6">
-              <a href="#booking" class="block text-center btn-terra text-sm py-2 w-full">Reserve This Suite</a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- HOW IT WORKS -->
-  <section class="py-16 px-4" style="background:#FAF6EF;">
-    <div class="max-w-5xl mx-auto">
-      <div class="text-center mb-12">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Getting Started</p>
-        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F]">How It Works</h2>
-      </div>
-      <div class="grid sm:grid-cols-3 gap-8">
-        <div class="text-center flex flex-col items-center gap-4">
-          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold font-playfair text-white" style="background:#6B8F71;">1</div>
-          <h3 class="font-playfair text-xl font-bold text-[#3D2B1F]">Apply Online</h3>
-          <p class="text-sm text-[#5C4033] leading-relaxed">Fill out our quick new-client form. Takes about 3 minutes and tells us everything we need to know about your pup.</p>
-        </div>
-        <div class="text-center flex flex-col items-center gap-4">
-          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold font-playfair text-white" style="background:#C17B50;">2</div>
-          <h3 class="font-playfair text-xl font-bold text-[#3D2B1F]">Free Meet &amp; Greet</h3>
-          <p class="text-sm text-[#5C4033] leading-relaxed">Come by for a complimentary 30-minute visit so we can get to know each other. No commitment required.</p>
-        </div>
-        <div class="text-center flex flex-col items-center gap-4">
-          <div class="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold font-playfair text-white" style="background:#6B8F71;">3</div>
-          <h3 class="font-playfair text-xl font-bold text-[#3D2B1F]">Bon Voyage!</h3>
-          <p class="text-sm text-[#5C4033] leading-relaxed">Drop off knowing your dog is safe, loved, and already making friends. Photo updates arrive at 8am and 5pm.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHAT TO BRING -->
-  <section class="py-16 px-4" style="background:#FAF6EF;">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Packing Guide</p>
-        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F] mb-3">What to Bring</h2>
-        <p class="text-[#5C4033] max-w-md mx-auto">Keep it simple. We handle everything else.</p>
-      </div>
-      <div class="grid sm:grid-cols-3 gap-6">
-        <div class="rounded-2xl p-6 flex flex-col gap-3" style="background:#F2EAD8; border:1px solid #e0d4bc;">
-          <h3 class="font-playfair text-lg font-bold text-[#3D2B1F]">✅ Please Bring</h3>
-          <ul class="space-y-2 text-sm text-[#5C4033]">
-            {['Vaccination records (first visit)', 'Enough food for the stay', 'Their favorite blanket or toy', 'Written feeding instructions', 'Emergency vet contact info'].map((item) => (
-              <li class="flex items-start gap-2"><span class="text-[#6B8F71] font-bold mt-0.5">·</span> {item}</li>
-            ))}
-          </ul>
-        </div>
-        <div class="rounded-2xl p-6 flex flex-col gap-3" style="background:#F2EAD8; border:1px solid #e0d4bc;">
-          <h3 class="font-playfair text-lg font-bold text-[#3D2B1F]">💊 Medications</h3>
-          <ul class="space-y-2 text-sm text-[#5C4033]">
-            {['Label all meds with dog\'s name', 'Include written instructions', 'Note any known allergies', 'Bring the full dosage needed', 'Mention supplements too'].map((item) => (
-              <li class="flex items-start gap-2"><span class="text-[#6B8F71] font-bold mt-0.5">·</span> {item}</li>
-            ))}
-          </ul>
-        </div>
-        <div class="rounded-2xl p-6 flex flex-col gap-3" style="background:#F2EAD8; border:1px solid #e0d4bc;">
-          <h3 class="font-playfair text-lg font-bold text-[#3D2B1F]">🏡 We Provide</h3>
-          <ul class="space-y-2 text-sm text-[#5C4033]">
-            {['Orthopedic dog beds', 'Fresh filtered water', 'Group & private play time', 'Photo updates twice daily', 'Emergency vet access'].map((item) => (
-              <li class="flex items-start gap-2"><span class="text-[#C17B50] font-bold mt-0.5">·</span> {item}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TEAM -->
-  <section id="team" class="py-20 px-4" style="background:#F2EAD8;">
+  <!-- TEAM — CARD GRID -->
+  <section id="v1-team" class="py-20 px-4" style="background:#F2EAD8;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">The Humans</p>
-        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F] mb-4">Meet the Team</h2>
-        <p class="text-[#5C4033] max-w-xl mx-auto">Certified, passionate, and obsessed with your dog's wellbeing.</p>
+        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">The Humans</p>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">Meet the Team</h2>
+        <p style="color:#5C4033; max-width:480px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Certified, passionate, and obsessed with your dog's wellbeing.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {team.map((member) => (
-          <div class="rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow" style="background:#FAF6EF;">
-            <img src={member.photo} alt={`Photo of ${member.name}, ${member.role} at ${business.name}`} class="w-full h-56 object-cover" />
-            <div class="p-6">
-              <h3 class="font-playfair text-xl font-bold text-[#3D2B1F] mb-1">{member.name}</h3>
-              <p class="text-[#C17B50] font-semibold text-sm mb-3">{member.role}</p>
-              <p class="text-sm text-[#5C4033] leading-relaxed mb-4">{member.bio}</p>
-              <div class="flex flex-wrap gap-2">
+          <div style="background:#FAF6EF; border-radius:16px; overflow:hidden; box-shadow:0 2px 12px rgba(61,43,31,0.08); transition:box-shadow 0.25s;" class="hover:shadow-md">
+            <img src={member.photo} alt={`Photo of ${member.name}, ${member.role} at ${business.name}`} style="width:100%; height:220px; object-fit:cover; display:block;" />
+            <div style="padding:1.5rem;">
+              <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.4rem; font-weight:700; color:#3D2B1F; margin-bottom:0.2rem;">{member.name}</h3>
+              <p style="color:#C17B50; font-weight:600; font-size:0.85rem; margin-bottom:0.75rem; font-family:'Inter',system-ui,sans-serif;">{member.role}</p>
+              <p style="font-size:0.875rem; color:#5C4033; line-height:1.65; margin-bottom:1rem; font-family:'Inter',system-ui,sans-serif;">{member.bio}</p>
+              <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
                 {member.certifications.map((cert) => (
-                  <span class="text-xs bg-[#6B8F71]/15 text-[#3D2B1F] rounded-full px-3 py-1 font-medium">{cert}</span>
+                  <span style="font-size:0.72rem; background:rgba(107,143,113,0.15); color:#3D2B1F; border-radius:9999px; padding:3px 10px; font-weight:500; font-family:'Inter',system-ui,sans-serif;">{cert}</span>
                 ))}
               </div>
             </div>
@@ -414,86 +376,65 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section id="testimonials" class="py-20 px-4" style="background:#FAF6EF;">
+  <!-- TESTIMONIALS — SCRAPBOOK QUOTE CARDS -->
+  <section id="v1-testimonials" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">🐾 🐾 🐾</p>
-        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F] mb-4">Pawsitively Reviewed</h2>
-        <p class="text-[#5C4033] max-w-xl mx-auto">Real words from real pet parents who trust us every time.</p>
+        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">🐾 🐾 🐾</p>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">Pawsitively Reviewed</h2>
+        <p style="color:#5C4033; max-width:440px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Real words from real pet parents who trust us every time.</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {testimonials.map((t) => (
-          <div class="rounded-2xl p-8 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow" style="background:#F2EAD8; border:1px solid #e0d4bc;">
-            <div class="flex gap-1 text-[#C17B50] text-lg" aria-label={`${t.stars} out of 5 stars`}>
-              {'★'.repeat(t.stars)}
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map((t, i) => {
+          const rots = ['1.5deg', '-1.5deg', '1deg'];
+          const rot = rots[i % rots.length];
+          return (
+            <div style={`background:#F2EAD8; border:1px solid #e0d4bc; border-radius:14px; padding:2rem 1.75rem 1.75rem; position:relative; transform:rotate(${rot}); box-shadow:0 2px 12px rgba(61,43,31,0.09); transition:transform 0.25s, box-shadow 0.25s;`} class="hover:shadow-md" onmouseover={`this.style.transform='rotate(0deg)'`} onmouseout={`this.style.transform='rotate(${rot})'`}>
+              <div class="tape-strip"></div>
+              <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:4rem; line-height:1; color:#6B8F71; opacity:0.35; margin-bottom:-1rem; user-select:none;">"</div>
+              <div style="display:flex; gap:2px; color:#C17B50; font-size:1rem; margin-bottom:0.75rem;" aria-label={`${t.stars} out of 5 stars`}>
+                {'★'.repeat(t.stars)}
+              </div>
+              <blockquote style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#5C4033; line-height:1.65; font-size:1.05rem; flex-grow:1; margin:0 0 1.25rem;">"{t.text}"</blockquote>
+              <div>
+                <p style="font-weight:700; color:#3D2B1F; font-family:'Cormorant Garamond',Georgia,serif; font-size:1rem;">{t.name}</p>
+                <p style="font-size:0.75rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif;">{t.breed} · {t.date}</p>
+              </div>
             </div>
-            <blockquote class="text-[#5C4033] leading-relaxed italic flex-grow">"{t.text}"</blockquote>
-            <div>
-              <p class="font-bold text-[#3D2B1F]">{t.name}</p>
-              <p class="text-xs text-[#9C7B6C]">{t.breed} · {t.date}</p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <div class="text-center mt-10">
-        <a href="#" class="inline-flex items-center gap-2 text-sm font-semibold text-[#5C4033] hover:text-[#C17B50] transition-colors">
-          <span class="text-[#C17B50]">★★★★★</span> Read all 312 reviews on Google
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        <a href="#" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.875rem; font-weight:600; color:#5C4033; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">
+          <span style="color:#C17B50;">★★★★★</span> Read all 312 reviews on Google
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- INSTAGRAM FEED -->
-  <section class="py-16 px-4" style="background:#3D2B1F;">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-        <div>
-          <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Follow Along</p>
-          <h2 class="font-playfair text-3xl font-bold text-white">@pawsandpine</h2>
-        </div>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="text-sm text-[#C17B50] hover:text-white transition-colors font-semibold">View on Instagram →</a>
-      </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
-        {[
-          { url: 'https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=300&h=300&fit=crop&q=80', alt: 'Suite life at Paws and Pine' },
-          { url: 'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=300&h=300&fit=crop&q=80', alt: 'Morning spa glow' },
-          { url: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=300&h=300&fit=crop&q=80', alt: 'Sunny yard time' },
-          { url: 'https://images.unsplash.com/photo-1583512603806-077998240c7a?w=300&h=300&fit=crop&q=80', alt: 'Afternoon lounge vibes' },
-          { url: 'https://images.unsplash.com/photo-1560807707-8cc77767d783?w=300&h=300&fit=crop&q=80', alt: 'Sweet new guest' },
-          { url: 'https://images.unsplash.com/photo-1560743641-3914f2c45636?w=300&h=300&fit=crop&q=80', alt: 'Spa treatment day' },
-        ].map((img) => (
-          <div class="overflow-hidden group" style="aspect-ratio:1;">
-            <img src={img.url} alt={img.alt} loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 opacity-80 group-hover:opacity-100" />
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="py-16 px-4" style="background:#FAF6EF;">
+  <!-- FAQ — ACCORDION -->
+  <section class="py-16 px-4" style="background:#F2EAD8;">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-12">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Questions</p>
-        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F]">Frequently Asked</h2>
+        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Questions</p>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2rem,3.5vw,2.75rem); font-weight:700; color:#3D2B1F;">Frequently Asked</h2>
       </div>
-      <div class="flex flex-col gap-3" id="v1-faq">
+      <div style="display:flex; flex-direction:column; gap:0.75rem;" id="v1-faq">
         {[
-          { q: 'How many dogs do you board at once?', a: 'We cap overnight boarding at 12 dogs total—never more. Small is intentional.' },
+          { q: 'How many dogs do you board at once?', a: 'We cap overnight boarding at 12 dogs total — never more. Small is intentional.' },
           { q: 'Do you have cameras I can check?', a: 'We send photo updates at 8am and 5pm daily. We\'re exploring live feeds for 2026.' },
-          { q: 'Can my dog sleep in a bed?', a: 'Absolutely. Every suite has an orthopedic dog bed. Bring their blanket—familiar smells help.' },
+          { q: 'Can my dog sleep in a bed?', a: 'Absolutely. Every suite has an orthopedic dog bed. Bring their blanket — familiar smells help.' },
           { q: 'What if my dog gets sick?', a: 'We have a vet partner two blocks away. Any concern is addressed immediately and you\'re called first.' },
           { q: 'Do you accept intact dogs?', a: 'We accept intact males under 1 year in daycare only. Intact females in heat are not accepted for safety reasons.' },
         ].map((item, i) => (
-          <div class="rounded-2xl overflow-hidden" style="background:#F2EAD8; border:1px solid #e0d4bc;">
-            <button class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-playfair text-lg font-bold text-[#3D2B1F] hover:text-[#6B8F71] transition-colors" data-idx={i}>
+          <div style="border-radius:14px; overflow:hidden; background:#FAF6EF; border:1px solid #e0d4bc;">
+            <button class="faq-trigger" style="width:100%; text-align:left; padding:1.25rem 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; background:none; border:none; cursor:pointer; font-family:'Cormorant Garamond',Georgia,serif; font-size:1.15rem; font-weight:700; color:#3D2B1F;" data-idx={i}>
               <span>{item.q}</span>
-              <span class="faq-caret text-[#6B8F71] text-xl flex-shrink-0 transition-transform duration-300">+</span>
+              <span class="faq-caret" style="color:#6B8F71; font-size:1.3rem; flex-shrink:0; transition:transform 0.3s; font-weight:400;">+</span>
             </button>
-            <div class="faq-answer overflow-hidden" style="max-height:0; transition:max-height 0.35s ease;">
-              <p class="px-6 pb-5 text-sm text-[#5C4033] leading-relaxed border-l-4 ml-6 mb-5" style="border-color:#6B8F71;">{item.a}</p>
+            <div class="faq-answer" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease;">
+              <p style="padding:0 1.5rem 1.25rem 1.5rem; font-size:0.9rem; color:#5C4033; line-height:1.7; border-left:3px solid #6B8F71; margin:0 1rem 1rem 1.5rem; font-family:'Inter',system-ui,sans-serif;">{item.a}</p>
             </div>
           </div>
         ))}
@@ -501,93 +442,100 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- BOOKING FORM -->
-  <section id="booking" class="py-20 px-4" style="background:#F2EAD8;">
+  <!-- BOOKING FORM — RESERVATION CARD -->
+  <section id="v1-booking" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-12">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Let's Get Started</p>
-        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F] mb-4">Book a Stay</h2>
-        <p class="text-[#5C4033]">Fill out the form and we'll confirm your reservation within 24 hours.</p>
+        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Let's Get Started</p>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">Book a Stay</h2>
+        <p style="color:#5C4033; font-family:'Inter',system-ui,sans-serif;">Fill out the form and we'll confirm your reservation within 24 hours.</p>
       </div>
-      <div id="v1-booking-form-wrap" class="rounded-2xl p-8 shadow-md" style="background:#FAF6EF; border:1px solid #e0d4bc;">
-        <form id="v1-booking-form" class="flex flex-col gap-5" novalidate>
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div class="flex flex-col gap-1">
-              <label for="v1-owner-name" class="text-sm font-semibold text-[#3D2B1F]">Owner Name <span class="text-[#C17B50]">*</span></label>
-              <input id="v1-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
+      <div id="v1-booking-form-wrap" class="reservation-card" style="padding:2.5rem;">
+        <!-- Reservation card label -->
+        <p style="font-family:'Inter',system-ui,sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#6B8F71; font-weight:700; margin-bottom:1.5rem; text-align:center;">Reservation Request</p>
+        <form id="v1-booking-form" style="display:flex; flex-direction:column; gap:1.25rem;" novalidate>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;" class="v1-form-grid-2">
+            <div style="display:flex; flex-direction:column; gap:0.4rem;">
+              <label for="v1-owner-name" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Owner Name <span style="color:#C17B50;">*</span></label>
+              <input id="v1-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
-            <div class="flex flex-col gap-1">
-              <label for="v1-pet-name" class="text-sm font-semibold text-[#3D2B1F]">Pet Name <span class="text-[#C17B50]">*</span></label>
-              <input id="v1-pet-name" name="petName" type="text" required placeholder="Your dog's name" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
-            </div>
-          </div>
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div class="flex flex-col gap-1">
-              <label for="v1-email" class="text-sm font-semibold text-[#3D2B1F]">Email <span class="text-[#C17B50]">*</span></label>
-              <input id="v1-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
-            </div>
-            <div class="flex flex-col gap-1">
-              <label for="v1-phone" class="text-sm font-semibold text-[#3D2B1F]">Phone <span class="text-[#C17B50]">*</span></label>
-              <input id="v1-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(415) 000-0000" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
+            <div style="display:flex; flex-direction:column; gap:0.4rem;">
+              <label for="v1-pet-name" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Pet Name <span style="color:#C17B50;">*</span></label>
+              <input id="v1-pet-name" name="petName" type="text" required placeholder="Your dog's name" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
           </div>
-          <div class="grid sm:grid-cols-3 gap-5">
-            <div class="flex flex-col gap-1">
-              <label for="v1-breed" class="text-sm font-semibold text-[#3D2B1F]">Breed</label>
-              <input id="v1-breed" name="breed" type="text" placeholder="e.g. Goldendoodle" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C]" />
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;" class="v1-form-grid-2">
+            <div style="display:flex; flex-direction:column; gap:0.4rem;">
+              <label for="v1-email" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Email <span style="color:#C17B50;">*</span></label>
+              <input id="v1-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
-            <div class="flex flex-col gap-1">
-              <label for="v1-size" class="text-sm font-semibold text-[#3D2B1F]">Size</label>
-              <select id="v1-size" name="size" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F]">
+            <div style="display:flex; flex-direction:column; gap:0.4rem;">
+              <label for="v1-phone" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Phone <span style="color:#C17B50;">*</span></label>
+              <input id="v1-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(415) 000-0000" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1.25rem;" class="v1-form-grid-3">
+            <div style="display:flex; flex-direction:column; gap:0.4rem;">
+              <label for="v1-breed" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Breed</label>
+              <input id="v1-breed" name="breed" type="text" placeholder="e.g. Goldendoodle" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.4rem;">
+              <label for="v1-size" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Size</label>
+              <select id="v1-size" name="size" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;">
                 <option value="">Select size…</option>
                 <option value="small">Small (under 25 lbs)</option>
                 <option value="medium">Medium (25–55 lbs)</option>
                 <option value="large">Large (55–85 lbs)</option>
-                <option value="xlarge">Extra Large (85+ lbs)</option>
+                <option value="xlarge">XL (85+ lbs)</option>
               </select>
             </div>
-            <div class="flex flex-col gap-1">
-              <label for="v1-service" class="text-sm font-semibold text-[#3D2B1F]">Service <span class="text-[#C17B50]">*</span></label>
-              <select id="v1-service" name="service" required class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F]">
+            <div style="display:flex; flex-direction:column; gap:0.4rem;">
+              <label for="v1-service" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Service <span style="color:#C17B50;">*</span></label>
+              <select id="v1-service" name="service" required style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;">
                 <option value="">Select a service…</option>
                 {services.map((s) => <option value={s.name}>{s.name}</option>)}
               </select>
             </div>
           </div>
-          <div class="grid sm:grid-cols-2 gap-5">
-            <div class="flex flex-col gap-1">
-              <label for="v1-date" class="text-sm font-semibold text-[#3D2B1F]">Drop-off Date <span class="text-[#C17B50]">*</span></label>
-              <input id="v1-date" name="date" type="date" required class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F]" />
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;" class="v1-form-grid-2">
+            <div style="display:flex; flex-direction:column; gap:0.4rem;">
+              <label for="v1-date" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Drop-off Date <span style="color:#C17B50;">*</span></label>
+              <input id="v1-date" name="date" type="date" required style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
-            <div class="flex flex-col gap-1">
-              <label for="v1-end-date" class="text-sm font-semibold text-[#3D2B1F]">Pick-up Date <span class="text-[#C17B50]">*</span></label>
-              <input id="v1-end-date" name="endDate" type="date" required class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F]" />
+            <div style="display:flex; flex-direction:column; gap:0.4rem;">
+              <label for="v1-end-date" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Pick-up Date <span style="color:#C17B50;">*</span></label>
+              <input id="v1-end-date" name="endDate" type="date" required style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
           </div>
-          <div class="flex flex-col gap-1">
-            <label for="v1-notes" class="text-sm font-semibold text-[#3D2B1F]">Special Needs / Notes</label>
-            <textarea id="v1-notes" name="notes" rows="4" placeholder="Dietary needs, medications, behavioral notes, anything we should know…" class="rounded-xl border border-[#e0d4bc] px-4 py-3 text-sm bg-white text-[#3D2B1F] placeholder:text-[#9C7B6C] resize-y"></textarea>
+          <div style="display:flex; flex-direction:column; gap:0.4rem;">
+            <label for="v1-notes" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Special Needs / Notes</label>
+            <textarea id="v1-notes" name="notes" rows="4" placeholder="Dietary needs, medications, behavioral notes, anything we should know…" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box; resize:vertical;"></textarea>
           </div>
-          <button type="submit" class="btn-terra text-base py-4 text-center font-bold rounded-xl hover:bg-[#a56540] transition-colors">
+          <button type="submit" class="btn-sage" style="width:100%; text-align:center; padding:1rem; font-size:1rem; font-weight:700; border:none; cursor:pointer;">
             Request Reservation
           </button>
         </form>
-        <div id="v1-booking-success" class="hidden text-center py-12">
-          <div class="text-6xl mb-4">🐾</div>
-          <h3 class="font-playfair text-2xl font-bold text-[#3D2B1F] mb-2">We'll be in touch!</h3>
-          <p class="text-[#5C4033]">Thanks! We'll contact you within 24 hours to confirm your reservation.</p>
+        <div id="v1-booking-success" style="display:none; text-align:center; padding:3rem 1rem;">
+          <div style="font-size:3.5rem; margin-bottom:1rem;">🐾</div>
+          <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.75rem; font-weight:700; color:#3D2B1F; margin-bottom:0.5rem;">We'll be in touch!</h3>
+          <p style="color:#5C4033; font-family:'Inter',system-ui,sans-serif;">Thanks! We'll contact you within 24 hours to confirm your reservation.</p>
         </div>
       </div>
+      <style>
+        @media (max-width: 580px) {
+          .v1-form-grid-2, .v1-form-grid-3 { grid-template-columns: 1fr !important; }
+        }
+      </style>
     </div>
   </section>
 
-  <!-- THE NEIGHBORHOOD -->
-  <section class="py-16 px-4" style="background:#FAF6EF;">
+  <!-- NEIGHBORHOOD -->
+  <section class="py-16 px-4" style="background:#F2EAD8;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-10">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Hayes Valley, SF</p>
-        <h2 class="font-playfair text-4xl font-bold text-[#3D2B1F]">A Dog's Favorite Neighborhood</h2>
-        <p class="text-[#9C7B6C] mt-3 max-w-lg mx-auto">Everything your pup needs is within a short walk of our front door.</p>
+        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Hayes Valley, SF</p>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2rem,3.5vw,2.75rem); font-weight:700; color:#3D2B1F; margin-bottom:0.5rem;">A Dog's Favorite Neighborhood</h2>
+        <p style="color:#9C7B6C; max-width:440px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Everything your pup needs is within a short walk of our front door.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
@@ -596,14 +544,14 @@ const schemaJson = JSON.stringify({
           { icon: '🛍️', name: 'Noe Valley Pet', desc: 'Premium food, toys & accessories', dist: '0.8 mi', type: 'Pet Store' },
           { icon: '☕', name: 'Sightglass Coffee', desc: 'Dog-friendly patio — bring yours!', dist: '0.3 mi', type: 'Café' },
         ].map((place) => (
-          <div class="bg-white rounded-xl p-5 shadow-sm flex flex-col gap-3 hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between">
-              <span class="text-3xl">{place.icon}</span>
-              <span class="text-xs font-semibold uppercase tracking-wide text-[#C17B50]">{place.type}</span>
+          <div style="background:#FAF6EF; border-radius:14px; padding:1.25rem; box-shadow:0 2px 8px rgba(61,43,31,0.07); display:flex; flex-direction:column; gap:0.5rem;" class="hover:shadow-md transition-shadow">
+            <div style="display:flex; align-items:center; justify-content:space-between;">
+              <span style="font-size:2rem;">{place.icon}</span>
+              <span style="font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:#C17B50; font-family:'Inter',system-ui,sans-serif;">{place.type}</span>
             </div>
-            <h3 class="font-playfair text-lg font-bold text-[#3D2B1F]">{place.name}</h3>
-            <p class="text-sm text-[#5C4033] leading-relaxed flex-grow">{place.desc}</p>
-            <p class="text-xs text-[#9C7B6C] font-semibold">{place.dist} from us</p>
+            <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.15rem; font-weight:700; color:#3D2B1F;">{place.name}</h3>
+            <p style="font-size:0.85rem; color:#5C4033; line-height:1.55; flex-grow:1; font-family:'Inter',system-ui,sans-serif;">{place.desc}</p>
+            <p style="font-size:0.75rem; color:#9C7B6C; font-weight:600; font-family:'Inter',system-ui,sans-serif;">{place.dist} from us</p>
           </div>
         ))}
       </div>
@@ -611,46 +559,46 @@ const schemaJson = JSON.stringify({
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-20 px-4" style="background:#FAF6EF;">
+  <section id="v1-contact" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Find Us</p>
-        <h2 class="font-playfair text-4xl font-bold text-[#3D2B1F] mb-4">Contact & Hours</h2>
+        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Find Us</p>
+        <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3rem); font-weight:700; color:#3D2B1F;">Contact & Hours</h2>
       </div>
       <div class="grid md:grid-cols-2 gap-10">
-        <div class="flex flex-col gap-6">
-          <div class="rounded-2xl p-6" style="background:#F2EAD8; border:1px solid #e0d4bc;">
-            <h3 class="font-playfair text-xl font-bold text-[#3D2B1F] mb-4">Hours of Operation</h3>
-            <table class="w-full text-sm text-[#5C4033]">
+        <div style="display:flex; flex-direction:column; gap:1.5rem;">
+          <div style="background:#F2EAD8; border-radius:14px; padding:1.5rem; border:1px solid #e0d4bc;">
+            <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.35rem; font-weight:700; color:#3D2B1F; margin-bottom:1rem;">Hours of Operation</h3>
+            <table style="width:100%; font-size:0.875rem; color:#5C4033; font-family:'Inter',system-ui,sans-serif;">
               <tbody>
-                <tr class="border-b border-[#e0d4bc]"><td class="py-2 font-semibold">Monday – Friday</td><td class="py-2 text-right">{business.hours.weekdays}</td></tr>
-                <tr class="border-b border-[#e0d4bc]"><td class="py-2 font-semibold">Saturday</td><td class="py-2 text-right">{business.hours.saturday}</td></tr>
-                <tr><td class="py-2 font-semibold">Sunday</td><td class="py-2 text-right">{business.hours.sunday}</td></tr>
+                <tr style="border-bottom:1px solid #e0d4bc;"><td style="padding:0.6rem 0; font-weight:600;">Monday – Friday</td><td style="padding:0.6rem 0; text-align:right;">{business.hours.weekdays}</td></tr>
+                <tr style="border-bottom:1px solid #e0d4bc;"><td style="padding:0.6rem 0; font-weight:600;">Saturday</td><td style="padding:0.6rem 0; text-align:right;">{business.hours.saturday}</td></tr>
+                <tr><td style="padding:0.6rem 0; font-weight:600;">Sunday</td><td style="padding:0.6rem 0; text-align:right;">{business.hours.sunday}</td></tr>
               </tbody>
             </table>
           </div>
-          <div class="rounded-2xl p-6 flex flex-col gap-4" style="background:#F2EAD8; border:1px solid #e0d4bc;">
-            <h3 class="font-playfair text-xl font-bold text-[#3D2B1F] mb-1">Get in Touch</h3>
-            <a href={`tel:${business.phone}`} class="flex items-center gap-3 text-[#5C4033] hover:text-[#C17B50] transition-colors text-sm">
-              <span class="text-xl">📞</span> {business.phone}
+          <div style="background:#F2EAD8; border-radius:14px; padding:1.5rem; border:1px solid #e0d4bc; display:flex; flex-direction:column; gap:1rem;">
+            <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.35rem; font-weight:700; color:#3D2B1F;">Get in Touch</h3>
+            <a href={`tel:${business.phone}`} style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#5C4033; text-decoration:none; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">
+              <span style="font-size:1.25rem;">📞</span> {business.phone}
             </a>
-            <a href={`mailto:${business.email}`} class="flex items-center gap-3 text-[#5C4033] hover:text-[#C17B50] transition-colors text-sm">
-              <span class="text-xl">✉️</span> {business.email}
+            <a href={`mailto:${business.email}`} style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#5C4033; text-decoration:none; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">
+              <span style="font-size:1.25rem;">✉️</span> {business.email}
             </a>
-            <p class="flex items-start gap-3 text-sm text-[#5C4033]">
-              <span class="text-xl">📍</span> {business.address}
+            <p style="display:flex; align-items:flex-start; gap:0.75rem; font-size:0.875rem; color:#5C4033; font-family:'Inter',system-ui,sans-serif; margin:0;">
+              <span style="font-size:1.25rem; flex-shrink:0;">📍</span> {business.address}
             </p>
-            <p class="flex items-center gap-3 text-sm text-[#9C7B6C]">
-              <span class="text-xl">🚨</span> Emergency: {business.emergency}
+            <p style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif; margin:0;">
+              <span style="font-size:1.25rem;">🚨</span> Emergency: {business.emergency}
             </p>
-            <p class="text-xs text-[#9C7B6C] mt-2">{business.license}</p>
+            <p style="font-size:0.72rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif; margin:0;">{business.license}</p>
           </div>
         </div>
-        <div class="rounded-2xl overflow-hidden shadow-sm" style="min-height:300px; background:#e0d4bc;">
+        <div style="border-radius:14px; overflow:hidden; box-shadow:0 2px 12px rgba(61,43,31,0.1); min-height:300px; background:#e0d4bc;">
           <iframe
             title={`Map showing location of ${business.name} in ${business.neighborhood}`}
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345532713!2d-122.43284848468192!3d37.77492927975804!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858092de23eeab%3A0x5dffa5e9e4b12c6b!2sHayes%20Valley%2C%20San%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
-            width="100%" height="100%" style="border:0; min-height:300px;"
+            width="100%" height="100%" style="border:0; min-height:300px; display:block;"
             allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
           </iframe>
         </div>
@@ -659,52 +607,54 @@ const schemaJson = JSON.stringify({
   </section>
 
   <!-- FOOTER -->
-  <footer style="background:#3D2B1F;" class="py-14 px-4 pb-16 md:pb-14">
+  <footer style="background:#3D2B1F; padding:3.5rem 1rem 5rem;" class="md:pb-14">
     <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-10">
       <div>
-        <div class="flex items-center gap-2 mb-4">
-          <span class="text-2xl">🐾</span>
-          <span class="font-playfair text-xl font-bold text-white">{business.name}</span>
+        <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem;">
+          <span style="font-size:1.5rem;">🐾</span>
+          <span style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.35rem; font-weight:700; color:#fff;">{business.name}</span>
         </div>
-        <p class="text-[#9C7B6C] text-sm leading-relaxed">{business.description}</p>
-        <p class="text-[#9C7B6C] text-xs mt-4">{business.instagram}</p>
+        <p style="color:#9C7B6C; font-size:0.875rem; line-height:1.65; font-family:'Inter',system-ui,sans-serif;">{business.description}</p>
+        <p style="color:#9C7B6C; font-size:0.8rem; margin-top:1rem; font-family:'Inter',system-ui,sans-serif;">{business.instagram}</p>
       </div>
       <div>
-        <h4 class="font-playfair text-base font-bold text-white mb-4">Quick Links</h4>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#services" class="text-[#9C7B6C] hover:text-[#C17B50] transition-colors">Services</a></li>
-          <li><a href="#pricing" class="text-[#9C7B6C] hover:text-[#C17B50] transition-colors">Pricing</a></li>
-          <li><a href="#gallery" class="text-[#9C7B6C] hover:text-[#C17B50] transition-colors">Gallery</a></li>
-          <li><a href="#team" class="text-[#9C7B6C] hover:text-[#C17B50] transition-colors">Our Team</a></li>
-          <li><a href="#booking" class="text-[#9C7B6C] hover:text-[#C17B50] transition-colors">Book Now</a></li>
+        <h4 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem;">Quick Links</h4>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+          <li><a href="#v1-services" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Services</a></li>
+          <li><a href="#v1-pricing" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Pricing</a></li>
+          <li><a href="#v1-gallery" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Gallery</a></li>
+          <li><a href="#v1-team" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Our Team</a></li>
+          <li><a href="#v1-booking" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Book Now</a></li>
         </ul>
       </div>
       <div>
-        <h4 class="font-playfair text-base font-bold text-white mb-4">Contact</h4>
-        <ul class="space-y-2 text-sm text-[#9C7B6C]">
+        <h4 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem;">Contact</h4>
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem; color:#9C7B6C; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;">
           <li>{business.address}</li>
-          <li><a href={`tel:${business.phone}`} class="hover:text-[#C17B50] transition-colors">{business.phone}</a></li>
-          <li><a href={`mailto:${business.email}`} class="hover:text-[#C17B50] transition-colors">{business.email}</a></li>
+          <li><a href={`tel:${business.phone}`} style="color:#9C7B6C; text-decoration:none;" class="hover:text-[#C17B50] transition-colors">{business.phone}</a></li>
+          <li><a href={`mailto:${business.email}`} style="color:#9C7B6C; text-decoration:none;" class="hover:text-[#C17B50] transition-colors">{business.email}</a></li>
         </ul>
-        <p class="text-xs text-[#5C4033] mt-6">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+        <p style="font-size:0.72rem; color:#5C4033; margin-top:1.5rem; font-family:'Inter',system-ui,sans-serif;">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <!-- MOBILE CTA BAR -->
   <div class="fixed bottom-0 left-0 right-0 z-50 flex md:hidden" style="height:56px;">
-    <a href="tel:+14158823047" class="flex-1 flex items-center justify-center gap-2 text-white font-bold text-sm" style="background:#3D2B1F;">
+    <a href="tel:+14158823047" style="flex:1; display:flex; align-items:center; justify-content:center; gap:0.5rem; background:#3D2B1F; color:#fff; font-weight:700; font-size:0.875rem; text-decoration:none; font-family:'Inter',system-ui,sans-serif;">
       <span>📞</span> (415) 882-3047
     </a>
-    <a href="#booking" class="flex-1 flex items-center justify-center gap-2 text-white font-bold text-sm" style="background:#C17B50;">
+    <a href="#v1-booking" style="flex:1; display:flex; align-items:center; justify-content:center; gap:0.5rem; background:#C17B50; color:#fff; font-weight:700; font-size:0.875rem; text-decoration:none; font-family:'Inter',system-ui,sans-serif;">
       Book Now
     </a>
   </div>
 
   <script>
+    // Date min
     const today = new Date().toISOString().split('T')[0];
     document.querySelectorAll('input[type="date"]').forEach((el) => (el as HTMLInputElement).setAttribute('min', today));
 
+    // Mobile menu
     const btn = document.getElementById('v1-menu-btn');
     const menu = document.getElementById('v1-mobile-menu');
     if (btn && menu) {
@@ -713,16 +663,18 @@ const schemaJson = JSON.stringify({
         link.addEventListener('click', () => menu.classList.add('hidden'));
       });
     }
+
+    // Booking form
     const form = document.getElementById('v1-booking-form') as HTMLFormElement | null;
-    const formWrap = document.getElementById('v1-booking-form-wrap');
     const success = document.getElementById('v1-booking-success');
-    if (form) {
+    if (form && success) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        if (form) form.classList.add('hidden');
-        if (success) success.classList.remove('hidden');
+        form.style.display = 'none';
+        success.style.display = 'block';
       });
     }
+
     // FAQ accordion
     document.querySelectorAll('.faq-trigger').forEach((trigger) => {
       trigger.addEventListener('click', () => {
@@ -731,7 +683,7 @@ const schemaJson = JSON.stringify({
         const answer = parent.querySelector('.faq-answer') as HTMLElement | null;
         const caret = trigger.querySelector('.faq-caret') as HTMLElement | null;
         const isOpen = trigger.classList.contains('faq-open');
-        // close all
+        // Close all
         document.querySelectorAll('.faq-trigger').forEach((t) => {
           t.classList.remove('faq-open');
           const p = t.parentElement;
@@ -746,7 +698,6 @@ const schemaJson = JSON.stringify({
           trigger.classList.add('faq-open');
           answer.style.maxHeight = '500px';
           caret.textContent = '−';
-          caret.style.transform = 'rotate(0deg)';
         }
       });
     });
