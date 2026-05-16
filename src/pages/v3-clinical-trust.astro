@@ -287,6 +287,55 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+  <!-- BEFORE & AFTER -->
+  <section class="py-16 px-4 bg-white">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-10 border-b border-[#E2E8F0] pb-6">
+        <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Results</p>
+        <h2 class="text-3xl font-bold text-[#0F172A]">Before & After</h2>
+        <p class="text-[#64748B] mt-2 max-w-lg">Every visit documented. Here's what fear-free, evidence-based grooming actually looks like.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-6">
+        {[
+          {
+            before: 'Tangled, matted coat — 8 months ungroomed. Dog refused any handling.',
+            after: 'Full dematting over two gentle sessions. Coat restored without shaving.',
+            breed: 'Golden Doodle · 4 yrs',
+            tag: 'Dematting',
+          },
+          {
+            before: 'Severe anxiety — past groomer required muzzle, dog couldn\'t be finished.',
+            after: 'Completed full groom using desensitization protocol. No muzzle needed.',
+            breed: 'Shih Tzu · 6 yrs',
+            tag: 'Anxiety Case',
+          },
+          {
+            before: 'Double coat blowout — 40% undercoat retained post-summer. Hot spots forming.',
+            after: 'Full deshed treatment. 2.5 lbs of undercoat removed. Hot spots resolved.',
+            breed: 'Siberian Husky · 3 yrs',
+            tag: 'Double Coat',
+          },
+        ].map((c) => (
+          <div class="border border-[#E2E8F0] rounded-md overflow-hidden">
+            <div class="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white" style="background:#0E7490;">{c.tag}</div>
+            <div class="p-5 flex flex-col gap-4">
+              <div>
+                <p class="text-[#94A3B8] text-xs font-semibold uppercase tracking-wider mb-1">Before</p>
+                <p class="text-sm text-[#334155] leading-relaxed">{c.before}</p>
+              </div>
+              <div class="h-px bg-[#E2E8F0]"></div>
+              <div>
+                <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-wider mb-1">After</p>
+                <p class="text-sm text-[#334155] leading-relaxed">{c.after}</p>
+              </div>
+              <p class="text-xs text-[#94A3B8] mt-1">{c.breed}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- HOW IT WORKS -->
   <section class="py-16 px-4 bg-white">
     <div class="max-w-5xl mx-auto">
