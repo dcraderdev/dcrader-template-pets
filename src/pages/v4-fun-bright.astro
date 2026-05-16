@@ -264,6 +264,42 @@ import { gallery } from '../data/v4/gallery';
     </div>
   </section>
 
+  <!-- A DAY AT SNIFF & SNUGGLE -->
+  <section class="py-16 px-4" style="background:#1E293B;">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-[#FCD34D] font-extrabold uppercase tracking-wider text-sm mb-2">A Typical Day 🌞</p>
+        <h2 class="font-fredoka text-5xl text-white mb-3">Life at Sniff &amp; Snuggle</h2>
+      </div>
+      <div class="relative">
+        <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-[#F97316]/30 hidden sm:block"></div>
+        <div class="flex flex-col gap-6">
+          {[
+            { time: '6:30 AM', emoji: '🚗', title: 'Drop-Off Opens', desc: 'Early drop-offs welcomed. We greet every dog by name at the door.' },
+            { time: '7:00 AM', emoji: '🌅', title: 'Morning Yard Time', desc: 'First big off-leash session. Dogs self-sort into play groups. Staff monitors energy levels.' },
+            { time: '10:00 AM', emoji: '📹', title: 'Webcam Check-In', desc: 'Live stream is running. Peek in anytime from our app — no login required.' },
+            { time: '12:00 PM', emoji: '😴', title: 'Midday Rest', desc: 'Structured rest in individual kennels. Calming music plays. Pups who need meds get them here.' },
+            { time: '2:00 PM', emoji: '🎾', title: 'Afternoon Play', desc: 'Second big yard session. Puzzle toys, agility tunnels, and structured games for high-energy dogs.' },
+            { time: '4:30 PM', emoji: '🧴', title: 'Brush & Freshen Up', desc: 'Every dog is brushed and wiped down before pick-up. Spritz of pet-safe deodorizer included.' },
+            { time: '7:30 PM', emoji: '🏠', title: 'Pick-Up Closes', desc: 'Dogs staying overnight move to their cozy kennels. Lights out at 9. Zzzzz.' },
+          ].map((step) => (
+            <div class="flex gap-5 items-start sm:pl-16 relative">
+              <div class="absolute left-4 sm:left-4 w-4 h-4 rounded-full mt-1 hidden sm:flex items-center justify-center" style="background:#F97316; top:6px;"></div>
+              <div class="text-2xl flex-shrink-0">{step.emoji}</div>
+              <div>
+                <div class="flex items-center gap-3 mb-1">
+                  <span class="font-fredoka text-[#F97316] text-lg">{step.time}</span>
+                  <span class="font-fredoka text-white text-lg">{step.title}</span>
+                </div>
+                <p class="text-white/60 text-sm leading-relaxed">{step.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TEAM -->
   <section id="team" class="py-20 px-4" style="background:#FFFBF7;">
     <div class="max-w-5xl mx-auto">

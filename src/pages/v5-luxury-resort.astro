@@ -102,6 +102,18 @@ import { gallery } from '../data/v5/gallery';
     </div>
   </section>
 
+  <!-- PRESS STRIP -->
+  <section class="py-10 px-4 bg-white border-b border-[#E2E8F0]">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-center font-montserrat text-xs tracking-widest uppercase text-[#94A3B8] mb-8">As Featured In</p>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-14">
+        {['Pet Business Magazine', 'Modern Dog', 'Robb Report', 'Beverly Hills Courier', 'Dog Fancy'].map((pub) => (
+          <span class="font-cormorant text-xl md:text-2xl italic text-[#0F172A]/25 hover:text-[#0F172A]/50 transition-colors tracking-wide select-none">{pub}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- SERVICES -->
   <section id="services" class="py-20 px-4" style="background:#F8F5F0;">
     <div class="max-w-6xl mx-auto">
