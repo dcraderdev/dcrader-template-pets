@@ -273,6 +273,43 @@ import { gallery } from '../data/v1/gallery';
     </div>
   </section>
 
+  <!-- WHAT TO BRING -->
+  <section class="py-16 px-4" style="background:#FAF6EF;">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="text-[#C17B50] font-semibold tracking-widest uppercase text-sm mb-2">Packing Guide</p>
+        <h2 class="font-playfair text-4xl md:text-5xl font-bold text-[#3D2B1F] mb-3">What to Bring</h2>
+        <p class="text-[#5C4033] max-w-md mx-auto">Keep it simple. We handle everything else.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="rounded-2xl p-6 flex flex-col gap-3" style="background:#F2EAD8; border:1px solid #e0d4bc;">
+          <h3 class="font-playfair text-lg font-bold text-[#3D2B1F]">✅ Please Bring</h3>
+          <ul class="space-y-2 text-sm text-[#5C4033]">
+            {['Vaccination records (first visit)', 'Enough food for the stay', 'Their favorite blanket or toy', 'Written feeding instructions', 'Emergency vet contact info'].map((item) => (
+              <li class="flex items-start gap-2"><span class="text-[#6B8F71] font-bold mt-0.5">·</span> {item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl p-6 flex flex-col gap-3" style="background:#F2EAD8; border:1px solid #e0d4bc;">
+          <h3 class="font-playfair text-lg font-bold text-[#3D2B1F]">💊 Medications</h3>
+          <ul class="space-y-2 text-sm text-[#5C4033]">
+            {['Label all meds with dog\'s name', 'Include written instructions', 'Note any known allergies', 'Bring the full dosage needed', 'Mention supplements too'].map((item) => (
+              <li class="flex items-start gap-2"><span class="text-[#6B8F71] font-bold mt-0.5">·</span> {item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="rounded-2xl p-6 flex flex-col gap-3" style="background:#F2EAD8; border:1px solid #e0d4bc;">
+          <h3 class="font-playfair text-lg font-bold text-[#3D2B1F]">🏡 We Provide</h3>
+          <ul class="space-y-2 text-sm text-[#5C4033]">
+            {['Orthopedic dog beds', 'Fresh filtered water', 'Group & private play time', 'Photo updates twice daily', 'Emergency vet access'].map((item) => (
+              <li class="flex items-start gap-2"><span class="text-[#C17B50] font-bold mt-0.5">·</span> {item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- TEAM -->
   <section id="team" class="py-20 px-4" style="background:#F2EAD8;">
     <div class="max-w-5xl mx-auto">
