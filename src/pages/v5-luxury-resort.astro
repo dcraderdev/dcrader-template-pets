@@ -19,17 +19,17 @@ const schemaJson = JSON.stringify({
 });
 
 const serviceImages = [
-  'https://images.unsplash.com/photo-1561037404-61cd46aa615b?w=800&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=800&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1560743641-3914f2c45636?w=800&h=600&fit=crop',
+  '/images/photo-1561037404-61cd46aa615b-800.webp',
+  '/images/photo-1587300003388-59208cc962cb-800.webp',
+  '/images/photo-1510771463146-e89e6e86560e-800.webp',
+  '/images/photo-1560743641-3914f2c45636-800.webp',
 ];
 ---
 <BaseLayout
   title={`${business.name} — ${business.tagline}`}
   description={business.description}
-  ogImage="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1200&h=630&fit=crop&q=80"
-  heroImage="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1600&h=900&fit=crop&q=80"
+  ogImage="/images/photo-1518717758536-85ae29035b6d-1600.webp"
+  heroImage="/images/photo-1518717758536-85ae29035b6d-1600.webp"
   schemaJson={schemaJson}
 >
 
@@ -206,7 +206,7 @@ const serviceImages = [
   ══════════════════════════════════════════ -->
   <section id="hero" class="relative flex items-center justify-center text-center overflow-hidden" style="min-height:100vh;">
     <!-- Background image -->
-    <div class="hero-fixed" style="position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;background-attachment:fixed;"></div>
+    <div class="hero-fixed" style="position:absolute;inset:0;background-image:url('/images/photo-1518717758536-85ae29035b6d-1600.webp');background-size:cover;background-position:center;background-attachment:fixed;"></div>
     <!-- Dark overlay -->
     <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,23,42,0.58) 0%, rgba(15,23,42,0.78) 100%);"></div>
 
@@ -347,7 +347,7 @@ const serviceImages = [
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-stretch">
       <div style="min-height:440px; overflow:hidden;">
         <img
-          src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=900&h=600&fit=crop&q=80"
+          src="/images/photo-1587300003388-59208cc962cb-800.webp"
           alt="A standard of care your pet deserves"
           style="width:100%; height:100%; object-fit:cover; min-height:440px; display:block;"
         />
@@ -528,56 +528,18 @@ const serviceImages = [
       <div class="gold-rule mt-5" style="max-width:120px;"></div>
     </div>
 
-    <!-- Asymmetric grid: first image large, then 3-up -->
-    <div style="padding:0 2px 2px;">
-      <!-- Hero image (full width) -->
-      {gallery[0] && (
-        <div class="gallery-item" style="aspect-ratio:21/8; margin-bottom:2px;">
-          <img src={gallery[0].url.replace('w=600&h=400','w=1400&h=500')} alt={gallery[0].alt} loading="lazy"
-               style="width:100%; height:100%; object-fit:cover; display:block;" />
-          <div class="gallery-caption">
-            <p class="font-montserrat tracking-widest uppercase" style="color:#D4AF37; font-size:0.6rem; letter-spacing:0.18em;">{gallery[0].caption}</p>
-          </div>
-        </div>
-      )}
-      <!-- 3-column grid -->
-      <div class="grid grid-cols-3" style="gap:2px;">
-        {gallery.slice(1, 4).map((img) => (
-          <div class="gallery-item" style="aspect-ratio:1;">
-            <img src={img.url} alt={img.alt} loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" />
+    <!-- Uniform editorial grid -->
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+        {gallery.map((img) => (
+          <div class="gallery-item" style="aspect-ratio:4/3;">
+            <img src={img.url} alt={img.alt} loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;" />
             <div class="gallery-caption">
               <p class="font-montserrat tracking-widest uppercase" style="color:#D4AF37; font-size:0.6rem; letter-spacing:0.18em;">{img.caption}</p>
             </div>
           </div>
         ))}
       </div>
-      <!-- 2-up row -->
-      {gallery.length > 4 && (
-        <div class="grid grid-cols-2" style="gap:2px; margin-top:2px;">
-          {gallery.slice(4, 6).map((img) => (
-            <div class="gallery-item" style="aspect-ratio:16/9;">
-              <img src={img.url.replace('w=600&h=400','w=900&h=500').replace('w=600&h=500','w=900&h=500').replace('w=600&h=600','w=900&h=500')} alt={img.alt} loading="lazy"
-                   style="width:100%; height:100%; object-fit:cover; display:block;" />
-              <div class="gallery-caption">
-                <p class="font-montserrat tracking-widest uppercase" style="color:#D4AF37; font-size:0.6rem; letter-spacing:0.18em;">{img.caption}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
-      <!-- Final 2-up row (remaining images) -->
-      {gallery.length > 6 && (
-        <div class="grid grid-cols-2" style="gap:2px; margin-top:2px;">
-          {gallery.slice(6).map((img) => (
-            <div class="gallery-item" style="aspect-ratio:16/9;">
-              <img src={img.url} alt={img.alt} loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;" />
-              <div class="gallery-caption">
-                <p class="font-montserrat tracking-widest uppercase" style="color:#D4AF37; font-size:0.6rem; letter-spacing:0.18em;">{img.caption}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
     <div style="height:4rem;"></div>
   </section>
@@ -674,7 +636,7 @@ const serviceImages = [
       </div>
       <div class="h-64 md:h-auto overflow-hidden order-1 md:order-2" style="min-height:360px; border-left:1px solid rgba(212,175,55,0.15);">
         <img
-          src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?w=800&h=600&fit=crop&q=80"
+          src="/images/photo-1518717758536-85ae29035b6d-800.webp"
           alt="Private tour of The Hollow Pet Hotel and Spa, Beverly Hills"
           style="width:100%; height:100%; object-fit:cover; display:block; opacity:0.65;"
           loading="lazy"

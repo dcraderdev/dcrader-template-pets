@@ -21,7 +21,8 @@ const schemaJson = JSON.stringify({
 <BaseLayout
   title={`${business.name} — ${business.tagline}`}
   description={business.description}
-  ogImage="https://images.unsplash.com/photo-1560743641-3914f2c45636?w=1200&h=630&fit=crop&q=80"
+  ogImage="/images/photo-1560743641-3914f2c45636-1600.webp"
+  heroImage="/images/photo-1560743641-3914f2c45636-800.webp"
   schemaJson={schemaJson}
 >
 
@@ -114,9 +115,11 @@ const schemaJson = JSON.stringify({
       <!-- Right 2/5 -->
       <div class="md:col-span-2 relative overflow-hidden min-h-[400px] md:min-h-[500px]">
         <img
-          src="https://images.unsplash.com/photo-1560743641-3914f2c45636?w=600&h=700&fit=crop&q=80"
+          src="/images/photo-1560743641-3914f2c45636-800.webp"
           alt="Professional therapeutic grooming at Calm Coat Veterinary Grooming"
           class="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          decoding="async"
           fetchpriority="high"
         />
         <!-- Overlaid stat card -->
@@ -335,10 +338,10 @@ const schemaJson = JSON.stringify({
         <h2 class="text-3xl font-bold text-[#0F172A]">Studio Gallery</h2>
         <p class="text-[#64748B] mt-2 text-sm">Our studio is designed to clinical standards: single-patient-at-a-time throughput, non-slip surfaces, temperature-controlled, no cage drying.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {gallery.map((img) => (
           <div class="overflow-hidden bg-[#F8FAFC]" style="aspect-ratio: 4/3;">
-            <img src={img.url} alt={img.alt} loading="lazy" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500" />
+            <img src={img.url} alt={img.alt} loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500" />
           </div>
         ))}
       </div>

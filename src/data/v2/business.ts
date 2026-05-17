@@ -23,21 +23,21 @@ export const team = [
     role: 'Founder & Lead Adventure Guide',
     bio: 'Former wilderness guide and USFS volunteer. Zach has hiked over 400 Colorado trails and founded Trail Tails to give working dogs the exercise their biology demands—not just a walk around the block.',
     certifications: ['Wilderness First Responder', 'CPDT-KA', 'Leave No Trace Trainer'],
-    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&q=80',
+    photo: '/images/photo-1500648767791-00dcc994a43e-400.webp',
   },
   {
     name: 'Emma Torres',
     role: 'Senior Trainer & Behavior Specialist',
     bio: 'CCPDT certified with 8 years in sport dog training. Emma specializes in high-drive breeds—shepherds, huskies, labs—and uses trail environments to channel prey drive into healthy focus.',
     certifications: ['CCPDT-KA Certified', 'Reactive Dog Specialist', 'AKC CGC Evaluator'],
-    photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&q=80',
+    photo: '/images/photo-1580489944761-15a19d654956-400.webp',
   },
   {
     name: 'Leo Mackenzie',
     role: 'Hike Lead & Overnight Handler',
     bio: 'Search and rescue volunteer and avid trail runner. Leo handles our overnight boarding with a firm belief that tired dogs are happy dogs—his groups return exhausted in the best way.',
     certifications: ['Pet First Aid & CPR', 'Colorado Off-Leash Certified'],
-    photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80',
+    photo: '/images/photo-1507003211169-0a1dd7228f2d-400.webp',
   },
 ];
 
