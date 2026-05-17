@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Accessibility Statement"
+  description="Our commitment to digital accessibility and WCAG 2.1 Level AA conformance."
+>
+  <style>
+    .a11y-wrap {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 6rem;
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
+      color: #1a1a1a;
+      line-height: 1.7;
+      background: #fff;
+    }
+    .a11y-wrap h1 {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      color: #0f172a;
+    }
+    .a11y-wrap h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 2.25rem 0 0.6rem;
+      color: #0f172a;
+    }
+    .a11y-wrap p { margin: 0 0 1rem; font-size: 1.0625rem; color: #1f2937; }
+    .a11y-wrap ul { margin: 0 0 1rem 1.25rem; padding: 0; }
+    .a11y-wrap li { margin: 0.25rem 0; font-size: 1.0625rem; color: #1f2937; }
+    .a11y-wrap a { color: #1d4ed8; text-decoration: underline; }
+    .a11y-wrap a:hover { color: #1e40af; }
+    .a11y-meta {
+      color: #475569;
+      font-size: 0.9375rem;
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    .a11y-back {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.625rem 1.25rem;
+      background: #0f172a;
+      color: #fff !important;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      min-height: 44px;
+      line-height: 1.5;
+    }
+    .a11y-back:hover { background: #1e293b; }
+  </style>
+  <div class="a11y-wrap">
+    <h1>Accessibility Statement</h1>
+    <p>
+      <strong>Template:</strong> dcrader-template-pets
+    </p>
+    <p>
+      This template is committed to ensuring digital accessibility for people of all
+      abilities. We strive to conform to <strong>WCAG 2.1 Level AA</strong> standards
+      and continuously improve the user experience for everyone. We design and build
+      to be perceivable, operable, understandable, and robust for visitors using
+      assistive technology, including screen readers, keyboard navigation, screen
+      magnification, and voice control.
+    </p>
+
+    <h2>Our commitment</h2>
+    <p>
+      We work to meet WCAG 2.1 Level AA across every page of this template,
+      including descriptive alternative text, sufficient color contrast, visible
+      focus indicators, labelled form fields, keyboard-operable navigation, and
+      reduced-motion support.
+    </p>
+
+    <h2>Feedback &amp; contact</h2>
+    <p>
+      If you experience any difficulty accessing this site, please contact us at
+      <a href="mailto:accessibility@dcrader.dev">accessibility@dcrader.dev</a>.
+      We aim to respond to accessibility feedback within 5 business days.
+    </p>
+
+    <h2>Measures taken</h2>
+    <ul>
+      <li>Descriptive alternative text for all meaningful images.</li>
+      <li>Color contrast of at least 4.5:1 for body text and 3:1 for large text and UI components.</li>
+      <li>Visible focus indicators on every interactive element.</li>
+      <li>Labelled form fields and helpful error messages.</li>
+      <li>Skip-to-content link and logical heading structure on every page.</li>
+      <li>Touch targets sized for finger and assistive-pointer use.</li>
+      <li>Reduced-motion support for visitors who prefer minimal animation.</li>
+      <li>Keyboard-operable navigation, menus, and dialogs.</li>
+    </ul>
+
+    <p class="a11y-meta">
+      Last updated: <strong>2026-05-17</strong>
+    </p>
+
+    <a href="/" class="a11y-back">Back to home</a>
+  </div>
+</BaseLayout>

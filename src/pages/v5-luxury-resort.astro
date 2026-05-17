@@ -42,6 +42,9 @@ const serviceImages = [
     /* ── Color helpers ── */
     .gold { color: #D4AF37; }
     .bg-navy { background: #0F172A; }
+    /* Gold on light backgrounds needs a darker shade to meet WCAG AA (4.5:1).
+       Mark eyebrows/labels with `.gold-on-light` to apply the AA-safe shade. */
+    .gold-on-light { color: #7E5E0F !important; }
 
     /* ── Buttons ── */
     .btn-gold-outline {
@@ -134,13 +137,13 @@ const serviceImages = [
     .press-name {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
-      color: rgba(15,23,42,0.22);
+      color: #475569;
       font-size: 1.35rem;
       letter-spacing: 0.03em;
       transition: color 0.3s;
       user-select: none;
     }
-    .press-name:hover { color: rgba(15,23,42,0.5); }
+    .press-name:hover { color: #0F172A; }
 
     /* ── Mobile: fix fixed nav attachment ── */
     @media (max-width: 768px) {
@@ -158,7 +161,7 @@ const serviceImages = [
     <button
       onclick="document.getElementById('v5-banner').remove()"
       aria-label="Dismiss"
-      style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); color:rgba(255,255,255,0.3); font-size:1.1rem; font-weight:300; line-height:1; background:none; border:none; cursor:pointer; padding:0.25rem;"
+      style="position:absolute; right:1rem; top:50%; transform:translateY(-50%); color:rgba(255,255,255,0.75); font-size:1.1rem; font-weight:300; line-height:1; background:none; border:none; cursor:pointer; padding:0.25rem;"
     >×</button>
   </div>
 
@@ -178,7 +181,7 @@ const serviceImages = [
       <!-- Center logo (absolute center) -->
       <div class="absolute left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none select-none">
         <span class="font-cormorant font-semibold tracking-widest" style="color:#D4AF37; font-size:1.15rem; letter-spacing:0.22em;">THE HOLLOW</span>
-        <span class="font-montserrat tracking-widest uppercase" style="color:rgba(255,255,255,0.28); font-size:0.6rem; letter-spacing:0.18em;">Pet Hotel &amp; Spa</span>
+        <span class="font-montserrat tracking-widest uppercase" style="color:rgba(255,255,255,0.75); font-size:0.6rem; letter-spacing:0.18em;">Pet Hotel &amp; Spa</span>
       </div>
 
       <!-- Right links -->
@@ -213,7 +216,7 @@ const serviceImages = [
     <!-- Content -->
     <div class="relative z-10 max-w-4xl mx-auto px-4 py-24">
       <!-- Top label -->
-      <p class="font-montserrat tracking-widest uppercase mb-8" style="color:rgba(255,255,255,0.38); font-size:0.68rem; letter-spacing:0.2em;">
+      <p class="font-montserrat tracking-widest uppercase mb-8" style="color:rgba(255,255,255,0.75); font-size:0.68rem; letter-spacing:0.2em;">
         Est. {business.founded} &nbsp;·&nbsp; Beverly Hills &nbsp;·&nbsp; By Appointment
       </p>
       <!-- Gold rule -->
@@ -225,7 +228,7 @@ const serviceImages = [
       <!-- Gold rule -->
       <div class="gold-rule mt-8 mb-8" style="max-width:180px;"></div>
       <!-- Subtitle -->
-      <p class="font-montserrat tracking-widest uppercase mb-12" style="color:rgba(255,255,255,0.38); font-size:0.68rem; letter-spacing:0.2em;">
+      <p class="font-montserrat tracking-widest uppercase mb-12" style="color:rgba(255,255,255,0.75); font-size:0.68rem; letter-spacing:0.2em;">
         {business.phone} &nbsp;·&nbsp; Reservations Required
       </p>
       <!-- CTA -->
@@ -251,7 +254,7 @@ const serviceImages = [
   ══════════════════════════════════════════ -->
   <section class="py-12 px-4 bg-white border-b border-[#E2E8F0]">
     <div class="max-w-6xl mx-auto">
-      <p class="text-center font-montserrat tracking-widest uppercase text-[#94A3B8] mb-8" style="font-size:0.65rem; letter-spacing:0.2em;">As Featured In</p>
+      <p class="text-center font-montserrat tracking-widest uppercase mb-8" style="color:#475569; font-size:0.65rem; letter-spacing:0.2em;">As Featured In</p>
       <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
         {['Pet Business Magazine', 'Modern Dog', 'Robb Report', 'Beverly Hills Courier', 'Dog Fancy'].map((pub) => (
           <span class="press-name">{pub}</span>
@@ -266,7 +269,7 @@ const serviceImages = [
   <section id="services" style="background:#F8F5F0;">
     <!-- Section header -->
     <div class="text-center pt-20 pb-0 px-4">
-      <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">Our Offerings</p>
+      <p class="font-montserrat tracking-widest uppercase mb-3 gold-on-light" style="font-size:0.68rem; letter-spacing:0.2em;">Our Offerings</p>
       <h2 class="font-cormorant font-light italic text-[#0F172A]" style="font-size:clamp(2.5rem,5vw,3.5rem);">The Services</h2>
       <div class="gold-rule mt-5 mb-0" style="max-width:120px;"></div>
     </div>
@@ -293,7 +296,7 @@ const serviceImages = [
           class="flex flex-col justify-center px-10 md:px-14 py-16 bg-[#F8F5F0]"
           style={i % 2 !== 0 ? 'order:1;' : 'order:2;'}
         >
-          <p class="font-montserrat tracking-widest uppercase mb-4" style="color:#D4AF37; font-size:0.65rem; letter-spacing:0.2em;">{s.icon} &nbsp;Service</p>
+          <p class="font-montserrat tracking-widest uppercase mb-4 gold-on-light" style="font-size:0.65rem; letter-spacing:0.2em;">{s.icon} &nbsp;Service</p>
           <div class="gold-rule-left mb-6" style="width:48px; opacity:0.5;"></div>
           <h3 class="font-cormorant font-light italic text-[#0F172A] mb-4" style="font-size:2.25rem;">{s.name}</h3>
           <p class="font-montserrat text-sm text-[#334155] leading-relaxed mb-7" style="font-weight:300;">{s.description}</p>
@@ -305,8 +308,8 @@ const serviceImages = [
             ))}
           </ul>
           <div class="flex items-center gap-6">
-            <p class="font-montserrat tracking-widest uppercase" style="color:#D4AF37; font-size:0.65rem; letter-spacing:0.18em;">{s.price}</p>
-            <a href="#booking" class="font-montserrat tracking-widest uppercase text-[#0F172A]/50 hover:text-[#D4AF37] transition-colors" style="font-size:0.65rem; letter-spacing:0.18em;">Request Information →</a>
+            <p class="font-montserrat tracking-widest uppercase gold-on-light" style="font-size:0.65rem; letter-spacing:0.18em;">{s.price}</p>
+            <a href="#booking" class="font-montserrat tracking-widest uppercase text-[#334155] hover:text-[#7E5E0F] transition-colors" style="font-size:0.65rem; letter-spacing:0.18em;">Request Information →</a>
           </div>
         </div>
       </div>
@@ -322,7 +325,7 @@ const serviceImages = [
         <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.65rem; letter-spacing:0.2em;">Our Standards</p>
         <h2 class="font-cormorant font-light italic text-white mb-2" style="font-size:2.25rem;">Health &amp; Requirements</h2>
         <div class="gold-rule mb-8" style="max-width:80px; margin-left:0; background:linear-gradient(90deg,#D4AF37,transparent);"></div>
-        <p class="font-montserrat text-white/40 mb-8" style="font-size:0.72rem; letter-spacing:0.05em;">The well-being of every guest in our care demands the highest standards of health compliance.</p>
+        <p class="font-montserrat text-white/75 mb-8" style="font-size:0.72rem; letter-spacing:0.05em;">The well-being of every guest in our care demands the highest standards of health compliance.</p>
         <div class="grid sm:grid-cols-2 gap-8">
           {[
             { title: 'Vaccination Requirements', body: 'Current Rabies, Bordetella (within 6 months), and DHPP/DA2PP are mandatory for all guests. Records are verified by our veterinary staff prior to arrival.' },
@@ -372,10 +375,10 @@ const serviceImages = [
   <section id="pricing" class="py-24 px-4" style="background:#F8F5F0;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
-        <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">Investment in Excellence</p>
+        <p class="font-montserrat tracking-widest uppercase mb-3 gold-on-light" style="font-size:0.68rem; letter-spacing:0.2em;">Investment in Excellence</p>
         <h2 class="font-cormorant font-light italic text-[#0F172A]" style="font-size:clamp(2.5rem,5vw,3.5rem);">Suite Packages</h2>
         <div class="gold-rule mt-5 mb-6" style="max-width:120px;"></div>
-        <p class="font-montserrat text-[#94A3B8] max-w-md mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Curated stays for discerning pets and their equally discerning owners.</p>
+        <p class="font-montserrat text-[#5B6B82] max-w-md mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Curated stays for discerning pets and their equally discerning owners.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6 mb-10">
@@ -391,12 +394,12 @@ const serviceImages = [
             )}
             <div class="mb-4">
               <h3 class="font-cormorant italic mb-1" style={`font-size:1.6rem; color:${pkg.featured ? '#D4AF37' : '#0F172A'};`}>{pkg.name}</h3>
-              <p class="font-montserrat tracking-widest uppercase" style={`font-size:0.62rem; letter-spacing:0.16em; color:${pkg.featured ? 'rgba(255,255,255,0.35)' : '#94A3B8'};`}>{pkg.period}</p>
+              <p class="font-montserrat tracking-widest uppercase" style={`font-size:0.62rem; letter-spacing:0.16em; color:${pkg.featured ? 'rgba(255,255,255,0.75)' : '#5B6B82'};`}>{pkg.period}</p>
             </div>
             <div class="font-cormorant mb-2" style={`font-size:3rem; line-height:1; color:${pkg.featured ? '#D4AF37' : '#0F172A'};`}>
               from {pkg.price}
             </div>
-            <p class="font-montserrat text-sm mb-5 font-light" style={`color:${pkg.featured ? 'rgba(255,255,255,0.5)' : '#334155'};`}>{pkg.description}</p>
+            <p class="font-montserrat text-sm mb-5 font-light" style={`color:${pkg.featured ? 'rgba(255,255,255,0.75)' : '#334155'};`}>{pkg.description}</p>
             <ul class="space-y-2 flex-grow mb-8">
               {pkg.features.map((f) => (
                 <li class="flex items-start gap-2 font-montserrat text-sm font-light" style={`color:${pkg.featured ? 'rgba(255,255,255,0.65)' : '#334155'};`}>
@@ -410,7 +413,7 @@ const serviceImages = [
           </div>
         ))}
       </div>
-      <p class="text-center font-montserrat text-[#94A3B8]" style="font-size:0.65rem; letter-spacing:0.06em;">
+      <p class="text-center font-montserrat text-[#5B6B82]" style="font-size:0.65rem; letter-spacing:0.06em;">
         All rates subject to seasonal availability. Please contact us to discuss your pet's specific needs.
       </p>
     </div>
@@ -422,7 +425,7 @@ const serviceImages = [
   <section class="py-20 px-4 bg-white">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
-        <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">The Process</p>
+        <p class="font-montserrat tracking-widest uppercase mb-3 gold-on-light" style="font-size:0.68rem; letter-spacing:0.2em;">The Process</p>
         <h2 class="font-cormorant font-light italic text-[#0F172A]" style="font-size:clamp(2.5rem,5vw,3.5rem);">How It Works</h2>
         <div class="gold-rule mt-5" style="max-width:120px;"></div>
       </div>
@@ -451,10 +454,10 @@ const serviceImages = [
   <section class="py-20 px-4" style="background:#F8F5F0;">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-16">
-        <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">Exclusive Access</p>
+        <p class="font-montserrat tracking-widest uppercase mb-3 gold-on-light" style="font-size:0.68rem; letter-spacing:0.2em;">Exclusive Access</p>
         <h2 class="font-cormorant font-light italic text-[#0F172A]" style="font-size:clamp(2.5rem,5vw,3.5rem);">Concierge &amp; Partner Services</h2>
         <div class="gold-rule mt-5 mb-5" style="max-width:120px;"></div>
-        <p class="font-montserrat text-[#94A3B8] max-w-lg mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Available to all Hollow guests. Our concierge team handles every arrangement so you don't have to.</p>
+        <p class="font-montserrat text-[#5B6B82] max-w-lg mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Available to all Hollow guests. Our concierge team handles every arrangement so you don't have to.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
@@ -468,11 +471,11 @@ const serviceImages = [
           <div class="bg-white p-8 flex flex-col gap-4 hover:shadow-lg transition-shadow" style="border-top:1px solid rgba(212,175,55,0.4);">
             <div class="flex items-start justify-between gap-3">
               <span class="text-2xl">{p.icon}</span>
-              <span class="font-montserrat tracking-widest uppercase" style="color:#D4AF37; font-size:0.6rem; letter-spacing:0.16em;">{p.tag}</span>
+              <span class="font-montserrat tracking-widest uppercase" style="color:#7E5E0F; font-size:0.6rem; letter-spacing:0.16em;">{p.tag}</span>
             </div>
             <h3 class="font-cormorant italic text-[#0F172A]" style="font-size:1.4rem;">{p.name}</h3>
             <p class="font-montserrat text-sm text-[#334155] leading-relaxed font-light flex-grow">{p.desc}</p>
-            <a href="#booking" class="font-montserrat tracking-widest uppercase transition-colors" style="color:#D4AF37; font-size:0.62rem; letter-spacing:0.16em;">
+            <a href="#booking" class="font-montserrat tracking-widest uppercase transition-colors underline" style="color:#7E5E0F; font-size:0.62rem; letter-spacing:0.16em;">
               Arrange via concierge →
             </a>
           </div>
@@ -487,10 +490,10 @@ const serviceImages = [
   <section class="py-20 px-4 bg-white">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-16">
-        <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">The Canine Kitchen</p>
+        <p class="font-montserrat tracking-widest uppercase mb-3 gold-on-light" style="font-size:0.68rem; letter-spacing:0.2em;">The Canine Kitchen</p>
         <h2 class="font-cormorant font-light italic text-[#0F172A]" style="font-size:clamp(2.5rem,5vw,3.5rem);">This Week's Menu</h2>
         <div class="gold-rule mt-5 mb-5" style="max-width:120px;"></div>
-        <p class="font-montserrat text-[#94A3B8] max-w-lg mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Prepared fresh daily by our Executive Pet Chef. All proteins are air-chilled, hormone-free, and sourced from California farms.</p>
+        <p class="font-montserrat text-[#5B6B82] max-w-lg mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Prepared fresh daily by our Executive Pet Chef. All proteins are air-chilled, hormone-free, and sourced from California farms.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-px bg-[#E2E8F0]" style="border:1px solid #E2E8F0;">
         {[
@@ -504,14 +507,14 @@ const serviceImages = [
           <div class="bg-white p-7 flex items-start gap-5">
             <div class="text-2xl flex-shrink-0 mt-0.5">{item.icon}</div>
             <div>
-              <p class="font-montserrat tracking-widest uppercase mb-1" style="color:#D4AF37; font-size:0.62rem; letter-spacing:0.18em;">{item.day}</p>
+              <p class="font-montserrat tracking-widest uppercase mb-1" style="color:#7E5E0F; font-size:0.62rem; letter-spacing:0.18em;">{item.day}</p>
               <h3 class="font-cormorant italic text-[#0F172A] mb-1" style="font-size:1.2rem;" set:html={item.meal}></h3>
-              <p class="font-montserrat text-[#94A3B8] font-light leading-relaxed" style="font-size:0.72rem;" set:html={item.sides}></p>
+              <p class="font-montserrat text-[#5B6B82] font-light leading-relaxed" style="font-size:0.72rem;" set:html={item.sides}></p>
             </div>
           </div>
         ))}
       </div>
-      <p class="text-center font-montserrat text-[#94A3B8] mt-5" style="font-size:0.65rem; letter-spacing:0.04em;">
+      <p class="text-center font-montserrat text-[#5B6B82] mt-5" style="font-size:0.65rem; letter-spacing:0.04em;">
         Meals adjusted for dietary restrictions, allergies, and veterinary recommendations · Portions calculated by weight
       </p>
     </div>
@@ -523,7 +526,7 @@ const serviceImages = [
   <section id="gallery" style="background:#0F172A; padding:0;">
     <!-- Section header -->
     <div class="text-center pt-20 pb-12 px-4">
-      <p class="font-montserrat tracking-widest uppercase mb-3" style="color:rgba(212,175,55,0.6); font-size:0.68rem; letter-spacing:0.2em;">Our Guests</p>
+      <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">Our Guests</p>
       <h2 class="font-cormorant font-light italic text-white" style="font-size:clamp(2.5rem,5vw,3.5rem);">The Gallery</h2>
       <div class="gold-rule mt-5" style="max-width:120px;"></div>
     </div>
@@ -549,7 +552,7 @@ const serviceImages = [
   ══════════════════════════════════════════ -->
   <section id="team" style="background:#0F172A; padding:5rem 0 0;">
     <div class="text-center pb-12 px-4">
-      <p class="font-montserrat tracking-widest uppercase mb-3" style="color:rgba(212,175,55,0.6); font-size:0.68rem; letter-spacing:0.2em;">Our Staff</p>
+      <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">Our Staff</p>
       <h2 class="font-cormorant font-light italic text-white" style="font-size:clamp(2.5rem,5vw,3.5rem);">The Team</h2>
       <div class="gold-rule mt-5" style="max-width:120px;"></div>
     </div>
@@ -582,7 +585,7 @@ const serviceImages = [
           <p class="font-montserrat tracking-widest uppercase" style="color:#D4AF37; font-size:0.6rem; letter-spacing:0.18em;">{member.role}</p>
           <ul class="space-y-1 mt-1">
             {member.certifications.map((cert) => (
-              <li class="font-montserrat font-light" style="color:rgba(212,175,55,0.45); font-size:0.65rem;">· {cert}</li>
+              <li class="font-montserrat font-light" style="color:#D4AF37; font-size:0.65rem;">· {cert}</li>
             ))}
           </ul>
         </div>
@@ -606,9 +609,9 @@ const serviceImages = [
           <!-- Gold rule -->
           <div class="gold-rule mb-5" style="max-width:100px;"></div>
           <!-- Stars -->
-          <p class="mb-2" style="color:#D4AF37; font-size:0.85rem; letter-spacing:0.1em;">{'★'.repeat(t.stars)}</p>
+          <p class="mb-2" style={`color:${i % 2 === 0 ? '#7E5E0F' : '#D4AF37'}; font-size:0.85rem; letter-spacing:0.1em;`}>{'★'.repeat(t.stars)}</p>
           <!-- Attribution -->
-          <p class="font-montserrat tracking-widest uppercase" style="color:#D4AF37; font-size:0.65rem; letter-spacing:0.18em;">
+          <p class="font-montserrat tracking-widest uppercase" style={`color:${i % 2 === 0 ? '#7E5E0F' : '#D4AF37'}; font-size:0.65rem; letter-spacing:0.18em;`}>
             {t.name} &nbsp;·&nbsp; {t.breed} &nbsp;·&nbsp; {t.date}
           </p>
         </div>
@@ -629,7 +632,7 @@ const serviceImages = [
         </p>
         <div class="flex flex-col sm:flex-row gap-5 items-start sm:items-center">
           <a href="#booking" class="btn-gold-outline">Request a Private Tour</a>
-          <a href={`tel:${business.phone}`} class="font-montserrat tracking-widest uppercase text-white/40 hover:text-[#D4AF37] transition-colors" style="font-size:0.65rem; letter-spacing:0.16em;">
+          <a href={`tel:${business.phone}`} class="font-montserrat tracking-widest uppercase text-white/75 hover:text-[#D4AF37] transition-colors" style="font-size:0.65rem; letter-spacing:0.16em;">
             {business.phone} · 7 days a week
           </a>
         </div>
@@ -651,7 +654,7 @@ const serviceImages = [
   <section class="py-24 px-4 bg-white">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-16">
-        <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">Enquiries</p>
+        <p class="font-montserrat tracking-widest uppercase mb-3 gold-on-light" style="font-size:0.68rem; letter-spacing:0.2em;">Enquiries</p>
         <h2 class="font-cormorant font-light italic text-[#0F172A]" style="font-size:clamp(2.5rem,5vw,3.5rem);">Frequently Asked</h2>
         <div class="gold-rule mt-5" style="max-width:120px;"></div>
       </div>
@@ -696,7 +699,7 @@ const serviceImages = [
         <div class="gold-rule mb-6" style="max-width:120px;"></div>
         <h2 class="font-cormorant font-light italic text-white" style="font-size:clamp(2.5rem,5vw,3.5rem);">Reserve Your Suite</h2>
         <div class="gold-rule mt-6 mb-6" style="max-width:120px;"></div>
-        <p class="font-montserrat text-white/40 max-w-sm mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">
+        <p class="font-montserrat text-white/75 max-w-sm mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">
           Reservations are subject to availability. Our team will contact you within 4 hours to confirm.
         </p>
       </div>
@@ -710,13 +713,13 @@ const serviceImages = [
               <label for="v5-guest-name" class="font-montserrat tracking-widest uppercase text-white/70 font-semibold" style="font-size:0.62rem; letter-spacing:0.16em;">Guest Name <span style="color:#D4AF37;">*</span></label>
               <input id="v5-guest-name" name="guestName" type="text" required autocomplete="name" placeholder="Your full name"
                      style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:0.75rem 1rem; color:#F8F5F0; font-size:0.875rem; font-family:'Montserrat',sans-serif; font-weight:300;"
-                     class="placeholder:text-white/25" />
+                     class="placeholder:text-white/70" />
             </div>
             <div class="flex flex-col gap-1.5">
               <label for="v5-pet-name" class="font-montserrat tracking-widest uppercase text-white/70 font-semibold" style="font-size:0.62rem; letter-spacing:0.16em;">Your Pet's Name <span style="color:#D4AF37;">*</span></label>
               <input id="v5-pet-name" name="petName" type="text" required placeholder="Your pet's name"
                      style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:0.75rem 1rem; color:#F8F5F0; font-size:0.875rem; font-family:'Montserrat',sans-serif; font-weight:300;"
-                     class="placeholder:text-white/25" />
+                     class="placeholder:text-white/70" />
             </div>
           </div>
 
@@ -724,7 +727,7 @@ const serviceImages = [
             <label for="v5-pet-type" class="font-montserrat tracking-widest uppercase text-white/70 font-semibold" style="font-size:0.62rem; letter-spacing:0.16em;">Pet Type &amp; Breed</label>
             <input id="v5-pet-type" name="petType" type="text" placeholder="e.g. Dog · Standard Poodle"
                    style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:0.75rem 1rem; color:#F8F5F0; font-size:0.875rem; font-family:'Montserrat',sans-serif; font-weight:300;"
-                   class="placeholder:text-white/25" />
+                   class="placeholder:text-white/70" />
           </div>
 
           <div class="grid sm:grid-cols-2 gap-6">
@@ -732,13 +735,13 @@ const serviceImages = [
               <label for="v5-email" class="font-montserrat tracking-widest uppercase text-white/70 font-semibold" style="font-size:0.62rem; letter-spacing:0.16em;">Contact Email <span style="color:#D4AF37;">*</span></label>
               <input id="v5-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com"
                      style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:0.75rem 1rem; color:#F8F5F0; font-size:0.875rem; font-family:'Montserrat',sans-serif; font-weight:300;"
-                     class="placeholder:text-white/25" />
+                     class="placeholder:text-white/70" />
             </div>
             <div class="flex flex-col gap-1.5">
               <label for="v5-phone" class="font-montserrat tracking-widest uppercase text-white/70 font-semibold" style="font-size:0.62rem; letter-spacing:0.16em;">Contact Phone <span style="color:#D4AF37;">*</span></label>
               <input id="v5-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(310) 000-0000"
                      style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:0.75rem 1rem; color:#F8F5F0; font-size:0.875rem; font-family:'Montserrat',sans-serif; font-weight:300;"
-                     class="placeholder:text-white/25" />
+                     class="placeholder:text-white/70" />
             </div>
           </div>
 
@@ -775,13 +778,13 @@ const serviceImages = [
             <textarea id="v5-requirements" name="requirements" rows="4"
                       placeholder="Dietary preferences, medical conditions, grooming schedule, behavioral notes, preferred walk times…"
                       style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); padding:0.75rem 1rem; color:#F8F5F0; font-size:0.875rem; font-family:'Montserrat',sans-serif; font-weight:300; resize:vertical;"
-                      class="placeholder:text-white/25"></textarea>
+                      class="placeholder:text-white/70"></textarea>
           </div>
 
           <button type="submit" class="btn-gold-outline w-full text-center py-4" style="font-size:0.72rem; letter-spacing:0.2em;">
             Submit Reservation Request
           </button>
-          <p class="text-center font-montserrat text-white/25" style="font-size:0.65rem; letter-spacing:0.06em;">
+          <p class="text-center font-montserrat text-white/70" style="font-size:0.65rem; letter-spacing:0.06em;">
             Reservations are confirmed within 4 hours &nbsp;·&nbsp; {business.phone}
           </p>
         </form>
@@ -835,8 +838,8 @@ const serviceImages = [
               <a href={`tel:${business.phone}`} class="font-montserrat text-white/55 hover:text-[#D4AF37] transition-colors font-light" style="font-size:0.78rem;">{business.phone}</a>
               <a href={`mailto:${business.email}`} class="font-montserrat text-white/55 hover:text-[#D4AF37] transition-colors font-light" style="font-size:0.78rem;">{business.email}</a>
               <p class="font-montserrat text-white/55 font-light" style="font-size:0.78rem;">{business.address}</p>
-              <p class="font-montserrat text-white/35 font-light" style="font-size:0.72rem;">{business.emergency}</p>
-              <p class="font-montserrat text-white/20 font-light mt-2" style="font-size:0.65rem;">{business.license}</p>
+              <p class="font-montserrat text-white/70 font-light" style="font-size:0.72rem;">{business.emergency}</p>
+              <p class="font-montserrat text-white/70 font-light mt-2" style="font-size:0.65rem;">{business.license}</p>
             </div>
           </div>
         </div>
@@ -857,6 +860,7 @@ const serviceImages = [
     </div>
   </section>
 
+
   <!-- ══════════════════════════════════════════
        13. FOOTER
   ══════════════════════════════════════════ -->
@@ -866,36 +870,36 @@ const serviceImages = [
       <div class="gold-rule mb-8" style="max-width:160px;"></div>
       <div class="flex flex-col items-center gap-2 mb-4">
         <span class="font-cormorant italic" style="color:#D4AF37; font-size:1.8rem; letter-spacing:0.1em;">{business.name}</span>
-        <span class="font-montserrat tracking-widest uppercase text-white/25" style="font-size:0.62rem; letter-spacing:0.22em;">{business.tagline}</span>
+        <span class="font-montserrat tracking-widest uppercase text-white/70" style="font-size:0.62rem; letter-spacing:0.22em;">{business.tagline}</span>
       </div>
       <div class="gold-rule mt-6 mb-10" style="max-width:160px;"></div>
 
       <!-- Nav links -->
       <div class="flex flex-wrap justify-center gap-8 mb-10">
-        {[['#services','Services'],['#pricing','Packages'],['#gallery','Gallery'],['#team','Team'],['#booking','Reserve'],['#contact','Contact']].map(([href,label]) => (
-          <a href={href} class="font-montserrat tracking-widest uppercase text-white/35 hover:text-[#D4AF37] transition-colors" style="font-size:0.62rem; letter-spacing:0.16em;">{label}</a>
+        {[['#services','Services'],['#pricing','Packages'],['#gallery','Gallery'],['#team','Team'],['#booking','Reserve'],['#contact','Contact'],['/accessibility','Accessibility']].map(([href,label]) => (
+          <a href={href} class="font-montserrat tracking-widest uppercase text-white/80 hover:text-[#D4AF37] transition-colors" style="font-size:0.62rem; letter-spacing:0.16em;">{label}</a>
         ))}
       </div>
 
       <!-- Services in a row -->
       <div class="flex flex-wrap justify-center gap-6 mb-10">
         {services.map((s) => (
-          <span class="font-montserrat text-white/20 font-light" style="font-size:0.7rem;">{s.name}</span>
+          <span class="font-montserrat text-white/70 font-light" style="font-size:0.7rem;">{s.name}</span>
         ))}
       </div>
 
       <div class="gold-rule mb-8" style="max-width:120px; opacity:0.35;"></div>
 
       <!-- Contact line -->
-      <div class="flex flex-wrap justify-center gap-6 mb-8 text-white/30 font-montserrat font-light" style="font-size:0.68rem;">
+      <div class="flex flex-wrap justify-center gap-6 mb-8 text-white/80 font-montserrat font-light" style="font-size:0.68rem;">
         <span>{business.address}</span>
         <a href={`tel:${business.phone}`} class="hover:text-[#D4AF37] transition-colors">{business.phone}</a>
         <a href={`mailto:${business.email}`} class="hover:text-[#D4AF37] transition-colors">{business.email}</a>
       </div>
 
       <!-- License & copyright -->
-      <p class="font-montserrat text-white/15 font-light mb-3" style="font-size:0.62rem; letter-spacing:0.06em;">{business.license}</p>
-      <p class="font-montserrat text-white/15 font-light" style="font-size:0.62rem;">
+      <p class="font-montserrat text-white/70 font-light mb-3" style="font-size:0.62rem; letter-spacing:0.06em;">{business.license}</p>
+      <p class="font-montserrat text-white/70 font-light" style="font-size:0.62rem;">
         © {new Date().getFullYear()} {business.name}. All rights reserved.
       </p>
     </div>

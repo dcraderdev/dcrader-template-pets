@@ -110,7 +110,7 @@ const schemaJson = JSON.stringify({
             </div>
           ))}
         </div>
-        <p class="text-xs text-[#64748B] italic">As trusted by Seattle veterinarians — referred by Fremont Animal Hospital, Green Lake Vet, and Ballard Animal Care.</p>
+        <p class="text-xs text-[#52617A] italic">As trusted by Seattle veterinarians — referred by Fremont Animal Hospital, Green Lake Vet, and Ballard Animal Care.</p>
       </div>
       <!-- Right 2/5 -->
       <div class="md:col-span-2 relative overflow-hidden min-h-[400px] md:min-h-[500px]">
@@ -128,7 +128,7 @@ const schemaJson = JSON.stringify({
             <div class="text-[#F5A623] text-lg tracking-tight">★★★★★</div>
             <div>
               <p class="text-[#0F172A] text-sm font-semibold">4.9 · 184 verified reviews</p>
-              <p class="text-[#64748B] text-xs">Zero adverse incidents in 4 years of operation</p>
+              <p class="text-[#52617A] text-xs">Zero adverse incidents in 4 years of operation</p>
             </div>
           </div>
         </div>
@@ -147,7 +147,7 @@ const schemaJson = JSON.stringify({
       ].map((s) => (
         <div>
           <div class="text-2xl font-bold text-[#0E7490] mb-1">{s.n}</div>
-          <p class="text-[#64748B] text-xs uppercase tracking-wider">{s.label}</p>
+          <p class="text-[#52617A] text-xs uppercase tracking-wider">{s.label}</p>
         </div>
       ))}
     </div>
@@ -159,7 +159,7 @@ const schemaJson = JSON.stringify({
       <div class="mb-10 border-b border-[#E2E8F0] pb-6">
         <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Procedures</p>
         <h2 class="text-3xl font-bold text-[#0F172A]">Services &amp; Procedures</h2>
-        <p class="text-[#64748B] mt-2 max-w-lg text-sm">All procedures are conducted under veterinary-supervised protocols. Pricing reflects individual assessment outcomes.</p>
+        <p class="text-[#52617A] mt-2 max-w-lg text-sm">All procedures are conducted under veterinary-supervised protocols. Pricing reflects individual assessment outcomes.</p>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full border-collapse">
@@ -193,7 +193,7 @@ const schemaJson = JSON.stringify({
         </table>
       </div>
       <!-- Mobile card fallback hint -->
-      <p class="text-xs text-[#94A3B8] mt-3 md:hidden">Scroll right to view all columns, or request a full service list by phone.</p>
+      <p class="text-xs text-[#5B6B82] mt-3 md:hidden">Scroll right to view all columns, or request a full service list by phone.</p>
     </div>
   </section>
 
@@ -203,7 +203,7 @@ const schemaJson = JSON.stringify({
       <div class="mb-12 border-b border-[#E2E8F0] pb-6">
         <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Onboarding Protocol</p>
         <h2 class="text-3xl font-bold text-[#0F172A]">Patient Intake Process</h2>
-        <p class="text-[#64748B] mt-2 text-sm max-w-lg">All new patients are enrolled through a structured intake procedure before any grooming services are scheduled.</p>
+        <p class="text-[#52617A] mt-2 text-sm max-w-lg">All new patients are enrolled through a structured intake procedure before any grooming services are scheduled.</p>
       </div>
       <!-- Steps: horizontal with connecting line -->
       <div class="grid grid-cols-1 sm:grid-cols-4 gap-8 sm:gap-4">
@@ -253,7 +253,7 @@ const schemaJson = JSON.stringify({
         <div class="px-6 py-5 border-b border-[#E2E8F0]" style="background:#F8FAFC;">
           <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-1">Facility Policy</p>
           <h2 class="text-2xl font-bold text-[#0F172A]">Health &amp; Admission Requirements</h2>
-          <p class="text-[#64748B] text-sm mt-1">The following requirements apply to all patients. Non-compliance will result in appointment cancellation.</p>
+          <p class="text-[#52617A] text-sm mt-1">The following requirements apply to all patients. Non-compliance will result in appointment cancellation.</p>
         </div>
         <table class="w-full text-sm">
           <tbody>
@@ -285,7 +285,7 @@ const schemaJson = JSON.stringify({
       <div class="mb-10 border-b border-[#E2E8F0] pb-6">
         <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Packages</p>
         <h2 class="text-3xl font-bold text-[#0F172A]">Service Packages</h2>
-        <p class="text-[#64748B] mt-2 text-sm max-w-lg">All rates are per visit unless otherwise noted. Final pricing confirmed following the intake assessment.</p>
+        <p class="text-[#52617A] mt-2 text-sm max-w-lg">All rates are per visit unless otherwise noted. Final pricing confirmed following the intake assessment.</p>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full border-collapse bg-white border border-[#E2E8F0] rounded-md overflow-hidden text-sm">
@@ -306,7 +306,7 @@ const schemaJson = JSON.stringify({
                     <span class="font-bold text-[#0F172A]">{pkg.name}</span>
                     {pkg.featured && <span class="bg-[#0E7490] text-white text-xs font-semibold px-2 py-0.5 rounded">Recommended</span>}
                   </div>
-                  <p class="text-xs text-[#64748B] mt-0.5">{pkg.description}</p>
+                  <p class="text-xs text-[#52617A] mt-0.5">{pkg.description}</p>
                 </td>
                 <td class="py-4 px-5 text-[#334155] whitespace-nowrap">{pkg.period}</td>
                 <td class="py-4 px-5 whitespace-nowrap">
@@ -315,7 +315,7 @@ const schemaJson = JSON.stringify({
                 <td class="py-4 px-5 hidden md:table-cell">
                   <ul class="text-xs text-[#334155] space-y-0.5">
                     {pkg.features.slice(0, 4).map((f) => <li class="flex items-start gap-1"><span class="text-[#0E7490] font-bold mt-0.5">&#10003;</span> {f}</li>)}
-                    {pkg.features.length > 4 && <li class="text-[#94A3B8]">+{pkg.features.length - 4} more</li>}
+                    {pkg.features.length > 4 && <li class="text-[#5B6B82]">+{pkg.features.length - 4} more</li>}
                   </ul>
                 </td>
                 <td class="py-4 px-5 text-right">
@@ -326,7 +326,7 @@ const schemaJson = JSON.stringify({
           </tbody>
         </table>
       </div>
-      <p class="text-xs text-[#94A3B8] mt-4">All prices listed in USD. Sales tax applicable. Contact us for multi-patient household rates.</p>
+      <p class="text-xs text-[#5B6B82] mt-4">All prices listed in USD. Sales tax applicable. Contact us for multi-patient household rates.</p>
     </div>
   </section>
 
@@ -336,7 +336,7 @@ const schemaJson = JSON.stringify({
       <div class="mb-10 border-b border-[#E2E8F0] pb-6">
         <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Facility</p>
         <h2 class="text-3xl font-bold text-[#0F172A]">Studio Gallery</h2>
-        <p class="text-[#64748B] mt-2 text-sm">Our studio is designed to clinical standards: single-patient-at-a-time throughput, non-slip surfaces, temperature-controlled, no cage drying.</p>
+        <p class="text-[#52617A] mt-2 text-sm">Our studio is designed to clinical standards: single-patient-at-a-time throughput, non-slip surfaces, temperature-controlled, no cage drying.</p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {gallery.map((img) => (
@@ -381,7 +381,7 @@ const schemaJson = JSON.stringify({
               {member.certifications.length > 2 && (
                 <div class="flex flex-wrap gap-1.5">
                   {member.certifications.slice(2).map((cert) => (
-                    <span class="border border-[#CBD5E1] text-[#64748B] text-xs px-2 py-0.5 rounded">{cert}</span>
+                    <span class="border border-[#CBD5E1] text-[#52617A] text-xs px-2 py-0.5 rounded">{cert}</span>
                   ))}
                 </div>
               )}
@@ -411,7 +411,7 @@ const schemaJson = JSON.stringify({
             <blockquote class="text-sm text-[#334155] leading-relaxed italic flex-grow">"{t.text}"</blockquote>
             <div class="border-t border-[#E2E8F0] pt-3">
               <p class="font-semibold text-[#0F172A] text-sm">{t.name}</p>
-              <p class="text-xs text-[#64748B]">{t.breed} &middot; {t.date}</p>
+              <p class="text-xs text-[#52617A]">{t.breed} &middot; {t.date}</p>
             </div>
           </div>
         ))}
@@ -491,31 +491,31 @@ const schemaJson = JSON.stringify({
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v3-guardian-name" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Guardian Name <span class="text-red-500">*</span></label>
-              <input id="v3-guardian-name" name="guardianName" type="text" required autocomplete="name" placeholder="Legal full name" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
-              <p class="text-xs text-[#94A3B8]">As it will appear on the patient file</p>
+              <input id="v3-guardian-name" name="guardianName" type="text" required autocomplete="name" placeholder="Legal full name" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#5B6B82]" />
+              <p class="text-xs text-[#5B6B82]">As it will appear on the patient file</p>
             </div>
             <div class="flex flex-col gap-1">
               <label for="v3-patient-name" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Patient Name <span class="text-red-500">*</span></label>
-              <input id="v3-patient-name" name="patientName" type="text" required placeholder="Dog's name" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
-              <p class="text-xs text-[#94A3B8]">As it appears on veterinary records</p>
+              <input id="v3-patient-name" name="patientName" type="text" required placeholder="Dog's name" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#5B6B82]" />
+              <p class="text-xs text-[#5B6B82]">As it appears on veterinary records</p>
             </div>
           </div>
           <!-- Contact row -->
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v3-email" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Email Address <span class="text-red-500">*</span></label>
-              <input id="v3-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+              <input id="v3-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#5B6B82]" />
             </div>
             <div class="flex flex-col gap-1">
               <label for="v3-phone" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Phone Number <span class="text-red-500">*</span></label>
-              <input id="v3-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(206) 000-0000" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+              <input id="v3-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(206) 000-0000" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#5B6B82]" />
             </div>
           </div>
           <!-- Breed + Service row -->
           <div class="grid sm:grid-cols-2 gap-5">
             <div class="flex flex-col gap-1">
               <label for="v3-breed" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Breed</label>
-              <input id="v3-breed" name="breed" type="text" placeholder="e.g. Standard Poodle" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
+              <input id="v3-breed" name="breed" type="text" placeholder="e.g. Standard Poodle" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#5B6B82]" />
             </div>
             <div class="flex flex-col gap-1">
               <label for="v3-service" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Service Type <span class="text-red-500">*</span></label>
@@ -533,22 +533,22 @@ const schemaJson = JSON.stringify({
           <!-- Current medications -->
           <div class="flex flex-col gap-1">
             <label for="v3-medications" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Current Medications</label>
-            <input id="v3-medications" name="medications" type="text" placeholder="List all current medications, supplements, or topical treatments" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8]" />
-            <p class="text-xs text-[#94A3B8]">Include dosage if known. Enter "None" if not applicable.</p>
+            <input id="v3-medications" name="medications" type="text" placeholder="List all current medications, supplements, or topical treatments" class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#5B6B82]" />
+            <p class="text-xs text-[#5B6B82]">Include dosage if known. Enter "None" if not applicable.</p>
           </div>
           <!-- Primary concern -->
           <div class="flex flex-col gap-1">
             <label for="v3-concern" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Primary Concern <span class="text-red-500">*</span></label>
-            <textarea id="v3-concern" name="primaryConcern" rows="3" required placeholder="Describe your patient's anxiety, skin condition, known behavioral triggers, or any special needs relevant to grooming..." class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8] resize-y"></textarea>
-            <p class="text-xs text-[#94A3B8]">All information is confidential and shared exclusively with your assigned care team.</p>
+            <textarea id="v3-concern" name="primaryConcern" rows="3" required placeholder="Describe your patient's anxiety, skin condition, known behavioral triggers, or any special needs relevant to grooming..." class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#5B6B82] resize-y"></textarea>
+            <p class="text-xs text-[#5B6B82]">All information is confidential and shared exclusively with your assigned care team.</p>
           </div>
           <!-- Additional medical notes -->
           <div class="flex flex-col gap-1">
             <label for="v3-notes" class="text-xs font-semibold text-[#0F172A] uppercase tracking-wide">Additional Medical or Behavioral Notes</label>
-            <textarea id="v3-notes" name="notes" rows="3" placeholder="Prior grooming incidents, mobility limitations, post-surgical considerations, veterinarian referral details..." class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#94A3B8] resize-y"></textarea>
+            <textarea id="v3-notes" name="notes" rows="3" placeholder="Prior grooming incidents, mobility limitations, post-surgical considerations, veterinarian referral details..." class="border border-[#E2E8F0] rounded-md px-4 py-3 text-sm text-[#0F172A] placeholder:text-[#5B6B82] resize-y"></textarea>
           </div>
           <button type="submit" class="btn-teal text-sm py-3 w-full text-center">Submit Appointment Request</button>
-          <p class="text-xs text-center text-[#94A3B8]">By submitting, you consent to Calm Coat creating a patient file for your dog. We do not share records with third parties without guardian consent.</p>
+          <p class="text-xs text-center text-[#5B6B82]">By submitting, you consent to Calm Coat creating a patient file for your dog. We do not share records with third parties without guardian consent.</p>
         </form>
         <div id="v3-booking-success" class="hidden text-center py-12">
           <div class="w-12 h-12 rounded-full bg-[#CCFBF1] flex items-center justify-center mx-auto mb-4">
@@ -587,7 +587,7 @@ const schemaJson = JSON.stringify({
                 </tr>
                 <tr>
                   <td class="px-5 py-3 font-medium">Sunday</td>
-                  <td class="px-5 py-3 text-right text-[#64748B]">{business.hours.sunday}</td>
+                  <td class="px-5 py-3 text-right text-[#52617A]">{business.hours.sunday}</td>
                 </tr>
               </tbody>
             </table>
@@ -610,11 +610,11 @@ const schemaJson = JSON.stringify({
               </div>
               <div class="flex items-start gap-3">
                 <span class="text-[#0E7490] font-semibold text-xs uppercase tracking-wide w-20 flex-shrink-0 pt-0.5">Emergency</span>
-                <span class="text-[#64748B]">{business.emergency}</span>
+                <span class="text-[#52617A]">{business.emergency}</span>
               </div>
             </div>
             <div class="border-t border-[#E2E8F0] pt-3 mt-1">
-              <p class="text-xs text-[#94A3B8]">{business.license}</p>
+              <p class="text-xs text-[#5B6B82]">{business.license}</p>
             </div>
           </div>
         </div>
@@ -629,13 +629,14 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+
   <!-- FOOTER -->
   <footer style="background:#0F172A;" class="py-14 px-4">
     <div class="max-w-6xl mx-auto grid sm:grid-cols-4 gap-10 mb-10">
       <div class="sm:col-span-2">
         <div class="flex items-center gap-2 mb-3">
           <span class="text-xl">🩺</span>
-          <span class="font-semibold text-[#0E7490] text-base">{business.name}</span>
+          <span class="font-semibold text-[#22D3EE] text-base">{business.name}</span>
         </div>
         <p class="text-white/50 text-sm leading-relaxed mb-4">{business.description}</p>
         <div class="flex flex-wrap gap-2">
@@ -658,13 +659,14 @@ const schemaJson = JSON.stringify({
           <li>{business.address}</li>
           <li><a href={`tel:${business.phone}`} class="hover:text-[#0E7490] transition-colors">{business.phone}</a></li>
           <li><a href={`mailto:${business.email}`} class="hover:text-[#0E7490] transition-colors">{business.email}</a></li>
+          <li><a href="/accessibility" class="hover:text-[#0E7490] transition-colors">Accessibility</a></li>
         </ul>
       </div>
     </div>
     <!-- License bar -->
     <div class="max-w-6xl mx-auto border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p class="text-white/30 text-xs">{business.license}</p>
-      <p class="text-white/30 text-xs">&copy; {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+      <p class="text-white/60 text-xs">{business.license}</p>
+      <p class="text-white/60 text-xs">&copy; {new Date().getFullYear()} {business.name}. All rights reserved.</p>
     </div>
   </footer>
 

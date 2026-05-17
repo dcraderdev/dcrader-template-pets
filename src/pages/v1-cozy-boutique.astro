@@ -27,10 +27,10 @@ const schemaJson = JSON.stringify({
 >
 
   <!-- ANNOUNCEMENT BANNER -->
-  <div id="v1-banner" style="background:#6B8F71;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative">
+  <header role="banner" id="v1-banner" style="background:#4F6F55;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative">
     <span>🐾 New clients: First day of daycare FREE with overnight booking · Limited spots · (415) 882-3047</span>
-    <button onclick="document.getElementById('v1-banner').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg leading-none font-bold" aria-label="Close banner">×</button>
-  </div>
+    <button onclick="document.getElementById('v1-banner').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/90 hover:text-white text-lg leading-none font-bold" aria-label="Close banner">×</button>
+  </header>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap');
@@ -38,21 +38,21 @@ const schemaJson = JSON.stringify({
     :root {
       --cream: #FAF6EF;
       --card: #F2EAD8;
-      --sage: #6B8F71;
+      --sage: #4F6F55;
       --blush: #E8B4B8;
-      --terra: #C17B50;
+      --terra: #8B5030;
       --brown-dark: #3D2B1F;
       --brown-body: #5C4033;
-      --muted: #9C7B6C;
+      --muted: #7B5E51;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--cream); font-family: 'Inter', system-ui, sans-serif; color: var(--brown-body); }
     h1, h2, h3, h4, h5, h6 { font-family: 'Cormorant Garamond', Georgia, serif; }
-    .btn-sage { background: #6B8F71; color: #fff; border-radius: 9999px; padding: 0.75rem 2rem; font-weight: 700; transition: background 0.2s; display: inline-block; font-family: 'Inter', system-ui, sans-serif; }
+    .btn-sage { background: #4F6F55; color: #fff; border-radius: 9999px; padding: 0.75rem 2rem; font-weight: 700; transition: background 0.2s; display: inline-block; font-family: 'Inter', system-ui, sans-serif; }
     .btn-sage:hover { background: #557260; }
-    .btn-terra { background: #C17B50; color: #fff; border-radius: 9999px; padding: 0.75rem 2rem; font-weight: 700; transition: background 0.2s; display: inline-block; font-family: 'Inter', system-ui, sans-serif; }
+    .btn-terra { background: #8B5030; color: #fff; border-radius: 9999px; padding: 0.75rem 2rem; font-weight: 700; transition: background 0.2s; display: inline-block; font-family: 'Inter', system-ui, sans-serif; }
     .btn-terra:hover { background: #a56540; }
-    input:focus, select:focus, textarea:focus { outline: 2px solid #6B8F71; outline-offset: 2px; }
+    input:focus, select:focus, textarea:focus { outline: 2px solid #4F6F55; outline-offset: 2px; }
     section[id] { scroll-margin-top: 5rem; }
 
     /* Split nav */
@@ -129,9 +129,9 @@ const schemaJson = JSON.stringify({
     <div class="max-w-7xl mx-auto px-6 py-4 nav-split">
       <!-- Left links -->
       <div class="nav-links-left hidden md:flex items-center gap-6 text-sm font-semibold">
-        <a href="#v1-services" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Services</a>
-        <a href="#v1-suites" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Suites</a>
-        <a href="#v1-pricing" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Pricing</a>
+        <a href="#v1-services" class="text-[#F2EAD8] hover:text-[#8B5030] transition-colors">Services</a>
+        <a href="#v1-suites" class="text-[#F2EAD8] hover:text-[#8B5030] transition-colors">Suites</a>
+        <a href="#v1-pricing" class="text-[#F2EAD8] hover:text-[#8B5030] transition-colors">Pricing</a>
       </div>
       <!-- Mobile: logo left -->
       <a href="#" class="flex items-center gap-2 md:hidden">
@@ -145,8 +145,8 @@ const schemaJson = JSON.stringify({
       </a>
       <!-- Right links -->
       <div class="nav-links-right hidden md:flex items-center gap-6 text-sm font-semibold justify-end">
-        <a href="#v1-gallery" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Gallery</a>
-        <a href="#v1-team" class="text-[#F2EAD8] hover:text-[#C17B50] transition-colors">Team</a>
+        <a href="#v1-gallery" class="text-[#F2EAD8] hover:text-[#8B5030] transition-colors">Gallery</a>
+        <a href="#v1-team" class="text-[#F2EAD8] hover:text-[#8B5030] transition-colors">Team</a>
         <a href="#v1-booking" class="btn-sage text-sm py-2 px-5">Book Now →</a>
       </div>
       <!-- Mobile hamburger -->
@@ -167,13 +167,13 @@ const schemaJson = JSON.stringify({
   <section id="v1-hero" style="display:grid; grid-template-columns:55fr 45fr; min-height:90vh;">
     <!-- LEFT: cream content panel -->
     <div style="background:#FAF6EF; padding:120px 56px 80px 56px;" class="flex flex-col justify-center">
-      <p style="color:#6B8F71; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:1.5rem;">Est. {business.founded} · Hayes Valley, San Francisco</p>
+      <p style="color:#4F6F55; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:1.5rem;">Est. {business.founded} · Hayes Valley, San Francisco</p>
       <h1 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(3rem,5.5vw,5rem); font-weight:700; color:#3D2B1F; line-height:1.08; margin-bottom:1rem;">
         Where Every Dog<br/>Stays Like<br/>A Guest
       </h1>
       <!-- Squiggly SVG underline decoration -->
       <svg width="260" height="18" viewBox="0 0 260 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1.75rem; margin-top:-0.25rem;">
-        <path d="M2 14 C20 4, 40 18, 60 10 C80 2, 100 16, 120 9 C140 2, 160 16, 180 9 C200 2, 220 16, 240 8 C250 4, 256 10, 258 8" stroke="#6B8F71" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M2 14 C20 4, 40 18, 60 10 C80 2, 100 16, 120 9 C140 2, 160 16, 180 9 C200 2, 220 16, 240 8 C250 4, 256 10, 258 8" stroke="#4F6F55" stroke-width="2.5" stroke-linecap="round" fill="none"/>
       </svg>
       <p style="font-family:'Inter',system-ui,sans-serif; color:#5C4033; font-size:1.125rem; line-height:1.7; max-width:400px; margin-bottom:2.5rem;">{business.tagline}</p>
       <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:2.5rem;">
@@ -181,7 +181,7 @@ const schemaJson = JSON.stringify({
         <a href="#v1-services" style="border:2px solid #3D2B1F; color:#3D2B1F; border-radius:9999px; padding:0.85rem 2.25rem; font-weight:700; font-family:'Inter',system-ui,sans-serif; font-size:1rem; transition:all 0.2s; display:inline-block;" class="hover:bg-[#3D2B1F] hover:text-white transition-all">Explore Services</a>
       </div>
       <!-- Trust row -->
-      <div style="display:flex; flex-wrap:wrap; gap:1.25rem; font-size:0.8rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif;">
+      <div style="display:flex; flex-wrap:wrap; gap:1.25rem; font-size:0.8rem; color:#7B5E51; font-family:'Inter',system-ui,sans-serif;">
         <span>⭐ 4.9 (312 reviews)</span>
         <span>🔒 Licensed & Insured</span>
         <span>📸 Photo updates daily</span>
@@ -229,11 +229,11 @@ const schemaJson = JSON.stringify({
   <section id="v1-services" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
-        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">What We Offer</p>
+        <p style="color:#8B5030; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">What We Offer</p>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">Our Services</h2>
         <!-- Squiggly underline -->
         <svg width="180" height="14" viewBox="0 0 180 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto 1rem;">
-          <path d="M2 10 C18 2, 35 14, 52 7 C69 0, 86 13, 103 6 C120 0, 137 13, 154 6 C164 2, 174 9, 178 7" stroke="#6B8F71" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M2 10 C18 2, 35 14, 52 7 C69 0, 86 13, 103 6 C120 0, 137 13, 154 6 C164 2, 174 9, 178 7" stroke="#4F6F55" stroke-width="2.5" stroke-linecap="round" fill="none"/>
         </svg>
         <p style="color:#5C4033; max-width:480px; margin:0 auto; font-size:1.05rem; font-family:'Inter',system-ui,sans-serif;">Tailored care for every dog, every visit. Because your pet deserves more than the basics.</p>
       </div>
@@ -248,11 +248,11 @@ const schemaJson = JSON.stringify({
               <div style="font-size:2.25rem;">{s.icon}</div>
               <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.35rem; font-weight:700; color:#3D2B1F;">{s.name}</h3>
               <p style="font-size:0.875rem; color:#5C4033; line-height:1.65; flex-grow:1;">{s.description}</p>
-              <p style="font-weight:700; color:#C17B50; font-size:1.1rem; font-family:'Cormorant Garamond',Georgia,serif;">{s.price}</p>
+              <p style="font-weight:700; color:#8B5030; font-size:1.1rem; font-family:'Cormorant Garamond',Georgia,serif;">{s.price}</p>
               <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.35rem;">
                 {s.highlights.map((h) => (
                   <li style="font-size:0.78rem; color:#5C4033; display:flex; align-items:flex-start; gap:0.5rem;">
-                    <span style="color:#6B8F71; font-weight:700; flex-shrink:0;">✓</span> {h}
+                    <span style="color:#4F6F55; font-weight:700; flex-shrink:0;">✓</span> {h}
                   </li>
                 ))}
               </ul>
@@ -267,29 +267,29 @@ const schemaJson = JSON.stringify({
   <section id="v1-pricing" class="py-20 px-4" style="background:#F2EAD8;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Packages</p>
+        <p style="color:#8B5030; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Packages</p>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">Choose Your Stay</h2>
         <p style="color:#5C4033; max-width:480px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Bundle and save — every package includes our standard of attentive, personal care.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-6 items-start">
         {packages.map((pkg) => (
           <div class={`rounded-2xl p-8 flex flex-col gap-4 relative ${pkg.featured ? 'shadow-2xl scale-105' : 'shadow-sm'}`}
-               style={pkg.featured ? 'background:#6B8F71; color:#fff;' : 'background:#FAF6EF; border:1px solid #e0d4bc;'}>
-            {pkg.featured && <div style="position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:#C17B50; color:#fff; font-size:0.7rem; font-weight:700; padding:4px 16px; border-radius:9999px; white-space:nowrap; font-family:'Inter',system-ui,sans-serif;">Most Popular</div>}
+               style={pkg.featured ? 'background:#4F6F55; color:#fff;' : 'background:#FAF6EF; border:1px solid #e0d4bc;'}>
+            {pkg.featured && <div style="position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:#8B5030; color:#fff; font-size:0.7rem; font-weight:700; padding:4px 16px; border-radius:9999px; white-space:nowrap; font-family:'Inter',system-ui,sans-serif;">Most Popular</div>}
             <div>
               <h3 style={`font-family:'Cormorant Garamond',Georgia,serif; font-size:1.6rem; font-weight:700; margin-bottom:0.25rem; color:${pkg.featured ? '#fff' : '#3D2B1F'};`}>{pkg.name}</h3>
-              <p style={`font-size:0.8rem; font-family:'Inter',system-ui,sans-serif; color:${pkg.featured ? 'rgba(255,255,255,0.75)' : '#9C7B6C'};`}>{pkg.period}</p>
+              <p style={`font-size:0.8rem; font-family:'Inter',system-ui,sans-serif; color:${pkg.featured ? 'rgba(255,255,255,0.95)' : '#6F4F3D'};`}>{pkg.period}</p>
             </div>
-            <div style={`font-family:'Cormorant Garamond',Georgia,serif; font-size:2.5rem; font-weight:700; color:${pkg.featured ? '#fff' : '#C17B50'};`}>{pkg.price}</div>
+            <div style={`font-family:'Cormorant Garamond',Georgia,serif; font-size:2.5rem; font-weight:700; color:${pkg.featured ? '#fff' : '#8B5030'};`}>{pkg.price}</div>
             <p style={`font-size:0.875rem; font-family:'Inter',system-ui,sans-serif; color:${pkg.featured ? 'rgba(255,255,255,0.85)' : '#5C4033'};`}>{pkg.description}</p>
             <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.5rem; flex-grow:1;">
               {pkg.features.map((f) => (
                 <li style={`font-size:0.875rem; display:flex; align-items:flex-start; gap:0.5rem; font-family:'Inter',system-ui,sans-serif; color:${pkg.featured ? 'rgba(255,255,255,0.9)' : '#5C4033'};`}>
-                  <span style={`color:${pkg.featured ? '#F2EAD8' : '#6B8F71'}; font-weight:700; flex-shrink:0; margin-top:1px;`}>✓</span> {f}
+                  <span style={`color:${pkg.featured ? '#F2EAD8' : '#4F6F55'}; font-weight:700; flex-shrink:0; margin-top:1px;`}>✓</span> {f}
                 </li>
               ))}
             </ul>
-            <a href="#v1-booking" class={pkg.featured ? '' : 'btn-sage'} style={pkg.featured ? 'display:block; text-align:center; background:#fff; color:#6B8F71; border-radius:9999px; padding:0.75rem 1.5rem; font-weight:700; font-family:Inter,system-ui,sans-serif; font-size:0.9rem; margin-top:0.5rem;' : 'text-align:center; font-size:0.9rem; margin-top:0.5rem;'}>
+            <a href="#v1-booking" class={pkg.featured ? '' : 'btn-sage'} style={pkg.featured ? 'display:block; text-align:center; background:#fff; color:#4F6F55; border-radius:9999px; padding:0.75rem 1.5rem; font-weight:700; font-family:Inter,system-ui,sans-serif; font-size:0.9rem; margin-top:0.5rem;' : 'text-align:center; font-size:0.9rem; margin-top:0.5rem;'}>
               Book This Package
             </a>
           </div>
@@ -302,7 +302,7 @@ const schemaJson = JSON.stringify({
   <section id="v1-gallery" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
-        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Life at Paws & Pine</p>
+        <p style="color:#8B5030; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Life at Paws & Pine</p>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">The Gallery</h2>
         <p style="color:#5C4033; max-width:440px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">A glimpse of everyday joy — real guests, real moments.</p>
       </div>
@@ -310,7 +310,7 @@ const schemaJson = JSON.stringify({
         {gallery.map((img) => (
           <div class="gallery-polaroid">
             <img src={img.url} alt={img.alt} loading="lazy" decoding="async" style="display:block; width:100%; aspect-ratio:1; object-fit:cover;" />
-            <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#9C7B6C; font-size:0.8rem; text-align:center; padding-top:6px; margin:0;">{img.caption}</p>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#7B5E51; font-size:0.8rem; text-align:center; padding-top:6px; margin:0;">{img.caption}</p>
           </div>
         ))}
       </div>
@@ -321,7 +321,7 @@ const schemaJson = JSON.stringify({
   <section id="v1-team" class="py-20 px-4" style="background:#F2EAD8;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">The Humans</p>
+        <p style="color:#8B5030; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">The Humans</p>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">Meet the Team</h2>
         <p style="color:#5C4033; max-width:480px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Certified, passionate, and obsessed with your dog's wellbeing.</p>
       </div>
@@ -331,7 +331,7 @@ const schemaJson = JSON.stringify({
             <img src={member.photo} alt={`Photo of ${member.name}, ${member.role} at ${business.name}`} style="width:100%; height:220px; object-fit:cover; display:block;" />
             <div style="padding:1.5rem;">
               <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.4rem; font-weight:700; color:#3D2B1F; margin-bottom:0.2rem;">{member.name}</h3>
-              <p style="color:#C17B50; font-weight:600; font-size:0.85rem; margin-bottom:0.75rem; font-family:'Inter',system-ui,sans-serif;">{member.role}</p>
+              <p style="color:#8B5030; font-weight:600; font-size:0.85rem; margin-bottom:0.75rem; font-family:'Inter',system-ui,sans-serif;">{member.role}</p>
               <p style="font-size:0.875rem; color:#5C4033; line-height:1.65; margin-bottom:1rem; font-family:'Inter',system-ui,sans-serif;">{member.bio}</p>
               <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
                 {member.certifications.map((cert) => (
@@ -349,7 +349,7 @@ const schemaJson = JSON.stringify({
   <section id="v1-testimonials" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">🐾 🐾 🐾</p>
+        <p style="color:#8B5030; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">🐾 🐾 🐾</p>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">Pawsitively Reviewed</h2>
         <p style="color:#5C4033; max-width:440px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Real words from real pet parents who trust us every time.</p>
       </div>
@@ -360,22 +360,22 @@ const schemaJson = JSON.stringify({
           return (
             <div style={`background:#F2EAD8; border:1px solid #e0d4bc; border-radius:14px; padding:2rem 1.75rem 1.75rem; position:relative; transform:rotate(${rot}); box-shadow:0 2px 12px rgba(61,43,31,0.09); transition:transform 0.25s, box-shadow 0.25s;`} class="hover:shadow-md" onmouseover={`this.style.transform='rotate(0deg)'`} onmouseout={`this.style.transform='rotate(${rot})'`}>
               <div class="tape-strip"></div>
-              <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:4rem; line-height:1; color:#6B8F71; opacity:0.35; margin-bottom:-1rem; user-select:none;">"</div>
-              <div style="display:flex; gap:2px; color:#C17B50; font-size:1rem; margin-bottom:0.75rem;" aria-label={`${t.stars} out of 5 stars`}>
+              <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:4rem; line-height:1; color:#4F6F55; opacity:0.35; margin-bottom:-1rem; user-select:none;">"</div>
+              <div style="display:flex; gap:2px; color:#8B5030; font-size:1rem; margin-bottom:0.75rem;" aria-label={`${t.stars} out of 5 stars`}>
                 {'★'.repeat(t.stars)}
               </div>
               <blockquote style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#5C4033; line-height:1.65; font-size:1.05rem; flex-grow:1; margin:0 0 1.25rem;">"{t.text}"</blockquote>
               <div>
                 <p style="font-weight:700; color:#3D2B1F; font-family:'Cormorant Garamond',Georgia,serif; font-size:1rem;">{t.name}</p>
-                <p style="font-size:0.75rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif;">{t.breed} · {t.date}</p>
+                <p style="font-size:0.75rem; color:#7B5E51; font-family:'Inter',system-ui,sans-serif;">{t.breed} · {t.date}</p>
               </div>
             </div>
           );
         })}
       </div>
       <div class="text-center mt-10">
-        <a href="#" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.875rem; font-weight:600; color:#5C4033; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">
-          <span style="color:#C17B50;">★★★★★</span> Read all 312 reviews on Google
+        <a href="#" style="display:inline-flex; align-items:center; gap:0.5rem; font-size:0.875rem; font-weight:600; color:#5C4033; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#8B5030] transition-colors">
+          <span style="color:#8B5030;">★★★★★</span> Read all 312 reviews on Google
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -386,7 +386,7 @@ const schemaJson = JSON.stringify({
   <section class="py-16 px-4" style="background:#F2EAD8;">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-12">
-        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Questions</p>
+        <p style="color:#8B5030; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Questions</p>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2rem,3.5vw,2.75rem); font-weight:700; color:#3D2B1F;">Frequently Asked</h2>
       </div>
       <div style="display:flex; flex-direction:column; gap:0.75rem;" id="v1-faq">
@@ -400,10 +400,10 @@ const schemaJson = JSON.stringify({
           <div style="border-radius:14px; overflow:hidden; background:#FAF6EF; border:1px solid #e0d4bc;">
             <button class="faq-trigger" style="width:100%; text-align:left; padding:1.25rem 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; background:none; border:none; cursor:pointer; font-family:'Cormorant Garamond',Georgia,serif; font-size:1.15rem; font-weight:700; color:#3D2B1F;" data-idx={i}>
               <span>{item.q}</span>
-              <span class="faq-caret" style="color:#6B8F71; font-size:1.3rem; flex-shrink:0; transition:transform 0.3s; font-weight:400;">+</span>
+              <span class="faq-caret" style="color:#4F6F55; font-size:1.3rem; flex-shrink:0; transition:transform 0.3s; font-weight:400;">+</span>
             </button>
             <div class="faq-answer" style="max-height:0; overflow:hidden; transition:max-height 0.35s ease;">
-              <p style="padding:0 1.5rem 1.25rem 1.5rem; font-size:0.9rem; color:#5C4033; line-height:1.7; border-left:3px solid #6B8F71; margin:0 1rem 1rem 1.5rem; font-family:'Inter',system-ui,sans-serif;">{item.a}</p>
+              <p style="padding:0 1.5rem 1.25rem 1.5rem; font-size:0.9rem; color:#5C4033; line-height:1.7; border-left:3px solid #4F6F55; margin:0 1rem 1rem 1.5rem; font-family:'Inter',system-ui,sans-serif;">{item.a}</p>
             </div>
           </div>
         ))}
@@ -415,31 +415,31 @@ const schemaJson = JSON.stringify({
   <section id="v1-booking" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-2xl mx-auto">
       <div class="text-center mb-12">
-        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Let's Get Started</p>
+        <p style="color:#8B5030; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Let's Get Started</p>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">Book a Stay</h2>
         <p style="color:#5C4033; font-family:'Inter',system-ui,sans-serif;">Fill out the form and we'll confirm your reservation within 24 hours.</p>
       </div>
       <div id="v1-booking-form-wrap" class="reservation-card" style="padding:2.5rem;">
         <!-- Reservation card label -->
-        <p style="font-family:'Inter',system-ui,sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#6B8F71; font-weight:700; margin-bottom:1.5rem; text-align:center;">Reservation Request</p>
+        <p style="font-family:'Inter',system-ui,sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:#4F6F55; font-weight:700; margin-bottom:1.5rem; text-align:center;">Reservation Request</p>
         <form id="v1-booking-form" style="display:flex; flex-direction:column; gap:1.25rem;" novalidate>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;" class="v1-form-grid-2">
             <div style="display:flex; flex-direction:column; gap:0.4rem;">
-              <label for="v1-owner-name" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Owner Name <span style="color:#C17B50;">*</span></label>
+              <label for="v1-owner-name" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Owner Name <span style="color:#8B5030;">*</span></label>
               <input id="v1-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
             <div style="display:flex; flex-direction:column; gap:0.4rem;">
-              <label for="v1-pet-name" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Pet Name <span style="color:#C17B50;">*</span></label>
+              <label for="v1-pet-name" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Pet Name <span style="color:#8B5030;">*</span></label>
               <input id="v1-pet-name" name="petName" type="text" required placeholder="Your dog's name" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;" class="v1-form-grid-2">
             <div style="display:flex; flex-direction:column; gap:0.4rem;">
-              <label for="v1-email" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Email <span style="color:#C17B50;">*</span></label>
+              <label for="v1-email" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Email <span style="color:#8B5030;">*</span></label>
               <input id="v1-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
             <div style="display:flex; flex-direction:column; gap:0.4rem;">
-              <label for="v1-phone" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Phone <span style="color:#C17B50;">*</span></label>
+              <label for="v1-phone" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Phone <span style="color:#8B5030;">*</span></label>
               <input id="v1-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(415) 000-0000" style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
           </div>
@@ -459,7 +459,7 @@ const schemaJson = JSON.stringify({
               </select>
             </div>
             <div style="display:flex; flex-direction:column; gap:0.4rem;">
-              <label for="v1-service" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Service <span style="color:#C17B50;">*</span></label>
+              <label for="v1-service" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Service <span style="color:#8B5030;">*</span></label>
               <select id="v1-service" name="service" required style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;">
                 <option value="">Select a service…</option>
                 {services.map((s) => <option value={s.name}>{s.name}</option>)}
@@ -468,11 +468,11 @@ const schemaJson = JSON.stringify({
           </div>
           <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;" class="v1-form-grid-2">
             <div style="display:flex; flex-direction:column; gap:0.4rem;">
-              <label for="v1-date" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Drop-off Date <span style="color:#C17B50;">*</span></label>
+              <label for="v1-date" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Drop-off Date <span style="color:#8B5030;">*</span></label>
               <input id="v1-date" name="date" type="date" required style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
             <div style="display:flex; flex-direction:column; gap:0.4rem;">
-              <label for="v1-end-date" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Pick-up Date <span style="color:#C17B50;">*</span></label>
+              <label for="v1-end-date" style="font-size:0.8rem; font-weight:600; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif;">Pick-up Date <span style="color:#8B5030;">*</span></label>
               <input id="v1-end-date" name="endDate" type="date" required style="border-radius:8px; border:1.5px solid #d4c9b5; padding:0.7rem 1rem; font-size:0.875rem; background:#fff; color:#3D2B1F; font-family:'Inter',system-ui,sans-serif; width:100%; box-sizing:border-box;" />
             </div>
           </div>
@@ -502,9 +502,9 @@ const schemaJson = JSON.stringify({
   <section class="py-16 px-4" style="background:#F2EAD8;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-10">
-        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Hayes Valley, SF</p>
+        <p style="color:#8B5030; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Hayes Valley, SF</p>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2rem,3.5vw,2.75rem); font-weight:700; color:#3D2B1F; margin-bottom:0.5rem;">A Dog's Favorite Neighborhood</h2>
-        <p style="color:#9C7B6C; max-width:440px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Everything your pup needs is within a short walk of our front door.</p>
+        <p style="color:#7B5E51; max-width:440px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Everything your pup needs is within a short walk of our front door.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
@@ -516,11 +516,11 @@ const schemaJson = JSON.stringify({
           <div style="background:#FAF6EF; border-radius:14px; padding:1.25rem; box-shadow:0 2px 8px rgba(61,43,31,0.07); display:flex; flex-direction:column; gap:0.5rem;" class="hover:shadow-md transition-shadow">
             <div style="display:flex; align-items:center; justify-content:space-between;">
               <span style="font-size:2rem;">{place.icon}</span>
-              <span style="font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:#C17B50; font-family:'Inter',system-ui,sans-serif;">{place.type}</span>
+              <span style="font-size:0.7rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:#8B5030; font-family:'Inter',system-ui,sans-serif;">{place.type}</span>
             </div>
             <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.15rem; font-weight:700; color:#3D2B1F;">{place.name}</h3>
             <p style="font-size:0.85rem; color:#5C4033; line-height:1.55; flex-grow:1; font-family:'Inter',system-ui,sans-serif;">{place.desc}</p>
-            <p style="font-size:0.75rem; color:#9C7B6C; font-weight:600; font-family:'Inter',system-ui,sans-serif;">{place.dist} from us</p>
+            <p style="font-size:0.75rem; color:#7B5E51; font-weight:600; font-family:'Inter',system-ui,sans-serif;">{place.dist} from us</p>
           </div>
         ))}
       </div>
@@ -531,7 +531,7 @@ const schemaJson = JSON.stringify({
   <section id="v1-contact" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Find Us</p>
+        <p style="color:#8B5030; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Find Us</p>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3rem); font-weight:700; color:#3D2B1F;">Contact & Hours</h2>
       </div>
       <div class="grid md:grid-cols-2 gap-10">
@@ -548,19 +548,19 @@ const schemaJson = JSON.stringify({
           </div>
           <div style="background:#F2EAD8; border-radius:14px; padding:1.5rem; border:1px solid #e0d4bc; display:flex; flex-direction:column; gap:1rem;">
             <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.35rem; font-weight:700; color:#3D2B1F;">Get in Touch</h3>
-            <a href={`tel:${business.phone}`} style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#5C4033; text-decoration:none; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">
+            <a href={`tel:${business.phone}`} style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#5C4033; text-decoration:none; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#8B5030] transition-colors">
               <span style="font-size:1.25rem;">📞</span> {business.phone}
             </a>
-            <a href={`mailto:${business.email}`} style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#5C4033; text-decoration:none; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">
+            <a href={`mailto:${business.email}`} style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#5C4033; text-decoration:none; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#8B5030] transition-colors">
               <span style="font-size:1.25rem;">✉️</span> {business.email}
             </a>
             <p style="display:flex; align-items:flex-start; gap:0.75rem; font-size:0.875rem; color:#5C4033; font-family:'Inter',system-ui,sans-serif; margin:0;">
               <span style="font-size:1.25rem; flex-shrink:0;">📍</span> {business.address}
             </p>
-            <p style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif; margin:0;">
+            <p style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#7B5E51; font-family:'Inter',system-ui,sans-serif; margin:0;">
               <span style="font-size:1.25rem;">🚨</span> Emergency: {business.emergency}
             </p>
-            <p style="font-size:0.72rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif; margin:0;">{business.license}</p>
+            <p style="font-size:0.72rem; color:#7B5E51; font-family:'Inter',system-ui,sans-serif; margin:0;">{business.license}</p>
           </div>
         </div>
         <div style="border-radius:14px; overflow:hidden; box-shadow:0 2px 12px rgba(61,43,31,0.1); min-height:300px; background:#e0d4bc;">
@@ -575,6 +575,7 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+
   <!-- FOOTER -->
   <footer style="background:#3D2B1F; padding:3.5rem 1rem 5rem;" class="md:pb-14">
     <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-10">
@@ -583,40 +584,41 @@ const schemaJson = JSON.stringify({
           <span style="font-size:1.5rem;">🐾</span>
           <span style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.35rem; font-weight:700; color:#fff;">{business.name}</span>
         </div>
-        <p style="color:#9C7B6C; font-size:0.875rem; line-height:1.65; font-family:'Inter',system-ui,sans-serif;">{business.description}</p>
-        <p style="color:#9C7B6C; font-size:0.8rem; margin-top:1rem; font-family:'Inter',system-ui,sans-serif;">{business.instagram}</p>
+        <p style="color:#C4A89A; font-size:0.875rem; line-height:1.65; font-family:'Inter',system-ui,sans-serif;">{business.description}</p>
+        <p style="color:#C4A89A; font-size:0.8rem; margin-top:1rem; font-family:'Inter',system-ui,sans-serif;">{business.instagram}</p>
       </div>
       <div>
         <h4 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem;">Quick Links</h4>
         <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
-          <li><a href="#v1-services" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Services</a></li>
-          <li><a href="#v1-pricing" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Pricing</a></li>
-          <li><a href="#v1-gallery" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Gallery</a></li>
-          <li><a href="#v1-team" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Our Team</a></li>
-          <li><a href="#v1-booking" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Book Now</a></li>
+          <li><a href="#v1-services" style="color:#C4A89A; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-white transition-colors">Services</a></li>
+          <li><a href="#v1-pricing" style="color:#C4A89A; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-white transition-colors">Pricing</a></li>
+          <li><a href="#v1-gallery" style="color:#C4A89A; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-white transition-colors">Gallery</a></li>
+          <li><a href="#v1-team" style="color:#C4A89A; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-white transition-colors">Our Team</a></li>
+          <li><a href="#v1-booking" style="color:#C4A89A; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-white transition-colors">Book Now</a></li>
+          <li><a href="/accessibility" style="color:#C4A89A; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-white transition-colors">Accessibility</a></li>
         </ul>
       </div>
       <div>
         <h4 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem;">Contact</h4>
-        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem; color:#9C7B6C; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;">
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem; color:#C4A89A; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;">
           <li>{business.address}</li>
-          <li><a href={`tel:${business.phone}`} style="color:#9C7B6C; text-decoration:none;" class="hover:text-[#C17B50] transition-colors">{business.phone}</a></li>
-          <li><a href={`mailto:${business.email}`} style="color:#9C7B6C; text-decoration:none;" class="hover:text-[#C17B50] transition-colors">{business.email}</a></li>
+          <li><a href={`tel:${business.phone}`} style="color:#C4A89A; text-decoration:none;" class="hover:text-white transition-colors">{business.phone}</a></li>
+          <li><a href={`mailto:${business.email}`} style="color:#C4A89A; text-decoration:none;" class="hover:text-white transition-colors">{business.email}</a></li>
         </ul>
-        <p style="font-size:0.72rem; color:#5C4033; margin-top:1.5rem; font-family:'Inter',system-ui,sans-serif;">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+        <p style="font-size:0.72rem; color:#C4A89A; margin-top:1.5rem; font-family:'Inter',system-ui,sans-serif;">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <!-- MOBILE CTA BAR -->
-  <div class="fixed bottom-0 left-0 right-0 z-50 flex md:hidden" style="height:56px;">
+  <nav aria-label="Mobile quick actions" class="fixed bottom-0 left-0 right-0 z-50 flex md:hidden" style="height:56px;">
     <a href="tel:+14158823047" style="flex:1; display:flex; align-items:center; justify-content:center; gap:0.5rem; background:#3D2B1F; color:#fff; font-weight:700; font-size:0.875rem; text-decoration:none; font-family:'Inter',system-ui,sans-serif;">
-      <span>📞</span> (415) 882-3047
+      <span aria-hidden="true">📞</span> (415) 882-3047
     </a>
-    <a href="#v1-booking" style="flex:1; display:flex; align-items:center; justify-content:center; gap:0.5rem; background:#C17B50; color:#fff; font-weight:700; font-size:0.875rem; text-decoration:none; font-family:'Inter',system-ui,sans-serif;">
+    <a href="#v1-booking" style="flex:1; display:flex; align-items:center; justify-content:center; gap:0.5rem; background:#A66640; color:#fff; font-weight:700; font-size:0.875rem; text-decoration:none; font-family:'Inter',system-ui,sans-serif;">
       Book Now
     </a>
-  </div>
+  </nav>
 
   <script>
     // Date min

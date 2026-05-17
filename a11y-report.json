@@ -1,0 +1,51 @@
+[
+  {
+    "url": "http://localhost:4399/",
+    "violations": [],
+    "passCount": 11,
+    "incompleteCount": 1,
+    "timestamp": "2026-05-17T21:16:17.537Z"
+  },
+  {
+    "url": "http://localhost:4399/v1-cozy-boutique",
+    "violations": [],
+    "passCount": 32,
+    "incompleteCount": 2,
+    "timestamp": "2026-05-17T21:16:22.380Z"
+  },
+  {
+    "url": "http://localhost:4399/v2-active-outdoor",
+    "violations": [],
+    "passCount": 33,
+    "incompleteCount": 2,
+    "timestamp": "2026-05-17T21:16:26.017Z"
+  },
+  {
+    "url": "http://localhost:4399/v3-clinical-trust",
+    "violations": [],
+    "passCount": 28,
+    "incompleteCount": 2,
+    "timestamp": "2026-05-17T21:16:29.471Z"
+  },
+  {
+    "url": "http://localhost:4399/v4-fun-bright",
+    "violations": [],
+    "passCount": 29,
+    "incompleteCount": 2,
+    "timestamp": "2026-05-17T21:16:33.038Z"
+  },
+  {
+    "url": "http://localhost:4399/v5-luxury-resort",
+    "violations": [],
+    "passCount": 28,
+    "incompleteCount": 1,
+    "timestamp": "2026-05-17T21:16:37.595Z"
+  },
+  {
+    "url": "http://localhost:4399/accessibility",
+    "violations": [],
+    "passCount": 14,
+    "incompleteCount": 0,
+    "timestamp": "2026-05-17T21:16:38.710Z"
+  }
+]

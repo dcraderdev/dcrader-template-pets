@@ -202,7 +202,7 @@ const biz = {
         <h2 class="font-oswald text-5xl font-bold text-white uppercase mb-3">What We Do</h2>
         <p class="text-white/65 max-w-xl">Every service is designed for dogs who need more than a walk around the block.</p>
       </div>
-      <div class="services-scroll">
+      <div class="services-scroll" tabindex="0" role="region" aria-label="Services list">
         {services.map((s, i) => (
           <div class="bg-white flex flex-col gap-3 hover:shadow-xl transition-shadow group relative" style="min-width:280px; border-top: 5px solid #F5A623;">
             <div class="trail-marker">{i + 1}</div>
@@ -230,19 +230,19 @@ const biz = {
     <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
       <div>
         <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">4800+</div>
-        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Miles Hiked with Dogs</p>
+        <p class="text-[#0A1A11] text-xs font-semibold uppercase tracking-wider">Miles Hiked with Dogs</p>
       </div>
       <div>
         <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">4.9★</div>
-        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">218 Reviews</p>
+        <p class="text-[#0A1A11] text-xs font-semibold uppercase tracking-wider">218 Reviews</p>
       </div>
       <div>
         <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">6 yrs</div>
-        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Zero Trail Incidents</p>
+        <p class="text-[#0A1A11] text-xs font-semibold uppercase tracking-wider">Zero Trail Incidents</p>
       </div>
       <div>
         <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">15+</div>
-        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Certified Trail Routes</p>
+        <p class="text-[#0A1A11] text-xs font-semibold uppercase tracking-wider">Certified Trail Routes</p>
       </div>
     </div>
   </section>
@@ -294,12 +294,12 @@ const biz = {
           <div class="p-6 flex flex-col gap-3" style="border: 1px solid rgba(245,166,35,0.2); background:rgba(255,255,255,0.05);">
             <div class="text-4xl">{item.icon}</div>
             <h3 class="font-oswald text-xl font-bold text-[#F5A623] uppercase">{item.title}</h3>
-            <p class="text-white/60 text-sm leading-relaxed">{item.desc}</p>
+            <p class="text-white/85 text-sm leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>
       <div class="mt-10 text-center">
-        <p class="text-white/35 font-oswald text-xs uppercase tracking-widest">CO Animal Handler Licensed · Wilderness First Aid Certified · Insured & Bonded</p>
+        <p class="text-white/70 font-oswald text-xs uppercase tracking-widest">CO Animal Handler Licensed · Wilderness First Aid Certified · Insured & Bonded</p>
       </div>
     </div>
   </section>
@@ -362,7 +362,7 @@ const biz = {
             <div class="p-8 flex flex-col gap-4 flex-grow">
               <div>
                 <h3 class="font-oswald text-2xl font-bold uppercase mb-1" style={pkg.featured ? 'color:#fff' : 'color:#1A4731'}>{pkg.name}</h3>
-                <p class="text-sm" style={pkg.featured ? 'color:rgba(255,255,255,0.65)' : 'color:#888'}>{pkg.period}</p>
+                <p class="text-sm" style={pkg.featured ? 'color:rgba(255,255,255,0.9)' : 'color:#595959'}>{pkg.period}</p>
               </div>
               <div class="text-5xl font-oswald font-bold" style={pkg.featured ? 'color:#F5A623' : 'color:#1A4731'}>{pkg.price}</div>
               <p class="text-sm" style={pkg.featured ? 'color:rgba(255,255,255,0.8)' : 'color:#2D3A2A'}>{pkg.description}</p>
@@ -428,7 +428,7 @@ const biz = {
             </div>
             <div>
               <p class="font-oswald text-white uppercase tracking-wide">{t.name}</p>
-              <p class="text-xs text-white/45">{t.breed} · {t.date}</p>
+              <p class="text-xs text-white/75">{t.breed} · {t.date}</p>
             </div>
           </div>
         ))}
@@ -563,8 +563,8 @@ const biz = {
             <a href={`tel:${biz.phone}`} class="flex items-center gap-3 text-white/70 hover:text-[#F5A623] transition-colors text-sm">📞 {biz.phone}</a>
             <a href={`mailto:${biz.email}`} class="flex items-center gap-3 text-white/70 hover:text-[#F5A623] transition-colors text-sm">✉️ {biz.email}</a>
             <p class="text-sm text-white/70">📍 {biz.address}</p>
-            <p class="text-sm text-white/45">🚨 Emergency: {biz.emergency}</p>
-            <p class="text-xs text-white/30 mt-1">{biz.license}</p>
+            <p class="text-sm text-white/75">🚨 Emergency: {biz.emergency}</p>
+            <p class="text-xs text-white/70 mt-1">{biz.license}</p>
           </div>
         </div>
         <div class="glass-card overflow-hidden" style="min-height:300px;">
@@ -578,6 +578,7 @@ const biz = {
     </div>
   </section>
 
+
   <!-- ===== FOOTER ===== -->
   <footer style="background:#0F2A1D; border-top:2px solid #1A4731;" class="py-14 px-4 pb-16 md:pb-14">
     <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-10">
@@ -586,25 +587,26 @@ const biz = {
           <span class="text-2xl">⛰️</span>
           <span class="font-oswald text-xl font-bold text-white uppercase tracking-wider">{biz.name}</span>
         </div>
-        <p class="text-white/45 text-sm leading-relaxed">GPS-tracked adventure hikes through Boulder's best trails. Small packs, big adventures.</p>
+        <p class="text-white/75 text-sm leading-relaxed">GPS-tracked adventure hikes through Boulder's best trails. Small packs, big adventures.</p>
         <p class="text-[#F5A623] text-xs mt-4 font-oswald">{biz.instagram}</p>
       </div>
       <div>
         <h4 class="font-oswald text-base font-bold text-white uppercase tracking-wider mb-4">Explore</h4>
         <ul class="space-y-2 text-sm">
           {['#services', '#pricing', '#gallery', '#team', '#booking'].map((href, i) => (
-            <li><a href={href} class="text-white/45 hover:text-[#F5A623] transition-colors uppercase font-oswald text-xs tracking-wider">{['Services','Pricing','Gallery','Team','Book Now'][i]}</a></li>
+            <li><a href={href} class="text-white/75 hover:text-[#F5A623] transition-colors uppercase font-oswald text-xs tracking-wider">{['Services','Pricing','Gallery','Team','Book Now'][i]}</a></li>
           ))}
+          <li><a href="/accessibility" class="text-white/75 hover:text-[#F5A623] transition-colors uppercase font-oswald text-xs tracking-wider">Accessibility</a></li>
         </ul>
       </div>
       <div>
         <h4 class="font-oswald text-base font-bold text-white uppercase tracking-wider mb-4">Reach Us</h4>
-        <ul class="space-y-2 text-sm text-white/45">
+        <ul class="space-y-2 text-sm text-white/75">
           <li>{biz.address}</li>
           <li><a href={`tel:${biz.phone}`} class="hover:text-[#F5A623] transition-colors">{biz.phone}</a></li>
           <li><a href={`mailto:${biz.email}`} class="hover:text-[#F5A623] transition-colors">{biz.email}</a></li>
         </ul>
-        <p class="text-xs text-white/25 mt-6">© {new Date().getFullYear()} {biz.name}</p>
+        <p class="text-xs text-white/70 mt-6">© {new Date().getFullYear()} {biz.name}</p>
       </div>
     </div>
   </footer>

@@ -27,7 +27,7 @@ const schemaJson = JSON.stringify({
 >
 
   <!-- ANNOUNCEMENT BANNER -->
-  <div id="v4-banner" style="background:#F97316;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative font-bold">
+  <div id="v4-banner" style="background:#C2410C;" class="w-full text-white text-sm text-center py-2 px-4 flex items-center justify-center gap-3 relative font-bold">
     <span>🎉 New pups! First daycare day just $10 — Sniff &amp; Snuggle Intro Special · Book today!</span>
     <button onclick="document.getElementById('v4-banner').remove()" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white text-lg leading-none font-bold" aria-label="Close banner">×</button>
   </div>
@@ -74,23 +74,23 @@ const schemaJson = JSON.stringify({
     }
 
     /* ── NAV WAVY ── */
-    .nav-wavy-wrap { background: #F97316; margin-top: -1px; line-height: 0; }
+    .nav-wavy-wrap { background: #C2410C; margin-top: -1px; line-height: 0; }
 
     /* ── BUTTONS ── */
-    .btn-coral { background: #F97316; color: #fff; border-radius: 999px; padding: 0.85rem 2rem; font-weight: 800; transition: all 0.2s; display: inline-block; }
+    .btn-coral { background: #C2410C; color: #fff; border-radius: 999px; padding: 0.85rem 2rem; font-weight: 800; transition: all 0.2s; display: inline-block; }
     .btn-coral:hover { background: #ea6a0a; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(249,115,22,0.35); }
-    .btn-teal { background: #06B6D4; color: #fff; border-radius: 999px; padding: 0.85rem 2rem; font-weight: 800; transition: all 0.2s; display: inline-block; }
-    .btn-teal:hover { background: #0aa5c0; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(6,182,212,0.35); }
+    .btn-teal { background: #0E7490; color: #fff; border-radius: 999px; padding: 0.85rem 2rem; font-weight: 800; transition: all 0.2s; display: inline-block; }
+    .btn-teal:hover { background: #075568; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(14,116,144,0.35); }
     .btn-yellow { background: #FCD34D; color: #1E293B; border-radius: 999px; padding: 0.85rem 2rem; font-weight: 800; transition: all 0.2s; display: inline-block; }
     .btn-yellow:hover { background: #f8c800; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(252,211,77,0.45); }
 
     /* ── GRADIENTS ── */
-    .grad-coral { background: linear-gradient(135deg, #F97316, #FCD34D); }
+    .grad-coral { background: linear-gradient(135deg, #C2410C, #FCD34D); }
     .grad-teal { background: linear-gradient(135deg, #06B6D4, #34D399); }
-    .grad-yellow { background: linear-gradient(135deg, #FCD34D, #F97316); }
+    .grad-yellow { background: linear-gradient(135deg, #FCD34D, #C2410C); }
 
     /* ── HERO ── */
-    .hero-diagonal { background: linear-gradient(135deg, #F97316 50%, #06B6D4 50%); }
+    .hero-diagonal { background: linear-gradient(135deg, #C2410C 50%, #06B6D4 50%); }
 
     /* ── DECORATIVE DOTS (webcam section) ── */
     .dot-pattern {
@@ -125,12 +125,12 @@ const schemaJson = JSON.stringify({
     .gallery-item:hover .gallery-sticker { opacity: 1; transform: scale(1) rotate(-5deg); }
 
     /* ── FORM ── */
-    input:focus, select:focus, textarea:focus { outline: 3px solid #F97316; outline-offset: 2px; }
+    input:focus, select:focus, textarea:focus { outline: 3px solid #C2410C; outline-offset: 2px; }
 
     /* ── HOW IT WORKS ARROW ── */
     .step-arrow { display: none; }
     @media (min-width: 640px) {
-      .step-arrow { display: flex; align-items: center; color: #F97316; font-size: 2rem; font-weight: 900; flex-shrink: 0; margin-top: -1.5rem; }
+      .step-arrow { display: flex; align-items: center; color: #C2410C; font-size: 2rem; font-weight: 900; flex-shrink: 0; margin-top: -1.5rem; }
     }
 
     html { scroll-behavior: smooth; }
@@ -140,36 +140,36 @@ const schemaJson = JSON.stringify({
   <!-- ═══════════════════════════════════════════
        NAV — WAVY BOTTOM BORDER
   ═══════════════════════════════════════════ -->
-  <nav style="background:#F97316;" class="sticky top-0 z-50 shadow-lg">
+  <nav style="background:#C2410C;" class="sticky top-0 z-50 shadow-lg">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
       <a href="#hero" class="flex items-center gap-2">
         <span class="text-2xl paw-bounce">🐾</span>
         <span class="font-fredoka text-xl text-white" style="font-family:'Fredoka One',cursive;">{business.name}</span>
       </a>
       <div class="hidden md:flex items-center gap-5 text-sm font-bold" style="font-family:'Nunito',sans-serif;">
-        <a href="#services" class="text-white/90 hover:text-white transition-colors">Services</a>
-        <a href="#webcams" class="text-white/90 hover:text-white transition-colors">Webcams</a>
-        <a href="#pricing" class="text-white/90 hover:text-white transition-colors">Pricing</a>
-        <a href="#gallery" class="text-white/90 hover:text-white transition-colors">Gallery</a>
-        <a href="#team" class="text-white/90 hover:text-white transition-colors">Team</a>
+        <a href="#services" class="text-white hover:text-white transition-colors">Services</a>
+        <a href="#webcams" class="text-white hover:text-white transition-colors">Webcams</a>
+        <a href="#pricing" class="text-white hover:text-white transition-colors">Pricing</a>
+        <a href="#gallery" class="text-white hover:text-white transition-colors">Gallery</a>
+        <a href="#team" class="text-white hover:text-white transition-colors">Team</a>
         <a href="#booking" class="wiggle-btn bg-[#FCD34D] text-[#1E293B] rounded-full px-5 py-2 font-extrabold hover:bg-yellow-300 transition-colors">Book Now 🎉</a>
       </div>
       <button id="v4-menu-btn" class="md:hidden text-white text-2xl" aria-label="Open menu">☰</button>
     </div>
     <!-- Mobile menu -->
     <div id="v4-mobile-menu" class="hidden md:hidden px-4 pb-4 flex flex-col gap-3">
-      <a href="#services" class="text-white/90 font-bold text-sm">Services</a>
-      <a href="#webcams" class="text-white/90 font-bold text-sm">Webcams 📹</a>
-      <a href="#pricing" class="text-white/90 font-bold text-sm">Pricing</a>
-      <a href="#gallery" class="text-white/90 font-bold text-sm">Gallery</a>
-      <a href="#team" class="text-white/90 font-bold text-sm">Team</a>
+      <a href="#services" class="text-white font-bold text-sm">Services</a>
+      <a href="#webcams" class="text-white font-bold text-sm">Webcams 📹</a>
+      <a href="#pricing" class="text-white font-bold text-sm">Pricing</a>
+      <a href="#gallery" class="text-white font-bold text-sm">Gallery</a>
+      <a href="#team" class="text-white font-bold text-sm">Team</a>
       <a href="#booking" class="bg-[#FCD34D] text-[#1E293B] rounded-full px-5 py-2 font-extrabold text-center">Book Now 🎉</a>
     </div>
   </nav>
   <!-- WAVY BOTTOM of nav -->
   <div class="nav-wavy-wrap sticky top-[56px] z-40">
     <svg viewBox="0 0 1440 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:24px;">
-      <path d="M0,12 C120,24 240,0 360,12 C480,24 600,0 720,12 C840,24 960,0 1080,12 C1200,24 1320,0 1440,12 L1440,0 L0,0 Z" fill="#F97316"/>
+      <path d="M0,12 C120,24 240,0 360,12 C480,24 600,0 720,12 C840,24 960,0 1080,12 C1200,24 1320,0 1440,12 L1440,0 L0,0 Z" fill="#C2410C"/>
     </svg>
   </div>
 
@@ -223,9 +223,9 @@ const schemaJson = JSON.stringify({
       <h1 class="font-fredoka text-5xl md:text-7xl text-white leading-tight mb-4 drop-shadow-lg" style="font-family:'Fredoka One',cursive;">
         Austin's Happiest<br/>Doggy Daycare!
       </h1>
-      <p class="text-white/90 text-xl mb-6 font-bold" style="font-family:'Nunito',sans-serif;">{business.tagline}</p>
+      <p class="text-white text-xl mb-6 font-bold" style="font-family:'Nunito',sans-serif;">{business.tagline}</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#booking" class="wiggle-btn bg-white text-[#F97316] rounded-full px-8 py-4 font-extrabold text-base hover:bg-[#FFF7ED] transition-colors shadow-lg">Book a Tour 🏠</a>
+        <a href="#booking" class="wiggle-btn bg-white text-[#C2410C] rounded-full px-8 py-4 font-extrabold text-base hover:bg-[#FFF7ED] transition-colors shadow-lg">Book a Tour 🏠</a>
         <a href="#webcams" class="border-2 border-white text-white rounded-full px-8 py-4 font-extrabold text-base hover:bg-white hover:text-[#06B6D4] transition-all">See Webcams 📹</a>
       </div>
 
@@ -261,13 +261,13 @@ const schemaJson = JSON.stringify({
   <section id="services" class="py-20 px-4" style="background:#FFFBF7;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#F97316] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">What We Offer 🐕</p>
+        <p class="text-[#C2410C] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">What We Offer 🐕</p>
         <h2 class="font-fredoka text-5xl text-[#1E293B] mb-3" style="font-family:'Fredoka One',cursive;">Our Services</h2>
         <p class="text-[#475569] max-w-xl mx-auto" style="font-family:'Nunito',sans-serif;">Everything your pup needs for the best day ever, every single day.</p>
       </div>
       <div class="grid sm:grid-cols-2 gap-8">
         {services.map((s, i) => {
-          const accents = ['#F97316', '#06B6D4', '#FCD34D', '#F97316'];
+          const accents = ['#9A3412', '#0E7490', '#854D0E', '#9A3412'];
           const bgs = ['#FFF7ED', '#ECFEFF', '#FEFCE8', '#F0FDF4'];
           const borderWidths = ['8px', '8px', '8px', '8px'];
           return (
@@ -298,8 +298,8 @@ const schemaJson = JSON.stringify({
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <!-- Left: Text -->
         <div>
-          <p class="text-[#06B6D4] font-extrabold uppercase tracking-wider text-xs mb-3" style="font-family:'Nunito',sans-serif;">Live from daycare 📹</p>
-          <h2 class="font-fredoka text-4xl md:text-5xl text-[#F97316] mb-4 leading-tight" style="font-family:'Fredoka One',cursive;">Watch Your Pup<br/>Play <span style="color:#FCD34D;">LIVE</span></h2>
+          <p class="text-[#0E7490] font-extrabold uppercase tracking-wider text-xs mb-3" style="font-family:'Nunito',sans-serif;">Live from daycare 📹</p>
+          <h2 class="font-fredoka text-4xl md:text-5xl text-[#C2410C] mb-4 leading-tight" style="font-family:'Fredoka One',cursive;">Watch Your Pup<br/>Play <span style="color:#FCD34D;">LIVE</span></h2>
           <p class="text-white/75 text-lg leading-relaxed mb-6" style="font-family:'Nunito',sans-serif;">Can't stop thinking about your pup? Our webcam portal gives you live HD access to all three play yards — all day, every day. No refresh needed. No anxiety necessary.</p>
           <div class="flex flex-wrap gap-3 mb-8">
             {['📺 HD Video', '📱 Mobile-friendly', '🕐 Available 24/7', '🔓 No login required'].map((f) => (
@@ -350,7 +350,7 @@ const schemaJson = JSON.stringify({
   <section class="py-20 px-4" style="background:#FFFBF7;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#06B6D4] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">Super Easy 🎈</p>
+        <p class="text-[#0E7490] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">Super Easy 🎈</p>
         <h2 class="font-fredoka text-5xl text-[#1E293B] mb-3" style="font-family:'Fredoka One',cursive;">How It Works</h2>
         <p class="text-[#475569] max-w-md mx-auto" style="font-family:'Nunito',sans-serif;">Three ridiculously easy steps to the best decision your dog will ever make.</p>
       </div>
@@ -366,7 +366,7 @@ const schemaJson = JSON.stringify({
         </div>
 
         <!-- Arrow 1 -->
-        <div class="step-arrow text-[#F97316] font-black text-3xl px-2">→</div>
+        <div class="step-arrow text-[#C2410C] font-black text-3xl px-2">→</div>
 
         <!-- Step 2 -->
         <div class="flex-1 text-center flex flex-col items-center gap-4 px-4">
@@ -382,7 +382,7 @@ const schemaJson = JSON.stringify({
 
         <!-- Step 3 -->
         <div class="flex-1 text-center flex flex-col items-center gap-4 px-4">
-          <div class="w-28 h-28 rounded-full flex items-center justify-center shadow-xl" style="background:linear-gradient(135deg,#FCD34D,#F97316); box-shadow:0 8px 30px rgba(252,211,77,0.5);">
+          <div class="w-28 h-28 rounded-full flex items-center justify-center shadow-xl" style="background:linear-gradient(135deg,#FCD34D,#C2410C); box-shadow:0 8px 30px rgba(252,211,77,0.5);">
             <span class="font-fredoka text-6xl text-white" style="font-family:'Fredoka One',cursive;">3</span>
           </div>
           <h3 class="font-fredoka text-2xl text-[#1E293B]" style="font-family:'Fredoka One',cursive;">First Day Just $10! 🎉</h3>
@@ -398,7 +398,7 @@ const schemaJson = JSON.stringify({
   <section id="pricing" class="py-20 px-4" style="background:#ECFEFF;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#06B6D4] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">Plans &amp; Packages 🎁</p>
+        <p class="text-[#0E7490] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">Plans &amp; Packages 🎁</p>
         <h2 class="font-fredoka text-5xl text-[#1E293B] mb-3" style="font-family:'Fredoka One',cursive;">Pick Your Plan</h2>
         <p class="text-[#475569] max-w-xl mx-auto" style="font-family:'Nunito',sans-serif;">Every plan comes with our signature happiness guarantee and a tail-wag on exit.</p>
       </div>
@@ -423,7 +423,7 @@ const schemaJson = JSON.stringify({
                 <ul class="space-y-2.5 flex-grow">
                   {pkg.features.map((f) => (
                     <li class="text-sm text-[#475569] flex items-start gap-2 font-semibold" style="font-family:'Nunito',sans-serif;">
-                      <span class="text-[#F97316] font-bold mt-0.5 flex-shrink-0">🐾</span> {f}
+                      <span class="text-[#C2410C] font-bold mt-0.5 flex-shrink-0">🐾</span> {f}
                     </li>
                   ))}
                 </ul>
@@ -444,7 +444,7 @@ const schemaJson = JSON.stringify({
   <section id="gallery" class="py-20 px-4" style="background:#FFFBF7;">
     <div class="max-w-6xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#F97316] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">Sneak Peek 📸</p>
+        <p class="text-[#C2410C] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">Sneak Peek 📸</p>
         <h2 class="font-fredoka text-5xl text-[#1E293B] mb-3" style="font-family:'Fredoka One',cursive;">The Happy Place</h2>
         <p class="text-[#475569] max-w-xl mx-auto" style="font-family:'Nunito',sans-serif;">Every photo was taken on a regular Tuesday. This is just what it looks like here.</p>
       </div>
@@ -474,15 +474,15 @@ const schemaJson = JSON.stringify({
   <section id="team" class="py-20 px-4" style="background:#ECFEFF;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <p class="text-[#F97316] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">The Dream Team 💪</p>
+        <p class="text-[#C2410C] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">The Dream Team 💪</p>
         <h2 class="font-fredoka text-5xl text-[#1E293B] mb-3" style="font-family:'Fredoka One',cursive;">Your Pup's People</h2>
         <p class="text-[#475569] max-w-xl mx-auto" style="font-family:'Nunito',sans-serif;">Passionate, certified, and powered entirely by unconditional love for dogs.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {team.map((member, i) => {
-          const borders = ['#F97316', '#06B6D4', '#FCD34D'];
+          const borders = ['#9A3412', '#0E7490', '#854D0E'];
           const badgeBgs = ['#FFF7ED', '#ECFEFF', '#FEFCE8'];
-          const badgeColors = ['#F97316', '#06B6D4', '#D97706'];
+          const badgeColors = ['#9A3412', '#0E7490', '#92400E'];
           return (
             <div class="rounded-3xl overflow-hidden bg-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all">
               <div style={`height:6px; background:${borders[i]};`}></div>
@@ -519,12 +519,12 @@ const schemaJson = JSON.stringify({
       <div class="text-center mb-14">
         <p class="text-[#FCD34D] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">Reviews</p>
         <h2 class="font-fredoka text-5xl text-white mb-3" style="font-family:'Fredoka One',cursive;">What the Parents Say 🗣️</h2>
-        <p class="text-white/50" style="font-family:'Nunito',sans-serif;">4.9 stars from 412 real reviews. No bots, just happy dog parents.</p>
+        <p class="text-white/70" style="font-family:'Nunito',sans-serif;">4.9 stars from 412 real reviews. No bots, just happy dog parents.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {testimonials.map((t, i) => {
           const avatars = ['🐕', '🦴', '🐶'];
-          const starColors = ['#F97316', '#06B6D4', '#FCD34D'];
+          const starColors = ['#C2410C', '#06B6D4', '#FCD34D'];
           return (
             <div class="flex gap-4 items-start">
               <!-- Dog emoji avatar -->
@@ -538,7 +538,7 @@ const schemaJson = JSON.stringify({
                 <blockquote class="text-[#1E293B] leading-relaxed italic text-sm font-semibold" style="font-family:'Nunito',sans-serif;">"{t.text}"</blockquote>
                 <div>
                   <p class="font-extrabold text-[#1E293B] text-sm" style="font-family:'Nunito',sans-serif;">{t.name}</p>
-                  <p class="text-xs text-[#94A3B8]" style="font-family:'Nunito',sans-serif;">{t.breed} · {t.date}</p>
+                  <p class="text-xs text-[#475569]" style="font-family:'Nunito',sans-serif;">{t.breed} · {t.date}</p>
                 </div>
               </div>
             </div>
@@ -559,7 +559,7 @@ const schemaJson = JSON.stringify({
   <section class="py-16 px-4" style="background:#FFFBF7;">
     <div class="max-w-3xl mx-auto">
       <div class="text-center mb-12">
-        <p class="text-[#F97316] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">Good Questions! 🐾</p>
+        <p class="text-[#C2410C] font-extrabold uppercase tracking-wider text-sm mb-2" style="font-family:'Nunito',sans-serif;">Good Questions! 🐾</p>
         <h2 class="font-fredoka text-5xl text-[#1E293B] mb-3" style="font-family:'Fredoka One',cursive;">FAQs</h2>
       </div>
       <div class="flex flex-col gap-3" id="v4-faq">
@@ -570,7 +570,7 @@ const schemaJson = JSON.stringify({
           { q: '😬 What if my dog doesn\'t get along with others?', a: "We do a free meet-and-greet before the first full day. Dogs who don't pass our temperament screen aren't admitted — this protects every pup in our pack." },
           { q: '🍗 Can I bring my dog\'s food?', a: "Absolutely! We have labeled storage for all personal food and medications. We feed on your schedule, not ours." },
         ].map((item, i) => {
-          const colors = ['#F97316', '#06B6D4', '#FCD34D', '#34D399', '#F97316'];
+          const colors = ['#C2410C', '#06B6D4', '#FCD34D', '#34D399', '#C2410C'];
           const bgs = ['#FFF7ED', '#ECFEFF', '#FEFCE8', '#F0FDF4', '#FFF7ED'];
           return (
             <div class="rounded-2xl overflow-hidden shadow-sm" style={`background:${bgs[i]};`}>
@@ -597,28 +597,28 @@ const schemaJson = JSON.stringify({
       <div class="bg-white rounded-3xl shadow-2xl p-8 md:p-10">
         <div class="text-center mb-8">
           <div class="text-5xl mb-3">🐾</div>
-          <h2 class="font-fredoka text-4xl text-[#F97316] mb-2" style="font-family:'Fredoka One',cursive;">Let's Get Your Pup Playing!</h2>
+          <h2 class="font-fredoka text-4xl text-[#C2410C] mb-2" style="font-family:'Fredoka One',cursive;">Let's Get Your Pup Playing!</h2>
           <p class="text-[#475569] text-sm" style="font-family:'Nunito',sans-serif;">Fill it out and we'll reach out within 24 hours to lock in your spot!</p>
         </div>
         <div id="v4-form-wrap">
           <form id="v4-booking-form" class="flex flex-col gap-5" novalidate>
             <div class="grid sm:grid-cols-2 gap-5">
               <div class="flex flex-col gap-1">
-                <label for="v4-owner-name" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Your Name <span class="text-[#F97316]">*</span></label>
+                <label for="v4-owner-name" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Your Name <span class="text-[#C2410C]">*</span></label>
                 <input id="v4-owner-name" name="ownerName" type="text" required autocomplete="name" placeholder="Your full name" class="rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400" style="font-family:'Nunito',sans-serif;" />
               </div>
               <div class="flex flex-col gap-1">
-                <label for="v4-pet-name" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Dog's Name <span class="text-[#F97316]">*</span></label>
+                <label for="v4-pet-name" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Dog's Name <span class="text-[#C2410C]">*</span></label>
                 <input id="v4-pet-name" name="petName" type="text" required placeholder="Your pup's name" class="rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400" style="font-family:'Nunito',sans-serif;" />
               </div>
             </div>
             <div class="grid sm:grid-cols-2 gap-5">
               <div class="flex flex-col gap-1">
-                <label for="v4-email" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Email <span class="text-[#F97316]">*</span></label>
+                <label for="v4-email" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Email <span class="text-[#C2410C]">*</span></label>
                 <input id="v4-email" name="email" type="email" required autocomplete="email" placeholder="you@email.com" class="rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400" style="font-family:'Nunito',sans-serif;" />
               </div>
               <div class="flex flex-col gap-1">
-                <label for="v4-phone" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Phone <span class="text-[#F97316]">*</span></label>
+                <label for="v4-phone" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Phone <span class="text-[#C2410C]">*</span></label>
                 <input id="v4-phone" name="phone" type="tel" required autocomplete="tel" placeholder="(512) 000-0000" class="rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400" style="font-family:'Nunito',sans-serif;" />
               </div>
             </div>
@@ -628,7 +628,7 @@ const schemaJson = JSON.stringify({
                 <input id="v4-breed" name="breed" type="text" placeholder="e.g. Corgi" class="rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400" style="font-family:'Nunito',sans-serif;" />
               </div>
               <div class="flex flex-col gap-1">
-                <label for="v4-service" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Service <span class="text-[#F97316]">*</span></label>
+                <label for="v4-service" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Service <span class="text-[#C2410C]">*</span></label>
                 <select id="v4-service" name="service" required class="rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-[#1E293B]" style="font-family:'Nunito',sans-serif;">
                   <option value="">Choose a service…</option>
                   {services.map((s) => <option value={s.name}>{s.name}</option>)}
@@ -636,14 +636,14 @@ const schemaJson = JSON.stringify({
               </div>
             </div>
             <div class="flex flex-col gap-1">
-              <label for="v4-date" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Preferred Date <span class="text-[#F97316]">*</span></label>
+              <label for="v4-date" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Preferred Date <span class="text-[#C2410C]">*</span></label>
               <input id="v4-date" name="date" type="date" required class="rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-[#1E293B]" style="font-family:'Nunito',sans-serif;" />
             </div>
             <div class="flex flex-col gap-1">
               <label for="v4-notes" class="text-sm font-extrabold text-[#1E293B]" style="font-family:'Nunito',sans-serif;">Anything We Should Know?</label>
               <textarea id="v4-notes" name="notes" rows="4" placeholder="Energy level, friendliness with other dogs, dietary needs, favorite toy, anything at all! 🐾" class="rounded-xl border-2 border-gray-200 px-4 py-3 text-sm text-[#1E293B] placeholder:text-gray-400 resize-y" style="font-family:'Nunito',sans-serif;"></textarea>
             </div>
-            <button type="submit" class="wiggle-btn w-full rounded-full py-4 font-extrabold text-white text-base transition-all hover:-translate-y-1 hover:shadow-xl" style="background:#F97316; font-family:'Nunito',sans-serif;">
+            <button type="submit" class="wiggle-btn w-full rounded-full py-4 font-extrabold text-white text-base transition-all hover:-translate-y-1 hover:shadow-xl" style="background:#C2410C; font-family:'Nunito',sans-serif;">
               Get Started 🐾
             </button>
           </form>
@@ -660,11 +660,11 @@ const schemaJson = JSON.stringify({
   <!-- ═══════════════════════════════════════════
        CONTACT — TURQUOISE SECTION
   ═══════════════════════════════════════════ -->
-  <section id="contact" class="py-20 px-4" style="background:#06B6D4;">
+  <section id="contact" class="py-20 px-4" style="background:#0E7490;">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
         <h2 class="font-fredoka text-5xl text-white mb-3" style="font-family:'Fredoka One',cursive;">Come Find Us 📍</h2>
-        <p class="text-white/80 max-w-md mx-auto" style="font-family:'Nunito',sans-serif;">We're in South Lamar — best neighborhood in Austin, obviously.</p>
+        <p class="text-white max-w-md mx-auto" style="font-family:'Nunito',sans-serif;">We're in South Lamar — best neighborhood in Austin, obviously.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-8">
         <div class="flex flex-col gap-5">
@@ -675,15 +675,15 @@ const schemaJson = JSON.stringify({
               <tbody>
                 <tr class="border-b border-gray-100">
                   <td class="py-2.5 font-bold" style="font-family:'Nunito',sans-serif;">Mon – Fri</td>
-                  <td class="py-2.5 text-right font-extrabold text-[#F97316]" style="font-family:'Nunito',sans-serif;">{business.hours.weekdays}</td>
+                  <td class="py-2.5 text-right font-extrabold text-[#C2410C]" style="font-family:'Nunito',sans-serif;">{business.hours.weekdays}</td>
                 </tr>
                 <tr class="border-b border-gray-100">
                   <td class="py-2.5 font-bold" style="font-family:'Nunito',sans-serif;">Saturday</td>
-                  <td class="py-2.5 text-right font-extrabold text-[#F97316]" style="font-family:'Nunito',sans-serif;">{business.hours.saturday}</td>
+                  <td class="py-2.5 text-right font-extrabold text-[#C2410C]" style="font-family:'Nunito',sans-serif;">{business.hours.saturday}</td>
                 </tr>
                 <tr>
                   <td class="py-2.5 font-bold" style="font-family:'Nunito',sans-serif;">Sunday</td>
-                  <td class="py-2.5 text-right font-extrabold text-[#06B6D4]" style="font-family:'Nunito',sans-serif;">{business.hours.sunday}</td>
+                  <td class="py-2.5 text-right font-extrabold text-[#0E7490]" style="font-family:'Nunito',sans-serif;">{business.hours.sunday}</td>
                 </tr>
               </tbody>
             </table>
@@ -691,19 +691,19 @@ const schemaJson = JSON.stringify({
           <!-- Contact info card -->
           <div class="rounded-3xl bg-white shadow-md p-6 flex flex-col gap-3">
             <h3 class="font-fredoka text-xl text-[#1E293B] mb-1" style="font-family:'Fredoka One',cursive;">Let's Talk! 🐶</h3>
-            <a href={`tel:${business.phone}`} class="flex items-center gap-3 text-[#475569] hover:text-[#F97316] transition-colors text-sm font-semibold" style="font-family:'Nunito',sans-serif;">
+            <a href={`tel:${business.phone}`} class="flex items-center gap-3 text-[#475569] hover:text-[#C2410C] transition-colors text-sm font-semibold" style="font-family:'Nunito',sans-serif;">
               <span class="text-xl">📞</span> {business.phone}
             </a>
-            <a href={`mailto:${business.email}`} class="flex items-center gap-3 text-[#475569] hover:text-[#F97316] transition-colors text-sm font-semibold" style="font-family:'Nunito',sans-serif;">
+            <a href={`mailto:${business.email}`} class="flex items-center gap-3 text-[#475569] hover:text-[#C2410C] transition-colors text-sm font-semibold" style="font-family:'Nunito',sans-serif;">
               <span class="text-xl">✉️</span> {business.email}
             </a>
             <p class="flex items-start gap-3 text-sm text-[#475569] font-semibold" style="font-family:'Nunito',sans-serif;">
               <span class="text-xl">📍</span> {business.address}
             </p>
-            <p class="flex items-center gap-3 text-sm text-gray-400" style="font-family:'Nunito',sans-serif;">
+            <p class="flex items-center gap-3 text-sm text-gray-600" style="font-family:'Nunito',sans-serif;">
               <span class="text-xl">🚨</span> Emergency: {business.emergency}
             </p>
-            <p class="text-xs text-gray-400 mt-1" style="font-family:'Nunito',sans-serif;">{business.license}</p>
+            <p class="text-xs text-gray-600 mt-1" style="font-family:'Nunito',sans-serif;">{business.license}</p>
           </div>
         </div>
         <!-- Map embed -->
@@ -718,6 +718,7 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+
   <!-- ═══════════════════════════════════════════
        FOOTER — DARK NAVY
   ═══════════════════════════════════════════ -->
@@ -728,20 +729,20 @@ const schemaJson = JSON.stringify({
           <span class="text-2xl paw-bounce">🐾</span>
           <span class="font-fredoka text-xl text-white" style="font-family:'Fredoka One',cursive;">{business.name}</span>
         </div>
-        <p class="text-white/50 text-sm leading-relaxed" style="font-family:'Nunito',sans-serif;">{business.description}</p>
+        <p class="text-white/70 text-sm leading-relaxed" style="font-family:'Nunito',sans-serif;">{business.description}</p>
         <div class="flex gap-3 mt-5">
-          <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center text-sm hover:scale-110 transition-transform" style="background:#F97316;" aria-label="Instagram">📸</a>
+          <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center text-sm hover:scale-110 transition-transform" style="background:#C2410C;" aria-label="Instagram">📸</a>
           <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center text-sm hover:scale-110 transition-transform" style="background:#06B6D4;" aria-label="Facebook">👍</a>
           <a href="#" class="w-8 h-8 rounded-full flex items-center justify-center text-sm hover:scale-110 transition-transform" style="background:#FCD34D;" aria-label="TikTok">🎵</a>
         </div>
-        <p class="text-[#F97316] text-xs mt-3 font-bold" style="font-family:'Nunito',sans-serif;">{business.instagram}</p>
+        <p class="text-[#FB923C] text-xs mt-3 font-bold" style="font-family:'Nunito',sans-serif;">{business.instagram}</p>
       </div>
       <div>
         <h4 class="font-fredoka text-lg text-white mb-4" style="font-family:'Fredoka One',cursive;">🏠 Quick Links</h4>
         <ul class="space-y-2 text-sm">
           {(['#services','#webcams','#pricing','#gallery','#team','#booking'] as const).map((href, i) => (
             <li>
-              <a href={href} class="text-white/50 hover:text-[#F97316] transition-colors font-semibold" style="font-family:'Nunito',sans-serif;">
+              <a href={href} class="text-white/70 hover:text-[#C2410C] transition-colors font-semibold" style="font-family:'Nunito',sans-serif;">
                 {['Services','Webcams 📹','Pricing','Gallery','Team','Book Now 🎉'][i]}
               </a>
             </li>
@@ -750,12 +751,13 @@ const schemaJson = JSON.stringify({
       </div>
       <div>
         <h4 class="font-fredoka text-lg text-white mb-4" style="font-family:'Fredoka One',cursive;">📞 Contact Us</h4>
-        <ul class="space-y-2 text-sm text-white/50 font-semibold" style="font-family:'Nunito',sans-serif;">
+        <ul class="space-y-2 text-sm text-white/70 font-semibold" style="font-family:'Nunito',sans-serif;">
           <li>{business.address}</li>
-          <li><a href={`tel:${business.phone}`} class="hover:text-[#F97316] transition-colors">{business.phone}</a></li>
+          <li><a href={`tel:${business.phone}`} class="hover:text-[#C2410C] transition-colors">{business.phone}</a></li>
           <li><a href={`mailto:${business.email}`} class="hover:text-[#06B6D4] transition-colors">{business.email}</a></li>
+          <li><a href="/accessibility" class="hover:text-[#C2410C] transition-colors">Accessibility</a></li>
         </ul>
-        <p class="text-xs text-white/20 mt-6" style="font-family:'Nunito',sans-serif;">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
+        <p class="text-xs text-white/60 mt-6" style="font-family:'Nunito',sans-serif;">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -764,7 +766,7 @@ const schemaJson = JSON.stringify({
        MOBILE CTA BAR — FIXED BOTTOM
   ═══════════════════════════════════════════ -->
   <div class="fixed bottom-0 left-0 right-0 z-50 flex md:hidden" style="height:56px;">
-    <a href={`tel:${business.phone}`} class="flex-1 flex items-center justify-center gap-2 text-white font-extrabold text-sm" style="background:#F97316; font-family:'Nunito',sans-serif;">
+    <a href={`tel:${business.phone}`} class="flex-1 flex items-center justify-center gap-2 text-white font-extrabold text-sm" style="background:#C2410C; font-family:'Nunito',sans-serif;">
       <span>📞</span> {business.phone}
     </a>
     <a href="#booking" class="flex-1 flex items-center justify-center gap-2 font-extrabold text-sm" style="background:#FCD34D; color:#1E293B; font-family:'Nunito',sans-serif;">
