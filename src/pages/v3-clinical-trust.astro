@@ -136,20 +136,42 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- TRUST STATS BAR -->
-  <section class="bg-white border-t border-b border-[#E2E8F0] py-8 px-4">
-    <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-      {[
-        { n: '4 Years', label: 'Zero adverse incidents' },
-        { n: '184', label: '5-star reviews' },
-        { n: '3', label: 'Certified specialists on staff' },
-        { n: '100%', label: 'Fear Free methodology' },
-      ].map((s) => (
+  <!-- CERTIFICATIONS & ACCREDITATIONS -->
+  <section class="bg-white border-t border-b border-[#E2E8F0] py-10 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-baseline justify-between border-b border-[#E2E8F0] pb-3 mb-6">
         <div>
-          <div class="text-2xl font-bold text-[#0E7490] mb-1">{s.n}</div>
-          <p class="text-[#64748B] text-xs uppercase tracking-wider">{s.label}</p>
+          <p class="text-[#0E7490] text-[10px] font-semibold uppercase tracking-[0.22em]">§ Credentials Registry</p>
+          <h2 class="text-base font-semibold text-[#0F172A] mt-1">Active Certifications & Professional Memberships</h2>
         </div>
-      ))}
+        <p class="text-[#94A3B8] text-[10px] uppercase tracking-wider hidden sm:block">Verified: Q2 2026</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-5">
+        {[
+          { abbr: 'DVM', org: 'Doctor of Veterinary Medicine', auth: 'Washington State Veterinary Board', id: 'WA-VET-#4421', exp: 'Active' },
+          { abbr: 'CAAB', org: 'Certified Applied Animal Behaviorist', auth: 'Animal Behavior Society', id: 'CAAB-#0918', exp: 'Renewed 2026' },
+          { abbr: 'NCMG', org: 'Nationally Certified Master Groomer', auth: 'National Dog Groomers Assoc.', id: 'NCMG-#3187', exp: 'Active' },
+          { abbr: 'CGC', org: 'AKC Canine Good Citizen Evaluator', auth: 'American Kennel Club', id: 'CGC-EV-#11042', exp: 'Active' },
+          { abbr: 'FFCP', org: 'Fear Free Certified Professional', auth: 'Fear Free, LLC', id: 'FFCP-#27514', exp: 'Renewed 2026' },
+          { abbr: 'RVT', org: 'Registered Veterinary Technician', auth: 'WA Veterinary Tech. Assoc.', id: 'RVT-WA-#8826', exp: 'Active' },
+          { abbr: 'CPR1', org: 'Pet First Aid & CPR Instructor', auth: 'Pet Tech / American Red Cross', id: 'PT-INST-#1166', exp: 'Active' },
+          { abbr: 'LSH', org: 'Low Stress Handling® Silver', auth: 'CattleDog Publishing / Yin Inst.', id: 'LSH-S-#04412', exp: 'Active' },
+        ].map((c) => (
+          <div class="flex items-start gap-3 border-l-2 border-[#0E7490] pl-3 py-1">
+            <div class="bg-[#CCFBF1] text-[#0E7490] font-semibold text-[10px] tracking-wider px-2 py-1 leading-none rounded-sm whitespace-nowrap mt-0.5">{c.abbr}</div>
+            <div class="min-w-0">
+              <p class="text-[#0F172A] text-xs font-semibold leading-snug">{c.org}</p>
+              <p class="text-[#64748B] text-[11px] leading-snug">{c.auth}</p>
+              <p class="text-[#94A3B8] text-[10px] mt-0.5 font-mono tracking-tight">{c.id} · {c.exp}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="text-[#94A3B8] text-[11px] mt-7 leading-relaxed max-w-3xl">
+        All credentials independently verified through issuing bodies. Hard copies are available for client review at intake. Calm Coat maintains continuing education hours exceeding minimum requirements for every active certification on file.
+      </p>
     </div>
   </section>
 

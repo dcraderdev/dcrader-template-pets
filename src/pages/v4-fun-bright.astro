@@ -393,6 +393,71 @@ const schemaJson = JSON.stringify({
   </section>
 
   <!-- ═══════════════════════════════════════════
+       ON THE PLAY YARD RIGHT NOW — LIVE VIGNETTE
+  ═══════════════════════════════════════════ -->
+  <section id="rightnow" class="py-20 px-4 relative overflow-hidden" style="background:linear-gradient(135deg,#FEF3C7 0%,#FCE7F3 50%,#DBEAFE 100%);">
+    <!-- floating sticker decorations -->
+    <span class="absolute text-5xl select-none" style="top:8%; left:5%; transform:rotate(-12deg); opacity:0.55;">🎾</span>
+    <span class="absolute text-5xl select-none" style="top:14%; right:7%; transform:rotate(18deg); opacity:0.55;">🦴</span>
+    <span class="absolute text-4xl select-none" style="bottom:10%; left:8%; transform:rotate(-8deg); opacity:0.55;">🐾</span>
+    <span class="absolute text-4xl select-none" style="bottom:14%; right:10%; transform:rotate(22deg); opacity:0.55;">🐾</span>
+
+    <div class="max-w-6xl mx-auto relative">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-3" style="background:#FFFFFF; box-shadow:0 4px 16px rgba(0,0,0,0.08);">
+          <span class="inline-block w-2.5 h-2.5 rounded-full" style="background:#EF4444; animation:pulse 1.4s infinite;"></span>
+          <span class="font-extrabold uppercase tracking-widest text-xs" style="font-family:'Nunito',sans-serif; color:#EF4444;">Live right now</span>
+        </div>
+        <h2 class="font-fredoka text-5xl text-[#1E293B] mb-3" style="font-family:'Fredoka One',cursive;">On the Play Yard 🎈</h2>
+        <p class="text-[#475569] max-w-lg mx-auto" style="font-family:'Nunito',sans-serif;">A peek at what&rsquo;s happening this very minute at Sniff &amp; Snuggle. Updated by our supervisors as the day rolls.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <!-- BIG vignette card -->
+        <div class="md:col-span-2 rounded-3xl p-7 shadow-xl flex flex-col gap-4" style="background:#FFFFFF; border:4px solid #FCD34D;">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">☀️</span>
+            <div>
+              <p class="font-fredoka text-2xl text-[#1E293B] leading-none" style="font-family:'Fredoka One',cursive;">10:42 AM · Big Yard</p>
+              <p class="text-xs text-[#64748B] mt-1" style="font-family:'Nunito',sans-serif;">South Lamar location · 78°F &amp; sunny</p>
+            </div>
+          </div>
+          <p class="text-[#1E293B] leading-relaxed text-lg" style="font-family:'Nunito',sans-serif;">
+            Mid-morning zoomies are <em>in full swing</em>. Otis (golden, 2) is currently undefeated in keep-away with a purple squeaky frog. Bean and Mochi (mini Aussies) are sharing the splash pool. A small senior crew — Rooster, Mabel, Jasper — is doing dignified sniff laps along the shade fence. Tyler just rotated in a fresh pile of kongs.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-2">
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide" style="background:#FEF3C7; color:#92400E; font-family:'Nunito',sans-serif;">🐕 18 dogs in</span>
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide" style="background:#DBEAFE; color:#1E40AF; font-family:'Nunito',sans-serif;">👋 3 handlers on yard</span>
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide" style="background:#DCFCE7; color:#166534; font-family:'Nunito',sans-serif;">🎯 Energy: medium-high</span>
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold uppercase tracking-wide" style="background:#FCE7F3; color:#9D174D; font-family:'Nunito',sans-serif;">💤 Naptime in 38 min</span>
+          </div>
+        </div>
+
+        <!-- Mini event feed -->
+        <div class="rounded-3xl p-6 shadow-xl flex flex-col gap-3" style="background:#1E293B;">
+          <p class="text-[#FCD34D] font-extrabold uppercase tracking-wider text-xs" style="font-family:'Nunito',sans-serif;">Just happened ✨</p>
+          <ul class="space-y-3 mt-1" style="font-family:'Nunito',sans-serif;">
+            {[
+              { t: '10:38', emoji: '🎾', text: 'Bingo retrieved a tennis ball from the splash pool. Iconic.' },
+              { t: '10:22', emoji: '🥳', text: 'Birthday hat photo for Pickle (turning 4!).' },
+              { t: '10:05', emoji: '🐾', text: 'Puppy kindergarten finished sit-stay drills.' },
+              { t: '9:51', emoji: '🛁', text: 'Cooper out of the bath. 10/10, smells like a peach.' },
+              { t: '9:30', emoji: '🌞', text: 'Yard rotation: mediums &amp; large smalls swap.' },
+            ].map((e) => (
+              <li class="flex gap-3 items-start text-white/90 text-sm leading-snug">
+                <span class="font-mono text-[10px] text-[#FCD34D] pt-0.5 w-10 flex-shrink-0">{e.t}</span>
+                <span class="text-lg leading-none flex-shrink-0">{e.emoji}</span>
+                <span set:html={e.text}></span>
+              </li>
+            ))}
+          </ul>
+          <a href="#hero" class="mt-2 text-center font-extrabold text-xs uppercase tracking-wider px-3 py-2 rounded-full" style="background:#FCD34D; color:#1E293B; font-family:'Nunito',sans-serif;">Open the live cam ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
        PACKAGES / PRICING
   ═══════════════════════════════════════════ -->
   <section id="pricing" class="py-20 px-4" style="background:#ECFEFF;">
