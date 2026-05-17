@@ -225,23 +225,23 @@ const biz = {
     </div>
   </section>
 
-  <!-- ===== ANIMATED STAT COUNTERS ===== -->
+  <!-- ===== STAT COUNTERS ===== -->
   <section id="v2-stats" class="py-14 px-4" style="background:#F5A623;">
     <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
       <div>
-        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2" data-count="4800" data-suffix="+">0</div>
+        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">4800+</div>
         <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Miles Hiked with Dogs</p>
       </div>
       <div>
-        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2" data-count="49" data-suffix="★" data-decimal="0.1">0</div>
+        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">4.9★</div>
         <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">218 Reviews</p>
       </div>
       <div>
-        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2" data-count="6" data-suffix=" yrs">0</div>
+        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">6 yrs</div>
         <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Zero Trail Incidents</p>
       </div>
       <div>
-        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2" data-count="15" data-suffix="+">0</div>
+        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">15+</div>
         <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Certified Trail Routes</p>
       </div>
     </div>
@@ -673,40 +673,5 @@ const biz = {
       });
     });
 
-    // ── Count-up animation ──
-    function countUp(el: HTMLElement, target: number, duration: number, suffix: string) {
-      const start = Date.now();
-      const tick = () => {
-        const elapsed = Date.now() - start;
-        const progress = Math.min(elapsed / duration, 1);
-        const val = Math.floor(progress * target);
-        // Special-case the 4.9 rating counter (data-count="49" → display as 4.9)
-        if (el.dataset.decimal) {
-          const divisor = parseFloat(el.dataset.decimal);
-          el.textContent = (val * divisor).toFixed(1) + '★';
-        } else {
-          el.textContent = val + suffix;
-        }
-        if (progress < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    }
-
-    const statsEl = document.getElementById('v2-stats');
-    if (statsEl) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => {
-              const target = parseInt(el.dataset.count || '0', 10);
-              const suffix = el.dataset.suffix || '';
-              countUp(el, target, 1500, suffix);
-            });
-            observer.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.3 });
-      observer.observe(statsEl);
-    }
   </script>
 </BaseLayout>

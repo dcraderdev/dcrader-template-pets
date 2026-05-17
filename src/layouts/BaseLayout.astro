@@ -10,6 +10,7 @@ export interface Props {
 
 const { title, description, ogImage, heroImage, variant = '', schemaJson } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://pets.dcrader.dev');
+import '../global.css';
 ---
 <!DOCTYPE html>
 <html lang="en">
