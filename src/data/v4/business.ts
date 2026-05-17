@@ -23,21 +23,21 @@ export const team = [
     role: 'Owner & Chief Fun Officer',
     bio: 'Former elementary school teacher who realized she was way better with dogs than kids. Priya opened Sniff & Snuggle to create a daycare that treated dog enrichment as seriously as human daycare treats child development.',
     certifications: ['CCPDT Associate', 'Fear Free Shelter Specialist', 'Pet CPR & First Aid'],
-    photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&q=80',
+    photo: '/images/photo-1494790108377-be9c29b29330-400.webp',
   },
   {
     name: 'Tyler Brooks',
     role: 'Puppy Training Specialist',
     bio: 'Positive-methods-only trainer with a special love for the 8–16 week puppy window. Tyler\'s kindergarten classes have a waitlist—his approach turns the critical socialization period into lifelong confidence.',
     certifications: ['CPDT-KA', 'AKC S.T.A.R. Puppy Evaluator', 'Karen Pryor Academy Graduate'],
-    photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&q=80',
+    photo: '/images/photo-1500648767791-00dcc994a43e-400.webp',
   },
   {
     name: 'Jasmine Lee',
     role: 'Daycare Supervisor',
     bio: 'Dog behavior nerd who can read a room of 20 dogs in three seconds. Jasmine manages daily pack flow, handles introductions, and keeps the energy positive and safe. She knows every dog\'s story.',
     certifications: ['iAABC Associate Member', 'Canine Ethology Certificate'],
-    photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&q=80',
+    photo: '/images/photo-1580489944761-15a19d654956-400.webp',
   },
 ];
 

@@ -21,8 +21,8 @@ const schemaJson = JSON.stringify({
 <BaseLayout
   title={`${business.name} — ${business.tagline}`}
   description={business.description}
-  ogImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1200&h=630&fit=crop&q=80"
-  heroImage="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=1600&h=900&fit=crop&q=80"
+  ogImage="/images/photo-1587300003388-59208cc962cb-1600.webp"
+  heroImage="/images/photo-1587300003388-59208cc962cb-400.webp"
   schemaJson={schemaJson}
 >
 
@@ -200,15 +200,15 @@ const schemaJson = JSON.stringify({
       <div style="position:relative; width:340px; height:360px; margin:0 auto;">
         <!-- Photo 1: top-left, tilted left -->
         <div class="polaroid" style="top:0; left:0; transform:rotate(-3deg); z-index:1;">
-          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=300&h=300&fit=crop" alt="Happy dog guest at Paws and Pine" width="200" height="200" />
+          <img src="/images/photo-1587300003388-59208cc962cb-400.webp" alt="Happy dog guest at Paws and Pine" width="200" height="200" loading="eager" decoding="async" fetchpriority="high" />
         </div>
         <!-- Photo 2: center-right, tilted right -->
         <div class="polaroid" style="top:40px; right:0; transform:rotate(2deg); z-index:2;">
-          <img src="https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=300&h=300&fit=crop" alt="Dog playing at Paws and Pine" width="200" height="200" />
+          <img src="/images/photo-1510771463146-e89e6e86560e-400.webp" alt="Dog playing at Paws and Pine" width="200" height="200" loading="eager" decoding="async" />
         </div>
         <!-- Photo 3: bottom-left, slight tilt -->
         <div class="polaroid" style="bottom:0; left:30px; transform:rotate(-1.5deg); z-index:3;">
-          <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?w=300&h=300&fit=crop" alt="Cozy dog lounging at Paws and Pine" width="200" height="200" />
+          <img src="/images/photo-1537151608828-ea2b11777ee8-400.webp" alt="Cozy dog lounging at Paws and Pine" width="200" height="200" loading="eager" decoding="async" />
         </div>
       </div>
 
@@ -306,23 +306,14 @@ const schemaJson = JSON.stringify({
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2.25rem,4vw,3.25rem); font-weight:700; color:#3D2B1F; margin-bottom:0.75rem;">The Gallery</h2>
         <p style="color:#5C4033; max-width:440px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">A glimpse of everyday joy — real guests, real moments.</p>
       </div>
-      <div style="columns:3; column-gap:1.5rem;" class="v1-gallery-columns">
-        {gallery.map((img, i) => {
-          const rot = i % 2 === 0 ? '1.5deg' : '-1.5deg';
-          return (
-            <div style={`break-inside:avoid; margin-bottom:1.5rem;`}>
-              <div class="gallery-polaroid" style={`transform:rotate(${rot});`}>
-                <img src={img.url} alt={img.alt} loading="lazy" style="display:block; width:100%; aspect-ratio:1; object-fit:cover;" />
-                <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#9C7B6C; font-size:0.8rem; text-align:center; padding-top:6px; margin:0;">{img.caption}</p>
-              </div>
-            </div>
-          );
-        })}
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {gallery.map((img) => (
+          <div class="gallery-polaroid">
+            <img src={img.url} alt={img.alt} loading="lazy" decoding="async" style="display:block; width:100%; aspect-ratio:1; object-fit:cover;" />
+            <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#9C7B6C; font-size:0.8rem; text-align:center; padding-top:6px; margin:0;">{img.caption}</p>
+          </div>
+        ))}
       </div>
-      <style>
-        @media (max-width: 768px) { .v1-gallery-columns { columns: 2 !important; } }
-        @media (max-width: 480px) { .v1-gallery-columns { columns: 1 !important; } }
-      </style>
     </div>
   </section>
 
