@@ -263,28 +263,6 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
-  <!-- STATS STRIP — DARK HORIZONTAL BAND -->
-  <section style="background:#3D2B1F; padding:3rem 1rem;">
-    <div class="max-w-5xl mx-auto" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:1.5rem; text-align:center;">
-      {[
-        { n: '5,000+', label: 'Dog-Nights Booked' },
-        { n: '4.9★', label: '312 Reviews' },
-        { n: '12', label: 'Max Dogs at Once' },
-        { n: '2×', label: 'Daily Photo Updates' },
-      ].map((s) => (
-        <div>
-          <div style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2rem,4vw,3.25rem); font-weight:700; color:#C17B50; line-height:1.1;">{s.n}</div>
-          <p style="color:rgba(250,246,239,0.65); font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; margin-top:0.35rem; font-family:'Inter',system-ui,sans-serif;">{s.label}</p>
-        </div>
-      ))}
-    </div>
-    <style>
-      @media (max-width: 640px) {
-        #v1-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
-      }
-    </style>
-  </section>
-
   <!-- PRICING — PACKAGE CARDS -->
   <section id="v1-pricing" class="py-20 px-4" style="background:#F2EAD8;">
     <div class="max-w-5xl mx-auto">

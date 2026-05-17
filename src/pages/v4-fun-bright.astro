@@ -290,36 +290,6 @@ const schemaJson = JSON.stringify({
   </section>
 
   <!-- ═══════════════════════════════════════════
-       STATS STRIP — CORAL BACKGROUND
-  ═══════════════════════════════════════════ -->
-  <section class="py-16 px-4" style="background:#F97316;">
-    <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 text-center">
-        <div>
-          <div class="font-fredoka text-6xl md:text-7xl text-white mb-2 stat-num" data-target="412" style="font-family:'Fredoka One',cursive;">412</div>
-          <p class="text-white font-extrabold text-base" style="font-family:'Nunito',sans-serif;">Reviews</p>
-          <p class="text-white/70 text-xs mt-1" style="font-family:'Nunito',sans-serif;">On Google &amp; Yelp</p>
-        </div>
-        <div>
-          <div class="font-fredoka text-6xl md:text-7xl text-white mb-2" style="font-family:'Fredoka One',cursive;">4.9<span class="text-4xl">★</span></div>
-          <p class="text-white font-extrabold text-base" style="font-family:'Nunito',sans-serif;">Average Rating</p>
-          <p class="text-white/70 text-xs mt-1" style="font-family:'Nunito',sans-serif;">From real parents</p>
-        </div>
-        <div>
-          <div class="font-fredoka text-6xl md:text-7xl text-white mb-2" style="font-family:'Fredoka One',cursive;">3</div>
-          <p class="text-white font-extrabold text-base" style="font-family:'Nunito',sans-serif;">Yards of Play Space</p>
-          <p class="text-white/70 text-xs mt-1" style="font-family:'Nunito',sans-serif;">Indoor + outdoor</p>
-        </div>
-        <div>
-          <div class="font-fredoka text-6xl md:text-7xl text-[#1E293B] mb-2" style="font-family:'Fredoka One',cursive;" data-target="14">14</div>
-          <p class="text-white font-extrabold text-base" style="font-family:'Nunito',sans-serif;">Dogs Per Day Avg</p>
-          <p class="text-white/70 text-xs mt-1" style="font-family:'Nunito',sans-serif;">Small groups, big love</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════
        LIVE CAM PROMO SECTION — DEDICATED
   ═══════════════════════════════════════════ -->
   <section id="webcams" class="dot-pattern py-20 px-4">
@@ -863,33 +833,5 @@ const schemaJson = JSON.stringify({
       });
     });
 
-    // ── CountUp for stats ──
-    function countUp(el: HTMLElement, target: number, duration: number = 1200) {
-      const start = performance.now();
-      const update = (now: number) => {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / duration, 1);
-        // ease-out
-        const eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = String(Math.round(eased * target));
-        if (progress < 1) requestAnimationFrame(update);
-      };
-      requestAnimationFrame(update);
-    }
-
-    const statObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const el = entry.target as HTMLElement;
-          const target = parseInt(el.getAttribute('data-target') || '0', 10);
-          if (target > 0) countUp(el, target);
-          statObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    document.querySelectorAll('.stat-num[data-target]').forEach((el) => {
-      statObserver.observe(el);
-    });
   </script>
 </BaseLayout>
