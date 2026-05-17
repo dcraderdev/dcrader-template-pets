@@ -518,6 +518,73 @@ const serviceImages = [
   </section>
 
   <!-- ══════════════════════════════════════════
+       FEATURED GUEST — PUP OF THE MONTH
+  ══════════════════════════════════════════ -->
+  <section id="featured-guest" class="py-24 px-4" style="background:#0F172A;">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <p class="font-montserrat tracking-widest uppercase mb-3" style="color:rgba(212,175,55,0.6); font-size:0.68rem; letter-spacing:0.2em;">Featured Guest · Vol. XXIII</p>
+        <h2 class="font-cormorant font-light italic text-white" style="font-size:clamp(2.5rem,5vw,3.5rem);">Pup of the Month</h2>
+        <div class="gold-rule mt-5" style="max-width:120px;"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <!-- Portrait with gold frame -->
+        <div class="relative">
+          <div style="position:absolute; inset:-14px; border:1px solid #D4AF37; pointer-events:none;"></div>
+          <div style="position:absolute; inset:-22px; border:1px solid rgba(212,175,55,0.35); pointer-events:none;"></div>
+          <img
+            src="/images/photo-1587300003388-59208cc962cb-1600.webp"
+            alt="Bartholomew, the Hollow's featured guest for this month, an English bulldog resting on velvet"
+            loading="lazy"
+            decoding="async"
+            style="width:100%; aspect-ratio:4/5; object-fit:cover; display:block;"
+          />
+          <!-- caption strip -->
+          <div style="background:#D4AF37; padding:0.75rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+            <p class="font-cormorant italic" style="color:#0F172A; font-size:1rem;">Portrait No. XXIII</p>
+            <p class="font-montserrat tracking-widest uppercase" style="color:#0F172A; font-size:0.6rem; letter-spacing:0.18em;">Suite 7 · Garden View</p>
+          </div>
+        </div>
+
+        <!-- Editorial story column -->
+        <div>
+          <p class="font-montserrat tracking-widest uppercase mb-2" style="color:#D4AF37; font-size:0.6rem; letter-spacing:0.2em;">Meet the guest</p>
+          <h3 class="font-cormorant italic text-white mb-2" style="font-size:clamp(2rem,4vw,2.75rem); line-height:1;">Sir Bartholomew Wellington</h3>
+          <p class="font-montserrat text-white/60 mb-7" style="font-size:0.75rem; letter-spacing:0.04em;">English Bulldog &nbsp;·&nbsp; Age 4 &nbsp;·&nbsp; Resident of Beverly Hills &nbsp;·&nbsp; Loyal Hollow Guest since 2022</p>
+
+          <p class="font-cormorant italic text-white mb-6" style="font-size:1.2rem; line-height:1.6;">
+            &ldquo;Bartholomew arrives every Thursday as if he owns the place — and, candidly, we have stopped correcting him.&rdquo;
+          </p>
+
+          <!-- detail grid -->
+          <div class="grid grid-cols-2 gap-x-8 gap-y-5 mb-8">
+            {[
+              { label: 'Preferred Suite', value: 'The Bel Air Suite' },
+              { label: 'Standing Menu', value: 'Duck confit, no quinoa' },
+              { label: 'Daily Ritual', value: '3 PM courtyard rest' },
+              { label: 'Signature Treat', value: 'Lavender shortbread' },
+              { label: 'Spa of Choice', value: 'Blueberry facial &amp; brush' },
+              { label: 'Best Friend on Staff', value: 'Philippe, by a wide margin' },
+            ].map((d) => (
+              <div style="border-top:1px solid rgba(212,175,55,0.35); padding-top:0.5rem;">
+                <p class="font-montserrat tracking-widest uppercase mb-1" style="color:#D4AF37; font-size:0.56rem; letter-spacing:0.18em;">{d.label}</p>
+                <p class="font-cormorant italic text-white" style="font-size:1.05rem;" set:html={d.value}></p>
+              </div>
+            ))}
+          </div>
+
+          <p class="font-montserrat font-light text-white/65 leading-relaxed mb-6" style="font-size:0.82rem;">
+            Each month, The Hollow honours a single guest whose visits have shaped the rhythm of the house. Bartholomew is the twenty-third such resident — chosen this season for his unwavering composure during a power outage, his patience with the junior handlers, and a small, perfect dignity that we find genuinely instructive.
+          </p>
+
+          <a href="#booking" class="font-montserrat tracking-widest uppercase inline-block border-b pb-1" style="color:#D4AF37; font-size:0.65rem; letter-spacing:0.2em; border-color:#D4AF37;">Reserve Your Pet&rsquo;s Suite →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
        7. GALLERY — EDITORIAL GRID
   ══════════════════════════════════════════ -->
   <section id="gallery" style="background:#0F172A; padding:0;">

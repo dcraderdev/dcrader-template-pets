@@ -225,24 +225,82 @@ const biz = {
     </div>
   </section>
 
-  <!-- ===== STAT COUNTERS ===== -->
-  <section id="v2-stats" class="py-14 px-4" style="background:#F5A623;">
-    <div class="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
-      <div>
-        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">4800+</div>
-        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Miles Hiked with Dogs</p>
+  <!-- ===== FEATURED ROUTES — ADVENTURE MAP ===== -->
+  <section id="v2-routes" class="py-20 px-4" style="background:#F5A623;">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-10">
+        <p class="font-oswald text-[#1A4731]/80 text-xs uppercase tracking-[0.22em] font-bold mb-2">Our Trail Routes</p>
+        <h2 class="font-oswald text-4xl md:text-5xl font-bold text-[#1A4731] uppercase leading-tight">Where Your Dog Runs This Week</h2>
+        <p class="text-[#1A4731]/75 text-sm max-w-xl mt-3">A rotating map of the trails we hike out of Boulder. Pick a route on booking or let your guide choose based on weather and pack mix.</p>
       </div>
-      <div>
-        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">4.9★</div>
-        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">218 Reviews</p>
-      </div>
-      <div>
-        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">6 yrs</div>
-        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Zero Trail Incidents</p>
-      </div>
-      <div>
-        <div class="font-oswald text-5xl font-bold text-[#1A4731] mb-2">15+</div>
-        <p class="text-[#1A4731]/75 text-xs font-semibold uppercase tracking-wider">Certified Trail Routes</p>
+
+      <div class="grid lg:grid-cols-5 gap-8 items-stretch">
+        <!-- Trail card list -->
+        <div class="lg:col-span-3 grid sm:grid-cols-2 gap-4">
+          {[
+            { name: 'Chautauqua Saddle Loop', distance: '3.2 mi', gain: '+780 ft', level: 'Rookie+', dogs: 'Up to 5', terrain: 'Wide singletrack, shaded' },
+            { name: 'Mount Sanitas Out & Back', distance: '5.0 mi', gain: '+1,343 ft', level: 'Trekker', dogs: 'Up to 4', terrain: 'Rocky stair sections' },
+            { name: 'Marshall Mesa Long', distance: '7.4 mi', gain: '+620 ft', level: 'Trekker', dogs: 'Up to 5', terrain: 'Open prairie, fast pace' },
+            { name: 'Bear Peak West Ridge', distance: '8.6 mi', gain: '+2,750 ft', level: 'Summit', dogs: 'Up to 3', terrain: 'Talus, scramble, alpine' },
+            { name: 'Heil Valley Wapiti Loop', distance: '6.8 mi', gain: '+945 ft', level: 'Trekker', dogs: 'Up to 4', terrain: 'Pine forest, soft trail' },
+            { name: 'NCAR Mesa Sunrise', distance: '2.6 mi', gain: '+340 ft', level: 'Rookie', dogs: 'Up to 5', terrain: 'Family pace, valley views' },
+          ].map((r, i) => (
+            <div class="bg-[#1A4731] p-5 flex flex-col gap-2 relative" style="border-left:5px solid #FFF;">
+              <span class="absolute -top-3 -left-3 bg-white text-[#1A4731] font-oswald font-bold w-9 h-9 flex items-center justify-center text-sm" style="border:2px solid #1A4731;">{i + 1}</span>
+              <h3 class="font-oswald text-lg font-bold text-white uppercase tracking-wide">{r.name}</h3>
+              <div class="flex flex-wrap gap-x-4 gap-y-1 text-white/85 font-oswald text-xs uppercase tracking-wider">
+                <span>{r.distance}</span>
+                <span class="text-[#F5A623]">•</span>
+                <span>{r.gain}</span>
+                <span class="text-[#F5A623]">•</span>
+                <span>{r.dogs}</span>
+              </div>
+              <p class="text-white/65 text-xs leading-relaxed">{r.terrain}</p>
+              <span class="inline-block self-start mt-1 bg-[#F5A623] text-[#1A4731] font-oswald font-bold text-[10px] px-2 py-0.5 uppercase tracking-wider">{r.level}</span>
+            </div>
+          ))}
+        </div>
+
+        <!-- Stylized topo map panel -->
+        <div class="lg:col-span-2 relative overflow-hidden" style="background:#0F2A1D; min-height:420px;">
+          <svg viewBox="0 0 300 420" preserveAspectRatio="xMidYMid slice" class="absolute inset-0 w-full h-full" aria-hidden="true">
+            <!-- topographic rings -->
+            <g fill="none" stroke="#F5A623" stroke-opacity="0.18" stroke-width="1">
+              <path d="M-10 120 Q 80 90 160 130 T 320 110" />
+              <path d="M-10 150 Q 80 120 160 160 T 320 140" />
+              <path d="M-10 180 Q 80 150 160 190 T 320 170" />
+              <path d="M-10 220 Q 80 190 160 230 T 320 210" />
+              <path d="M-10 260 Q 80 230 160 270 T 320 250" />
+              <path d="M-10 300 Q 80 270 160 310 T 320 290" />
+              <path d="M-10 340 Q 80 310 160 350 T 320 330" />
+            </g>
+            <!-- trail line -->
+            <path d="M 40 380 C 80 320, 120 360, 150 280 S 220 220, 200 150 S 250 80, 270 50" fill="none" stroke="#F5A623" stroke-width="2.5" stroke-dasharray="6 5" />
+            <!-- waypoint dots -->
+            <g fill="#F5A623">
+              <circle cx="40" cy="380" r="6" />
+              <circle cx="150" cy="280" r="5" />
+              <circle cx="200" cy="150" r="5" />
+              <circle cx="270" cy="50" r="6" />
+            </g>
+            <!-- waypoint labels -->
+            <g fill="#FFFFFF" font-family="'Oswald',sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">
+              <text x="52" y="384">TRAILHEAD</text>
+              <text x="162" y="284">WATER BREAK</text>
+              <text x="130" y="148">SUMMIT</text>
+              <text x="186" y="54">RETURN</text>
+            </g>
+          </svg>
+          <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+            <span class="font-oswald text-white text-[10px] tracking-[0.25em] uppercase font-bold">N ↑</span>
+            <span class="font-oswald text-white/60 text-[10px] tracking-[0.2em] uppercase">Boulder, CO · 5,318 ft</span>
+          </div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <p class="font-oswald text-[#F5A623] text-[10px] uppercase tracking-[0.22em] font-bold mb-1">Service Radius</p>
+            <p class="text-white text-sm font-oswald">Boulder · Louisville · Lafayette · Niwot · Gunbarrel</p>
+            <p class="text-white/60 text-[10px] mt-1">Door-to-trail pickup included on all weekly packs.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
