@@ -39,7 +39,10 @@ import '../global.css';
     {schemaJson && <Fragment set:html={`<script type="application/ld+json">${schemaJson}</script>`} />}
   </head>
   <body>
-    <slot />
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-black focus:px-3 focus:py-2 focus:rounded">Skip to content</a>
+    <div id="main">
+      <slot />
+    </div>
     <button id="back-to-top" aria-label="Back to top" style="position:fixed;bottom:72px;right:18px;z-index:40;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:18px;display:none;align-items:center;justify-content:center;cursor:pointer;transition:opacity 0.2s,transform 0.2s;" onmouseenter="this.style.opacity='0.8'" onmouseleave="this.style.opacity='1'">↑</button>
     <script is:inline>
       const btn = document.getElementById('back-to-top');
