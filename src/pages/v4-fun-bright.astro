@@ -1,8 +1,11 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { business, team, testimonials } from '../data/v4/business';
 import { services, packages } from '../data/v4/services';
 import { gallery } from '../data/v4/gallery';
+import { img } from '../data/images';
+const heroImg = img('1548199973');
 
 const schemaJson = JSON.stringify({
   "@context": "https://schema.org",
@@ -22,7 +25,7 @@ const schemaJson = JSON.stringify({
   title={`${business.name} — ${business.tagline}`}
   description={business.description}
   ogImage="/images/photo-1548199973-03cce0bbc87b-1600.webp"
-  heroImage="/images/photo-1548199973-03cce0bbc87b-400.webp"
+  heroImage={heroImg.src}
   schemaJson={schemaJson}
 >
 
@@ -239,7 +242,7 @@ const schemaJson = JSON.stringify({
         </div>
         <!-- Camera feed -->
         <div style="border-radius:8px; overflow:hidden; aspect-ratio:16/9; position:relative;">
-          <img src="/images/photo-1548199973-03cce0bbc87b-400.webp" style="width:100%; height:100%; object-fit:cover; filter:contrast(0.9) brightness(1.05);" alt="Live daycare cam" loading="eager" decoding="async" fetchpriority="high" />
+          <Picture src={heroImg} widths={[400, 600, 800]} sizes="(max-width: 768px) 100vw, 50vw" formats={['avif','webp']} fallbackFormat="webp" quality={75} pictureAttributes={{ style: 'display:block; width:100%; height:100%;' }} style="width:100%; height:100%; object-fit:cover; filter:contrast(0.9) brightness(1.05);" alt="Live daycare cam" loading="eager" decoding="async" fetchpriority="high" />
           <div style="position:absolute; top:6px; right:6px; background:rgba(0,0,0,0.5); color:white; font-size:0.6rem; padding:2px 6px; border-radius:4px; font-weight:700;">14 DOGS PLAYING</div>
           <div style="position:absolute; bottom:6px; left:6px; color:rgba(255,255,255,0.7); font-size:0.6rem;">10:32 AM · 05/16/26</div>
         </div>
@@ -313,7 +316,7 @@ const schemaJson = JSON.stringify({
         <div class="grid grid-cols-2 gap-3">
           <!-- Large cam -->
           <div class="col-span-2 rounded-2xl overflow-hidden relative group" style="aspect-ratio:16/9; background:#0F172A;">
-            <img src="/images/photo-1548199973-03cce0bbc87b-800.webp" alt="Yard A live webcam" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <Picture src={img('1548199973')} alt="Yard A live webcam" widths={[400, 600, 800]} sizes="(max-width: 1024px) 100vw, 33vw" formats={['avif','webp']} fallbackFormat="webp" quality={72} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
             <div class="absolute top-2 left-3 flex items-center gap-2">
               <div style="width:8px;height:8px;border-radius:50%;background:#22C55E;animation:pulse 1.5s infinite;"></div>
               <span style="color:#22C55E;font-weight:800;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;">LIVE</span>
@@ -323,7 +326,7 @@ const schemaJson = JSON.stringify({
           </div>
           <!-- Small cam 1 -->
           <div class="rounded-xl overflow-hidden relative group" style="aspect-ratio:4/3; background:#0F172A;">
-            <img src="/images/photo-1576201836106-db1758fd1c97-400.webp" alt="Yard B live webcam" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <Picture src={img('1576201836106')} alt="Yard B live webcam" widths={[400, 600, 800]} sizes="(max-width: 1024px) 100vw, 33vw" formats={['avif','webp']} fallbackFormat="webp" quality={72} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
             <div class="absolute top-2 left-2 flex items-center gap-1">
               <div style="width:6px;height:6px;border-radius:50%;background:#22C55E;animation:pulse 1.5s infinite 0.3s;"></div>
               <span style="color:#22C55E;font-size:0.55rem;font-weight:800;text-transform:uppercase;">LIVE</span>
@@ -332,7 +335,7 @@ const schemaJson = JSON.stringify({
           </div>
           <!-- Small cam 2 -->
           <div class="rounded-xl overflow-hidden relative group" style="aspect-ratio:4/3; background:#0F172A;">
-            <img src="/images/photo-1529472119196-cb724127a98e-400.webp" alt="Indoor play area webcam" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <Picture src={img('1529472119196')} alt="Indoor play area webcam" widths={[400, 600, 800]} sizes="(max-width: 1024px) 100vw, 33vw" formats={['avif','webp']} fallbackFormat="webp" quality={72} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async" />
             <div class="absolute top-2 left-2 flex items-center gap-1">
               <div style="width:6px;height:6px;border-radius:50%;background:#22C55E;animation:pulse 1.5s infinite 0.6s;"></div>
               <span style="color:#22C55E;font-size:0.55rem;font-weight:800;text-transform:uppercase;">LIVE</span>
@@ -519,7 +522,7 @@ const schemaJson = JSON.stringify({
           const shadowColors = ['rgba(249,115,22,0.3)', 'rgba(6,182,212,0.3)', 'rgba(252,211,77,0.4)', 'rgba(249,115,22,0.3)', 'rgba(6,182,212,0.3)', 'rgba(52,211,153,0.3)', 'rgba(249,115,22,0.3)', 'rgba(6,182,212,0.3)'];
           return (
             <div class="gallery-item group relative overflow-hidden rounded-2xl cursor-pointer" style={`aspect-ratio:1; box-shadow: 0 4px 20px ${shadowColors[i % shadowColors.length]};`}>
-              <img src={img.url} alt={img.alt} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Picture src={img.src} alt={img.alt} widths={[300, 500, 700]} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" formats={['avif','webp']} fallbackFormat="webp" quality={72} loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <!-- Caption overlay -->
               <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all flex items-end p-4">
                 <p class="font-fredoka text-white text-lg opacity-0 group-hover:opacity-100 transition-opacity drop-shadow-lg" style="font-family:'Fredoka One',cursive;">{img.caption}</p>
@@ -552,12 +555,18 @@ const schemaJson = JSON.stringify({
             <div class="rounded-3xl overflow-hidden bg-white shadow-md hover:shadow-xl hover:-translate-y-1 transition-all">
               <div style={`height:6px; background:${borders[i]};`}></div>
               <div class="p-6 flex flex-col items-center text-center gap-3">
-                <img
+                <Picture
                   src={member.photo}
                   alt={`Photo of ${member.name}, ${member.role}`}
+                  widths={[150, 300]}
+                  sizes="96px"
+                  formats={['avif','webp']}
+                  fallbackFormat="webp"
+                  quality={75}
+                  loading="lazy"
+                  decoding="async"
                   class="w-24 h-24 rounded-full object-cover shadow-md"
                   style={`border: 4px solid ${borders[i]};`}
-                  loading="lazy"
                 />
                 <h3 class="font-fredoka text-2xl text-[#1E293B]" style="font-family:'Fredoka One',cursive;">{member.name}</h3>
                 <!-- Colorful role badge -->

@@ -1,3 +1,5 @@
+import { img } from '../images';
+
 export const business = {
   name: 'The Hollow Pet Hotel & Spa',
   tagline: 'Where extraordinary pets receive extraordinary care',
@@ -23,28 +25,28 @@ export const team = [
     role: 'General Manager',
     bio: 'Fifteen years managing five-star hospitality before bringing those standards to pet care. Philippe personally approves every protocol at The Hollow and oversees the guest experience from reservation to checkout.',
     certifications: ['Former Four Seasons Senior Manager', 'ABKA Certified', 'Animal Welfare Approved'],
-    photo: '/images/photo-1507003211169-0a1dd7228f2d-400.webp',
+    photo: img('1507003211169'),
   },
   {
     name: 'Isabella Hart',
     role: 'Head Spa & Wellness Therapist',
     bio: 'Certified canine massage therapist and grooming artisan. Isabella\'s spa treatments blend European grooming traditions with evidence-based calming techniques. Her guest waitlist runs three months.',
     certifications: ['CCMT Certified Canine Massage', 'European Grooming Academy Graduate', 'Aromatherapy for Animals'],
-    photo: '/images/photo-1559839734-2b71ea197ec2-400.webp',
+    photo: img('1559839734'),
   },
   {
     name: 'Marcus Chen',
     role: 'Executive Pet Chef',
     bio: 'Classically trained chef who pivoted to pet nutrition after studying canine dietary science at Tufts. Marcus designs weekly menus using organic, locally-sourced proteins and seasonal vegetables for our boarding guests.',
     certifications: ['Culinary Institute of America', 'Canine Nutrition Specialist', 'Raw Feeding Veterinary Society Member'],
-    photo: '/images/photo-1500648767791-00dcc994a43e-400.webp',
+    photo: img('1500648767791'),
   },
   {
     name: 'Dr. Sarah Kim, DVM',
     role: 'On-Call Veterinarian',
     bio: 'Board-certified veterinarian available to all guests 24 hours. Dr. Kim conducts wellness checks on extended stays and is on-call for any health concerns throughout a guest\'s visit.',
     certifications: ['DVM, Cornell College of Veterinary Medicine', 'DACVIM Certified', 'Emergency Medicine Trained'],
-    photo: '/images/photo-1494790108377-be9c29b29330-400.webp',
+    photo: img('1494790108377'),
   },
 ];
 

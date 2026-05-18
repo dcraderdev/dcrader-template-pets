@@ -1,3 +1,5 @@
+import { img } from '../images';
+
 export const business = {
   name: 'Paws & Pine',
   tagline: 'Boutique boarding for beloved dogs',
@@ -23,21 +25,21 @@ export const team = [
     role: 'Owner & Head of Care',
     bio: 'Former veterinary technician with 12 years of experience. Maya opened Paws & Pine after years working in SF animal shelters—she believes every dog deserves the kind of attention you\'d give your own.',
     certifications: ['Fear Free Certified', 'Pet CPR & First Aid'],
-    photo: '/images/photo-1494790108377-be9c29b29330-400.webp',
+    photo: img('1494790108377'),
   },
   {
     name: 'James Holloway',
     role: 'Head Groomer',
     bio: 'NDGAA certified with a specialty in breed-standard cuts and curly/double coats. James has a particular gift for anxious dogs—his calm approach turns skeptical pups into regulars.',
     certifications: ['NDGAA Certified', 'Advanced Dematting'],
-    photo: '/images/photo-1472099645785-5658abf4ff4e-400.webp',
+    photo: img('1472099645785'),
   },
   {
     name: 'Sofia Park',
     role: 'Daycare Lead',
     bio: 'Animal behavior graduate from UC Davis. Sofia manages daily pack dynamics with a keen eye—every dog gets proper introductions and play groups matched by size and temperament.',
     certifications: ['IAABC Associate', 'Canine First Aid'],
-    photo: '/images/photo-1438761681033-6461ffad8d80-400.webp',
+    photo: img('1438761681033'),
   },
 ];
 

@@ -1,3 +1,5 @@
+import { img } from '../images';
+
 export const business = {
   name: 'Calm Coat Veterinary Grooming',
   tagline: 'Evidence-based grooming for anxious and medically complex pets',
@@ -23,21 +25,21 @@ export const team = [
     role: 'Owner & Medical Director',
     bio: 'Veterinarian and certified animal behavior consultant. Dr. Santos opened Calm Coat after seeing countless dogs traumatized by standard grooming shops. She protocols every grooming plan for medically sensitive pets.',
     certifications: ['Doctor of Veterinary Medicine', 'CAAB Certified', 'Fear Free Certified Professional'],
-    photo: '/images/photo-1559839734-2b71ea197ec2-400.webp',
+    photo: img('1559839734'),
   },
   {
     name: 'Chris Nakamura',
     role: 'Certified Therapeutic Groomer',
     bio: 'Nationally certified groomer with additional training in low-stress handling. Chris has worked with post-rescue dogs, bite-risk dogs, and senior dogs with mobility limitations for 9 years.',
     certifications: ['NCMG Certified Master Groomer', 'Fear Free Grooming Specialist', 'Orthopedic Handling Trained'],
-    photo: '/images/photo-1472099645785-5658abf4ff4e-400.webp',
+    photo: img('1472099645785'),
   },
   {
     name: 'Alex Wilson',
     role: 'Client Care Coordinator',
     bio: 'Veterinary technician with a background in behavior support. Alex conducts every intake assessment, communicates medical notes to groomers, and manages the post-appointment care plan.',
     certifications: ['Registered Veterinary Technician', 'Animal Behavior Technician'],
-    photo: '/images/photo-1438761681033-6461ffad8d80-400.webp',
+    photo: img('1438761681033'),
   },
 ];
 

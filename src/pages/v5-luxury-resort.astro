@@ -1,8 +1,11 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { business, team, testimonials } from '../data/v5/business';
 import { services, packages } from '../data/v5/services';
 import { gallery } from '../data/v5/gallery';
+import { img } from '../data/images';
+const heroImg = img('1518717758536');
 
 const schemaJson = JSON.stringify({
   "@context": "https://schema.org",
@@ -19,17 +22,17 @@ const schemaJson = JSON.stringify({
 });
 
 const serviceImages = [
-  '/images/photo-1561037404-61cd46aa615b-800.webp',
-  '/images/photo-1587300003388-59208cc962cb-800.webp',
-  '/images/photo-1510771463146-e89e6e86560e-800.webp',
-  '/images/photo-1560743641-3914f2c45636-800.webp',
+  img('1561037404'),
+  img('1587300003388'),
+  img('1510771463146'),
+  img('1560743641'),
 ];
 ---
 <BaseLayout
   title={`${business.name} — ${business.tagline}`}
   description={business.description}
   ogImage="/images/photo-1518717758536-85ae29035b6d-1600.webp"
-  heroImage="/images/photo-1518717758536-85ae29035b6d-1600.webp"
+  heroImage={heroImg.src}
   schemaJson={schemaJson}
 >
 
@@ -278,10 +281,16 @@ const serviceImages = [
           class="relative overflow-hidden"
           style={`${i % 2 !== 0 ? 'order:2;' : 'order:1;'} min-height:360px;`}
         >
-          <img
+          <Picture
             src={serviceImages[i]}
             alt={s.name}
+            widths={[600, 900, 1200]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            formats={['avif','webp']}
+            fallbackFormat="webp"
+            quality={75}
             loading="lazy"
+            decoding="async"
             style="width:100%; height:100%; object-fit:cover; min-height:360px; display:block;"
           />
           <!-- Gold corner ornament -->
@@ -346,9 +355,16 @@ const serviceImages = [
   <section style="background:#0F172A; overflow:hidden; padding:0;">
     <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-stretch">
       <div style="min-height:440px; overflow:hidden;">
-        <img
-          src="/images/photo-1587300003388-59208cc962cb-800.webp"
+        <Picture
+          src={img('1587300003388')}
           alt="A standard of care your pet deserves"
+          widths={[600, 900, 1200]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          formats={['avif','webp']}
+          fallbackFormat="webp"
+          quality={75}
+          loading="lazy"
+          decoding="async"
           style="width:100%; height:100%; object-fit:cover; min-height:440px; display:block;"
         />
       </div>
@@ -533,9 +549,14 @@ const serviceImages = [
         <div class="relative">
           <div style="position:absolute; inset:-14px; border:1px solid #D4AF37; pointer-events:none;"></div>
           <div style="position:absolute; inset:-22px; border:1px solid rgba(212,175,55,0.35); pointer-events:none;"></div>
-          <img
-            src="/images/photo-1587300003388-59208cc962cb-1600.webp"
+          <Picture
+            src={img('1587300003388')}
             alt="Bartholomew, the Hollow's featured guest for this month, an English bulldog resting on velvet"
+            widths={[500, 800, 1200, 1600]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            formats={['avif','webp']}
+            fallbackFormat="webp"
+            quality={78}
             loading="lazy"
             decoding="async"
             style="width:100%; aspect-ratio:4/5; object-fit:cover; display:block;"
@@ -600,7 +621,7 @@ const serviceImages = [
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
         {gallery.map((img) => (
           <div class="gallery-item" style="aspect-ratio:4/3;">
-            <img src={img.url} alt={img.alt} loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;" />
+            <Picture src={img.src} alt={img.alt} widths={[300, 500, 700]} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" formats={['avif','webp']} fallbackFormat="webp" quality={72} loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block;" />
             <div class="gallery-caption">
               <p class="font-montserrat tracking-widest uppercase" style="color:#D4AF37; font-size:0.6rem; letter-spacing:0.18em;">{img.caption}</p>
             </div>
@@ -625,11 +646,17 @@ const serviceImages = [
     <div class="team-strip">
       {team.map((member) => (
         <div class="team-member" style="min-height:480px;">
-          <img
+          <Picture
             src={member.photo}
             alt={`${member.name}, ${member.role} at ${business.name}`}
-            style="width:280px; height:480px; object-fit:cover; display:block;"
+            widths={[280, 560]}
+            sizes="280px"
+            formats={['avif','webp']}
+            fallbackFormat="webp"
+            quality={75}
             loading="lazy"
+            decoding="async"
+            style="width:280px; height:480px; object-fit:cover; display:block;"
           />
           <div class="team-overlay">
             <div style="height:1px; background:#D4AF37; margin-bottom:1rem; opacity:0.65;"></div>
@@ -702,11 +729,17 @@ const serviceImages = [
         </div>
       </div>
       <div class="h-64 md:h-auto overflow-hidden order-1 md:order-2" style="min-height:360px; border-left:1px solid rgba(212,175,55,0.15);">
-        <img
-          src="/images/photo-1518717758536-85ae29035b6d-800.webp"
+        <Picture
+          src={img('1518717758536')}
           alt="Private tour of The Hollow Pet Hotel and Spa, Beverly Hills"
-          style="width:100%; height:100%; object-fit:cover; display:block; opacity:0.65;"
+          widths={[600, 900, 1200]}
+          sizes="(max-width: 768px) 100vw, 50vw"
+          formats={['avif','webp']}
+          fallbackFormat="webp"
+          quality={75}
           loading="lazy"
+          decoding="async"
+          style="width:100%; height:100%; object-fit:cover; display:block; opacity:0.65;"
         />
       </div>
     </div>

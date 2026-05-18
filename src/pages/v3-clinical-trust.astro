@@ -1,8 +1,11 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { business, team, testimonials } from '../data/v3/business';
 import { services, packages } from '../data/v3/services';
 import { gallery } from '../data/v3/gallery';
+import { img } from '../data/images';
+const heroImg = img('1560743641');
 
 const schemaJson = JSON.stringify({
   "@context": "https://schema.org",
@@ -22,7 +25,7 @@ const schemaJson = JSON.stringify({
   title={`${business.name} — ${business.tagline}`}
   description={business.description}
   ogImage="/images/photo-1560743641-3914f2c45636-1600.webp"
-  heroImage="/images/photo-1560743641-3914f2c45636-800.webp"
+  heroImage={heroImg.src}
   schemaJson={schemaJson}
 >
 
@@ -114,13 +117,18 @@ const schemaJson = JSON.stringify({
       </div>
       <!-- Right 2/5 -->
       <div class="md:col-span-2 relative overflow-hidden min-h-[400px] md:min-h-[500px]">
-        <img
-          src="/images/photo-1560743641-3914f2c45636-800.webp"
+        <Picture
+          src={heroImg}
           alt="Professional therapeutic grooming at Calm Coat Veterinary Grooming"
-          class="absolute inset-0 w-full h-full object-cover"
+          widths={[600, 900, 1200, 1600]}
+          sizes="(max-width: 768px) 100vw, 40vw"
+          formats={['avif','webp']}
+          fallbackFormat="webp"
+          quality={78}
           loading="eager"
-          decoding="async"
           fetchpriority="high"
+          decoding="async"
+          class="absolute inset-0 w-full h-full object-cover"
         />
         <!-- Overlaid stat card -->
         <div class="absolute bottom-4 left-4 right-4 bg-white border border-[#E2E8F0] rounded-md shadow-lg p-4">
@@ -363,7 +371,7 @@ const schemaJson = JSON.stringify({
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
         {gallery.map((img) => (
           <div class="overflow-hidden bg-[#F8FAFC]" style="aspect-ratio: 4/3;">
-            <img src={img.url} alt={img.alt} loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500" />
+            <Picture src={img.src} alt={img.alt} widths={[300, 500, 700]} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" formats={['avif','webp']} fallbackFormat="webp" quality={72} loading="lazy" decoding="async" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500" />
           </div>
         ))}
       </div>
@@ -381,9 +389,16 @@ const schemaJson = JSON.stringify({
         {team.map((member) => (
           <div class="bg-white border border-[#E2E8F0] rounded-md overflow-hidden flex flex-col sm:flex-row">
             <div class="sm:w-40 flex-shrink-0">
-              <img
+              <Picture
                 src={member.photo}
                 alt={`${member.name}, ${member.role}`}
+                widths={[200, 400]}
+                sizes="160px"
+                formats={['avif','webp']}
+                fallbackFormat="webp"
+                quality={75}
+                loading="lazy"
+                decoding="async"
                 class="w-full h-48 sm:h-full object-cover"
               />
             </div>

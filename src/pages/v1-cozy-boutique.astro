@@ -1,8 +1,11 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { business, team, testimonials } from '../data/v1/business';
 import { services, packages } from '../data/v1/services';
 import { gallery } from '../data/v1/gallery';
+import { img } from '../data/images';
+const heroImg = img('1587300003388');
 
 const schemaJson = JSON.stringify({
   "@context": "https://schema.org",
@@ -22,7 +25,7 @@ const schemaJson = JSON.stringify({
   title={`${business.name} — ${business.tagline}`}
   description={business.description}
   ogImage="/images/photo-1587300003388-59208cc962cb-1600.webp"
-  heroImage="/images/photo-1587300003388-59208cc962cb-400.webp"
+  heroImage={heroImg.src}
   schemaJson={schemaJson}
 >
 
@@ -200,15 +203,15 @@ const schemaJson = JSON.stringify({
       <div style="position:relative; width:340px; height:360px; margin:0 auto;">
         <!-- Photo 1: top-left, tilted left -->
         <div class="polaroid" style="top:0; left:0; transform:rotate(-3deg); z-index:1;">
-          <img src="/images/photo-1587300003388-59208cc962cb-400.webp" alt="Happy dog guest at Paws and Pine" width="200" height="200" loading="eager" decoding="async" fetchpriority="high" />
+          <Picture src={img('1587300003388')} alt="Happy dog guest at Paws and Pine" widths={[200, 400]} sizes="200px" formats={['avif','webp']} fallbackFormat="webp" quality={75} loading="eager" fetchpriority="high" decoding="async" style="display:block; width:200px; height:200px; object-fit:cover;" />
         </div>
         <!-- Photo 2: center-right, tilted right -->
         <div class="polaroid" style="top:40px; right:0; transform:rotate(2deg); z-index:2;">
-          <img src="/images/photo-1510771463146-e89e6e86560e-400.webp" alt="Dog playing at Paws and Pine" width="200" height="200" loading="eager" decoding="async" />
+          <Picture src={img('1510771463146')} alt="Dog playing at Paws and Pine" widths={[200, 400]} sizes="200px" formats={['avif','webp']} fallbackFormat="webp" quality={75} loading="eager" decoding="async" style="display:block; width:200px; height:200px; object-fit:cover;" />
         </div>
         <!-- Photo 3: bottom-left, slight tilt -->
         <div class="polaroid" style="bottom:0; left:30px; transform:rotate(-1.5deg); z-index:3;">
-          <img src="/images/photo-1537151608828-ea2b11777ee8-400.webp" alt="Cozy dog lounging at Paws and Pine" width="200" height="200" loading="eager" decoding="async" />
+          <Picture src={img('1537151608828')} alt="Cozy dog lounging at Paws and Pine" widths={[200, 400]} sizes="200px" formats={['avif','webp']} fallbackFormat="webp" quality={75} loading="eager" decoding="async" style="display:block; width:200px; height:200px; object-fit:cover;" />
         </div>
       </div>
 
@@ -270,9 +273,14 @@ const schemaJson = JSON.stringify({
         <!-- Tilted polaroid of Maya + a dog -->
         <div class="md:col-span-2 flex justify-center">
           <div style="background:#fff; padding:10px 10px 50px 10px; box-shadow:0 12px 36px rgba(61,43,31,0.22); transform:rotate(-3deg); max-width:320px; width:100%;">
-            <img
-              src="/images/photo-1494790108377-be9c29b29330-400.webp"
+            <Picture
+              src={img('1494790108377')}
               alt="Maya Chen, owner of Paws and Pine, with a goldendoodle in the lobby"
+              widths={[300, 500, 700]}
+              sizes="(max-width: 768px) 80vw, 320px"
+              formats={['avif','webp']}
+              fallbackFormat="webp"
+              quality={75}
               loading="lazy"
               decoding="async"
               style="display:block; width:100%; aspect-ratio:1; object-fit:cover;"
@@ -348,7 +356,7 @@ const schemaJson = JSON.stringify({
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {gallery.map((img) => (
           <div class="gallery-polaroid">
-            <img src={img.url} alt={img.alt} loading="lazy" decoding="async" style="display:block; width:100%; aspect-ratio:1; object-fit:cover;" />
+            <Picture src={img.src} alt={img.alt} widths={[300, 500, 700]} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" formats={['avif','webp']} fallbackFormat="webp" quality={72} loading="lazy" decoding="async" style="display:block; width:100%; aspect-ratio:1; object-fit:cover;" />
             <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#9C7B6C; font-size:0.8rem; text-align:center; padding-top:6px; margin:0;">{img.caption}</p>
           </div>
         ))}
@@ -367,7 +375,7 @@ const schemaJson = JSON.stringify({
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {team.map((member) => (
           <div style="background:#FAF6EF; border-radius:16px; overflow:hidden; box-shadow:0 2px 12px rgba(61,43,31,0.08); transition:box-shadow 0.25s;" class="hover:shadow-md">
-            <img src={member.photo} alt={`Photo of ${member.name}, ${member.role} at ${business.name}`} style="width:100%; height:220px; object-fit:cover; display:block;" />
+            <Picture src={member.photo} alt={`Photo of ${member.name}, ${member.role} at ${business.name}`} widths={[300, 500, 700]} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" formats={['avif','webp']} fallbackFormat="webp" quality={75} loading="lazy" decoding="async" style="width:100%; height:220px; object-fit:cover; display:block;" />
             <div style="padding:1.5rem;">
               <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.4rem; font-weight:700; color:#3D2B1F; margin-bottom:0.2rem;">{member.name}</h3>
               <p style="color:#C17B50; font-weight:600; font-size:0.85rem; margin-bottom:0.75rem; font-family:'Inter',system-ui,sans-serif;">{member.role}</p>
