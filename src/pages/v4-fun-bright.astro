@@ -595,29 +595,50 @@ const schemaJson = JSON.stringify({
         <h2 class="font-fredoka text-5xl text-white mb-3" style="font-family:'Fredoka One',cursive;">What the Parents Say 🗣️</h2>
         <p class="text-white/50" style="font-family:'Nunito',sans-serif;">4.9 stars from 412 real reviews. No bots, just happy dog parents.</p>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {testimonials.map((t, i) => {
-          const avatars = ['🐕', '🦴', '🐶'];
-          const starColors = ['#F97316', '#06B6D4', '#FCD34D'];
-          return (
-            <div class="flex gap-4 items-start">
-              <!-- Dog emoji avatar -->
-              <div class="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-2xl" style="background:rgba(255,255,255,0.1);">{avatars[i]}</div>
-              <!-- Speech bubble -->
-              <div class="speech-bubble bg-white flex flex-col gap-3 p-5 flex-grow relative">
-                <!-- Stars -->
-                <div class="flex gap-0.5 text-base" aria-label={`${t.stars} out of 5 stars`} style={`color:${starColors[i]};`}>
-                  {'★'.repeat(t.stars)}
-                </div>
-                <blockquote class="text-[#1E293B] leading-relaxed italic text-sm font-semibold" style="font-family:'Nunito',sans-serif;">"{t.text}"</blockquote>
-                <div>
-                  <p class="font-extrabold text-[#1E293B] text-sm" style="font-family:'Nunito',sans-serif;">{t.name}</p>
+      <!-- Horizontal speech-bubble strip with a featured one + side stack -->
+      <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+        {/* Big featured pinned-note style */}
+        {testimonials.slice(0, 1).map((t) => (
+          <div class="lg:col-span-7 relative">
+            <div class="absolute -top-3 left-10 z-10 px-4 py-1 rounded-full font-extrabold text-xs uppercase tracking-wider shadow-md" style="background:#FCD34D; color:#1E293B; font-family:'Nunito',sans-serif;">🏆 Pup parent fav</div>
+            <div class="bg-white rounded-3xl p-8 shadow-2xl flex gap-5 items-start" style="border:4px solid #FCD34D;">
+              <div class="flex-shrink-0 w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow" style="background:linear-gradient(135deg,#FCD34D,#F97316);">🐕</div>
+              <div class="flex flex-col gap-3 flex-grow">
+                <div class="flex gap-0.5 text-xl text-[#F97316]" aria-label={`${t.stars} out of 5 stars`}>{'★'.repeat(t.stars)}</div>
+                <blockquote class="text-[#1E293B] leading-relaxed text-base font-semibold" style="font-family:'Nunito',sans-serif;">&ldquo;{t.text}&rdquo;</blockquote>
+                <div class="flex items-baseline justify-between pt-2 border-t border-dashed border-[#FCD34D]">
+                  <p class="font-extrabold text-[#1E293B] text-base" style="font-family:'Nunito',sans-serif;">{t.name}</p>
                   <p class="text-xs text-[#94A3B8]" style="font-family:'Nunito',sans-serif;">{t.breed} · {t.date}</p>
                 </div>
               </div>
             </div>
-          );
-        })}
+          </div>
+        ))}
+        {/* Side stack — colorful speech bubbles, different layout */}
+        <div class="lg:col-span-5 flex flex-col gap-5">
+          {testimonials.slice(1).map((t, i) => {
+            const avatars = ['🦴', '🐶'];
+            const pills = [
+              { bg: '#ECFEFF', accent: '#06B6D4', tag: 'Daycare regular' },
+              { bg: '#FFF7ED', accent: '#F97316', tag: 'Boarding family' },
+            ];
+            const p = pills[i];
+            return (
+              <div class="rounded-2xl p-5 flex flex-col gap-3 shadow-md" style={`background:${p.bg}; border-left:6px solid ${p.accent};`}>
+                <div class="flex items-center gap-3">
+                  <div class="text-2xl">{avatars[i]}</div>
+                  <span class="font-extrabold uppercase tracking-wide text-[10px] px-2 py-0.5 rounded-full" style={`background:${p.accent}; color:white; font-family:'Nunito',sans-serif;`}>{p.tag}</span>
+                  <div class="ml-auto flex gap-0.5 text-sm" style={`color:${p.accent};`} aria-label={`${t.stars} out of 5 stars`}>{'★'.repeat(t.stars)}</div>
+                </div>
+                <blockquote class="text-[#1E293B] leading-snug italic text-sm font-semibold" style="font-family:'Nunito',sans-serif;">&ldquo;{t.text}&rdquo;</blockquote>
+                <div class="flex items-baseline justify-between">
+                  <p class="font-extrabold text-[#1E293B] text-xs" style="font-family:'Nunito',sans-serif;">{t.name}</p>
+                  <p class="text-[10px] text-[#64748B]" style="font-family:'Nunito',sans-serif;">{t.breed} · {t.date}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
       <div class="text-center mt-12">
         <a href="#" class="inline-flex items-center gap-2 text-sm font-extrabold text-white hover:text-[#FCD34D] transition-colors" style="font-family:'Nunito',sans-serif;">

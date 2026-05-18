@@ -436,22 +436,42 @@ const schemaJson = JSON.stringify({
         <p class="text-[#0E7490] text-xs font-semibold uppercase tracking-widest mb-2">Guardian Reviews</p>
         <h2 class="text-3xl font-bold text-[#0F172A]">Client Testimonials</h2>
       </div>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {testimonials.map((t) => (
-          <div class="bg-white border border-[#E2E8F0] rounded-md p-6 shadow-sm flex flex-col gap-4">
-            <div class="flex items-center gap-2">
-              <div class="flex gap-0.5 text-[#0E7490] text-base" aria-label={`${t.stars} out of 5 stars`}>
-                {'★'.repeat(t.stars)}
+      <!-- Case-study primary + secondary stacked -->
+      <div class="grid lg:grid-cols-5 gap-5">
+        {/* Featured case study */}
+        {testimonials.slice(0, 1).map((t) => (
+          <article class="lg:col-span-3 bg-white border border-[#E2E8F0] rounded-md overflow-hidden flex flex-col">
+            <div class="px-6 py-3 bg-[#F0FAFA] border-b border-[#E2E8F0] flex items-center justify-between gap-3">
+              <p class="font-mono text-[10px] tracking-widest uppercase text-[#0E7490]">Case Study · CR-{(184).toString().padStart(4, '0')}</p>
+              <span class="text-[10px] bg-[#CCFBF1] text-[#0E7490] px-2 py-0.5 rounded font-semibold tracking-wider uppercase">Verified Guardian</span>
+            </div>
+            <div class="p-7 flex flex-col gap-5 flex-grow">
+              <div class="flex gap-0.5 text-[#0E7490] text-lg" aria-label={`${t.stars} out of 5 stars`}>{'★'.repeat(t.stars)}</div>
+              <blockquote class="text-[#0F172A] leading-relaxed text-lg" style="font-weight:500;">&ldquo;{t.text}&rdquo;</blockquote>
+              <div class="grid grid-cols-3 gap-4 pt-4 border-t border-[#E2E8F0] mt-auto text-xs">
+                <div><p class="text-[#94A3B8] uppercase tracking-wider text-[10px] mb-1">Guardian</p><p class="text-[#0F172A] font-semibold">{t.name}</p></div>
+                <div><p class="text-[#94A3B8] uppercase tracking-wider text-[10px] mb-1">Patient</p><p class="text-[#0F172A] font-semibold">{t.breed}</p></div>
+                <div><p class="text-[#94A3B8] uppercase tracking-wider text-[10px] mb-1">On File</p><p class="text-[#0F172A] font-semibold">{t.date}</p></div>
               </div>
-              <span class="text-xs bg-[#CCFBF1] text-[#0E7490] px-2 py-0.5 rounded font-semibold">Verified</span>
             </div>
-            <blockquote class="text-sm text-[#334155] leading-relaxed italic flex-grow">"{t.text}"</blockquote>
-            <div class="border-t border-[#E2E8F0] pt-3">
-              <p class="font-semibold text-[#0F172A] text-sm">{t.name}</p>
-              <p class="text-xs text-[#64748B]">{t.breed} &middot; {t.date}</p>
-            </div>
-          </div>
+          </article>
         ))}
+        {/* Secondary stacked */}
+        <div class="lg:col-span-2 flex flex-col gap-5">
+          {testimonials.slice(1).map((t, i) => (
+            <article class="bg-white border border-[#E2E8F0] rounded-md p-5 flex flex-col gap-3 flex-1">
+              <div class="flex items-center justify-between">
+                <p class="font-mono text-[10px] tracking-widest uppercase text-[#0E7490]">Ref · CR-{((184 - (i + 1)) * 7).toString().padStart(4, '0')}</p>
+                <div class="flex gap-0.5 text-[#0E7490] text-sm" aria-label={`${t.stars} out of 5 stars`}>{'★'.repeat(t.stars)}</div>
+              </div>
+              <blockquote class="text-sm text-[#334155] leading-relaxed flex-grow">&ldquo;{t.text}&rdquo;</blockquote>
+              <div class="border-t border-dashed border-[#CBD5E1] pt-2 flex items-baseline justify-between gap-2">
+                <p class="font-semibold text-[#0F172A] text-xs">{t.name}</p>
+                <p class="text-[10px] text-[#64748B]">{t.breed} &middot; {t.date}</p>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
       <div class="mt-10 text-center">
         <a href="#" class="inline-flex items-center gap-2 text-sm font-medium text-[#334155] hover:text-[#0E7490] transition-colors">

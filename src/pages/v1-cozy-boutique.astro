@@ -310,6 +310,27 @@ const schemaJson = JSON.stringify({
     </div>
   </section>
 
+  <!-- BY THE NUMBERS — scrapbook chip strip -->
+  <section style="background:#F2EAD8; padding:1.25rem 1rem 2.5rem;">
+    <div class="max-w-5xl mx-auto">
+      <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#9C7B6C; font-size:0.9rem; text-align:center; margin-bottom:1.25rem;">a few small numbers we&rsquo;re proud of —</p>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem 1.25rem;">
+        {[
+          { v: '12', label: 'overnight guests, capped', rot: '-1.5deg', bg: '#FAF6EF' },
+          { v: '843', label: 'belly rubs (this month)', rot: '1deg', bg: '#F9EAEB' },
+          { v: '2x', label: 'photo updates daily', rot: '-0.5deg', bg: '#EEF3EF' },
+          { v: '8 yrs', label: 'on Hayes Street', rot: '1.8deg', bg: '#FFFDF8' },
+          { v: '0', label: 'kennels, ever', rot: '-1deg', bg: '#FAF6EF' },
+        ].map((s) => (
+          <div style={`background:${s.bg}; border:1px solid #e0d4bc; border-radius:10px; padding:0.75rem 1.1rem; transform:rotate(${s.rot}); box-shadow:0 2px 8px rgba(61,43,31,0.08); min-width:140px; text-align:center;`}>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.65rem; color:#6B8F71; font-weight:700; line-height:1;">{s.v}</p>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#5C4033; font-size:0.78rem; margin-top:0.25rem;">{s.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- PRICING — PACKAGE CARDS -->
   <section id="v1-pricing" class="py-20 px-4" style="background:#FAF6EF;">
     <div class="max-w-5xl mx-auto">

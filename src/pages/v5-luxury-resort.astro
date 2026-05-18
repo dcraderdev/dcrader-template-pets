@@ -606,6 +606,36 @@ const serviceImages = [
   </section>
 
   <!-- ══════════════════════════════════════════
+       BY THE FIGURES — editorial register
+  ══════════════════════════════════════════ -->
+  <section style="background:#F8F5F0;" class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">An Appendix</p>
+        <h2 class="font-cormorant font-light italic text-[#0F172A]" style="font-size:clamp(2.25rem,4vw,3rem);">By the Figures</h2>
+        <div class="gold-rule mt-5" style="max-width:90px;"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-6">
+        {[
+          { figure: 'XVII', label: 'Presidential Suites', note: 'each individually appointed' },
+          { figure: '3:1', label: 'Guest-to-Attendant', note: 'never higher, day or night' },
+          { figure: '94%', label: 'Returning Families', note: 'within the calendar year' },
+          { figure: 'CDLXXX', label: 'Menu Combinations', note: 'reviewed by Marcus weekly' },
+        ].map((f) => (
+          <div class="flex flex-col items-center text-center px-3" style="border-top:1px solid rgba(212,175,55,0.45); padding-top:1.5rem;">
+            <p class="font-cormorant italic mb-3" style="color:#D4AF37; font-size:2.6rem; line-height:1;">{f.figure}</p>
+            <p class="font-montserrat tracking-widest uppercase mb-2" style="color:#0F172A; font-size:0.7rem; letter-spacing:0.16em;">{f.label}</p>
+            <p class="font-montserrat font-light text-[#94A3B8]" style="font-size:0.72rem; letter-spacing:0.02em;">{f.note}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-center font-montserrat font-light italic text-[#94A3B8] mt-10" style="font-size:0.7rem; letter-spacing:0.04em;">
+        Figures from internal records · Updated quarterly
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
        7. GALLERY — EDITORIAL GRID
   ══════════════════════════════════════════ -->
   <section id="gallery" style="background:#0F172A; padding:0;">

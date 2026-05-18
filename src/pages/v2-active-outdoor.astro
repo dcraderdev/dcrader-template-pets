@@ -179,17 +179,18 @@ const biz = {
         <a href="#booking" class="btn-yellow text-base px-10 py-4">Book a Hike</a>
         <a href="#services" class="btn-outline-yellow text-base px-10 py-4">Our Services</a>
       </div>
-      <!-- Hero stats row -->
-      <div class="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <!-- Hero trail-permit ledger -->
+      <div class="mt-14 border-y border-[#F5A623]/35 py-5 flex flex-wrap items-stretch divide-x divide-[#F5A623]/25">
         {[
-          { icon: '🛰️', label: 'GPS Tracked Every Hike' },
-          { icon: '🏔️', label: '420+ Trails Completed' },
-          { icon: '🐕', label: 'Max 5 Dogs / Guide' },
-          { icon: '⭐', label: '4.9 · 218 Reviews' },
+          { value: '14,820', unit: 'TRAIL MI LOGGED', sub: 'since 2018' },
+          { value: '47', unit: 'SUMMITS BAGGED', sub: 'incl. 14ers' },
+          { value: '6', unit: 'VET PARTNERS', sub: 'Boulder + Foothills' },
+          { value: '0', unit: 'TRAIL INCIDENTS', sub: '6 yrs running' },
         ].map((b) => (
-          <div class="text-center">
-            <div class="text-3xl mb-2">{b.icon}</div>
-            <p class="text-white/80 text-xs font-semibold uppercase tracking-wider">{b.label}</p>
+          <div class="flex-1 min-w-[140px] px-5">
+            <p class="font-oswald text-[#F5A623] leading-none mb-1" style="font-size:1.9rem; letter-spacing:0.02em;">{b.value}</p>
+            <p class="text-white/85 text-[10px] font-oswald font-bold uppercase tracking-[0.16em]">{b.unit}</p>
+            <p class="text-white/40 text-[10px] mt-0.5 italic">{b.sub}</p>
           </div>
         ))}
       </div>
@@ -637,34 +638,48 @@ const biz = {
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer style="background:#0F2A1D; border-top:2px solid #1A4731;" class="py-14 px-4 pb-16 md:pb-14">
-    <div class="max-w-6xl mx-auto grid sm:grid-cols-3 gap-10">
-      <div>
-        <div class="flex items-center gap-2 mb-4">
-          <span class="text-2xl">⛰️</span>
-          <span class="font-oswald text-xl font-bold text-white uppercase tracking-wider">{biz.name}</span>
+  <!-- ===== FOOTER — TRAILHEAD PERMIT STYLE ===== -->
+  <footer style="background:#0F2A1D; border-top:2px solid #F5A623;" class="pt-14 px-4 pb-20 md:pb-14 relative">
+    <!-- topo seal -->
+    <svg viewBox="0 0 100 100" class="absolute top-6 right-6 w-16 h-16 opacity-25" aria-hidden="true">
+      <circle cx="50" cy="50" r="48" fill="none" stroke="#F5A623" stroke-width="1.5"/>
+      <circle cx="50" cy="50" r="38" fill="none" stroke="#F5A623" stroke-width="1" stroke-dasharray="3 3"/>
+      <text x="50" y="48" text-anchor="middle" font-family="Oswald" font-size="9" fill="#F5A623" font-weight="700" letter-spacing="1">TRAIL</text>
+      <text x="50" y="60" text-anchor="middle" font-family="Oswald" font-size="9" fill="#F5A623" font-weight="700" letter-spacing="1">TAILS</text>
+      <text x="50" y="72" text-anchor="middle" font-family="Oswald" font-size="5" fill="#F5A623" letter-spacing="1.5">EST 2018</text>
+    </svg>
+    <div class="max-w-6xl mx-auto">
+      <div class="flex items-center gap-3 mb-6 pb-6 border-b border-[#F5A623]/30">
+        <span class="text-2xl">⛰️</span>
+        <span class="font-oswald text-xl font-bold text-white uppercase tracking-[0.2em]">{biz.name}</span>
+        <span class="font-oswald text-[#F5A623] text-xs tracking-widest uppercase ml-auto hidden sm:inline">— A Boulder Adventure Outfit —</span>
+      </div>
+      <div class="grid sm:grid-cols-4 gap-8 mb-10">
+        <div class="sm:col-span-2">
+          <p class="font-oswald text-[#F5A623] text-[10px] uppercase tracking-[0.22em] mb-2">// Field Notes</p>
+          <p class="text-white/55 text-sm leading-relaxed max-w-md">GPS-tracked adventure hikes through Boulder's best trails. Small packs, big adventures. We outfit, you sleep easy.</p>
+          <p class="text-[#F5A623] text-xs mt-4 font-oswald tracking-wider">↪ {biz.instagram}</p>
         </div>
-        <p class="text-white/45 text-sm leading-relaxed">GPS-tracked adventure hikes through Boulder's best trails. Small packs, big adventures.</p>
-        <p class="text-[#F5A623] text-xs mt-4 font-oswald">{biz.instagram}</p>
+        <div>
+          <p class="font-oswald text-[#F5A623] text-[10px] uppercase tracking-[0.22em] mb-3">// Trail Map</p>
+          <ul class="space-y-1.5">
+            {['#services', '#pricing', '#gallery', '#team', '#booking', '/accessibility'].map((href, i) => (
+              <li><a href={href} class="text-white/55 hover:text-[#F5A623] transition-colors font-oswald text-xs tracking-wider">→ {['Services','Pricing','Gallery','Guides','Book a Hike','Accessibility'][i]}</a></li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p class="font-oswald text-[#F5A623] text-[10px] uppercase tracking-[0.22em] mb-3">// Basecamp</p>
+          <ul class="space-y-1.5 text-xs text-white/55 font-oswald tracking-wide">
+            <li class="leading-snug">{biz.address}</li>
+            <li><a href={`tel:${biz.phone}`} class="hover:text-[#F5A623] transition-colors">☎ {biz.phone}</a></li>
+            <li><a href={`mailto:${biz.email}`} class="hover:text-[#F5A623] transition-colors">✉ {biz.email}</a></li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h4 class="font-oswald text-base font-bold text-white uppercase tracking-wider mb-4">Explore</h4>
-        <ul class="space-y-2 text-sm">
-          {['#services', '#pricing', '#gallery', '#team', '#booking'].map((href, i) => (
-            <li><a href={href} class="text-white/45 hover:text-[#F5A623] transition-colors uppercase font-oswald text-xs tracking-wider">{['Services','Pricing','Gallery','Team','Book Now'][i]}</a></li>
-          ))}
-          <li><a href="/accessibility" class="text-white/45 hover:text-[#F5A623] transition-colors uppercase font-oswald text-xs tracking-wider">Accessibility</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-oswald text-base font-bold text-white uppercase tracking-wider mb-4">Reach Us</h4>
-        <ul class="space-y-2 text-sm text-white/45">
-          <li>{biz.address}</li>
-          <li><a href={`tel:${biz.phone}`} class="hover:text-[#F5A623] transition-colors">{biz.phone}</a></li>
-          <li><a href={`mailto:${biz.email}`} class="hover:text-[#F5A623] transition-colors">{biz.email}</a></li>
-        </ul>
-        <p class="text-xs text-white/25 mt-6">© {new Date().getFullYear()} {biz.name}</p>
+      <div class="border-t border-[#F5A623]/20 pt-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <p class="font-oswald text-white/30 text-[10px] uppercase tracking-[0.18em]">{biz.license}</p>
+        <p class="font-oswald text-white/30 text-[10px] uppercase tracking-[0.18em]">© {new Date().getFullYear()} — All routes hiked under permit.</p>
       </div>
     </div>
   </footer>
