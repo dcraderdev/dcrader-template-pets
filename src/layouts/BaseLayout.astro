@@ -44,6 +44,9 @@ import '../global.css';
     <div id="main">
       <slot />
     </div>
+    <div role="contentinfo" style="background:#0a0a0a; color:rgba(255,255,255,0.55); font-size:0.75rem; text-align:center; padding:0.875rem 1rem; font-family:'Inter',system-ui,sans-serif; letter-spacing:0.02em;">
+      Built by <a href="https://dcrader.dev" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.8); text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.2);">Donovan Crader · dcrader.dev</a>
+    </div>
     <button id="back-to-top" aria-label="Back to top" style="position:fixed;bottom:72px;right:18px;z-index:40;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);color:#fff;font-size:18px;display:none;align-items:center;justify-content:center;cursor:pointer;transition:opacity 0.2s,transform 0.2s;" onmouseenter="this.style.opacity='0.8'" onmouseleave="this.style.opacity='1'">↑</button>
     <script is:inline>
       const btn = document.getElementById('back-to-top');
