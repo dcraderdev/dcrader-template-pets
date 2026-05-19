@@ -1,11 +1,21 @@
 ---
 import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GroomingGrid from '../components/pets/GroomingGrid.astro';
 import { business, team, testimonials } from '../data/v3/business';
 import { services, packages } from '../data/v3/services';
 import { gallery } from '../data/v3/gallery';
 import { img } from '../data/images';
 const heroImg = img('1560743641');
+
+// Build hero tiles by pairing services with photography from the gallery dataset.
+const heroTiles = [
+  { src: img('1560743641'), label: services[0]?.name ?? 'Therapeutic Bath', sub: 'Vet-approved shampoos', price: services[0]?.price, href: '#services' },
+  { src: img('1561037404'), label: services[1]?.name ?? 'Anxiety Specialist', sub: 'Extended gentle session', price: services[1]?.price, href: '#services' },
+  { src: img('1518717758536'), label: services[2]?.name ?? 'Medical Coat Tx', sub: 'DVM-prescribed protocol', price: services[2]?.price, href: '#services' },
+  { src: img('1560807707'), label: 'Brachycephalic Care', sub: 'Flat-face certified handling', price: 'From $65', href: '#services' },
+  { src: img('1510771463146'), label: services[3]?.name ?? 'Nail Grinding', sub: 'Dremel option · no restraint', price: services[3]?.price, href: '#services' },
+];
 
 const schemaJson = JSON.stringify({
   "@context": "https://schema.org",
@@ -77,72 +87,20 @@ const schemaJson = JSON.stringify({
     </div>
   </nav>
 
-  <!-- HERO — SPLIT 3/5 + 2/5 -->
-  <section id="hero" class="bg-[#F0FAFA]">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-5 min-h-[520px]">
-      <!-- Left 3/5 -->
-      <div class="md:col-span-3 flex flex-col justify-center px-8 py-14 md:py-16">
-        <!-- Breadcrumb label -->
-        <p class="text-[#0E7490] text-xs font-medium mb-4 tracking-wide">Veterinary Grooming &rsaquo; Seattle, WA &rsaquo; Fremont</p>
-        <!-- Badge pill -->
-        <div class="inline-flex items-center gap-2 bg-[#CCFBF1] text-[#0E7490] text-xs font-semibold px-4 py-1.5 rounded-full mb-6 self-start">
-          <span>&#10003;</span> Veterinary-Supervised &middot; Est. {business.founded}
-        </div>
-        <!-- H1 -->
-        <h1 class="text-4xl md:text-5xl font-bold text-[#0F172A] leading-tight mb-5">
-          Grooming Built on<br/>
-          <span class="text-[#0E7490]">Medical Standards.</span>
-        </h1>
-        <p class="text-[#334155] text-lg leading-relaxed mb-8 max-w-xl">{business.tagline}</p>
-        <!-- CTA row -->
-        <div class="flex flex-col sm:flex-row gap-4 mb-10">
-          <a href="#booking" class="btn-teal text-base px-8 py-3">Request Appointment</a>
-          <a href="#services" class="btn-outline text-base px-8 py-3">View Services</a>
-        </div>
-        <!-- Credential badge grid 2x2 -->
-        <div class="grid grid-cols-2 gap-3 max-w-sm mb-6">
-          {[
-            { icon: '🏥', label: 'NAVTA Member · 2020–Present' },
-            { icon: '✅', label: 'Fear Free Pro · Recertified 2025' },
-            { icon: '📋', label: 'WA Lic. #VF-20208841' },
-            { icon: '👩‍⚕️', label: 'DVM On-Staff' },
-          ].map((b) => (
-            <div class="bg-white border border-[#E2E8F0] rounded-md p-3 text-center shadow-sm">
-              <div class="text-lg mb-1">{b.icon}</div>
-              <p class="text-[#0E7490] text-xs font-semibold leading-tight">{b.label}</p>
-            </div>
-          ))}
-        </div>
-        <p class="text-xs text-[#64748B] italic">As trusted by Seattle veterinarians — referred by Fremont Animal Hospital, Green Lake Vet, and Ballard Animal Care.</p>
-      </div>
-      <!-- Right 2/5 -->
-      <div class="md:col-span-2 relative overflow-hidden min-h-[400px] md:min-h-[500px]">
-        <Picture
-          src={heroImg}
-          alt="Professional therapeutic grooming at Calm Coat Veterinary Grooming"
-          widths={[600, 900, 1200, 1600]}
-          sizes="(max-width: 768px) 100vw, 40vw"
-          formats={['avif','webp']}
-          fallbackFormat="webp"
-          quality={78}
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-          class="absolute inset-0 w-full h-full object-cover"
-        />
-        <!-- Overlaid stat card -->
-        <div class="absolute bottom-4 left-4 right-4 bg-white border border-[#E2E8F0] rounded-md shadow-lg p-4">
-          <div class="flex items-center gap-3">
-            <div class="text-[#F5A623] text-lg tracking-tight">★★★★★</div>
-            <div>
-              <p class="text-[#0F172A] text-sm font-semibold">4.9 · 184 verified reviews</p>
-              <p class="text-[#64748B] text-xs">Zero adverse incidents in 4 years of operation</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- HERO — GROOMING SERVICES IMAGE GRID -->
+  <GroomingGrid
+    bg="#F0FAFA"
+    fg="#0F172A"
+    accent="#0E7490"
+    muted="#64748B"
+    cardBg="#FFFFFF"
+    eyebrow={`Veterinary Grooming · Seattle, WA · Fremont · Est. ${business.founded}`}
+    headline="Grooming Built on Medical Standards"
+    subhead="Browse our specialty services — each shaped around fear-free protocols, low-stress handling, and full DVM oversight. Tap any tile to learn more."
+    tiles={heroTiles}
+    fontHead="'Inter', system-ui, sans-serif"
+    fontBody="'Inter', system-ui, sans-serif"
+  />
 
   <!-- CERTIFICATIONS & ACCREDITATIONS -->
   <section class="bg-white border-t border-b border-[#E2E8F0] py-10 px-4">

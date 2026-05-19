@@ -1,0 +1,113 @@
+---
+// GroomingGrid — v3 hero treatment.
+// The hero IS an image grid of grooming services. No traditional banner.
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Tile {
+  src: ImageMetadata;
+  label: string;
+  sub?: string;
+  price?: string;
+  href?: string;
+}
+interface Props {
+  bg?: string;
+  fg?: string;
+  accent?: string;
+  muted?: string;
+  cardBg?: string;
+  eyebrow: string;
+  headline: string;
+  subhead?: string;
+  tiles: Tile[];
+  fontHead?: string;
+  fontBody?: string;
+}
+
+const {
+  bg = '#F8FAFC',
+  fg = '#0F172A',
+  accent = '#0E7490',
+  muted = '#64748B',
+  cardBg = '#FFFFFF',
+  eyebrow,
+  headline,
+  subhead = '',
+  tiles,
+  fontHead = "'Inter', system-ui, sans-serif",
+  fontBody = "'Inter', system-ui, sans-serif",
+} = Astro.props as Props;
+---
+<section id="hero" class="px-4 py-14 md:py-20" style={`background:${bg}; color:${fg};`}>
+  <div class="max-w-7xl mx-auto">
+    <!-- Tight intro strip, NOT a banner -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+      <div class="max-w-2xl">
+        <p style={`color:${accent}; font-family:${fontHead}; font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:700; margin-bottom:0.75rem;`}>
+          {eyebrow}
+        </p>
+        <h1 style={`font-family:${fontHead}; font-weight:700; font-size:clamp(1.75rem,3.5vw,2.75rem); line-height:1.15; margin-bottom:0.75rem;`}>
+          {headline}
+        </h1>
+        {subhead && (
+          <p style={`color:${muted}; font-family:${fontBody}; font-size:1rem; line-height:1.6;`}>{subhead}</p>
+        )}
+      </div>
+      <div class="flex gap-3 flex-shrink-0">
+        <a href="#booking" style={`background:${accent}; color:#fff; font-family:${fontBody}; font-size:0.875rem; font-weight:600; padding:0.7rem 1.4rem; border-radius:6px; text-decoration:none;`}>
+          Request Appointment
+        </a>
+      </div>
+    </div>
+
+    <!-- Image grid hero -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+      {tiles.map((t, i) => {
+        const span = i === 0 ? 'col-span-2 row-span-2 aspect-square md:aspect-auto md:min-h-[28rem]' : 'aspect-square';
+        return (
+          <a
+            href={t.href ?? '#services'}
+            class={`group relative overflow-hidden rounded-xl ${span}`}
+            style={`background:${cardBg};`}
+          >
+            <Picture
+              src={t.src}
+              alt={t.label}
+              widths={[400, 600, 900, 1200]}
+              sizes={i === 0 ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
+              formats={['avif','webp']}
+              fallbackFormat="webp"
+              quality={75}
+              loading={i === 0 ? 'eager' : 'lazy'}
+              fetchpriority={i === 0 ? 'high' : 'auto'}
+              decoding="async"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <!-- Gradient overlay for legibility -->
+            <div class="absolute inset-0" style="background:linear-gradient(to top, rgba(15,23,42,0.85) 0%, rgba(15,23,42,0.15) 55%, rgba(15,23,42,0) 100%);"></div>
+            <div class="absolute inset-x-0 bottom-0 p-4 md:p-5">
+              <div class="flex items-end justify-between gap-3">
+                <div class="min-w-0">
+                  <p style={`color:#fff; font-family:${fontHead}; font-weight:700; font-size:${i === 0 ? '1.35rem' : '1rem'}; line-height:1.2;`}>
+                    {t.label}
+                  </p>
+                  {t.sub && (
+                    <p style="color:rgba(255,255,255,0.75); font-size:0.78rem; margin-top:0.25rem; line-height:1.4;">
+                      {t.sub}
+                    </p>
+                  )}
+                </div>
+                {t.price && (
+                  <span style={`background:${accent}; color:#fff; font-family:${fontHead}; font-size:0.72rem; font-weight:700; padding:0.25rem 0.6rem; border-radius:9999px; white-space:nowrap;`}>
+                    {t.price}
+                  </span>
+                )}
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

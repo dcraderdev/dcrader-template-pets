@@ -1,0 +1,130 @@
+---
+// ServicesAccordion — v5 hero treatment.
+// An expandable services list IS the hero. No traditional banner image.
+interface Service {
+  name: string;
+  description?: string;
+  price?: string;
+  highlights?: string[];
+}
+interface Props {
+  bg?: string;
+  fg?: string;
+  accent?: string;
+  divider?: string;
+  muted?: string;
+  eyebrow: string;
+  headline: string;
+  subhead?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  services: Service[];
+  fontHead?: string;
+  fontBody?: string;
+}
+
+const {
+  bg = '#0F172A',
+  fg = '#F8F5F0',
+  accent = '#D4AF37',
+  divider = 'rgba(212,175,55,0.25)',
+  muted = 'rgba(248,245,240,0.65)',
+  eyebrow,
+  headline,
+  subhead = '',
+  ctaLabel = 'Reserve Your Suite',
+  ctaHref = '#booking',
+  services,
+  fontHead = "'Cormorant Garamond', Georgia, serif",
+  fontBody = "'Montserrat', sans-serif",
+} = Astro.props as Props;
+---
+<section id="hero" class="px-4 py-20 md:py-24" style={`background:${bg}; color:${fg};`}>
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-12 md:mb-16">
+      <p style={`color:${accent}; font-family:${fontBody}; font-size:0.7rem; letter-spacing:0.28em; text-transform:uppercase; font-weight:600; margin-bottom:1.5rem;`}>
+        {eyebrow}
+      </p>
+      <h1 style={`font-family:${fontHead}; font-weight:300; font-style:italic; font-size:clamp(2.5rem,6vw,4.5rem); line-height:1.05; margin-bottom:1.25rem;`}>
+        {headline}
+      </h1>
+      {subhead && (
+        <p style={`color:${muted}; font-family:${fontBody}; font-size:1rem; line-height:1.7; max-width:36rem; margin:0 auto;`}>
+          {subhead}
+        </p>
+      )}
+    </div>
+
+    <!-- Accordion IS the hero -->
+    <div class="hero-accordion" style={`border-top:1px solid ${divider};`}>
+      {services.map((s, i) => (
+        <details class="hero-accordion-item" open={i === 0 ? '' : undefined} style={`border-bottom:1px solid ${divider};`}>
+          <summary class="hero-accordion-summary">
+            <div class="flex items-baseline gap-4 md:gap-6 min-w-0">
+              <span style={`color:${accent}; font-family:${fontBody}; font-size:0.7rem; font-weight:600; letter-spacing:0.18em; min-width:2.5rem;`}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span style={`font-family:${fontHead}; font-size:clamp(1.5rem,3.5vw,2.25rem); font-weight:400; line-height:1.1;`}>
+                {s.name}
+              </span>
+            </div>
+            <div class="flex items-center gap-3 md:gap-6 flex-shrink-0">
+              {s.price && (
+                <span style={`color:${accent}; font-family:${fontBody}; font-size:0.8rem; letter-spacing:0.1em; font-weight:600; white-space:nowrap;`}>
+                  {s.price}
+                </span>
+              )}
+              <span class="hero-accordion-caret" aria-hidden="true" style={`color:${accent}; font-family:${fontHead}; font-size:1.6rem; line-height:1; transition:transform 0.3s;`}>+</span>
+            </div>
+          </summary>
+          <div class="hero-accordion-body" style={`padding:0 0 2rem 3.5rem;`}>
+            {s.description && (
+              <p style={`color:${muted}; font-family:${fontBody}; font-size:0.95rem; line-height:1.75; max-width:36rem; margin-bottom:1rem;`}>
+                {s.description}
+              </p>
+            )}
+            {s.highlights && s.highlights.length > 0 && (
+              <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:0.5rem 1.25rem; margin-bottom:1.25rem;">
+                {s.highlights.map((h) => (
+                  <li style={`color:${muted}; font-family:${fontBody}; font-size:0.82rem; display:flex; align-items:flex-start; gap:0.5rem;`}>
+                    <span style={`color:${accent}; flex-shrink:0;`}>✦</span> {h}
+                  </li>
+                ))}
+              </ul>
+            )}
+            <a href={ctaHref}
+              style={`display:inline-block; border:1px solid ${accent}; color:${accent}; font-family:${fontBody}; font-size:0.7rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; padding:0.85rem 2rem; text-decoration:none; transition:all 0.25s;`}
+              onmouseover={`this.style.background='${accent}'; this.style.color='${bg}';`}
+              onmouseout={`this.style.background='transparent'; this.style.color='${accent}';`}
+            >
+              {ctaLabel}
+            </a>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+
+  <style>
+    .hero-accordion-summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 0;
+    }
+    .hero-accordion-summary::-webkit-details-marker { display: none; }
+    .hero-accordion-item[open] .hero-accordion-caret {
+      transform: rotate(45deg);
+    }
+    .hero-accordion-body {
+      animation: fade-in 0.35s ease;
+    }
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(-4px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</section>

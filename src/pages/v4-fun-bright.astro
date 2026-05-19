@@ -1,11 +1,21 @@
 ---
 import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import TestimonialReel from '../components/pets/TestimonialReel.astro';
 import { business, team, testimonials } from '../data/v4/business';
 import { services, packages } from '../data/v4/services';
 import { gallery } from '../data/v4/gallery';
 import { img } from '../data/images';
 const heroImg = img('1548199973');
+
+// Build a longer pet-quote reel: pad the customer testimonials with short pet-voice tags so the reel feels alive.
+const reelQuotes = [
+  ...testimonials.map((t) => ({ text: t.text, name: t.name, breed: t.breed, stars: t.stars })),
+  { text: 'Came home so tired she fell asleep in her water bowl. 10/10.', name: 'Rico & Mango', breed: 'Frenchie · regular', stars: 5 },
+  { text: 'The live webcams are my new Netflix.', name: 'Priya R.', breed: 'Aussie owner', stars: 5 },
+  { text: 'Buster sprints into the lobby. Used to drag him to other places.', name: 'Sam D.', breed: 'Lab owner', stars: 5 },
+  { text: 'Themed weekends are a vibe. Pumpkin Spice Pups was elite.', name: 'Maya & Lentil', breed: 'Mini Doodle', stars: 5 },
+];
 
 const schemaJson = JSON.stringify({
   "@context": "https://schema.org",
@@ -177,86 +187,23 @@ const schemaJson = JSON.stringify({
   </div>
 
   <!-- ═══════════════════════════════════════════
-       HERO — DIAGONAL SPLIT + LIVE CAM WIDGET
+       HERO — TESTIMONIAL REEL (scrolling pet/owner quotes)
   ═══════════════════════════════════════════ -->
-  <section id="hero" class="hero-diagonal relative min-h-screen flex items-center justify-center text-center px-4 overflow-hidden" style="padding-top:3rem; padding-bottom:4rem;">
-    <!-- Decorative circles -->
-    <div class="absolute top-10 left-10 w-40 h-40 rounded-full opacity-20" style="background:#FCD34D;"></div>
-    <div class="absolute bottom-16 right-10 w-56 h-56 rounded-full opacity-10" style="background:#fff;"></div>
-    <div class="absolute top-1/3 right-1/4 w-20 h-20 rounded-full opacity-15" style="background:#1E293B;"></div>
-    <div class="absolute bottom-1/4 left-1/4 w-12 h-12 rounded-full opacity-20" style="background:#06B6D4;"></div>
-
-    <!-- Floating SVG decorations -->
-    <!-- Bone - top left -->
-    <div class="float-1 absolute top-16 left-8 md:left-24 opacity-70 hidden sm:block" aria-hidden="true">
-      <svg width="60" height="28" viewBox="0 0 60 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="9" cy="9" r="9" fill="white" opacity="0.9"/>
-        <circle cx="9" cy="19" r="9" fill="white" opacity="0.9"/>
-        <circle cx="51" cy="9" r="9" fill="white" opacity="0.9"/>
-        <circle cx="51" cy="19" r="9" fill="white" opacity="0.9"/>
-        <rect x="8" y="7" width="44" height="14" rx="4" fill="white" opacity="0.9"/>
-      </svg>
-    </div>
-
-    <!-- Paw print - top right -->
-    <div class="float-2 absolute top-20 right-8 md:right-24 opacity-70 hidden sm:block" aria-hidden="true">
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="24" cy="30" rx="11" ry="10" fill="white" opacity="0.9"/>
-        <ellipse cx="10" cy="20" rx="5" ry="6" fill="white" opacity="0.9"/>
-        <ellipse cx="20" cy="14" rx="5" ry="6" fill="white" opacity="0.9"/>
-        <ellipse cx="30" cy="14" rx="5" ry="6" fill="white" opacity="0.9"/>
-        <ellipse cx="40" cy="20" rx="5" ry="6" fill="white" opacity="0.9"/>
-      </svg>
-    </div>
-
-    <!-- Ball - bottom right -->
-    <div class="float-3 absolute bottom-28 right-12 md:right-32 opacity-60 hidden sm:block" aria-hidden="true">
-      <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="22" cy="22" r="22" fill="#FCD34D" opacity="0.9"/>
-        <path d="M4 22 Q22 8 40 22" stroke="white" stroke-width="3" fill="none" opacity="0.6"/>
-        <path d="M4 22 Q22 36 40 22" stroke="white" stroke-width="3" fill="none" opacity="0.6"/>
-      </svg>
-    </div>
-
-    <!-- Hero content -->
-    <div class="relative z-10 max-w-2xl mx-auto">
-      <div class="text-8xl mb-4">
-        <span class="paw-bounce">🐾</span>
-      </div>
-      <h1 class="font-fredoka text-5xl md:text-7xl text-white leading-tight mb-4 drop-shadow-lg" style="font-family:'Fredoka One',cursive;">
-        Austin's Happiest<br/>Doggy Daycare!
-      </h1>
-      <p class="text-white/90 text-xl mb-6 font-bold" style="font-family:'Nunito',sans-serif;">{business.tagline}</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#booking" class="wiggle-btn bg-white text-[#F97316] rounded-full px-8 py-4 font-extrabold text-base hover:bg-[#FFF7ED] transition-colors shadow-lg">Book a Tour 🏠</a>
-        <a href="#webcams" class="border-2 border-white text-white rounded-full px-8 py-4 font-extrabold text-base hover:bg-white hover:text-[#06B6D4] transition-all">See Webcams 📹</a>
-      </div>
-
-      <!-- LIVE CAM WIDGET -->
-      <div style="background:rgba(0,0,0,0.75); border-radius:16px; padding:12px; max-width:300px; margin:2rem auto 0; text-align:left; border:2px solid rgba(255,255,255,0.2);">
-        <!-- Live indicator row -->
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px;">
-          <div style="width:10px; height:10px; border-radius:50%; background:#22C55E; animation:pulse 1.5s infinite;"></div>
-          <span style="color:#22C55E; font-weight:800; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em;">LIVE</span>
-          <span style="color:rgba(255,255,255,0.6); font-size:0.7rem; margin-left:auto;">Cam 2 — Yard B</span>
-        </div>
-        <!-- Camera feed -->
-        <div style="border-radius:8px; overflow:hidden; aspect-ratio:16/9; position:relative;">
-          <Picture src={heroImg} widths={[400, 600, 800]} sizes="(max-width: 768px) 100vw, 50vw" formats={['avif','webp']} fallbackFormat="webp" quality={75} pictureAttributes={{ style: 'display:block; width:100%; height:100%;' }} style="width:100%; height:100%; object-fit:cover; filter:contrast(0.9) brightness(1.05);" alt="Live daycare cam" loading="eager" decoding="async" fetchpriority="high" />
-          <div style="position:absolute; top:6px; right:6px; background:rgba(0,0,0,0.5); color:white; font-size:0.6rem; padding:2px 6px; border-radius:4px; font-weight:700;">14 DOGS PLAYING</div>
-          <div style="position:absolute; bottom:6px; left:6px; color:rgba(255,255,255,0.7); font-size:0.6rem;">10:32 AM · 05/16/26</div>
-        </div>
-        <p style="color:rgba(255,255,255,0.7); font-size:0.7rem; margin-top:8px; text-align:center;">Members get live access 24/7</p>
-      </div>
-
-      <!-- Feature badges -->
-      <div class="mt-8 flex flex-wrap justify-center gap-3">
-        {['📹 Live Webcams', '🌳 Giant Yards', '🎓 Puppy Kindergarten', '🎉 Theme Weekends'].map((b) => (
-          <span class="bg-white/20 text-white text-sm font-bold px-4 py-2 rounded-full backdrop-blur-sm border border-white/20" style="font-family:'Nunito',sans-serif;">{b}</span>
-        ))}
-      </div>
-    </div>
-  </section>
+  <TestimonialReel
+    bg="#FFFBF7"
+    fg="#1E293B"
+    accent="#F97316"
+    cardBg="#FFFFFF"
+    cardFg="#1E293B"
+    eyebrow="412 happy pups · Austin, TX"
+    headline="Hear It Straight From The Pack"
+    subhead="Real reviews from real Austin dog parents — plus a few woofs. Hover any card to pause the reel."
+    ctaLabel="Book a Tour 🏠"
+    ctaHref="#booking"
+    quotes={reelQuotes}
+    fontHead="'Fredoka One', cursive"
+    fontBody="'Nunito', sans-serif"
+  />
 
   <!-- ═══════════════════════════════════════════
        SERVICES — BUBBLE/BLOB CARDS (2×2 grid)

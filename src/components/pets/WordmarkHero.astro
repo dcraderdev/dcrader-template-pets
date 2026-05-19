@@ -1,0 +1,89 @@
+---
+// WordmarkHero — v1 hero treatment.
+// Large typographic brand mark with minimal hero chrome.
+interface Props {
+  bg?: string;
+  fg?: string;
+  accent?: string;
+  muted?: string;
+  wordmark: string;        // the big brand word(s)
+  est?: string | number;
+  location?: string;
+  tagline?: string;
+  ctaPrimaryLabel?: string;
+  ctaPrimaryHref?: string;
+  ctaSecondaryLabel?: string;
+  ctaSecondaryHref?: string;
+  fontDisplay?: string;
+  fontBody?: string;
+}
+
+const {
+  bg = '#FAF6EF',
+  fg = '#3D2B1F',
+  accent = '#6B8F71',
+  muted = '#9C7B6C',
+  wordmark,
+  est,
+  location = '',
+  tagline = '',
+  ctaPrimaryLabel = 'Reserve a Stay',
+  ctaPrimaryHref = '#booking',
+  ctaSecondaryLabel = 'Explore Services',
+  ctaSecondaryHref = '#services',
+  fontDisplay = "'Cormorant Garamond', Georgia, serif",
+  fontBody = "'Inter', system-ui, sans-serif",
+} = Astro.props as Props;
+
+// Split the wordmark into words so we can scale each
+const words = wordmark.split(/\s+/).filter(Boolean);
+---
+<section id="hero" class="relative px-4" style={`background:${bg}; color:${fg}; padding:5rem 1rem 4rem; overflow:hidden;`}>
+  <!-- Top meta strip -->
+  <div class="max-w-7xl mx-auto flex items-center justify-between text-xs mb-12 md:mb-16" style={`font-family:${fontBody}; color:${muted}; letter-spacing:0.18em; text-transform:uppercase; font-weight:600;`}>
+    <span>{est ? `Est. ${est}` : ''}{est && location ? ' · ' : ''}{location}</span>
+    <span class="hidden sm:inline">A Wordmark · No. 01</span>
+  </div>
+
+  <!-- The wordmark itself -->
+  <div class="max-w-7xl mx-auto">
+    <h1 class="wordmark" style={`font-family:${fontDisplay}; color:${fg}; line-height:0.85; font-weight:700; margin:0; word-spacing:0;`}>
+      {words.map((w, i) => (
+        <span class="wordmark-word" style={`display:block; font-size:clamp(3.5rem, ${Math.max(18 - i * 2, 9)}vw, ${Math.max(13 - i * 1.5, 7)}rem); ${i === words.length - 1 ? `font-style:italic; color:${accent};` : ''}`}>
+          {w}
+        </span>
+      ))}
+    </h1>
+
+    <!-- Underline rule -->
+    <div style={`height:1px; background:${fg}; opacity:0.2; margin:2.5rem 0 1.5rem; max-width:100%;`}></div>
+
+    <!-- Tagline + CTAs row -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+      <p style={`font-family:${fontDisplay}; font-style:italic; font-size:clamp(1.1rem,1.8vw,1.5rem); color:${fg}; opacity:0.8; max-width:34rem; line-height:1.45; margin:0;`}>
+        {tagline}
+      </p>
+      <div class="flex flex-wrap gap-3 flex-shrink-0">
+        <a href={ctaPrimaryHref}
+          style={`background:${accent}; color:#fff; font-family:${fontBody}; font-weight:700; font-size:0.9rem; padding:0.85rem 2rem; border-radius:9999px; text-decoration:none; white-space:nowrap;`}>
+          {ctaPrimaryLabel}
+        </a>
+        <a href={ctaSecondaryHref}
+          style={`border:1.5px solid ${fg}; color:${fg}; font-family:${fontBody}; font-weight:700; font-size:0.9rem; padding:0.85rem 2rem; border-radius:9999px; text-decoration:none; white-space:nowrap; transition:all 0.2s;`}
+          onmouseover={`this.style.background='${fg}'; this.style.color='${bg}';`}
+          onmouseout={`this.style.background='transparent'; this.style.color='${fg}';`}
+        >
+          {ctaSecondaryLabel}
+        </a>
+      </div>
+    </div>
+
+    <!-- Bottom meta line -->
+    <div class="mt-12 flex flex-wrap gap-x-8 gap-y-2 text-xs" style={`font-family:${fontBody}; color:${muted}; letter-spacing:0.05em;`}>
+      <span>⭐ 4.9 (312 reviews)</span>
+      <span>Licensed &amp; Insured</span>
+      <span>Fear Free Certified</span>
+      <span>Daily photo updates</span>
+    </div>
+  </div>
+</section>

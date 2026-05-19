@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingCalendarHero from '../components/pets/BookingCalendarHero.astro';
 import { business, team, testimonials } from '../data/v2/business';
 import { services, packages } from '../data/v2/services';
 import { gallery } from '../data/v2/gallery';
@@ -161,39 +162,40 @@ const biz = {
     </p>
   </div>
 
-  <!-- ===== HERO ===== -->
-  <section id="hero" class="hero-bg-v2 min-h-screen flex items-center px-4 py-20">
-    <div class="topo-overlay" aria-hidden="true"></div>
-    <div class="max-w-4xl mx-auto relative z-10">
-      <p class="font-oswald text-[#F5A623] uppercase tracking-widest text-sm mb-5 font-semibold">
-        Boulder, CO &nbsp;·&nbsp; Est. {biz.founded}
-      </p>
-      <h1 class="font-oswald font-bold text-white leading-none uppercase mb-8" style="font-size:clamp(3rem,9vw,6rem);">
-        Real Trails.<br/>
-        <span style="color:#F5A623;">Real Exercise.</span><br/>
-        Happy Dogs.
-      </h1>
-      <p class="text-white/85 text-xl mb-3 max-w-xl">GPS-tracked adventure hikes through Boulder's most stunning terrain. Starting at $45.</p>
-      <p class="text-white/65 text-base mb-10 max-w-lg">Small packs of 5 dogs max. Wilderness-certified guides. Every trail, every time.</p>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#booking" class="btn-yellow text-base px-10 py-4">Book a Hike</a>
-        <a href="#services" class="btn-outline-yellow text-base px-10 py-4">Our Services</a>
-      </div>
-      <!-- Hero trail-permit ledger -->
-      <div class="mt-14 border-y border-[#F5A623]/35 py-5 flex flex-wrap items-stretch divide-x divide-[#F5A623]/25">
-        {[
-          { value: '14,820', unit: 'TRAIL MI LOGGED', sub: 'since 2018' },
-          { value: '47', unit: 'SUMMITS BAGGED', sub: 'incl. 14ers' },
-          { value: '6', unit: 'VET PARTNERS', sub: 'Boulder + Foothills' },
-          { value: '0', unit: 'TRAIL INCIDENTS', sub: '6 yrs running' },
-        ].map((b) => (
-          <div class="flex-1 min-w-[140px] px-5">
-            <p class="font-oswald text-[#F5A623] leading-none mb-1" style="font-size:1.9rem; letter-spacing:0.02em;">{b.value}</p>
-            <p class="text-white/85 text-[10px] font-oswald font-bold uppercase tracking-[0.16em]">{b.unit}</p>
-            <p class="text-white/40 text-[10px] mt-0.5 italic">{b.sub}</p>
-          </div>
-        ))}
-      </div>
+  <!-- ===== HERO — BOOKING CALENDAR LEAD ===== -->
+  <BookingCalendarHero
+    bg="#0F2A1D"
+    fg="#FFFFFF"
+    accent="#F5A623"
+    cardBg="#F8F7F4"
+    cardFg="#1A1F1A"
+    muted="rgba(255,255,255,0.78)"
+    eyebrow={`Boulder, CO · Est. ${biz.founded}`}
+    headline="Book Your Dog's Next Adventure"
+    subhead="Pick a date and we'll match your pup to the right trail and pack — GPS-tracked, max 5 dogs per guide, every single time."
+    ctaLabel="Check Trail Availability"
+    ctaHref="#booking"
+    services={services}
+    trustNote="0 trail incidents · 6 years · Wilderness First Aid certified guides"
+    fontHead="'Oswald', sans-serif"
+    fontBody="'Open Sans', sans-serif"
+  />
+
+  <!-- Stats ribbon — keeps the original trail-permit numbers as a follow-up strip -->
+  <section style="background:#1A4731;" class="px-4 py-6">
+    <div class="max-w-6xl mx-auto border-y border-[#F5A623]/35 py-5 flex flex-wrap items-stretch divide-x divide-[#F5A623]/25">
+      {[
+        { value: '14,820', unit: 'TRAIL MI LOGGED', sub: 'since 2018' },
+        { value: '47', unit: 'SUMMITS BAGGED', sub: 'incl. 14ers' },
+        { value: '6', unit: 'VET PARTNERS', sub: 'Boulder + Foothills' },
+        { value: '0', unit: 'TRAIL INCIDENTS', sub: '6 yrs running' },
+      ].map((b) => (
+        <div class="flex-1 min-w-[140px] px-5">
+          <p class="font-oswald text-[#F5A623] leading-none mb-1" style="font-size:1.9rem; letter-spacing:0.02em;">{b.value}</p>
+          <p class="text-white/85 text-[10px] font-oswald font-bold uppercase tracking-[0.16em]">{b.unit}</p>
+          <p class="text-white/40 text-[10px] mt-0.5 italic">{b.sub}</p>
+        </div>
+      ))}
     </div>
   </section>
 

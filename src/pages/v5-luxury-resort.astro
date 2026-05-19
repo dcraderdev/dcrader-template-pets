@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ServicesAccordion from '../components/pets/ServicesAccordion.astro';
 import { business, team, testimonials } from '../data/v5/business';
 import { services, packages } from '../data/v5/services';
 import { gallery } from '../data/v5/gallery';
@@ -205,36 +206,23 @@ const serviceImages = [
   </nav>
 
   <!-- ══════════════════════════════════════════
-       3. HERO — FULL-SCREEN EDITORIAL
+       3. HERO — SERVICES ACCORDION (expandable list IS the hero)
   ══════════════════════════════════════════ -->
-  <section id="hero" class="relative flex items-center justify-center text-center overflow-hidden" style="min-height:100vh;">
-    <!-- Background image -->
-    <div class="hero-fixed" style="position:absolute;inset:0;background-image:url('/images/photo-1518717758536-85ae29035b6d-1600.webp');background-size:cover;background-position:center;background-attachment:fixed;"></div>
-    <!-- Dark overlay -->
-    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(15,23,42,0.58) 0%, rgba(15,23,42,0.78) 100%);"></div>
-
-    <!-- Content -->
-    <div class="relative z-10 max-w-4xl mx-auto px-4 py-24">
-      <!-- Top label -->
-      <p class="font-montserrat tracking-widest uppercase mb-8" style="color:rgba(255,255,255,0.38); font-size:0.68rem; letter-spacing:0.2em;">
-        Est. {business.founded} &nbsp;·&nbsp; Beverly Hills &nbsp;·&nbsp; By Appointment
-      </p>
-      <!-- Gold rule -->
-      <div class="gold-rule mb-8" style="max-width:180px;"></div>
-      <!-- H1 -->
-      <h1 class="font-cormorant font-light italic text-white leading-none mb-6" style="font-size:clamp(3.5rem, 10vw, 7rem); line-height:0.95;">
-        Where Extraordinary<br/>Pets Receive<br/>Extraordinary Care
-      </h1>
-      <!-- Gold rule -->
-      <div class="gold-rule mt-8 mb-8" style="max-width:180px;"></div>
-      <!-- Subtitle -->
-      <p class="font-montserrat tracking-widest uppercase mb-12" style="color:rgba(255,255,255,0.38); font-size:0.68rem; letter-spacing:0.2em;">
-        {business.phone} &nbsp;·&nbsp; Reservations Required
-      </p>
-      <!-- CTA -->
-      <a href="#booking" class="btn-gold-outline" style="padding:1.2rem 4rem; font-size:0.72rem;">Reserve Your Suite</a>
-    </div>
-  </section>
+  <ServicesAccordion
+    bg="#0F172A"
+    fg="#F8F5F0"
+    accent="#D4AF37"
+    divider="rgba(212,175,55,0.25)"
+    muted="rgba(248,245,240,0.65)"
+    eyebrow={`Est. ${business.founded} · Beverly Hills · By Appointment`}
+    headline="Where Extraordinary Pets Receive Extraordinary Care"
+    subhead="Explore our private appointments — every service is bespoke, attended by name, and reserved for one guest at a time."
+    ctaLabel="Reserve Your Suite"
+    ctaHref="#booking"
+    services={services}
+    fontHead="'Cormorant Garamond', Georgia, serif"
+    fontBody="'Montserrat', sans-serif"
+  />
 
   <!-- ══════════════════════════════════════════
        4. AMENITY TICKER STRIP

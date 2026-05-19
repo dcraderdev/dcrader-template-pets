@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import WordmarkHero from '../components/pets/WordmarkHero.astro';
 import { business, team, testimonials } from '../data/v1/business';
 import { services, packages } from '../data/v1/services';
 import { gallery } from '../data/v1/gallery';
@@ -166,67 +167,23 @@ const schemaJson = JSON.stringify({
     </div>
   </nav>
 
-  <!-- HERO — ASYMMETRIC SPLIT -->
-  <section id="v1-hero" style="display:grid; grid-template-columns:55fr 45fr; min-height:90vh;">
-    <!-- LEFT: cream content panel -->
-    <div style="background:#FAF6EF; padding:120px 56px 80px 56px;" class="flex flex-col justify-center">
-      <p style="color:#6B8F71; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:1.5rem;">Est. {business.founded} · Hayes Valley, San Francisco</p>
-      <h1 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(3rem,5.5vw,5rem); font-weight:700; color:#3D2B1F; line-height:1.08; margin-bottom:1rem;">
-        Where Every Dog<br/>Stays Like<br/>A Guest
-      </h1>
-      <!-- Squiggly SVG underline decoration -->
-      <svg width="260" height="18" viewBox="0 0 260 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:1.75rem; margin-top:-0.25rem;">
-        <path d="M2 14 C20 4, 40 18, 60 10 C80 2, 100 16, 120 9 C140 2, 160 16, 180 9 C200 2, 220 16, 240 8 C250 4, 256 10, 258 8" stroke="#6B8F71" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-      </svg>
-      <p style="font-family:'Inter',system-ui,sans-serif; color:#5C4033; font-size:1.125rem; line-height:1.7; max-width:400px; margin-bottom:2.5rem;">{business.tagline}</p>
-      <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-bottom:2.5rem;">
-        <a href="#v1-booking" class="btn-sage" style="font-size:1rem; padding:0.85rem 2.25rem;">Reserve a Stay</a>
-        <a href="#v1-services" style="border:2px solid #3D2B1F; color:#3D2B1F; border-radius:9999px; padding:0.85rem 2.25rem; font-weight:700; font-family:'Inter',system-ui,sans-serif; font-size:1rem; transition:all 0.2s; display:inline-block;" class="hover:bg-[#3D2B1F] hover:text-white transition-all">Explore Services</a>
-      </div>
-      <!-- Trust row -->
-      <div style="display:flex; flex-wrap:wrap; gap:1.25rem; font-size:0.8rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif;">
-        <span>⭐ 4.9 (312 reviews)</span>
-        <span>🔒 Licensed & Insured</span>
-        <span>📸 Photo updates daily</span>
-        <span>🏥 Fear Free Certified</span>
-      </div>
-    </div>
-    <!-- RIGHT: dark scrapbook panel -->
-    <div style="background:#3D2B1F; position:relative; overflow:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:500px;">
-      <!-- Scattered paw prints -->
-      <span class="paw-scatter" style="top:8%; left:10%; transform:rotate(20deg);">🐾</span>
-      <span class="paw-scatter" style="bottom:12%; right:8%; transform:rotate(-30deg);">🐾</span>
-      <span class="paw-scatter" style="top:55%; left:5%; transform:rotate(10deg);">🐾</span>
-      <span class="paw-scatter" style="top:20%; right:6%; transform:rotate(-15deg);">🐾</span>
-
-      <!-- Polaroid collage -->
-      <div style="position:relative; width:340px; height:360px; margin:0 auto;">
-        <!-- Photo 1: top-left, tilted left -->
-        <div class="polaroid" style="top:0; left:0; transform:rotate(-3deg); z-index:1;">
-          <Picture src={img('1587300003388')} alt="Happy dog guest at Paws and Pine" widths={[200, 400]} sizes="200px" formats={['avif','webp']} fallbackFormat="webp" quality={75} loading="eager" fetchpriority="high" decoding="async" style="display:block; width:200px; height:200px; object-fit:cover;" />
-        </div>
-        <!-- Photo 2: center-right, tilted right -->
-        <div class="polaroid" style="top:40px; right:0; transform:rotate(2deg); z-index:2;">
-          <Picture src={img('1510771463146')} alt="Dog playing at Paws and Pine" widths={[200, 400]} sizes="200px" formats={['avif','webp']} fallbackFormat="webp" quality={75} loading="eager" decoding="async" style="display:block; width:200px; height:200px; object-fit:cover;" />
-        </div>
-        <!-- Photo 3: bottom-left, slight tilt -->
-        <div class="polaroid" style="bottom:0; left:30px; transform:rotate(-1.5deg); z-index:3;">
-          <Picture src={img('1537151608828')} alt="Cozy dog lounging at Paws and Pine" widths={[200, 400]} sizes="200px" formats={['avif','webp']} fallbackFormat="webp" quality={75} loading="eager" decoding="async" style="display:block; width:200px; height:200px; object-fit:cover;" />
-        </div>
-      </div>
-
-      <!-- Caption below polaroids -->
-      <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:rgba(250,246,239,0.6); font-size:1rem; margin-top:1.5rem; text-align:center; letter-spacing:0.03em;">Real guests. Real love.</p>
-    </div>
-  </section>
-  <!-- Mobile hero fix: stack on small screens -->
-  <style>
-    @media (max-width: 768px) {
-      #v1-hero { grid-template-columns: 1fr !important; }
-      #v1-hero > div:first-child { padding: 72px 24px 48px 24px !important; }
-      #v1-hero > div:last-child { min-height: 420px !important; }
-    }
-  </style>
+  <!-- HERO — WORDMARK TREATMENT -->
+  <WordmarkHero
+    bg="#FAF6EF"
+    fg="#3D2B1F"
+    accent="#6B8F71"
+    muted="#9C7B6C"
+    wordmark={business.name}
+    est={business.founded}
+    location={`${business.neighborhood}, San Francisco`}
+    tagline={business.tagline}
+    ctaPrimaryLabel="Reserve a Stay"
+    ctaPrimaryHref="#v1-booking"
+    ctaSecondaryLabel="Explore Services"
+    ctaSecondaryHref="#v1-services"
+    fontDisplay="'Cormorant Garamond', Georgia, serif"
+    fontBody="'Inter', system-ui, sans-serif"
+  />
 
   <!-- SERVICES — STICKY NOTE CARDS -->
   <section id="v1-services" class="py-20 px-4" style="background:#FAF6EF;">

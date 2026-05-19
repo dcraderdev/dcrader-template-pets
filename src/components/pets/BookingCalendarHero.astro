@@ -1,0 +1,139 @@
+---
+// BookingCalendarHero — v2 hero treatment.
+// Lead with a real date-picker / booking action as the hero.
+// Themeable so it matches the variant's existing palette.
+interface Service { name: string; price?: string }
+interface Props {
+  bg?: string;
+  fg?: string;
+  accent?: string;
+  cardBg?: string;
+  cardFg?: string;
+  muted?: string;
+  eyebrow: string;
+  headline: string;
+  subhead?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  services?: Service[];
+  trustNote?: string;
+  fontHead?: string;
+  fontBody?: string;
+}
+
+const {
+  bg = '#0F2A1D',
+  fg = '#FFFFFF',
+  accent = '#F5A623',
+  cardBg = '#F8F7F4',
+  cardFg = '#1A1F1A',
+  muted = 'rgba(255,255,255,0.7)',
+  eyebrow = 'Book Now',
+  headline = 'Reserve Your Pet’s Next Stay',
+  subhead = 'Pick a date — we’ll confirm availability in 24 hours.',
+  ctaLabel = 'Check Availability',
+  ctaHref = '#booking',
+  services = [],
+  trustNote = '',
+  fontHead = "'Oswald', sans-serif",
+  fontBody = "'Open Sans', sans-serif",
+} = Astro.props as Props;
+---
+<section id="hero" class="relative px-4 py-20 md:py-28" style={`background:${bg}; color:${fg};`}>
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <!-- LEFT: tight headline + trust -->
+    <div>
+      <p style={`color:${accent}; font-family:${fontHead}; letter-spacing:0.2em; font-size:0.75rem; text-transform:uppercase; font-weight:700; margin-bottom:1.25rem;`}>
+        {eyebrow}
+      </p>
+      <h1 style={`font-family:${fontHead}; font-weight:700; line-height:1.05; font-size:clamp(2.5rem,5.5vw,4.25rem); margin-bottom:1.25rem;`}>
+        {headline}
+      </h1>
+      <p style={`color:${muted}; font-family:${fontBody}; font-size:1.1rem; line-height:1.65; max-width:32rem; margin-bottom:1.5rem;`}>
+        {subhead}
+      </p>
+      {trustNote && (
+        <p style={`color:${accent}; font-family:${fontBody}; font-size:0.85rem; font-weight:600;`}>
+          {trustNote}
+        </p>
+      )}
+    </div>
+
+    <!-- RIGHT: booking calendar card -->
+    <div style={`background:${cardBg}; color:${cardFg}; border-radius:16px; box-shadow:0 30px 60px rgba(0,0,0,0.25); padding:2rem;`}>
+      <p style={`font-family:${fontHead}; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:${accent}; font-weight:700; margin-bottom:0.4rem;`}>
+        Quick Booking
+      </p>
+      <h2 style={`font-family:${fontHead}; font-size:1.6rem; font-weight:700; margin-bottom:1.25rem;`}>
+        When are you traveling?
+      </h2>
+
+      <form id="hero-quick-booking" style="display:flex; flex-direction:column; gap:1rem;" novalidate>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.85rem;">
+          <label style="display:flex; flex-direction:column; gap:0.35rem;">
+            <span style={`font-size:0.72rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:${cardFg}; opacity:0.7;`}>Drop-off</span>
+            <input id="hero-bk-start" type="date" required
+              style={`border:1.5px solid #d8d4cc; border-radius:8px; padding:0.65rem 0.75rem; font-size:0.9rem; background:#fff; color:${cardFg}; font-family:${fontBody};`} />
+          </label>
+          <label style="display:flex; flex-direction:column; gap:0.35rem;">
+            <span style={`font-size:0.72rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:${cardFg}; opacity:0.7;`}>Pick-up</span>
+            <input id="hero-bk-end" type="date" required
+              style={`border:1.5px solid #d8d4cc; border-radius:8px; padding:0.65rem 0.75rem; font-size:0.9rem; background:#fff; color:${cardFg}; font-family:${fontBody};`} />
+          </label>
+        </div>
+
+        <label style="display:flex; flex-direction:column; gap:0.35rem;">
+          <span style={`font-size:0.72rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:${cardFg}; opacity:0.7;`}>Service</span>
+          <select id="hero-bk-service" required
+            style={`border:1.5px solid #d8d4cc; border-radius:8px; padding:0.65rem 0.75rem; font-size:0.9rem; background:#fff; color:${cardFg}; font-family:${fontBody};`}>
+            <option value="">Select a service…</option>
+            {services.map((s) => (
+              <option value={s.name}>{s.name}{s.price ? ` — ${s.price}` : ''}</option>
+            ))}
+          </select>
+        </label>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.85rem;">
+          <label style="display:flex; flex-direction:column; gap:0.35rem;">
+            <span style={`font-size:0.72rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:${cardFg}; opacity:0.7;`}>Pet name</span>
+            <input id="hero-bk-pet" type="text" placeholder="e.g. Biscuit"
+              style={`border:1.5px solid #d8d4cc; border-radius:8px; padding:0.65rem 0.75rem; font-size:0.9rem; background:#fff; color:${cardFg}; font-family:${fontBody};`} />
+          </label>
+          <label style="display:flex; flex-direction:column; gap:0.35rem;">
+            <span style={`font-size:0.72rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:${cardFg}; opacity:0.7;`}>Phone</span>
+            <input id="hero-bk-phone" type="tel" placeholder="(000) 000-0000"
+              style={`border:1.5px solid #d8d4cc; border-radius:8px; padding:0.65rem 0.75rem; font-size:0.9rem; background:#fff; color:${cardFg}; font-family:${fontBody};`} />
+          </label>
+        </div>
+
+        <a href={ctaHref} id="hero-bk-submit"
+          style={`display:block; text-align:center; background:${accent}; color:#111; font-weight:800; padding:0.95rem 1rem; border-radius:9999px; text-decoration:none; font-family:${fontHead}; letter-spacing:0.05em; text-transform:uppercase; font-size:0.9rem;`}>
+          {ctaLabel}
+        </a>
+        <p style={`font-size:0.7rem; color:#666; text-align:center; font-family:${fontBody};`}>
+          Real-time availability · No deposit required to hold
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Default to today for minimums
+  const today = new Date().toISOString().split('T')[0];
+  document.querySelectorAll('#hero-quick-booking input[type="date"]').forEach((el) => {
+    (el as HTMLInputElement).setAttribute('min', today);
+  });
+  // Wire submit to scroll to booking section with prefilled values
+  const submit = document.getElementById('hero-bk-submit');
+  submit?.addEventListener('click', (e) => {
+    const start = (document.getElementById('hero-bk-start') as HTMLInputElement | null)?.value;
+    const end = (document.getElementById('hero-bk-end') as HTMLInputElement | null)?.value;
+    const svc = (document.getElementById('hero-bk-service') as HTMLSelectElement | null)?.value;
+    const pet = (document.getElementById('hero-bk-pet') as HTMLInputElement | null)?.value;
+    const phone = (document.getElementById('hero-bk-phone') as HTMLInputElement | null)?.value;
+    try {
+      sessionStorage.setItem('quickBooking', JSON.stringify({ start, end, svc, pet, phone }));
+    } catch {}
+  });
+</script>

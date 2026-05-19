@@ -1,0 +1,143 @@
+---
+// TestimonialReel — v4 hero treatment.
+// Customer/pet quotes scroll across the screen AS the hero. No traditional hero banner.
+interface Quote {
+  text: string;
+  name: string;
+  breed?: string;
+  stars?: number;
+}
+interface Props {
+  bg?: string;
+  fg?: string;
+  accent?: string;
+  cardBg?: string;
+  cardFg?: string;
+  eyebrow: string;
+  headline: string;
+  subhead?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  quotes: Quote[];
+  fontHead?: string;
+  fontBody?: string;
+}
+
+const {
+  bg = '#FFFBF7',
+  fg = '#1E293B',
+  accent = '#F97316',
+  cardBg = '#FFFFFF',
+  cardFg = '#1E293B',
+  eyebrow = '500+ Happy Dogs',
+  headline = 'Hear It From The Pack',
+  subhead = '',
+  ctaLabel = 'Book a Tour',
+  ctaHref = '#booking',
+  quotes,
+  fontHead = "'Fredoka One', cursive",
+  fontBody = "'Nunito', sans-serif",
+} = Astro.props as Props;
+
+// Double the reel so the marquee loop is seamless
+const reel = [...quotes, ...quotes];
+---
+<section id="hero" class="relative overflow-hidden" style={`background:${bg}; color:${fg}; padding:5rem 0 4rem;`}>
+  <!-- Tight intro -->
+  <div class="max-w-4xl mx-auto px-4 text-center mb-10">
+    <p style={`color:${accent}; font-family:${fontBody}; font-weight:800; font-size:0.85rem; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:1rem;`}>
+      {eyebrow}
+    </p>
+    <h1 style={`font-family:${fontHead}; font-size:clamp(2.5rem,6vw,4.5rem); line-height:1.05; margin-bottom:1rem;`}>
+      {headline}
+    </h1>
+    {subhead && (
+      <p style={`font-family:${fontBody}; font-size:1.1rem; max-width:36rem; margin:0 auto 1.5rem; line-height:1.6;`}>
+        {subhead}
+      </p>
+    )}
+    <a href={ctaHref}
+      style={`display:inline-block; background:${accent}; color:#fff; font-family:${fontBody}; font-weight:800; font-size:0.95rem; padding:0.95rem 2rem; border-radius:9999px; text-decoration:none; box-shadow:0 8px 20px rgba(0,0,0,0.12);`}>
+      {ctaLabel}
+    </a>
+  </div>
+
+  <!-- Reel row 1 (left -> right slow) -->
+  <div class="testimonial-reel-row" data-dir="left">
+    <div class="testimonial-reel-track">
+      {reel.map((q, i) => (
+        <article class="testimonial-reel-card" style={`background:${cardBg}; color:${cardFg};`}>
+          <div style={`color:${accent}; font-size:0.95rem; letter-spacing:0.1em; margin-bottom:0.4rem;`} aria-label={`${q.stars ?? 5} out of 5 stars`}>
+            {'★'.repeat(q.stars ?? 5)}
+          </div>
+          <p style={`font-family:${fontBody}; font-size:0.95rem; line-height:1.55; margin-bottom:0.9rem;`}>
+            “{q.text}”
+          </p>
+          <p style={`font-family:${fontHead}; font-size:1rem; line-height:1.1;`}>{q.name}</p>
+          {q.breed && (
+            <p style={`font-family:${fontBody}; font-size:0.78rem; opacity:0.65; margin-top:0.2rem;`}>{q.breed}</p>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <!-- Reel row 2 (right -> left, offset) -->
+  <div class="testimonial-reel-row" data-dir="right" style="margin-top:1.25rem;">
+    <div class="testimonial-reel-track reverse">
+      {reel.slice().reverse().map((q) => (
+        <article class="testimonial-reel-card" style={`background:${cardBg}; color:${cardFg};`}>
+          <div style={`color:${accent}; font-size:0.95rem; letter-spacing:0.1em; margin-bottom:0.4rem;`} aria-label={`${q.stars ?? 5} out of 5 stars`}>
+            {'★'.repeat(q.stars ?? 5)}
+          </div>
+          <p style={`font-family:${fontBody}; font-size:0.95rem; line-height:1.55; margin-bottom:0.9rem;`}>
+            “{q.text}”
+          </p>
+          <p style={`font-family:${fontHead}; font-size:1rem; line-height:1.1;`}>{q.name}</p>
+          {q.breed && (
+            <p style={`font-family:${fontBody}; font-size:0.78rem; opacity:0.65; margin-top:0.2rem;`}>{q.breed}</p>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <style>
+    @keyframes reel-scroll-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    @keyframes reel-scroll-right {
+      from { transform: translateX(-50%); }
+      to   { transform: translateX(0); }
+    }
+    .testimonial-reel-row {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0, #000 6%, #000 94%, transparent 100%);
+    }
+    .testimonial-reel-track {
+      display: flex;
+      gap: 1rem;
+      width: max-content;
+      animation: reel-scroll-left 60s linear infinite;
+    }
+    .testimonial-reel-track.reverse {
+      animation: reel-scroll-right 80s linear infinite;
+    }
+    .testimonial-reel-row:hover .testimonial-reel-track {
+      animation-play-state: paused;
+    }
+    .testimonial-reel-card {
+      flex: 0 0 280px;
+      border-radius: 18px;
+      padding: 1.25rem 1.35rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .testimonial-reel-track,
+      .testimonial-reel-track.reverse { animation: none; }
+    }
+  </style>
+</section>
