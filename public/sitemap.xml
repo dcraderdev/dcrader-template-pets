@@ -6,4 +6,5 @@
   <url><loc>https://dcrader-template-pets.vercel.app/v3-clinical-trust/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://dcrader-template-pets.vercel.app/v4-fun-bright/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://dcrader-template-pets.vercel.app/v5-luxury-resort/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://dcrader-template-pets.vercel.app/accessibility/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
