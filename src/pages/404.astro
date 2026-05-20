@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="404 — Page Not Found · Pet Services Templates"
+  description="That page wandered off the trail. Head back home to browse the pet services landing page templates."
+>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0F172A; color: #CBD5E1; }
+    .nf-wrap { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 4rem 1.5rem; }
+    .nf-card { max-width: 32rem; text-align: center; }
+    .nf-paw { font-size: 3rem; margin-bottom: 1.5rem; }
+    .nf-code {
+      font-family: 'Fredoka One', 'Inter', system-ui, sans-serif;
+      font-size: clamp(6rem, 18vw, 10rem);
+      line-height: 1;
+      font-weight: 700;
+      background: linear-gradient(135deg, #F97316 0%, #06B6D4 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: #F97316;
+      margin: 0 0 1rem;
+      letter-spacing: -0.04em;
+    }
+    .nf-h2 { color: #fff; font-size: 1.875rem; font-weight: 700; margin: 0 0 1rem; letter-spacing: -0.01em; }
+    .nf-body { color: #94A3B8; font-size: 1.0625rem; line-height: 1.6; margin: 0 0 2.25rem; }
+    .nf-btn {
+      display: inline-block;
+      background: #F97316;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.875rem 1.75rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      box-shadow: 0 10px 30px rgba(249, 115, 22, 0.25);
+    }
+    .nf-btn:hover { transform: translateY(-2px); background: #EA580C; box-shadow: 0 14px 36px rgba(249, 115, 22, 0.35); }
+    .nf-btn:focus-visible { outline: 2px solid #06B6D4; outline-offset: 3px; }
+    @media (max-width: 480px) {
+      .nf-h2 { font-size: 1.5rem; }
+      .nf-body { font-size: 1rem; }
+    }
+  </style>
+
+  <main class="nf-wrap">
+    <div class="nf-card">
+      <div class="nf-paw" aria-hidden="true">🐾</div>
+      <h1 class="nf-code">404</h1>
+      <h2 class="nf-h2">Page not found</h2>
+      <p class="nf-body">Looks like this page slipped its leash and wandered off. Let's head back to the kennel and pick a template instead.</p>
+      <a href="/" class="nf-btn">← Back to home</a>
+    </div>
+  </main>
+</BaseLayout>
