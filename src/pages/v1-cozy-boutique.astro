@@ -47,7 +47,7 @@ const schemaJson = JSON.stringify({
       --terra: #C17B50;
       --brown-dark: #3D2B1F;
       --brown-body: #5C4033;
-      --muted: #9C7B6C;
+      --muted: #7A5240;
     }
     html { scroll-behavior: smooth; }
     body { background: var(--cream); font-family: 'Inter', system-ui, sans-serif; color: var(--brown-body); }
@@ -170,7 +170,7 @@ const schemaJson = JSON.stringify({
     bg="#FAF6EF"
     fg="#3D2B1F"
     accent="#6B8F71"
-    muted="#9C7B6C"
+    muted="#7A5240"
     wordmark={business.name}
     est={business.founded}
     location={`${business.neighborhood}, San Francisco`}
@@ -240,7 +240,7 @@ const schemaJson = JSON.stringify({
               decoding="async"
               style="display:block; width:100%; aspect-ratio:1; object-fit:cover;"
             />
-            <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#9C7B6C; font-size:0.95rem; text-align:center; padding-top:14px; margin:0;">
+            <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#7A5240; font-size:0.95rem; text-align:center; padding-top:14px; margin:0;">
               Maya &amp; Biscuit, lobby afternoon
             </p>
           </div>
@@ -268,7 +268,7 @@ const schemaJson = JSON.stringify({
   <!-- BY THE NUMBERS — scrapbook chip strip -->
   <section style="background:#F2EAD8; padding:1.25rem 1rem 2.5rem;">
     <div class="max-w-5xl mx-auto">
-      <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#9C7B6C; font-size:0.9rem; text-align:center; margin-bottom:1.25rem;">a few small numbers we&rsquo;re proud of —</p>
+      <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#7A5240; font-size:0.9rem; text-align:center; margin-bottom:1.25rem;">a few small numbers we&rsquo;re proud of —</p>
       <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1rem 1.25rem;">
         {[
           { v: '12', label: 'overnight guests, capped', rot: '-1.5deg', bg: '#FAF6EF' },
@@ -301,7 +301,7 @@ const schemaJson = JSON.stringify({
             {pkg.featured && <div style="position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:#C17B50; color:#fff; font-size:0.7rem; font-weight:700; padding:4px 16px; border-radius:9999px; white-space:nowrap; font-family:'Inter',system-ui,sans-serif;">Most Popular</div>}
             <div>
               <h3 style={`font-family:'Cormorant Garamond',Georgia,serif; font-size:1.6rem; font-weight:700; margin-bottom:0.25rem; color:${pkg.featured ? '#fff' : '#3D2B1F'};`}>{pkg.name}</h3>
-              <p style={`font-size:0.8rem; font-family:'Inter',system-ui,sans-serif; color:${pkg.featured ? 'rgba(255,255,255,0.75)' : '#9C7B6C'};`}>{pkg.period}</p>
+              <p style={`font-size:0.8rem; font-family:'Inter',system-ui,sans-serif; color:${pkg.featured ? 'rgba(255,255,255,0.75)' : '#7A5240'};`}>{pkg.period}</p>
             </div>
             <div style={`font-family:'Cormorant Garamond',Georgia,serif; font-size:2.5rem; font-weight:700; color:${pkg.featured ? '#fff' : '#C17B50'};`}>{pkg.price}</div>
             <p style={`font-size:0.875rem; font-family:'Inter',system-ui,sans-serif; color:${pkg.featured ? 'rgba(255,255,255,0.85)' : '#5C4033'};`}>{pkg.description}</p>
@@ -333,7 +333,7 @@ const schemaJson = JSON.stringify({
         {gallery.map((img) => (
           <div class="gallery-polaroid">
             <Picture src={img.src} alt={img.alt} widths={[300, 500, 700]} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" formats={['avif','webp']} fallbackFormat="webp" quality={72} loading="lazy" decoding="async" style="display:block; width:100%; aspect-ratio:1; object-fit:cover;" />
-            <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#9C7B6C; font-size:0.8rem; text-align:center; padding-top:6px; margin:0;">{img.caption}</p>
+            <p style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#7A5240; font-size:0.8rem; text-align:center; padding-top:6px; margin:0;">{img.caption}</p>
           </div>
         ))}
       </div>
@@ -390,7 +390,7 @@ const schemaJson = JSON.stringify({
               <blockquote style="font-family:'Cormorant Garamond',Georgia,serif; font-style:italic; color:#5C4033; line-height:1.65; font-size:1.05rem; flex-grow:1; margin:0 0 1.25rem;">"{t.text}"</blockquote>
               <div>
                 <p style="font-weight:700; color:#3D2B1F; font-family:'Cormorant Garamond',Georgia,serif; font-size:1rem;">{t.name}</p>
-                <p style="font-size:0.75rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif;">{t.breed} · {t.date}</p>
+                <p style="font-size:0.75rem; color:#7A5240; font-family:'Inter',system-ui,sans-serif;">{t.breed} · {t.date}</p>
               </div>
             </div>
           );
@@ -527,7 +527,7 @@ const schemaJson = JSON.stringify({
       <div class="text-center mb-10">
         <p style="color:#C17B50; font-family:'Inter',system-ui,sans-serif; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; margin-bottom:0.5rem;">Hayes Valley, SF</p>
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:clamp(2rem,3.5vw,2.75rem); font-weight:700; color:#3D2B1F; margin-bottom:0.5rem;">A Dog's Favorite Neighborhood</h2>
-        <p style="color:#9C7B6C; max-width:440px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Everything your pup needs is within a short walk of our front door.</p>
+        <p style="color:#7A5240; max-width:440px; margin:0 auto; font-family:'Inter',system-ui,sans-serif;">Everything your pup needs is within a short walk of our front door.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {[
@@ -543,7 +543,7 @@ const schemaJson = JSON.stringify({
             </div>
             <h3 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.15rem; font-weight:700; color:#3D2B1F;">{place.name}</h3>
             <p style="font-size:0.85rem; color:#5C4033; line-height:1.55; flex-grow:1; font-family:'Inter',system-ui,sans-serif;">{place.desc}</p>
-            <p style="font-size:0.75rem; color:#9C7B6C; font-weight:600; font-family:'Inter',system-ui,sans-serif;">{place.dist} from us</p>
+            <p style="font-size:0.75rem; color:#7A5240; font-weight:600; font-family:'Inter',system-ui,sans-serif;">{place.dist} from us</p>
           </div>
         ))}
       </div>
@@ -580,10 +580,10 @@ const schemaJson = JSON.stringify({
             <p style="display:flex; align-items:flex-start; gap:0.75rem; font-size:0.875rem; color:#5C4033; font-family:'Inter',system-ui,sans-serif; margin:0;">
               <span style="font-size:1.25rem; flex-shrink:0;">📍</span> {business.address}
             </p>
-            <p style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif; margin:0;">
+            <p style="display:flex; align-items:center; gap:0.75rem; font-size:0.875rem; color:#7A5240; font-family:'Inter',system-ui,sans-serif; margin:0;">
               <span style="font-size:1.25rem;">🚨</span> Emergency: {business.emergency}
             </p>
-            <p style="font-size:0.72rem; color:#9C7B6C; font-family:'Inter',system-ui,sans-serif; margin:0;">{business.license}</p>
+            <p style="font-size:0.72rem; color:#7A5240; font-family:'Inter',system-ui,sans-serif; margin:0;">{business.license}</p>
           </div>
         </div>
         <div style="border-radius:14px; overflow:hidden; box-shadow:0 2px 12px rgba(61,43,31,0.1); min-height:300px; background:#e0d4bc;">
@@ -606,26 +606,26 @@ const schemaJson = JSON.stringify({
           <span style="font-size:1.5rem;">🐾</span>
           <span style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.35rem; font-weight:700; color:#fff;">{business.name}</span>
         </div>
-        <p style="color:#9C7B6C; font-size:0.875rem; line-height:1.65; font-family:'Inter',system-ui,sans-serif;">{business.description}</p>
-        <p style="color:#9C7B6C; font-size:0.8rem; margin-top:1rem; font-family:'Inter',system-ui,sans-serif;">{business.instagram}</p>
+        <p style="color:#7A5240; font-size:0.875rem; line-height:1.65; font-family:'Inter',system-ui,sans-serif;">{business.description}</p>
+        <p style="color:#7A5240; font-size:0.8rem; margin-top:1rem; font-family:'Inter',system-ui,sans-serif;">{business.instagram}</p>
       </div>
       <div>
         <h4 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem;">Quick Links</h4>
         <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
-          <li><a href="#v1-services" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Services</a></li>
-          <li><a href="#v1-pricing" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Pricing</a></li>
-          <li><a href="#v1-gallery" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Gallery</a></li>
-          <li><a href="#v1-team" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Our Team</a></li>
-          <li><a href="#v1-booking" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Book Now</a></li>
-          <li><a href="/accessibility" style="color:#9C7B6C; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Accessibility</a></li>
+          <li><a href="#v1-services" style="color:#7A5240; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Services</a></li>
+          <li><a href="#v1-pricing" style="color:#7A5240; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Pricing</a></li>
+          <li><a href="#v1-gallery" style="color:#7A5240; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Gallery</a></li>
+          <li><a href="#v1-team" style="color:#7A5240; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Our Team</a></li>
+          <li><a href="#v1-booking" style="color:#7A5240; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Book Now</a></li>
+          <li><a href="/accessibility" style="color:#7A5240; text-decoration:none; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;" class="hover:text-[#C17B50] transition-colors">Accessibility</a></li>
         </ul>
       </div>
       <div>
         <h4 style="font-family:'Cormorant Garamond',Georgia,serif; font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:1rem;">Contact</h4>
-        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem; color:#9C7B6C; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;">
+        <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem; color:#7A5240; font-size:0.875rem; font-family:'Inter',system-ui,sans-serif;">
           <li>{business.address}</li>
-          <li><a href={`tel:${business.phone}`} style="color:#9C7B6C; text-decoration:none;" class="hover:text-[#C17B50] transition-colors">{business.phone}</a></li>
-          <li><a href={`mailto:${business.email}`} style="color:#9C7B6C; text-decoration:none;" class="hover:text-[#C17B50] transition-colors">{business.email}</a></li>
+          <li><a href={`tel:${business.phone}`} style="color:#7A5240; text-decoration:none;" class="hover:text-[#C17B50] transition-colors">{business.phone}</a></li>
+          <li><a href={`mailto:${business.email}`} style="color:#7A5240; text-decoration:none;" class="hover:text-[#C17B50] transition-colors">{business.email}</a></li>
         </ul>
         <p style="font-size:0.72rem; color:#5C4033; margin-top:1.5rem; font-family:'Inter',system-ui,sans-serif;">© {new Date().getFullYear()} {business.name}. All rights reserved.</p>
       </div>

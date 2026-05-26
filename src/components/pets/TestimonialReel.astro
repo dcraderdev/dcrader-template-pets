@@ -11,6 +11,7 @@ interface Props {
   bg?: string;
   fg?: string;
   accent?: string;
+  accentText?: string;
   cardBg?: string;
   cardFg?: string;
   eyebrow: string;
@@ -27,6 +28,7 @@ const {
   bg = '#FFFBF7',
   fg = '#1E293B',
   accent = '#F97316',
+  accentText = '#C2410C',
   cardBg = '#FFFFFF',
   cardFg = '#1E293B',
   eyebrow = '500+ Happy Dogs',
@@ -45,7 +47,7 @@ const reel = [...quotes, ...quotes];
 <section id="hero" class="relative overflow-hidden" style={`background:${bg}; color:${fg}; padding:5rem 0 4rem;`}>
   <!-- Tight intro -->
   <div class="max-w-4xl mx-auto px-4 text-center mb-10">
-    <p style={`color:${accent}; font-family:${fontBody}; font-weight:800; font-size:0.85rem; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:1rem;`}>
+    <p style={`color:${accentText}; font-family:${fontBody}; font-weight:800; font-size:0.85rem; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:1rem;`}>
       {eyebrow}
     </p>
     <h1 style={`font-family:${fontHead}; font-size:clamp(2.5rem,6vw,4.5rem); line-height:1.05; margin-bottom:1rem;`}>
@@ -67,7 +69,7 @@ const reel = [...quotes, ...quotes];
     <div class="testimonial-reel-track">
       {reel.map((q, i) => (
         <article class="testimonial-reel-card" style={`background:${cardBg}; color:${cardFg};`}>
-          <div style={`color:${accent}; font-size:0.95rem; letter-spacing:0.1em; margin-bottom:0.4rem;`} aria-label={`${q.stars ?? 5} out of 5 stars`}>
+          <div style={`color:${accentText}; font-size:0.95rem; letter-spacing:0.1em; margin-bottom:0.4rem;`} aria-label={`${q.stars ?? 5} out of 5 stars`}>
             {'★'.repeat(q.stars ?? 5)}
           </div>
           <p style={`font-family:${fontBody}; font-size:0.95rem; line-height:1.55; margin-bottom:0.9rem;`}>
@@ -87,7 +89,7 @@ const reel = [...quotes, ...quotes];
     <div class="testimonial-reel-track reverse">
       {reel.slice().reverse().map((q) => (
         <article class="testimonial-reel-card" style={`background:${cardBg}; color:${cardFg};`}>
-          <div style={`color:${accent}; font-size:0.95rem; letter-spacing:0.1em; margin-bottom:0.4rem;`} aria-label={`${q.stars ?? 5} out of 5 stars`}>
+          <div style={`color:${accentText}; font-size:0.95rem; letter-spacing:0.1em; margin-bottom:0.4rem;`} aria-label={`${q.stars ?? 5} out of 5 stars`}>
             {'★'.repeat(q.stars ?? 5)}
           </div>
           <p style={`font-family:${fontBody}; font-size:0.95rem; line-height:1.55; margin-bottom:0.9rem;`}>
