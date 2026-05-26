@@ -103,6 +103,7 @@ const themed = [
     @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
     .float-1 { animation: float 3s ease-in-out infinite; }
     @media (prefers-reduced-motion: reduce) { .float-1, .wiggle-btn:hover { animation:none; } }
+    a:focus-visible, button:focus-visible { outline: 3px solid #F97316; outline-offset: 3px; border-radius: 999px; }
   </style>
 
   <div id="v4-tour-banner" style="background:#F97316;" class="w-full text-white text-sm text-center py-2 px-4 font-bold">

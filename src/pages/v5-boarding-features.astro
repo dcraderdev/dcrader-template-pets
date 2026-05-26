@@ -80,10 +80,23 @@ const standards = [
     .btn-gold-outline:hover { background:#D4AF37; color:#0F172A; }
     .btn-gold-solid { background:#D4AF37; color:#0F172A; padding:0.85rem 2.5rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; font-size:0.72rem; display:inline-block; text-decoration:none; }
     .btn-gold-solid:hover { background:#B8860B; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #D4AF37; outline-offset: 3px; }
     .gold-rule { height:1px; background:linear-gradient(90deg, transparent, #D4AF37, transparent); margin:0 auto; }
     .label { font-family:'Montserrat',sans-serif; font-size:0.66rem; letter-spacing:0.22em; text-transform:uppercase; color:#D4AF37; font-weight:500; }
+    .label-dark { color:#8B6914 !important; }
     section { padding: 6rem 1.5rem; }
     .inner { max-width:72rem; margin:0 auto; }
+    .suite-grid { display:grid; grid-template-columns:120px 1fr; gap:3rem; align-items:start; }
+    .amenity-grid { display:grid; grid-template-columns:200px 1fr; gap:3rem; align-items:start; }
+    @media (max-width: 720px) {
+      .suite-grid { grid-template-columns:1fr; gap:1.5rem; text-align:left; }
+      .suite-grid > div:first-child { text-align:left !important; }
+      .suite-grid ul { columns:1 !important; }
+      .amenity-grid { grid-template-columns:1fr; gap:1.25rem; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 4rem 1.25rem; }
+    }
   </style>
 
   <nav style="background:#0F172A; border-bottom:1px solid rgba(212,175,55,0.2);" class="sticky top-0 z-50">
@@ -118,23 +131,23 @@ const standards = [
   <section style="background:#F8F5F0;" aria-labelledby="suites-h">
     <div class="inner">
       <div style="text-align:center; margin-bottom:4rem;">
-        <p class="label" style="color:#B8860B;">Accommodations</p>
+        <p class="label" style="color:#8B6914;">Accommodations</p>
         <h2 id="suites-h" class="font-cormorant" style="font-size:3rem; font-weight:400; color:#0F172A; margin:1rem 0 0;">Three categories of suite.</h2>
       </div>
       {suites.map((s, i) => (
         <article style={`border-top:1px solid rgba(212,175,55,0.35); padding:3rem 0 ${i===suites.length-1?'3rem':'3rem'}; ${i===suites.length-1?'border-bottom:1px solid rgba(212,175,55,0.35);':''}`}>
-          <div style="display:grid; grid-template-columns:120px 1fr; gap:3rem; align-items:start;">
+          <div class="suite-grid">
             <div style="text-align:center;">
-              <span class="font-cormorant" style="font-size:4rem; color:#D4AF37; font-weight:300; line-height:1; font-style:italic;">{s.code}</span>
+              <span class="font-cormorant" style="font-size:4rem; color:#8B6914; font-weight:300; line-height:1; font-style:italic;">{s.code}</span>
               <p style="margin:0.85rem 0 0; color:#0F172A; font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; font-weight:500;">{s.sqft}</p>
             </div>
             <div>
-              <p class="label" style="color:#B8860B; margin-bottom:0.85rem;">{s.image}</p>
+              <p class="label" style="color:#8B6914; margin-bottom:0.85rem;">{s.image}</p>
               <h3 class="font-cormorant" style="font-size:2.4rem; font-weight:400; color:#0F172A; margin:0 0 0.5rem; line-height:1.05;">{s.name}</h3>
-              <p style="color:#475569; font-weight:300; margin:0 0 1.5rem; font-size:0.95rem;">{s.capacity} &nbsp;·&nbsp; <span style="color:#D4AF37; font-weight:500;">{s.rate}</span></p>
+              <p style="color:#475569; font-weight:300; margin:0 0 1.5rem; font-size:0.95rem;">{s.capacity} &nbsp;·&nbsp; <span style="color:#8B6914; font-weight:500;">{s.rate}</span></p>
               <ul style="list-style:none; padding:0; margin:0; columns:2; column-gap:2.5rem;">
                 {s.features.map(f => (
-                  <li style="display:flex; gap:0.65rem; align-items:start; color:#334155; line-height:1.65; font-size:0.85rem; padding:0.4rem 0; font-weight:400; break-inside:avoid;"><span style="color:#D4AF37; font-weight:400;">—</span><span>{f}</span></li>
+                  <li style="display:flex; gap:0.65rem; align-items:start; color:#334155; line-height:1.65; font-size:0.85rem; padding:0.4rem 0; font-weight:400; break-inside:avoid;"><span style="color:#8B6914; font-weight:400;">—</span><span>{f}</span></li>
                 ))}
               </ul>
             </div>
@@ -154,7 +167,7 @@ const standards = [
       </div>
       {amenities.map((a, i) => (
         <article style={`padding:3rem 0; ${i<amenities.length-1?'border-bottom:1px solid rgba(212,175,55,0.2);':''}`}>
-          <div style="display:grid; grid-template-columns:200px 1fr; gap:3rem; align-items:start;">
+          <div class="amenity-grid">
             <div>
               <span class="font-montserrat" style="color:#D4AF37; font-size:0.7rem; letter-spacing:0.24em; font-weight:500;">{a.cat}</span>
               <h3 class="font-cormorant" style="font-size:1.8rem; font-weight:400; color:#F8F5F0; margin:0.75rem 0 0; line-height:1.1;">{a.title}</h3>
@@ -177,13 +190,13 @@ const standards = [
   <section style="background:#F8F5F0;" aria-labelledby="std-h">
     <div class="inner">
       <div style="text-align:center; margin-bottom:3rem;">
-        <p class="label" style="color:#B8860B;">House Standards</p>
+        <p class="label" style="color:#8B6914;">House Standards</p>
         <h2 id="std-h" class="font-cormorant" style="font-size:2.6rem; font-weight:400; color:#0F172A; margin:1rem 0;">The numbers behind the address.</h2>
       </div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0; border-top:1px solid rgba(212,175,55,0.35); border-left:1px solid rgba(212,175,55,0.35);">
         {standards.map(s => (
           <div style="padding:1.75rem; border-right:1px solid rgba(212,175,55,0.35); border-bottom:1px solid rgba(212,175,55,0.35); background:#fff;">
-            <span class="label" style="color:#B8860B;">{s.k}</span>
+            <span class="label" style="color:#8B6914;">{s.k}</span>
             <p class="font-cormorant" style="font-size:2.4rem; color:#0F172A; font-weight:400; margin:0.5rem 0 0.4rem; line-height:1;">{s.v}</p>
             <p style="color:#64748B; font-size:0.8rem; line-height:1.65; margin:0; font-weight:300;">{s.sub}</p>
           </div>

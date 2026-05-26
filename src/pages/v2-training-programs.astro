@@ -88,9 +88,19 @@ const dates = [
     .btn-yellow:hover { background:#e09610; }
     .btn-green { background:#1A4731; color:#fff; border-radius:2px; padding:0.85rem 2rem; font-family:'Oswald',sans-serif; font-weight:600; font-size:1rem; letter-spacing:0.07em; text-transform:uppercase; display:inline-block; text-decoration:none; }
     .btn-green:hover { background:#0F2A1D; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #F5A623; outline-offset: 3px; border-radius: 2px; }
     .label { font-family:'Oswald',sans-serif; font-size:0.78rem; letter-spacing:0.18em; text-transform:uppercase; color:#F5A623; font-weight:600; }
     section { padding: 5rem 1.5rem; }
     .inner { max-width:72rem; margin:0 auto; }
+    .date-row { display:grid; grid-template-columns:1.5fr 2fr auto auto; gap:1.5rem; padding:1.25rem 1.75rem; align-items:center; }
+    @media (max-width: 720px) {
+      .date-row { grid-template-columns:1fr auto; gap:0.5rem 1rem; padding:1rem 1.25rem; }
+      .date-row > :nth-child(1) { grid-column:1 / span 2; }
+      .date-row > :nth-child(2) { grid-column:1 / span 2; font-size:0.85rem !important; }
+    }
+    @media (max-width: 480px) {
+      section { padding: 3.5rem 1.25rem; }
+    }
     .topo-bg { background-color:#0F2A1D; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cellipse cx='100' cy='100' rx='90' ry='70' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.08'/%3E%3Cellipse cx='100' cy='100' rx='75' ry='55' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.08'/%3E%3Cellipse cx='100' cy='100' rx='60' ry='40' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.08'/%3E%3C/svg%3E"); background-size:200px 200px; }
   </style>
 
@@ -149,7 +159,7 @@ const dates = [
               <span style="background:#1A4731; color:#F5A623; padding:0.35rem 0.85rem; font-family:'Oswald',sans-serif; font-size:0.74rem; letter-spacing:0.16em; font-weight:700;">{p.tag}</span>
               <h3 class="font-oswald" style="font-size:1.75rem; text-transform:uppercase; color:#1A4731; margin:0.85rem 0 0.4rem; font-weight:700; line-height:1.1;">{p.name}</h3>
               <p style="color:#3a4a30; font-size:0.85rem; margin:0; line-height:1.55;">{p.duration}<br/><strong style="color:#1A4731;">{p.level}</strong></p>
-              <p class="font-oswald" style="font-size:2.4rem; color:#F5A623; margin:1rem 0 0; font-weight:700; line-height:1;">{p.price}</p>
+              <p class="font-oswald" style="font-size:2.4rem; color:#1A4731; margin:1rem 0 0; font-weight:700; line-height:1;">{p.price}</p>
               <p style="color:#5a6a52; font-size:0.78rem; margin:0;">complete program · all materials included</p>
             </div>
             <div style="grid-column:span 2;">
@@ -161,7 +171,7 @@ const dates = [
                 <tbody>
                   {p.week.map((w, i) => (
                     <tr style={`${i<p.week.length-1?'border-bottom:1px solid #e0d8c8;':''}`}>
-                      <td class="font-oswald" style="padding:0.65rem 0.85rem; font-weight:700; color:#F5A623; font-size:0.95rem;">{String(w.n).padStart(2,'0')}</td>
+                      <td class="font-oswald" style="padding:0.65rem 0.85rem; font-weight:700; color:#1A4731; font-size:0.95rem;">{String(w.n).padStart(2,'0')}</td>
                       <td style="padding:0.65rem 0.85rem; color:#2D3A2A; font-size:0.88rem; line-height:1.55;">{w.focus}</td>
                     </tr>
                   ))}
@@ -184,7 +194,7 @@ const dates = [
       </div>
       <div style="display:grid; gap:0; background:#0F2A1D; border:1px solid rgba(245,166,35,0.25);">
         {dates.map((d, i) => (
-          <div style={`display:grid; grid-template-columns:1.5fr 2fr auto auto; gap:1.5rem; padding:1.25rem 1.75rem; align-items:center; ${i<dates.length-1?'border-bottom:1px solid rgba(245,166,35,0.15);':''}`}>
+          <div class="date-row" style={i<dates.length-1?'border-bottom:1px solid rgba(245,166,35,0.15);':''}>
             <span class="font-oswald" style="color:#F5A623; font-weight:600; text-transform:uppercase; font-size:0.92rem; letter-spacing:0.06em;">{d.run}</span>
             <span style="color:rgba(255,255,255,0.78); font-size:0.92rem;">{d.start}</span>
             <span style="background:#F5A623; color:#1A4731; padding:0.3rem 0.7rem; font-family:'Oswald',sans-serif; font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700;">{d.spots}</span>

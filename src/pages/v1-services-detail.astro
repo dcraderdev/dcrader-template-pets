@@ -83,8 +83,10 @@ const addOns = [
     h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; }
     .btn-sage { background:#6B8F71; color:#fff; border-radius:9999px; padding:0.75rem 2rem; font-weight:700; display:inline-block; text-decoration:none; }
     .btn-sage:hover { background:#557260; }
-    .btn-terra { background:#C17B50; color:#fff; border-radius:9999px; padding:0.75rem 2rem; font-weight:700; display:inline-block; text-decoration:none; }
+    .btn-terra { background:#C17B50; color:#fff; border-radius:9999px; padding:0.75rem 2rem; font-weight:700; display:inline-block; text-decoration:none; transition:background 0.2s; }
     .btn-terra:hover { background:#a56540; }
+    .btn-sage:active, .btn-terra:active { transform: translateY(1px); }
+    a:focus-visible, button:focus-visible { outline: 2px solid #6B8F71; outline-offset: 3px; border-radius: 6px; }
     .label { display:inline-block; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#6B8F71; font-weight:700; }
     .card { background:#fff; border:1px solid #E8DCC1; border-radius:18px; padding:2rem; box-shadow:0 2px 10px rgba(61,43,31,0.05); }
     section { padding: 5rem 1.5rem; }

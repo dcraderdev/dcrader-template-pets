@@ -126,6 +126,17 @@ const serviceImages = [
 
     /* ── Form focus ── */
     input:focus, select:focus, textarea:focus { outline: 1px solid #D4AF37; outline-offset: 2px; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #D4AF37; outline-offset: 3px; }
+
+    /* ── Gold text contrast on light bg ── */
+    section[style*="background:#F8F5F0"] [style*="color:#D4AF37"],
+    section[style*="background:#fff"] [style*="color:#D4AF37"],
+    section.bg-white [style*="color:#D4AF37"],
+    section[class*="bg-[#F"] [style*="color:#D4AF37"],
+    .light-bg [style*="color:#D4AF37"] {
+      color: #8B6914 !important;
+    }
+    .light-bg-gold { color: #8B6914 !important; }
 
     /* ── Scroll behavior ── */
     html { scroll-behavior: smooth; }
@@ -138,7 +149,7 @@ const serviceImages = [
     .press-name {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-style: italic;
-      color: rgba(15,23,42,0.22);
+      color: rgba(15,23,42,0.55);
       font-size: 1.35rem;
       letter-spacing: 0.03em;
       transition: color 0.3s;
@@ -243,7 +254,7 @@ const serviceImages = [
   ══════════════════════════════════════════ -->
   <section class="py-12 px-4 bg-white border-b border-[#E2E8F0]">
     <div class="max-w-6xl mx-auto">
-      <p class="text-center font-montserrat tracking-widest uppercase text-[#94A3B8] mb-8" style="font-size:0.65rem; letter-spacing:0.2em;">As Featured In</p>
+      <p class="text-center font-montserrat tracking-widest uppercase text-[#475569] mb-8" style="font-size:0.65rem; letter-spacing:0.2em;">As Featured In</p>
       <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
         {['Pet Business Magazine', 'Modern Dog', 'Robb Report', 'Beverly Hills Courier', 'Dog Fancy'].map((pub) => (
           <span class="press-name">{pub}</span>
@@ -380,7 +391,7 @@ const serviceImages = [
         <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">Investment in Excellence</p>
         <h2 class="font-cormorant font-light italic text-[#0F172A]" style="font-size:clamp(2.5rem,5vw,3.5rem);">Suite Packages</h2>
         <div class="gold-rule mt-5 mb-6" style="max-width:120px;"></div>
-        <p class="font-montserrat text-[#94A3B8] max-w-md mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Curated stays for discerning pets and their equally discerning owners.</p>
+        <p class="font-montserrat text-[#475569] max-w-md mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Curated stays for discerning pets and their equally discerning owners.</p>
       </div>
 
       <div class="grid md:grid-cols-3 gap-6 mb-10">
@@ -396,7 +407,7 @@ const serviceImages = [
             )}
             <div class="mb-4">
               <h3 class="font-cormorant italic mb-1" style={`font-size:1.6rem; color:${pkg.featured ? '#D4AF37' : '#0F172A'};`}>{pkg.name}</h3>
-              <p class="font-montserrat tracking-widest uppercase" style={`font-size:0.62rem; letter-spacing:0.16em; color:${pkg.featured ? 'rgba(255,255,255,0.35)' : '#94A3B8'};`}>{pkg.period}</p>
+              <p class="font-montserrat tracking-widest uppercase" style={`font-size:0.62rem; letter-spacing:0.16em; color:${pkg.featured ? 'rgba(255,255,255,0.7)' : '#475569'};`}>{pkg.period}</p>
             </div>
             <div class="font-cormorant mb-2" style={`font-size:3rem; line-height:1; color:${pkg.featured ? '#D4AF37' : '#0F172A'};`}>
               from {pkg.price}
@@ -415,7 +426,7 @@ const serviceImages = [
           </div>
         ))}
       </div>
-      <p class="text-center font-montserrat text-[#94A3B8]" style="font-size:0.65rem; letter-spacing:0.06em;">
+      <p class="text-center font-montserrat text-[#475569]" style="font-size:0.65rem; letter-spacing:0.06em;">
         All rates subject to seasonal availability. Please contact us to discuss your pet's specific needs.
       </p>
     </div>
@@ -459,7 +470,7 @@ const serviceImages = [
         <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">Exclusive Access</p>
         <h2 class="font-cormorant font-light italic text-[#0F172A]" style="font-size:clamp(2.5rem,5vw,3.5rem);">Concierge &amp; Partner Services</h2>
         <div class="gold-rule mt-5 mb-5" style="max-width:120px;"></div>
-        <p class="font-montserrat text-[#94A3B8] max-w-lg mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Available to all Hollow guests. Our concierge team handles every arrangement so you don't have to.</p>
+        <p class="font-montserrat text-[#475569] max-w-lg mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Available to all Hollow guests. Our concierge team handles every arrangement so you don't have to.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {[
@@ -495,7 +506,7 @@ const serviceImages = [
         <p class="font-montserrat tracking-widest uppercase mb-3" style="color:#D4AF37; font-size:0.68rem; letter-spacing:0.2em;">The Canine Kitchen</p>
         <h2 class="font-cormorant font-light italic text-[#0F172A]" style="font-size:clamp(2.5rem,5vw,3.5rem);">This Week's Menu</h2>
         <div class="gold-rule mt-5 mb-5" style="max-width:120px;"></div>
-        <p class="font-montserrat text-[#94A3B8] max-w-lg mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Prepared fresh daily by our Executive Pet Chef. All proteins are air-chilled, hormone-free, and sourced from California farms.</p>
+        <p class="font-montserrat text-[#475569] max-w-lg mx-auto" style="font-size:0.72rem; letter-spacing:0.04em;">Prepared fresh daily by our Executive Pet Chef. All proteins are air-chilled, hormone-free, and sourced from California farms.</p>
       </div>
       <div class="grid md:grid-cols-2 gap-px bg-[#E2E8F0]" style="border:1px solid #E2E8F0;">
         {[
@@ -511,12 +522,12 @@ const serviceImages = [
             <div>
               <p class="font-montserrat tracking-widest uppercase mb-1" style="color:#D4AF37; font-size:0.62rem; letter-spacing:0.18em;">{item.day}</p>
               <h3 class="font-cormorant italic text-[#0F172A] mb-1" style="font-size:1.2rem;" set:html={item.meal}></h3>
-              <p class="font-montserrat text-[#94A3B8] font-light leading-relaxed" style="font-size:0.72rem;" set:html={item.sides}></p>
+              <p class="font-montserrat text-[#475569] font-light leading-relaxed" style="font-size:0.72rem;" set:html={item.sides}></p>
             </div>
           </div>
         ))}
       </div>
-      <p class="text-center font-montserrat text-[#94A3B8] mt-5" style="font-size:0.65rem; letter-spacing:0.04em;">
+      <p class="text-center font-montserrat text-[#475569] mt-5" style="font-size:0.65rem; letter-spacing:0.04em;">
         Meals adjusted for dietary restrictions, allergies, and veterinary recommendations · Portions calculated by weight
       </p>
     </div>
@@ -614,11 +625,11 @@ const serviceImages = [
           <div class="flex flex-col items-center text-center px-3" style="border-top:1px solid rgba(212,175,55,0.45); padding-top:1.5rem;">
             <p class="font-cormorant italic mb-3" style="color:#D4AF37; font-size:2.6rem; line-height:1;">{f.figure}</p>
             <p class="font-montserrat tracking-widest uppercase mb-2" style="color:#0F172A; font-size:0.7rem; letter-spacing:0.16em;">{f.label}</p>
-            <p class="font-montserrat font-light text-[#94A3B8]" style="font-size:0.72rem; letter-spacing:0.02em;">{f.note}</p>
+            <p class="font-montserrat font-light text-[#475569]" style="font-size:0.72rem; letter-spacing:0.02em;">{f.note}</p>
           </div>
         ))}
       </div>
-      <p class="text-center font-montserrat font-light italic text-[#94A3B8] mt-10" style="font-size:0.7rem; letter-spacing:0.04em;">
+      <p class="text-center font-montserrat font-light italic text-[#475569] mt-10" style="font-size:0.7rem; letter-spacing:0.04em;">
         Figures from internal records · Updated quarterly
       </p>
     </div>

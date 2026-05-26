@@ -52,10 +52,18 @@ const csr = [
     .btn-teal:hover { background:#0c6478; }
     .btn-outline { border:1.5px solid #E2E8F0; color:#334155; border-radius:6px; padding:0.75rem 1.75rem; font-weight:600; font-size:0.875rem; display:inline-block; text-decoration:none; }
     .btn-outline:hover { border-color:#0E7490; color:#0E7490; }
+    a:focus-visible, button:focus-visible { outline: 2px solid #0E7490; outline-offset: 3px; border-radius: 4px; }
     .label { display:inline-block; font-size:0.7rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#0E7490; }
     section { padding: 4.5rem 1.5rem; }
     .inner { max-width:64rem; margin:0 auto; }
     .card { background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:1.5rem; }
+    .bio-grid { display:grid; grid-template-columns:200px 1fr; gap:2.5rem; align-items:start; }
+    .sched-row { display:grid; grid-template-columns:1.4fr 1.5fr auto; gap:1.25rem; align-items:center; }
+    @media (max-width: 640px) {
+      .bio-grid { grid-template-columns:1fr; gap:1.25rem; }
+      .bio-grid > div:first-child { max-width:140px; }
+      .sched-row { grid-template-columns:1fr; gap:0.5rem; }
+    }
   </style>
 
   <div style="background:#0E7490;" class="w-full py-2 px-4">
@@ -100,7 +108,7 @@ const csr = [
   {clinicians.map((c, i) => (
     <section style={`background:${i%2===0?'#fff':'#F8FAFC'}; padding:4rem 1.5rem;`} aria-labelledby={`vet-${i}-h`}>
       <div class="inner">
-        <div style="display:grid; grid-template-columns:200px 1fr; gap:2.5rem; align-items:start;">
+        <div class="bio-grid">
           <div>
             <div style="aspect-ratio:1; background:linear-gradient(135deg,#0E7490 0%,#5EEAD4 100%); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:2.2rem; letter-spacing:-0.02em;">{c.name.split(' ').slice(0,2).map(n=>n[0]).join('')}</div>
             <p style="font-size:0.72rem; color:#64748B; text-align:center; margin:0.85rem 0 0; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Profile {String(i+1).padStart(2,'0')}</p>
@@ -153,7 +161,7 @@ const csr = [
       </div>
       <div style="display:grid; gap:1rem;">
         {partners.map(p => (
-          <div class="card" style="display:grid; grid-template-columns:1.4fr 1.5fr auto; gap:1.25rem; align-items:center;">
+          <div class="card sched-row">
             <div>
               <h3 style="font-size:1.05rem; font-weight:700; color:#0F172A; margin:0;">{p.name}</h3>
               <p style="color:#0E7490; font-size:0.82rem; margin:0.2rem 0 0; font-weight:600;">{p.role}</p>
