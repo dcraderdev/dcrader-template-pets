@@ -38,7 +38,7 @@ import '../global.css';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {schemaJson && <Fragment set:html={`<script type="application/ld+json">${schemaJson}</script>`} />}
     <script src="/template-topheader.js" defer></script>
-    <style>
+    <style is:global>
       html { scroll-padding-top: 40px !important; }
       body { padding-top: 36px !important; }
       body > #dcrader-topheader, body > [data-dcrader-topheader] { padding-top: 0 !important; margin-top: -36px !important; }
