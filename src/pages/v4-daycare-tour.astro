@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../data/v4/business';
+
+const stops = [
+  {
+    n: '01',
+    name: 'The Lobby',
+    color: '#F97316',
+    emoji: '🚪',
+    sub: 'Where the wiggle starts',
+    body: 'You walk in. Polished concrete floors, a chalkboard wall covered in dog-of-the-day shoutouts, a free espresso bar for the humans, and a long bench where your pup gets weighed, harness-checked, and high-fived by whichever team member is on lobby duty. The whole transaction takes 90 seconds because we already have everything we need from the online intake.',
+    detail: ['Self-check-in tablet (saves you 2 minutes)', 'Free espresso · cold brew · sparkling water', 'Treat jar at dog height (one freebie per visit)', 'Last week\'s daycare yearbook on the counter to flip through'],
+  },
+  {
+    n: '02',
+    name: 'The Smalls Yard',
+    color: '#06B6D4',
+    emoji: '🐶',
+    sub: 'Under 25 lb · always',
+    body: 'A 2,400 square-foot indoor-outdoor space dedicated to the small and senior set. Soft turf, low couches, a kiddie pool in summer, and a tunnel system the Frenchies cannot get enough of. Staffed at all times by a handler with small-breed experience. Big-dog energy is never allowed in.',
+    detail: ['Max 14 dogs · ratio 1:7', 'Two enrichment puzzles rotated daily', 'Climate-controlled to 72°F year-round', 'Live webcam (Channel A) for parents'],
+  },
+  {
+    n: '03',
+    name: 'The Bigs Yard',
+    color: '#FCD34D',
+    emoji: '🌳',
+    sub: 'For the zoomers',
+    body: 'A 4,800 square-foot outdoor yard with a covered shade pavilion, a splash pad, and three play structures designed for athletic dogs. Sniff & Snuggle Bigs is for confident dogs over 30 lb that have passed our temperament intake. Group play is supervised by two handlers at all times.',
+    detail: ['Max 22 dogs · ratio 1:11', 'Splash pad on May–Oct', 'Two-handler supervision (always)', 'Live webcam (Channel B) for parents'],
+  },
+  {
+    n: '04',
+    name: 'The Cozy Den',
+    color: '#10B981',
+    emoji: '🛋️',
+    sub: 'Quiet nap room',
+    body: 'After lunch, every dog naps. The Cozy Den is a low-light, white-noise room with raised cots and breed-appropriate blankets. We dim the lights at 12:30 and the building is genuinely quiet for an hour. Sensitive dogs and seniors can opt out of group play entirely and stay here all day — same price.',
+    detail: ['10 raised orthopedic cots', 'Whisper-quiet white-noise system', 'Calm lavender mist (vet-approved)', 'Optional all-day quiet plan'],
+  },
+  {
+    n: '05',
+    name: 'The Puppy Wing',
+    color: '#A855F7',
+    emoji: '🐾',
+    sub: 'Under 6 months · max 6',
+    body: 'A dedicated wing for puppies 12–24 weeks. Cap of six. The schedule is built around the science: 20 minutes of structured play, 10 minutes of body-handling practice, 30 minutes of confident-rest in a pen, repeat. Every puppy goes home with that day\'s socialization checklist.',
+    detail: ['Max 6 puppies, one handler', 'Confidence ladder: novel surfaces, sounds, textures', 'Required: first vaccines + age 12–24 wks', 'Daily socialization checklist sent to parents'],
+  },
+  {
+    n: '06',
+    name: 'The Spa Hallway',
+    color: '#EC4899',
+    emoji: '💦',
+    sub: 'Optional grooming during daycare',
+    body: 'Tucked behind the Cozy Den. Two grooming stations and a self-wash booth. You can add a bath, a nail trim, or a full groom to any daycare day at check-in. Your dog comes home tired AND clean — which we call the Sniff & Snuggle Special.',
+    detail: ['Hypoallergenic shampoo standard', 'Add-ons: blueberry facial · paw butter · de-shed', 'Self-wash booth for visiting human-types', 'Same-day add-on availability'],
+  },
+  {
+    n: '07',
+    name: 'The Webcam Wall',
+    color: '#3B82F6',
+    emoji: '📹',
+    sub: 'You can watch live · all day',
+    body: 'Eight cameras, all yards, 12 hours a day. You log in from your phone with a one-tap link. Most parents check in once at lunch and call it a treat. Some parents check in seventeen times a day and we do not judge.',
+    detail: ['8 cameras: lobby · 2 yards · cozy den · spa', 'No login on the public web — parent-only QR access', 'Replay available 24h after the day ends', 'No facial recognition. No AI surveillance. Just cameras.'],
+  },
+];
+
+const day = [
+  { time: '6:30 – 9:00', pic: '☕', what: 'Staggered arrival, lobby check-in, harness off, group intro' },
+  { time: '9:00 – 11:30', pic: '🌳', what: 'Morning play split: Smalls yard + Bigs yard' },
+  { time: '11:30 – 12:30', pic: '🥣', what: 'Lunch (if booked) · cozy puzzle toys · transition song plays' },
+  { time: '12:30 – 1:30', pic: '😴', what: 'ENFORCED NAP. The whole building is quiet.' },
+  { time: '1:30 – 4:30', pic: '🎉', what: 'Afternoon: rotating play groups, themed activities, splash pad (summer)' },
+  { time: '4:30 – 5:30', pic: '🛀', what: 'Optional spa hour for booked grooming guests' },
+  { time: '5:00 – 7:30', pic: '🚪', what: 'Staggered pickup · report card handed over · treat for the road' },
+];
+
+const themed = [
+  { week: 'Pup Pup Pumpkin Spice', when: 'Every October', perk: 'Pumpkin Frosty Paws + autumn-themed photo day' },
+  { week: 'Bark-le Friday', when: 'First Friday of every month', perk: 'Disco lights · dog-safe bubble machine · DJ Beagle\'s playlist' },
+  { week: 'Senior Sundays', when: 'Sundays', perk: 'Reduced ratio · extra cozy den access · free joint-support treat' },
+  { week: 'Birthday Bash', when: 'Your dog\'s actual birthday', perk: 'Frosted pup-cake · birthday hat · everyone sings (we know)' },
+];
+---
+<BaseLayout
+  title={`Take the Tour — ${business.name}`}
+  description="A room-by-room virtual tour of Sniff & Snuggle Daycare in South Austin — yards, lobby, puppy wing, cozy den, spa, and the famous webcam wall."
+>
+  <style>
+    body { font-family: 'Nunito', sans-serif; background: #FFFBF7; color: #475569; }
+    .font-fredoka { font-family: 'Fredoka One', cursive; }
+    .btn-coral { background:#F97316; color:#fff; border-radius:999px; padding:0.85rem 2rem; font-weight:800; display:inline-block; text-decoration:none; }
+    .btn-coral:hover { background:#ea6a0a; }
+    .btn-teal { background:#06B6D4; color:#fff; border-radius:999px; padding:0.85rem 2rem; font-weight:800; display:inline-block; text-decoration:none; }
+    .btn-yellow { background:#FCD34D; color:#1E293B; border-radius:999px; padding:0.85rem 2rem; font-weight:800; display:inline-block; text-decoration:none; }
+    section { padding: 5rem 1.5rem; }
+    .inner { max-width:72rem; margin:0 auto; }
+    @keyframes wiggle { 0%,100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+    .wiggle-btn:hover { animation: wiggle 0.45s ease-in-out; }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+    .float-1 { animation: float 3s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .float-1, .wiggle-btn:hover { animation:none; } }
+  </style>
+
+  <div id="v4-tour-banner" style="background:#F97316;" class="w-full text-white text-sm text-center py-2 px-4 font-bold">
+    <span>🎉 New pups! First daycare day just $10 — Sniff &amp; Snuggle Intro Special!</span>
+  </div>
+
+  <nav style="background:#F97316;" class="sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="/v4-fun-bright" class="flex items-center gap-2">
+        <span class="text-2xl">🐶</span>
+        <span class="font-fredoka text-xl text-white">{business.name}</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 font-bold text-sm">
+        <a href="/v4-fun-bright#services" class="text-white/90 hover:text-white">Services</a>
+        <a href="/v4-daycare-tour" class="bg-white text-[#F97316] rounded-full px-3 py-1">Take the Tour</a>
+        <a href="/v4-fun-bright#webcams" class="text-white/90 hover:text-white">Webcams</a>
+        <a href="/v4-fun-bright#pricing" class="text-white/90 hover:text-white">Pricing</a>
+        <a href="/v4-fun-bright#booking" class="wiggle-btn btn-yellow" style="padding:0.45rem 1.2rem; font-size:0.85rem;">Book Now 🎉</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+  <!-- HERO -->
+  <section style="background:linear-gradient(135deg,#FCD34D 0%,#F97316 60%,#EC4899 100%); padding:5rem 1.5rem 4rem; color:#fff; text-align:center; position:relative; overflow:hidden;">
+    <span class="float-1" style="position:absolute; top:2rem; left:5%; font-size:2.5rem;" aria-hidden="true">🐾</span>
+    <span class="float-1" style="position:absolute; top:4rem; right:7%; font-size:2.5rem; animation-delay:0.5s;" aria-hidden="true">🦴</span>
+    <span class="float-1" style="position:absolute; bottom:3rem; left:12%; font-size:2.5rem; animation-delay:1s;" aria-hidden="true">🎾</span>
+    <div class="inner" style="max-width:42rem;">
+      <span style="background:rgba(0,0,0,0.18); color:#fff; padding:0.3rem 0.9rem; border-radius:99px; font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:800;">🐕 The Tour 🐕</span>
+      <h1 class="font-fredoka" style="font-size:clamp(2.6rem,7vw,4.4rem); line-height:1.0; margin:1rem 0;">Welcome to the<br/>Sniff &amp; Snuggle Tour!</h1>
+      <p style="line-height:1.85; color:rgba(255,255,255,0.95); font-size:1.1rem; max-width:34rem; margin:0 auto 2rem; font-weight:600;">Seven rooms. Eight cameras. Two splash pads. One unreasonably happy team. Take the full tour below before you ever drop off — because we'd want to see the place too.</p>
+      <a href="#stop-01" class="wiggle-btn btn-yellow">Start the tour ↓</a>
+    </div>
+  </section>
+
+  <!-- 7 STOPS -->
+  {stops.map((s) => (
+    <section id={`stop-${s.n}`} style={`background:${s.color}10;`} aria-labelledby={`stop-${s.n}-h`}>
+      <div class="inner">
+        <div style="background:#fff; border-radius:24px; padding:2.5rem; box-shadow:0 10px 30px rgba(0,0,0,0.06); position:relative; overflow:hidden;">
+          <span style={`position:absolute; top:-10px; right:-10px; width:120px; height:120px; background:${s.color}; border-radius:50%; opacity:0.18;`} aria-hidden="true"></span>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2.5rem; align-items:start; position:relative;">
+            <div>
+              <div style={`display:inline-flex; align-items:center; gap:0.75rem; background:${s.color}; color:#fff; padding:0.5rem 1.2rem; border-radius:99px; font-weight:800; letter-spacing:0.04em;`}>
+                <span style="font-size:1.4rem;" aria-hidden="true">{s.emoji}</span>
+                <span class="font-fredoka" style="font-size:0.95rem;">Stop {s.n}</span>
+              </div>
+              <h2 id={`stop-${s.n}-h`} class="font-fredoka" style={`font-size:2.5rem; color:#1E293B; margin:1rem 0 0.25rem; line-height:1.05;`}>{s.name}</h2>
+              <p style="color:#64748B; font-weight:700; margin:0 0 1.25rem; font-size:0.95rem;">{s.sub}</p>
+              <p style="line-height:1.85; color:#334155; font-size:1rem; margin:0;">{s.body}</p>
+            </div>
+            <div style={`background:${s.color}10; border:2px dashed ${s.color}; border-radius:16px; padding:1.5rem;`}>
+              <p class="font-fredoka" style={`color:${s.color}; font-size:1rem; margin:0 0 0.85rem; letter-spacing:0.04em;`}>The good stuff:</p>
+              <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.75rem;">
+                {s.detail.map(d => (
+                  <li style="display:flex; gap:0.65rem; align-items:start; color:#334155; line-height:1.55; font-size:0.92rem; font-weight:600;">
+                    <span style={`color:${s.color}; font-weight:900;`}>✓</span>{d}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- A DAY IN THE LIFE -->
+  <section style="background:linear-gradient(180deg,#06B6D4 0%,#3B82F6 100%); color:#fff;" aria-labelledby="day-h">
+    <div class="inner" style="max-width:54rem;">
+      <div style="text-align:center; margin-bottom:3rem;">
+        <span style="background:#FCD34D; color:#1E293B; padding:0.35rem 1rem; border-radius:99px; font-weight:800; font-size:0.82rem;">A Day in the Life</span>
+        <h2 id="day-h" class="font-fredoka" style="font-size:3rem; margin:1rem 0 0.5rem; color:#fff;">7am to 7:30pm.</h2>
+        <p style="color:rgba(255,255,255,0.9); font-size:1rem; font-weight:600;">No two days are identical — but every day has these beats.</p>
+      </div>
+      <ol style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem;">
+        {day.map(d => (
+          <li style="background:rgba(255,255,255,0.12); backdrop-filter:blur(6px); border-radius:16px; padding:1rem 1.5rem; display:grid; grid-template-columns:auto auto 1fr; gap:1rem; align-items:center;">
+            <span style="font-size:1.85rem;" aria-hidden="true">{d.pic}</span>
+            <span class="font-fredoka" style="background:#FCD34D; color:#1E293B; padding:0.3rem 0.8rem; border-radius:99px; font-size:0.85rem; white-space:nowrap;">{d.time}</span>
+            <span style="font-size:0.95rem; line-height:1.55; font-weight:600;">{d.what}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- THEMED WEEKS -->
+  <section style="background:#FFFBF7;" aria-labelledby="themed-h">
+    <div class="inner" style="max-width:54rem;">
+      <div style="text-align:center; margin-bottom:2.5rem;">
+        <span style="background:#EC4899; color:#fff; padding:0.35rem 1rem; border-radius:99px; font-weight:800; font-size:0.82rem;">Themed Days</span>
+        <h2 id="themed-h" class="font-fredoka" style="font-size:2.8rem; color:#1E293B; margin:1rem 0 0.5rem;">Because regular daycare is boring.</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.25rem;">
+        {themed.map((t, i) => (
+          <div style={`background:#fff; border:3px solid ${['#F97316','#06B6D4','#10B981','#EC4899'][i%4]}; border-radius:18px; padding:1.5rem; transform:rotate(${i%2===0?-1.5:1.5}deg);`}>
+            <h3 class="font-fredoka" style={`color:${['#F97316','#06B6D4','#10B981','#EC4899'][i%4]}; font-size:1.4rem; margin:0 0 0.35rem; line-height:1.1;`}>{t.week}</h3>
+            <p style="color:#64748B; font-weight:700; font-size:0.82rem; margin:0 0 0.75rem;">{t.when}</p>
+            <p style="color:#334155; line-height:1.65; margin:0; font-size:0.92rem; font-weight:600;">{t.perk}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:#F97316; color:#fff; text-align:center;">
+    <div class="inner" style="max-width:42rem;">
+      <span class="float-1" style="display:inline-block; font-size:3rem;" aria-hidden="true">🎉</span>
+      <h2 class="font-fredoka" style="font-size:2.8rem; margin:0.5rem 0 1rem; line-height:1.05;">Ready to come in person?</h2>
+      <p style="color:rgba(255,255,255,0.92); font-size:1.05rem; line-height:1.85; margin:0 0 2rem; font-weight:600;">First daycare day is just $10 with our intro special. Drop in any morning before 10am for a casual meet-the-yard tour — no booking required.</p>
+      <a href="/v4-fun-bright#booking" class="wiggle-btn btn-yellow">Book the $10 intro day →</a>
+      <p style="margin-top:1.25rem; color:rgba(255,255,255,0.78); font-size:0.85rem; font-weight:700;">Or call <a href={`tel:${business.phone}`} style="color:#fff; border-bottom:2px solid #FCD34D;">{business.phone}</a></p>
+    </div>
+  </section>
+
+  </main>
+</BaseLayout>

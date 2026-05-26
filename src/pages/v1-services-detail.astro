@@ -1,0 +1,189 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../data/v1/business';
+
+const services = [
+  {
+    icon: '🏠',
+    name: 'Luxury Overnight Boarding',
+    tagline: 'A small house, not a kennel.',
+    price: 'From $75/night',
+    body: 'Each guest stays in a private suite — full-height oak partitions, a memory-foam cot, a window onto the back garden, and a small framed photo of your dog on the door. We sleep no more than fourteen dogs a night, which is half the licensed capacity for our square footage. You will not hear barking in our boarding wing because there is nothing to bark about: dogs are settled, walked three times, fed on their home schedule, and tucked in with the room lights dimmed by nine.',
+    schedule: [
+      { time: '7:00 AM', what: 'Wake, garden walk, breakfast on home schedule' },
+      { time: '10:30 AM', what: 'Yard play with size-matched group · indoor lounge for solo dogs' },
+      { time: '1:30 PM', what: 'Quiet nap window · soft instrumental playlist · no foot traffic' },
+      { time: '4:30 PM', what: 'Long neighborhood walk with a 2-person handler team' },
+      { time: '6:30 PM', what: 'Dinner · brief enrichment puzzle · evening cuddle time' },
+      { time: '9:00 PM', what: 'Lights dimmed · last potty trip · room check-ins through the night' },
+    ],
+    proof: 'Two photo updates a day. A short video on day one. A handwritten note from your dog\'s primary handler in the welcome-home folder at pickup.',
+  },
+  {
+    icon: '☀️',
+    name: 'Social Daycare',
+    tagline: 'Play groups designed like a dinner party.',
+    price: 'From $45/day',
+    body: 'Daycare is run by Sofia Park, our UC Davis animal-behavior grad. Every new dog gets a one-hour temperament intake before they are ever in a group. Groups are matched by size, age, energy, and play style — and capped at twelve dogs per handler. We do not run an open free-for-all. Quiet dogs get a quiet group. Bouncy dogs get a bouncy group. The result is a calm building with happy dogs that come home tired and content.',
+    schedule: [
+      { time: '7:00 AM – 9:00 AM', what: 'Staggered drop-off · one-on-one greeting with handler' },
+      { time: '9:00 AM – 11:30 AM', what: 'Morning play in the back garden (weather permitting)' },
+      { time: '11:30 AM – 1:30 PM', what: 'Group lunch · enforced nap in quiet suites' },
+      { time: '1:30 PM – 4:30 PM', what: 'Indoor enrichment · puzzles · short training games' },
+      { time: '4:30 PM – 7:00 PM', what: 'Wind-down play · staggered pickup with verbal report' },
+    ],
+    proof: 'A printed report card at pickup: who they played with, what they ate, any quirks worth knowing. A photo posted to our private parents-only Instagram.',
+  },
+  {
+    icon: '✂️',
+    name: 'Spa Grooming',
+    tagline: 'Breed-correct cuts, no rush.',
+    price: 'From $85',
+    body: 'James Holloway is our head groomer — NDGAA certified with a specialty in curly and double coats. He books one dog per ninety-minute window, never doubles up, and does not use heated drying cages. Every groom starts with a slow brush-out, a warm aromatherapy bath (oat-protein shampoo · lavender or eucalyptus), a blueberry facial scrub, and a hand-blow finish. The cut follows the breed standard — or your specific request — and ends with paw butter and a fresh bandana.',
+    schedule: [
+      { time: '0:00 – 0:15', what: 'Greet · brush-out · gentle nail trim' },
+      { time: '0:15 – 0:35', what: 'Warm bath · aromatherapy shampoo · blueberry facial' },
+      { time: '0:35 – 1:00', what: 'Hand blow-dry · ear clean · sanitary trim' },
+      { time: '1:00 – 1:30', what: 'Breed-correct or custom cut · finishing scissor work' },
+      { time: '1:30', what: 'Paw butter · bandana · text "ready for pickup"' },
+    ],
+    proof: 'A before-and-after side-by-side, sent by text. A written grooming notes card to take to your next visit so the next cut is consistent.',
+  },
+  {
+    icon: '🐾',
+    name: 'Puppy Socialization',
+    tagline: 'The most important six weeks of your dog\'s life.',
+    price: 'From $35/class',
+    body: 'A small, gentle introduction to the world for puppies under twelve months. We cap classes at six puppies and pair them by size. Each class includes confidence-building (novel surfaces, unfamiliar sounds, body-handling), polite-greeting practice, and free play with calm older mentor dogs from our adult guest list. Owners stay, participate, and leave with a notebook of next-week homework.',
+    schedule: [
+      { time: 'Week 1', what: 'Novel surfaces · gentle handling · name games' },
+      { time: 'Week 2', what: 'Calm greetings · loose-leash basics · noise desensitization' },
+      { time: 'Week 3', what: 'Mentor-dog free play · recall in low distraction' },
+      { time: 'Week 4', what: 'Vet-visit prep · stay basics · cooperative care intro' },
+      { time: 'Week 5', what: 'Public-space prep · café manners · graduation' },
+    ],
+    proof: 'A puppy report after each class · a graduation certificate · a 10% standing discount on daycare for graduates of the program.',
+  },
+];
+
+const addOns = [
+  { name: 'Twice-daily video call', price: '+$8/day', note: 'A 5-minute live video with your dog and handler, scheduled to your time zone.' },
+  { name: 'Personalized meal plan', price: '+$12/day', note: 'We measure, mix, and serve your dog\'s home food on their actual schedule. Bring your own bag.' },
+  { name: 'Solo suite (no neighbor)', price: '+$15/night', note: 'For anxious guests or seniors who sleep better alone.' },
+  { name: 'Spa add-on during boarding', price: '+$45', note: 'A full spa bath the day before pickup so your dog comes home smelling beautiful.' },
+];
+---
+<BaseLayout
+  title={`Services in detail — ${business.name}`}
+  description="A close look at the four services at Paws & Pine — luxury boarding, social daycare, spa grooming, and puppy socialization. Schedules, philosophy, pricing, and proof."
+>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap');
+    body { background: #FAF6EF; font-family: 'Inter', system-ui, sans-serif; color: #5C4033; }
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .btn-sage { background:#6B8F71; color:#fff; border-radius:9999px; padding:0.75rem 2rem; font-weight:700; display:inline-block; text-decoration:none; }
+    .btn-sage:hover { background:#557260; }
+    .btn-terra { background:#C17B50; color:#fff; border-radius:9999px; padding:0.75rem 2rem; font-weight:700; display:inline-block; text-decoration:none; }
+    .btn-terra:hover { background:#a56540; }
+    .label { display:inline-block; font-size:0.7rem; letter-spacing:0.18em; text-transform:uppercase; color:#6B8F71; font-weight:700; }
+    .card { background:#fff; border:1px solid #E8DCC1; border-radius:18px; padding:2rem; box-shadow:0 2px 10px rgba(61,43,31,0.05); }
+    section { padding: 5rem 1.5rem; }
+    .inner { max-width: 64rem; margin: 0 auto; }
+  </style>
+
+  <nav style="background:#3D2B1F;" class="sticky top-0 z-50 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/v1-cozy-boutique" class="flex items-center gap-2">
+        <span style="color:#F2EAD8; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:700;">Paws &amp; Pine</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/v1-cozy-boutique#v1-services" style="color:#F2EAD8; text-decoration:none;">Overview</a>
+        <a href="/v1-services-detail" style="color:#C17B50; text-decoration:none; font-weight:700;">Services in detail</a>
+        <a href="/v1-cozy-boutique#v1-pricing" style="color:#F2EAD8; text-decoration:none;">Pricing</a>
+        <a href="/v1-cozy-boutique#v1-team" style="color:#F2EAD8; text-decoration:none;">Team</a>
+        <a href="/v1-cozy-boutique#v1-booking" class="btn-sage" style="padding:0.45rem 1.2rem; font-size:0.82rem;">Book Now →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+  <section style="background:linear-gradient(180deg,#F2EAD8 0%,#FAF6EF 100%); padding:5rem 1.5rem 3rem; text-align:center;">
+    <div class="inner" style="max-width:46rem;">
+      <span class="label">A house tour, in words</span>
+      <h1 style="font-size:clamp(2.4rem,5vw,3.6rem); font-weight:700; color:#3D2B1F; line-height:1.05; margin:0.75rem 0 1rem;">Every service, in full detail.</h1>
+      <p style="line-height:1.85; color:#5C4033; font-size:1.05rem; max-width:36rem; margin:0 auto 2rem;">When you leave a dog with us, you should know exactly what their day looks like. So here is each of our four services — the hour-by-hour schedule, what makes it different from the kennel down the street, and exactly what proof you get along the way.</p>
+      <a href="/v1-cozy-boutique#v1-booking" class="btn-terra">Reserve a meet &amp; greet</a>
+    </div>
+  </section>
+
+  {services.map((s, i) => (
+    <section style={`background:${i%2===0?'#FAF6EF':'#F2EAD8'};`} aria-labelledby={`svc-${i}-h`}>
+      <div class="inner">
+        <div class="card" style="padding:2.5rem;">
+          <div style="display:flex; gap:1.5rem; align-items:start; flex-wrap:wrap; margin-bottom:1.5rem;">
+            <div style="background:#6B8F71; color:#fff; width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:2rem;" aria-hidden="true">{s.icon}</div>
+            <div style="flex:1; min-width:220px;">
+              <span class="label">Service {String(i+1).padStart(2,'0')}</span>
+              <h2 id={`svc-${i}-h`} style="font-size:2.2rem; font-weight:700; color:#3D2B1F; margin:0.25rem 0 0.4rem;">{s.name}</h2>
+              <p style="font-style:italic; font-family:'Cormorant Garamond',serif; color:#7A5240; font-size:1.2rem; margin:0;">{s.tagline}</p>
+            </div>
+            <div style="background:#E8B4B8; color:#3D2B1F; padding:0.65rem 1.1rem; border-radius:9999px; font-weight:700; font-size:0.92rem; white-space:nowrap;">{s.price}</div>
+          </div>
+
+          <p style="line-height:1.85; color:#5C4033; font-size:0.98rem; margin:0 0 2rem;">{s.body}</p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:2rem; align-items:start;">
+            <div>
+              <span class="label">A day at the spa / suite</span>
+              <ol style="list-style:none; padding:0; margin:0.85rem 0 0;">
+                {s.schedule.map(item => (
+                  <li style="display:grid; grid-template-columns:auto 1fr; gap:1rem; padding:0.65rem 0; border-bottom:1px dashed #E8DCC1;">
+                    <span style="color:#C17B50; font-weight:700; font-size:0.85rem; white-space:nowrap; font-family:'Inter',sans-serif;">{item.time}</span>
+                    <span style="color:#5C4033; font-size:0.88rem; line-height:1.55;">{item.what}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div style="background:#F2EAD8; border-left:4px solid #6B8F71; padding:1.5rem; border-radius:0 12px 12px 0;">
+              <span class="label">Proof, not promises</span>
+              <p style="color:#3D2B1F; margin:0.85rem 0 0; line-height:1.75; font-size:0.92rem;">{s.proof}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ADD-ONS -->
+  <section style="background:#fff;" aria-labelledby="addons-h">
+    <div class="inner">
+      <div style="text-align:center; margin-bottom:2.5rem;">
+        <span class="label">Optional add-ons</span>
+        <h2 id="addons-h" style="font-size:2.2rem; font-weight:700; color:#3D2B1F; margin:0.4rem 0;">Small touches you can add to any stay.</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.25rem;">
+        {addOns.map(a => (
+          <div style="background:#FAF6EF; border:1px solid #E8DCC1; border-radius:14px; padding:1.4rem;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; gap:0.5rem; margin-bottom:0.65rem;">
+              <h3 style="font-size:1.15rem; font-weight:700; color:#3D2B1F; margin:0;">{a.name}</h3>
+              <span style="color:#6B8F71; font-weight:700; font-family:'Inter',sans-serif; font-size:0.88rem; white-space:nowrap;">{a.price}</span>
+            </div>
+            <p style="color:#7A5240; margin:0; line-height:1.65; font-size:0.88rem;">{a.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:#3D2B1F; color:#FAF6EF; text-align:center;">
+    <div class="inner" style="max-width:38rem;">
+      <h2 style="font-size:2.2rem; font-weight:700; margin:0 0 1rem;">First visit always starts with a meet &amp; greet.</h2>
+      <p style="line-height:1.85; color:rgba(250,246,239,0.78); margin:0 0 2rem;">Bring your dog by for a thirty-minute hello before any boarding or daycare. Free, no booking required for first-timers — but a text helps.</p>
+      <a href={`tel:${business.phone}`} class="btn-terra">Call to schedule · {business.phone}</a>
+    </div>
+  </section>
+
+  </main>
+</BaseLayout>

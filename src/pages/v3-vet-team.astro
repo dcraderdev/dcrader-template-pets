@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../data/v3/business';
+
+const clinicians = [
+  {
+    name: 'Dr. Maria Santos, DVM',
+    role: 'Owner · Medical Director',
+    credentials: ['Doctor of Veterinary Medicine — Washington State University, 2009', 'Certified Applied Animal Behaviorist (CAAB) — Animal Behavior Society', 'Fear Free Certified Professional · Level 3', 'IVAPM Certified Veterinary Pain Practitioner'],
+    focus: 'Behavior consultations · grooming protocols for medically complex patients · multimodal pain management for senior pets · ethical sedation guidance',
+    background: 'Dr. Santos spent eight years in small-animal general practice in Bellevue and three years on the behavior service at WSU Veterinary Teaching Hospital. She opened Calm Coat in 2020 after watching one too many post-grooming patients come into her exam room shaking. She still consults for two rescue organizations and lectures on fear-free handling at the Washington State Veterinary Medical Association annual meeting.',
+    publications: ['"Cooperative Care Protocols for Brachycephalic Patients" — JAVMA, 2022', 'Co-author, WSAVA Low-Stress Handling Guidelines (2023 revision)'],
+  },
+  {
+    name: 'Chris Nakamura, NCMG',
+    role: 'Lead Therapeutic Groomer',
+    credentials: ['NCMG — National Certified Master Groomer', 'Fear Free Grooming Specialist Certification', 'Orthopedic Handling Course — Veterinary Information Network', 'Pet First Aid & CPR — RECOVER Initiative'],
+    focus: 'Post-rescue dogs · bite-risk handling · senior orthopedic patients · matted coat triage · double-coat de-shedding without razor damage',
+    background: 'Chris is one of fewer than 250 NCMG-certified groomers in the Pacific Northwest. Before Calm Coat, he worked nine years at a high-volume Seattle grooming chain — and quit to come help build a model that did not rely on the muzzle-and-restrain shortcuts he had been trained on. He invented our "two-touch maximum" intake protocol: any patient who flinches twice during the first ten minutes of a session gets paused for a vet check.',
+    publications: ['Featured in Groomer to Groomer Magazine (Feb 2023) — "Slow Grooming: Why I Refuse to Hurry"'],
+  },
+  {
+    name: 'Alex Wilson, RVT',
+    role: 'Client Care Coordinator · Registered Veterinary Technician',
+    credentials: ['Registered Veterinary Technician — Washington State', 'Animal Behavior Technician (ABT) — IAABC', 'AAHA Practice Manager — in progress', 'PennHIP and OFA Radiographic Positioning trained'],
+    focus: 'Intake assessments · behavior history triage · medical communication between Calm Coat and your primary DVM · post-appointment follow-through',
+    background: 'Alex was a critical-care RVT for six years before joining the Calm Coat team in 2021. They handle every new-patient intake — a forty-minute meeting that includes a body-condition score, behavior history, and a written care plan signed by Dr. Santos. If your dog is on medication, on a special diet, or coming off a difficult grooming history, Alex is the person who writes that into the chart and makes sure the groomers see it before scissors come out.',
+    publications: ['Guest contributor, Today\'s Veterinary Technician Journal — "The Behavior History Intake You Are Probably Skipping"'],
+  },
+];
+
+const partners = [
+  { name: 'Fremont Animal Hospital', role: 'Primary care · emergency overflow', distance: '0.4 miles', note: 'Our medical partner clinic. DVM on call if a patient destabilizes mid-appointment.' },
+  { name: 'Seattle Veterinary Specialists', role: 'Dermatology & oncology referrals', distance: '5.2 miles', note: 'When a coat condition warrants a workup, we co-manage with their dermatology service.' },
+  { name: 'BluePearl Renton', role: '24/7 emergency hospital', distance: '14 miles', note: 'After-hours emergency redirect — phone tree and chart-share pre-authorized.' },
+];
+
+const csr = [
+  'Eight free annual grooming sessions for surrendered or trauma-history dogs at Seattle Humane and Saving Great Animals',
+  'Discounted senior-pet grooming for pets on hospice care plans (paired with our partner DVMs)',
+  'Co-author of the AVMA\'s 2024 white paper on grooming standards — open access on the AVMA website',
+  'Quarterly continuing-education workshops for area groomers on low-stress handling, taught free of charge',
+];
+---
+<BaseLayout
+  title={`Clinical Team — ${business.name}`}
+  description="Meet the veterinarian, certified groomer, and registered veterinary technician behind Calm Coat — Seattle's veterinary-supervised grooming studio in Fremont."
+>
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; background: #fff; color: #334155; }
+    .btn-teal { background:#0E7490; color:#fff; border-radius:6px; padding:0.75rem 1.75rem; font-weight:600; font-size:0.875rem; display:inline-block; text-decoration:none; transition:background 0.2s; }
+    .btn-teal:hover { background:#0c6478; }
+    .btn-outline { border:1.5px solid #E2E8F0; color:#334155; border-radius:6px; padding:0.75rem 1.75rem; font-weight:600; font-size:0.875rem; display:inline-block; text-decoration:none; }
+    .btn-outline:hover { border-color:#0E7490; color:#0E7490; }
+    .label { display:inline-block; font-size:0.7rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:#0E7490; }
+    section { padding: 4.5rem 1.5rem; }
+    .inner { max-width:64rem; margin:0 auto; }
+    .card { background:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:1.5rem; }
+  </style>
+
+  <div style="background:#0E7490;" class="w-full py-2 px-4">
+    <p class="text-white text-xs text-center tracking-wide font-medium leading-relaxed">
+      🏥 NAVTA Member Since 2020 &nbsp;·&nbsp; ✅ Fear Free Certified &nbsp;·&nbsp; 📋 WA Lic. #VF-20208841 &nbsp;·&nbsp; 🩺 DVM On-Staff &nbsp;·&nbsp; 🛡️ AAHA Practice Partner
+    </p>
+  </div>
+
+  <nav class="sticky top-0 z-50 bg-white border-b border-[#E2E8F0] shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <a href="/v3-clinical-trust" class="flex items-center gap-2">
+        <span class="text-2xl">🩺</span>
+        <span class="font-semibold text-[#0E7490] text-lg">{business.name}</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+        <a href="/v3-clinical-trust#services" class="text-[#334155] hover:text-[#0E7490]">Services</a>
+        <a href="/v3-clinical-trust#process" class="text-[#334155] hover:text-[#0E7490]">Process</a>
+        <a href="/v3-clinical-trust#pricing" class="text-[#334155] hover:text-[#0E7490]">Pricing</a>
+        <a href="/v3-vet-team" class="text-[#0E7490] font-semibold" style="border-bottom:2px solid #0E7490; padding-bottom:0.15rem;">Clinical Team</a>
+        <a href="/v3-clinical-trust#contact" class="text-[#334155] hover:text-[#0E7490]">Contact</a>
+        <a href="/v3-clinical-trust#booking" class="btn-teal">Request Appointment</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+  <!-- HERO -->
+  <section style="background:#F0FAFA; padding:5rem 1.5rem 3rem;">
+    <div class="inner" style="max-width:46rem; text-align:center;">
+      <span class="label">Our clinical team</span>
+      <h1 style="font-size:clamp(2.2rem,5vw,3.4rem); font-weight:700; color:#0F172A; margin:0.75rem 0 1rem; line-height:1.1; letter-spacing:-0.01em;">Three professionals. One care plan per patient.</h1>
+      <p style="line-height:1.85; color:#475569; font-size:1.05rem; max-width:36rem; margin:0 auto 2rem;">A licensed DVM, a master-certified groomer, and a registered veterinary technician. Every grooming visit at Calm Coat is reviewed and signed by all three. Below: credentials, focus areas, and the work each of us does outside of appointments.</p>
+      <div style="display:flex; gap:0.85rem; justify-content:center; flex-wrap:wrap;">
+        <a href="/v3-clinical-trust#booking" class="btn-teal">Request a consult</a>
+        <a href="#partners" class="btn-outline">Our referral network</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLINICIAN BIOS -->
+  {clinicians.map((c, i) => (
+    <section style={`background:${i%2===0?'#fff':'#F8FAFC'}; padding:4rem 1.5rem;`} aria-labelledby={`vet-${i}-h`}>
+      <div class="inner">
+        <div style="display:grid; grid-template-columns:200px 1fr; gap:2.5rem; align-items:start;">
+          <div>
+            <div style="aspect-ratio:1; background:linear-gradient(135deg,#0E7490 0%,#5EEAD4 100%); border-radius:8px; display:flex; align-items:center; justify-content:center; color:#fff; font-weight:700; font-size:2.2rem; letter-spacing:-0.02em;">{c.name.split(' ').slice(0,2).map(n=>n[0]).join('')}</div>
+            <p style="font-size:0.72rem; color:#64748B; text-align:center; margin:0.85rem 0 0; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">Profile {String(i+1).padStart(2,'0')}</p>
+          </div>
+          <div>
+            <span class="label">Clinical staff</span>
+            <h2 id={`vet-${i}-h`} style="font-size:1.85rem; font-weight:700; color:#0F172A; margin:0.4rem 0 0.25rem; letter-spacing:-0.01em;">{c.name}</h2>
+            <p style="color:#0E7490; font-weight:600; font-size:0.95rem; margin:0 0 1.5rem;">{c.role}</p>
+
+            <div style="background:#F0FAFA; border-left:3px solid #0E7490; padding:1rem 1.25rem; border-radius:0 6px 6px 0; margin-bottom:1.5rem;">
+              <span class="label" style="font-size:0.62rem;">Credentials</span>
+              <ul style="list-style:none; padding:0; margin:0.65rem 0 0; display:flex; flex-direction:column; gap:0.4rem;">
+                {c.credentials.map(cr => (
+                  <li style="color:#0F172A; font-size:0.88rem; line-height:1.55; display:flex; gap:0.55rem;"><span style="color:#0E7490; font-weight:700;">✓</span><span>{cr}</span></li>
+                ))}
+              </ul>
+            </div>
+
+            <div style="margin-bottom:1.5rem;">
+              <span class="label" style="font-size:0.62rem; color:#475569;">Clinical focus</span>
+              <p style="margin:0.5rem 0 0; color:#334155; line-height:1.7; font-size:0.93rem;">{c.focus}</p>
+            </div>
+
+            <div style="margin-bottom:1.5rem;">
+              <span class="label" style="font-size:0.62rem; color:#475569;">Background</span>
+              <p style="margin:0.5rem 0 0; color:#334155; line-height:1.8; font-size:0.93rem;">{c.background}</p>
+            </div>
+
+            <div>
+              <span class="label" style="font-size:0.62rem; color:#475569;">Publications &amp; speaking</span>
+              <ul style="list-style:none; padding:0; margin:0.5rem 0 0;">
+                {c.publications.map(p => (
+                  <li style="color:#334155; font-size:0.85rem; line-height:1.7; padding-left:1rem; position:relative;"><span style="position:absolute; left:0; color:#0E7490;">→</span>{p}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- REFERRAL NETWORK -->
+  <section id="partners" style="background:#fff;" aria-labelledby="part-h">
+    <div class="inner">
+      <div style="text-align:center; margin-bottom:2.5rem;">
+        <span class="label">Referral &amp; emergency network</span>
+        <h2 id="part-h" style="font-size:2rem; font-weight:700; color:#0F172A; margin:0.25rem 0; letter-spacing:-0.01em;">Where we send patients when a groom turns into a workup.</h2>
+        <p style="color:#475569; max-width:38rem; margin:1rem auto 0; line-height:1.7;">A grooming studio that finds a lump, a skin lesion, or a dental issue should not just call the owner — it should know exactly who to call next.</p>
+      </div>
+      <div style="display:grid; gap:1rem;">
+        {partners.map(p => (
+          <div class="card" style="display:grid; grid-template-columns:1.4fr 1.5fr auto; gap:1.25rem; align-items:center;">
+            <div>
+              <h3 style="font-size:1.05rem; font-weight:700; color:#0F172A; margin:0;">{p.name}</h3>
+              <p style="color:#0E7490; font-size:0.82rem; margin:0.2rem 0 0; font-weight:600;">{p.role}</p>
+            </div>
+            <p style="color:#475569; font-size:0.85rem; margin:0; line-height:1.55;">{p.note}</p>
+            <span style="background:#F0FAFA; color:#0E7490; padding:0.4rem 0.85rem; border-radius:6px; font-weight:600; font-size:0.78rem; white-space:nowrap;">{p.distance}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY WORK -->
+  <section style="background:#0E7490; color:#fff;" aria-labelledby="csr-h">
+    <div class="inner" style="max-width:48rem;">
+      <span class="label" style="color:#5EEAD4;">Outside of the studio</span>
+      <h2 id="csr-h" style="font-size:2rem; font-weight:700; margin:0.4rem 0 1.5rem; color:#fff;">Continuing education and community work.</h2>
+      <ul style="list-style:none; padding:0; margin:0; display:grid; gap:1rem;">
+        {csr.map(c => (
+          <li style="display:flex; gap:0.85rem; align-items:start; color:rgba(255,255,255,0.92); line-height:1.7; font-size:0.95rem;"><span style="background:#5EEAD4; color:#0F172A; width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.75rem; flex-shrink:0;">✓</span><span>{c}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:#F0FAFA; text-align:center;">
+    <div class="inner" style="max-width:42rem;">
+      <h2 style="font-size:2rem; font-weight:700; color:#0F172A; margin:0 0 1rem;">Request a 40-minute intake.</h2>
+      <p style="color:#475569; line-height:1.8; margin:0 0 2rem;">Every new patient at Calm Coat starts with a no-grooming intake visit. Bring your dog. Meet Alex. Build the chart. The first grooming session is scheduled only after the plan is signed by Dr. Santos.</p>
+      <a href="/v3-clinical-trust#booking" class="btn-teal" style="padding:1rem 2.5rem;">Request an intake →</a>
+    </div>
+  </section>
+
+  </main>
+</BaseLayout>

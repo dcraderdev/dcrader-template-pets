@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { business } from '../data/v5/business';
+
+const suites = [
+  {
+    code: 'I',
+    name: 'The Garden Suite',
+    sqft: '140 sq ft',
+    rate: 'From $185 / night',
+    capacity: 'Single guest · small to medium breed',
+    features: ['Walk-out access to a private 200 sq ft turf terrace', 'King memory-foam pet bed with twice-daily linen change', 'Climate control set to your pet\'s preferred range', 'Bose noise-cancelling speakers with curated playlist', 'Private staff intercom · 60-second response time'],
+    image: 'Garden-view terraced suites on the ground floor',
+  },
+  {
+    code: 'II',
+    name: 'The Wilshire Suite',
+    sqft: '210 sq ft',
+    rate: 'From $325 / night',
+    capacity: 'Single or sibling-paired guests',
+    features: ['Bay window overlooking Wilshire · soft afternoon light', 'Italian linen bedding · changed morning and evening', 'Crystal-filtered water bowl, refreshed every two hours', 'In-suite Frette towel set for after-spa relaxation', 'Concierge bell · personal sommelier of treats'],
+    image: 'Boutique view suites on the second and third floors',
+  },
+  {
+    code: 'III',
+    name: 'The Penthouse Residence',
+    sqft: '380 sq ft',
+    rate: 'From $620 / night',
+    capacity: 'Single guest · multi-pet households welcome',
+    features: ['Wraparound roof-deck terrace with private lawn', 'Hand-finished walnut paneling · soundproofed throughout', 'Mid-century lounge seating for human visits', 'Personal in-suite chef visits twice daily', 'Daily one-hour private session with your assigned attendant', 'Choice of soaking tub or rain shower in the spa annex'],
+    image: 'The penthouse residence — only two on property',
+  },
+];
+
+const amenities = [
+  {
+    cat: 'CULINARY',
+    title: 'In-house culinary kitchen',
+    body: 'Our culinary kitchen is led by a Michelin-trained chef and supervised by a board-certified veterinary nutritionist. Every meal is plated to order, photographed for your evening report, and adjusted to your pet\'s exact dietary protocols. We will source raw, freeze-dried, prescription, or home-cooked — and we will hand-feed any guest who prefers it.',
+    services: ['Organic poultry · grass-fed beef · wild Alaskan salmon', 'Prescription diet sourcing (Hill\'s, Royal Canin, Purina Pro)', 'Bone broth nightcap (standard with every dinner)', 'Raw food handling certified to AAFCO standards'],
+  },
+  {
+    cat: 'SPA',
+    title: 'The Hollow Spa & Wellness Annex',
+    body: 'A dedicated 1,800 sq ft wellness annex with a hydrotherapy pool, an infrared sauna sized for canines, four full grooming stations, and a quiet acupuncture room. Every Penthouse guest receives a complimentary 90-minute spa welcome on day one. Other suite categories may add any service à la carte.',
+    services: ['Hydrotherapy pool (90°F, salt-mineral balanced)', 'Canine infrared sauna sessions (20 minutes, vet-approved)', 'Veterinary acupuncture by appointment', 'Blueberry facial · paw butter · breed-correct cut', 'Pawdicure with three lacquer color choices'],
+  },
+  {
+    cat: 'CONCIERGE',
+    title: 'White-glove concierge',
+    body: 'Your dedicated concierge is your single point of contact for everything during your pet\'s stay. They are reachable by direct dial, text, encrypted message, and our in-house app — twenty-four hours a day. They send a morning photograph at the hour you specify, coordinate any veterinary appointments, and meet you personally at the curb on arrival and departure.',
+    services: ['Curb-to-suite arrival with private elevator access', 'Daily morning photograph and evening journal', 'Discreet pickup and drop-off by uniformed valet', 'Private viewing of your pet\'s suite, by appointment', 'Travel coordination — vet records, airline forms, paperwork'],
+  },
+  {
+    cat: 'MEDICAL',
+    title: 'On-call veterinary partnership',
+    body: 'The Hollow is in formal partnership with Beverly Hills Veterinary Hospital. A board-certified veterinarian conducts a complimentary admission exam on every long-stay guest, is on call for 24/7 escalation, and can dispense any prescription or treatment on-site without transfer. Medical records sync directly to your home DVM.',
+    services: ['Complimentary admission exam (stays of 5+ nights)', '24/7 on-call DVM · 15-minute response', 'In-suite medication administration (oral, topical, sub-Q)', 'Pre-stay vaccine review and titer-test acceptance'],
+  },
+];
+
+const standards = [
+  { k: 'Suite count', v: '24 + 2 penthouse', sub: 'We never exceed 26 guests on property. Most days we host 18–22.' },
+  { k: 'Staff-to-guest ratio', v: '1 : 4', sub: 'Two-shift staffing, twenty-four hours a day, including overnight.' },
+  { k: 'Average guest tenure', v: '7.2 nights', sub: 'Most of our reservations are five-to-twelve-night stays.' },
+  { k: 'Repeat-guest rate', v: '88%', sub: 'Most pets stay with us at least three times a year.' },
+  { k: 'Average review score', v: '4.97 / 5', sub: 'Across 194 verified Google reviews. We respond to all of them personally.' },
+  { k: 'Medical incident rate', v: '0.04%', sub: 'Audited annually by Beverly Hills Veterinary Hospital.' },
+];
+---
+<BaseLayout
+  title={`Suites & Amenities — ${business.name}`}
+  description="The full suite directory and amenities at The Hollow Pet Hotel & Spa in Beverly Hills — private accommodations, culinary, spa, concierge, and on-call veterinary partnership."
+>
+  <style>
+    body { font-family: 'Montserrat', sans-serif; background: #F8F5F0; color: #334155; }
+    .font-cormorant { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .gold { color: #D4AF37; }
+    .btn-gold-outline { border:1px solid #D4AF37; color:#D4AF37; background:transparent; padding:0.85rem 2.5rem; font-weight:500; letter-spacing:0.14em; text-transform:uppercase; font-size:0.72rem; display:inline-block; text-decoration:none; transition:all 0.3s; }
+    .btn-gold-outline:hover { background:#D4AF37; color:#0F172A; }
+    .btn-gold-solid { background:#D4AF37; color:#0F172A; padding:0.85rem 2.5rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; font-size:0.72rem; display:inline-block; text-decoration:none; }
+    .btn-gold-solid:hover { background:#B8860B; }
+    .gold-rule { height:1px; background:linear-gradient(90deg, transparent, #D4AF37, transparent); margin:0 auto; }
+    .label { font-family:'Montserrat',sans-serif; font-size:0.66rem; letter-spacing:0.22em; text-transform:uppercase; color:#D4AF37; font-weight:500; }
+    section { padding: 6rem 1.5rem; }
+    .inner { max-width:72rem; margin:0 auto; }
+  </style>
+
+  <nav style="background:#0F172A; border-bottom:1px solid rgba(212,175,55,0.2);" class="sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/v5-luxury-resort" class="flex items-center gap-3">
+        <span class="font-cormorant gold" style="font-size:1.5rem; font-weight:500; letter-spacing:0.04em;">The Hollow</span>
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="/v5-luxury-resort#services" class="font-montserrat text-white/60 hover:text-[#D4AF37]" style="font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;">Services</a>
+        <a href="/v5-boarding-features" class="font-montserrat hover:text-white" style="font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:#D4AF37;">Suites &amp; Amenities</a>
+        <a href="/v5-luxury-resort#gallery" class="font-montserrat text-white/60 hover:text-[#D4AF37]" style="font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;">Gallery</a>
+        <a href="/v5-luxury-resort#pricing" class="font-montserrat text-white/60 hover:text-[#D4AF37]" style="font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;">Packages</a>
+        <a href="/v5-luxury-resort#booking" class="btn-gold-outline" style="padding:0.6rem 1.5rem;">Reserve</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+  <!-- HERO -->
+  <section style="background:#0F172A; color:#F8F5F0; padding:7rem 1.5rem 5rem; text-align:center; position:relative;">
+    <div class="inner" style="max-width:48rem;">
+      <p class="label">An Address &middot; Not An Address</p>
+      <div class="gold-rule" style="width:120px; margin:1.5rem auto;"></div>
+      <h1 class="font-cormorant" style="font-size:clamp(2.6rem,6vw,4.8rem); font-weight:400; line-height:1.05; color:#F8F5F0; margin:0;">Suites <em style="color:#D4AF37; font-style:italic;">&amp;</em> Amenities</h1>
+      <p style="line-height:2; color:rgba(248,245,240,0.7); font-weight:300; font-size:1.05rem; max-width:36rem; margin:2rem auto 0;">A complete directory of accommodations and the services that surround them. Three suite categories. Four amenity divisions. One promise — that your pet is cared for the way you are.</p>
+      <div class="gold-rule" style="width:120px; margin:2rem auto 0;"></div>
+    </div>
+  </section>
+
+  <!-- SUITES -->
+  <section style="background:#F8F5F0;" aria-labelledby="suites-h">
+    <div class="inner">
+      <div style="text-align:center; margin-bottom:4rem;">
+        <p class="label" style="color:#B8860B;">Accommodations</p>
+        <h2 id="suites-h" class="font-cormorant" style="font-size:3rem; font-weight:400; color:#0F172A; margin:1rem 0 0;">Three categories of suite.</h2>
+      </div>
+      {suites.map((s, i) => (
+        <article style={`border-top:1px solid rgba(212,175,55,0.35); padding:3rem 0 ${i===suites.length-1?'3rem':'3rem'}; ${i===suites.length-1?'border-bottom:1px solid rgba(212,175,55,0.35);':''}`}>
+          <div style="display:grid; grid-template-columns:120px 1fr; gap:3rem; align-items:start;">
+            <div style="text-align:center;">
+              <span class="font-cormorant" style="font-size:4rem; color:#D4AF37; font-weight:300; line-height:1; font-style:italic;">{s.code}</span>
+              <p style="margin:0.85rem 0 0; color:#0F172A; font-size:0.7rem; letter-spacing:0.16em; text-transform:uppercase; font-weight:500;">{s.sqft}</p>
+            </div>
+            <div>
+              <p class="label" style="color:#B8860B; margin-bottom:0.85rem;">{s.image}</p>
+              <h3 class="font-cormorant" style="font-size:2.4rem; font-weight:400; color:#0F172A; margin:0 0 0.5rem; line-height:1.05;">{s.name}</h3>
+              <p style="color:#475569; font-weight:300; margin:0 0 1.5rem; font-size:0.95rem;">{s.capacity} &nbsp;·&nbsp; <span style="color:#D4AF37; font-weight:500;">{s.rate}</span></p>
+              <ul style="list-style:none; padding:0; margin:0; columns:2; column-gap:2.5rem;">
+                {s.features.map(f => (
+                  <li style="display:flex; gap:0.65rem; align-items:start; color:#334155; line-height:1.65; font-size:0.85rem; padding:0.4rem 0; font-weight:400; break-inside:avoid;"><span style="color:#D4AF37; font-weight:400;">—</span><span>{f}</span></li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section style="background:#0F172A; color:#F8F5F0;" aria-labelledby="am-h">
+    <div class="inner">
+      <div style="text-align:center; margin-bottom:4rem;">
+        <p class="label">House Services</p>
+        <div class="gold-rule" style="width:80px; margin:1.25rem auto;"></div>
+        <h2 id="am-h" class="font-cormorant" style="font-size:3rem; font-weight:400; color:#F8F5F0; margin:0;">Four amenity divisions.</h2>
+      </div>
+      {amenities.map((a, i) => (
+        <article style={`padding:3rem 0; ${i<amenities.length-1?'border-bottom:1px solid rgba(212,175,55,0.2);':''}`}>
+          <div style="display:grid; grid-template-columns:200px 1fr; gap:3rem; align-items:start;">
+            <div>
+              <span class="font-montserrat" style="color:#D4AF37; font-size:0.7rem; letter-spacing:0.24em; font-weight:500;">{a.cat}</span>
+              <h3 class="font-cormorant" style="font-size:1.8rem; font-weight:400; color:#F8F5F0; margin:0.75rem 0 0; line-height:1.1;">{a.title}</h3>
+            </div>
+            <div>
+              <p style="color:rgba(248,245,240,0.78); line-height:2; font-weight:300; margin:0 0 1.5rem; font-size:0.95rem;">{a.body}</p>
+              <ul style="list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0.65rem;">
+                {a.services.map(srv => (
+                  <li style="display:flex; gap:0.65rem; color:rgba(248,245,240,0.85); font-size:0.85rem; line-height:1.6; font-weight:300; padding:0.4rem 0; border-bottom:1px solid rgba(212,175,55,0.15);"><span style="color:#D4AF37;">·</span>{srv}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- HOUSE STANDARDS -->
+  <section style="background:#F8F5F0;" aria-labelledby="std-h">
+    <div class="inner">
+      <div style="text-align:center; margin-bottom:3rem;">
+        <p class="label" style="color:#B8860B;">House Standards</p>
+        <h2 id="std-h" class="font-cormorant" style="font-size:2.6rem; font-weight:400; color:#0F172A; margin:1rem 0;">The numbers behind the address.</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0; border-top:1px solid rgba(212,175,55,0.35); border-left:1px solid rgba(212,175,55,0.35);">
+        {standards.map(s => (
+          <div style="padding:1.75rem; border-right:1px solid rgba(212,175,55,0.35); border-bottom:1px solid rgba(212,175,55,0.35); background:#fff;">
+            <span class="label" style="color:#B8860B;">{s.k}</span>
+            <p class="font-cormorant" style="font-size:2.4rem; color:#0F172A; font-weight:400; margin:0.5rem 0 0.4rem; line-height:1;">{s.v}</p>
+            <p style="color:#64748B; font-size:0.8rem; line-height:1.65; margin:0; font-weight:300;">{s.sub}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:#0F172A; color:#F8F5F0; text-align:center;">
+    <div class="inner" style="max-width:42rem;">
+      <p class="label">Reservations</p>
+      <div class="gold-rule" style="width:80px; margin:1.25rem auto;"></div>
+      <h2 class="font-cormorant" style="font-size:2.6rem; font-weight:400; margin:1rem 0 1.5rem; color:#F8F5F0;">Request a private viewing.</h2>
+      <p style="color:rgba(248,245,240,0.7); line-height:2; font-weight:300; font-size:0.95rem; margin:0 0 2.5rem;">All first-time guests are invited to tour the property by appointment, accompanied by our General Manager. The first conversation is unhurried — we will walk every suite category, taste a sample meal, and sit with you in the lobby for as long as you wish.</p>
+      <a href="/v5-luxury-resort#booking" class="btn-gold-solid">Request a private viewing</a>
+      <p style="margin-top:2rem; color:rgba(212,175,55,0.6); font-size:0.78rem; letter-spacing:0.16em; text-transform:uppercase;">{business.phone} &nbsp;·&nbsp; 24/7 reception</p>
+    </div>
+  </section>
+
+  </main>
+</BaseLayout>

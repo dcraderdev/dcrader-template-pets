@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const biz = {
+  name: 'Trail Tails Adventure Dog Hiking',
+  phone: '(720) 443-8821',
+  email: 'go@trailtrailshiking.com',
+};
+
+const programs = [
+  {
+    tag: 'FOUNDATIONS',
+    name: 'Trail-Ready Foundations',
+    duration: '4 weeks · 1 weekly group session',
+    level: 'For adult dogs new to off-leash trail work',
+    price: '$340',
+    summary: 'Reliable recall on a long line, polite passing for hikers and other dogs, and a calm car ride to the trailhead. This is the prerequisite for any of our group adventure hikes.',
+    week: [
+      { n: 1, focus: 'Name response · check-in game · long-line handling · car-loading drills' },
+      { n: 2, focus: 'Recall on a 30-ft line · polite passing in low-traffic settings' },
+      { n: 3, focus: 'Off-trail emergency stop (whistle conditioning) · wildlife disengagement' },
+      { n: 4, focus: 'Graduation hike with a Trail Tails guide on a controlled local trail' },
+    ],
+    grad: 'Pass criteria: recall under moderate distraction, polite passing of three on-leash dogs, and a calm 30-minute settle at the trailhead. Graduates receive a half-price intro hike.',
+  },
+  {
+    tag: 'BACKCOUNTRY',
+    name: 'Backcountry Companion',
+    duration: '6 weeks · 1 weekly trail session',
+    level: 'For dogs already off-leash reliable on local trails',
+    price: '$560',
+    summary: 'Multi-mile altitude conditioning, river-crossing confidence, and wildlife response. By graduation your dog can join us for 10+ mile high-country hikes from Brainard Lake through the Indian Peaks Wilderness.',
+    week: [
+      { n: 1, focus: 'Fitness baseline · pack-fitting · altitude tolerance check' },
+      { n: 2, focus: 'River crossings · slick rock confidence · paw protection intro' },
+      { n: 3, focus: 'Wildlife encounter protocol: deer, fox, marmot, and elk' },
+      { n: 4, focus: 'Storm response · taking shelter · re-grouping after lightning ducks' },
+      { n: 5, focus: 'Pack manners in groups of 4+ dogs · scrambling steep terrain' },
+      { n: 6, focus: 'Graduation: a real 8-mile backcountry day with a senior guide' },
+    ],
+    grad: 'Wilderness First Aid–verified handler signs off. Graduates earn a Trail Tails embroidered pack patch and lifetime priority booking on summit hikes.',
+  },
+  {
+    tag: 'REACTIVE',
+    name: 'Reactive Recovery on the Trail',
+    duration: '8 weeks · private + small-group blend',
+    level: 'For dogs that lunge, bark, or panic at other dogs / wildlife',
+    price: '$780',
+    summary: 'A patient, behavior-science protocol for dogs that love the outdoors but lose composure on the trail. Built by our lead trainer, who is IAABC-certified and worked with the Boulder Humane behavior team for six years.',
+    week: [
+      { n: 1, focus: 'One-on-one intake · trigger map · functional analysis on a quiet trail' },
+      { n: 2, focus: 'Pattern games (1-2-3, Look at That) at threshold distance' },
+      { n: 3, focus: 'Engage-disengage protocol with calm decoy dogs' },
+      { n: 4, focus: 'Real-world rehearsal: low-traffic foothills with a controlled approach' },
+      { n: 5, focus: 'Wildlife-specific work · prey-drive impulse control' },
+      { n: 6, focus: 'Parallel walks with a stable group dog' },
+      { n: 7, focus: 'Group hike trial with two graduate dogs and a guide' },
+      { n: 8, focus: 'Maintenance plan and handler coaching session' },
+    ],
+    grad: 'Pass criteria: dog can pass an unfamiliar leashed dog at 8 feet without reaction. Graduates may join "calm pack" hikes on a case-by-case basis.',
+  },
+];
+
+const safety = [
+  { tag: 'WFA', label: 'Wilderness First Aid', detail: 'Every Trail Tails trainer holds a current 16-hour WFA certification. Renewed every two years.' },
+  { tag: 'CPDT', label: 'CPDT-KA Lead Trainer', detail: 'Our head trainer is CCPDT-certified and supervises all curriculum.' },
+  { tag: 'IAABC', label: 'IAABC Reactive Specialist', detail: 'Our reactive program is built to IAABC behavior-consultant standards.' },
+  { tag: 'GPS', label: 'GPS-Tracked Sessions', detail: 'Every program session is GPS-tracked. Parents get a live link.' },
+  { tag: '5:1', label: 'Max 5 dogs per trainer', detail: 'Even at the group level we never exceed a 5-to-1 ratio in training.' },
+  { tag: 'INS', label: 'Fully insured', detail: '$2M general liability · $1M animal handlers · COIs available on request.' },
+];
+
+const dates = [
+  { run: 'Foundations · Cohort 24A', start: 'Saturdays, June 8 – June 29', spots: '3 spots left' },
+  { run: 'Foundations · Cohort 24B', start: 'Sundays, July 7 – July 28', spots: '5 spots left' },
+  { run: 'Backcountry · Summer Series', start: 'Tuesdays, June 11 – July 16', spots: '2 spots left' },
+  { run: 'Reactive Recovery · Cohort 24', start: 'Rolling start · private intake first', spots: 'Waitlist open' },
+];
+---
+<BaseLayout
+  title={`Training Programs — ${biz.name}`}
+  description="Four-, six-, and eight-week dog training programs from Trail Tails Boulder. Foundations, backcountry, and reactive recovery — built for dogs who live for the trail."
+>
+  <style>
+    body { font-family: 'Open Sans', sans-serif; background: #F8F7F4; color: #2D3A2A; }
+    .font-oswald { font-family: 'Oswald', sans-serif; letter-spacing:0.04em; }
+    .btn-yellow { background:#F5A623; color:#1A4731; border-radius:2px; padding:0.85rem 2rem; font-family:'Oswald',sans-serif; font-weight:600; font-size:1rem; letter-spacing:0.07em; text-transform:uppercase; display:inline-block; text-decoration:none; transition:background 0.2s; }
+    .btn-yellow:hover { background:#e09610; }
+    .btn-green { background:#1A4731; color:#fff; border-radius:2px; padding:0.85rem 2rem; font-family:'Oswald',sans-serif; font-weight:600; font-size:1rem; letter-spacing:0.07em; text-transform:uppercase; display:inline-block; text-decoration:none; }
+    .btn-green:hover { background:#0F2A1D; }
+    .label { font-family:'Oswald',sans-serif; font-size:0.78rem; letter-spacing:0.18em; text-transform:uppercase; color:#F5A623; font-weight:600; }
+    section { padding: 5rem 1.5rem; }
+    .inner { max-width:72rem; margin:0 auto; }
+    .topo-bg { background-color:#0F2A1D; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cellipse cx='100' cy='100' rx='90' ry='70' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.08'/%3E%3Cellipse cx='100' cy='100' rx='75' ry='55' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.08'/%3E%3Cellipse cx='100' cy='100' rx='60' ry='40' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.08'/%3E%3C/svg%3E"); background-size:200px 200px; }
+  </style>
+
+  <nav style="background:#0F2A1D;" class="sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="/v2-active-outdoor" class="flex items-center gap-2 shrink-0">
+        <span class="font-oswald text-white font-bold text-lg uppercase tracking-wider">Trail Tails</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="/v2-active-outdoor#services" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623] hover:text-white">Hikes</a>
+        <a href="/v2-training-programs" class="font-oswald text-sm uppercase tracking-wide text-white hover:text-[#F5A623]" style="border-bottom:2px solid #F5A623; padding-bottom:0.15rem;">Training</a>
+        <a href="/v2-active-outdoor#safety" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623] hover:text-white">Safety</a>
+        <a href="/v2-active-outdoor#team" class="font-oswald text-sm uppercase tracking-wide text-[#F5A623] hover:text-white">Team</a>
+        <a href="/v2-active-outdoor#booking" class="btn-yellow text-sm" style="padding:0.5rem 1.25rem;">Join the Pack</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+  <!-- HERO -->
+  <section class="topo-bg" style="color:#fff; padding:6rem 1.5rem 5rem; position:relative;">
+    <div class="inner" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:3rem; align-items:end;">
+      <div>
+        <span class="label">Training programs</span>
+        <h1 class="font-oswald" style="font-size:clamp(2.6rem,6vw,4.2rem); font-weight:700; line-height:1.0; text-transform:uppercase; margin:0.5rem 0 1.25rem; color:#fff;">Train for the trail.<br/><span style="color:#F5A623;">Earn the pack.</span></h1>
+        <p style="line-height:1.85; color:rgba(255,255,255,0.78); font-size:1.05rem; margin:0 0 2rem; max-width:34rem;">Most "puppy school" gives you a sit. We give you a dog you can take into the Indian Peaks Wilderness for nine miles and trust at every switchback. Three programs. One pipeline. Built by certified mountain-trained handlers in Boulder since 2018.</p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="#programs" class="btn-yellow">Browse programs</a>
+          <a href="#dates" class="btn-green" style="background:transparent; border:2px solid #F5A623; color:#F5A623;">Upcoming dates</a>
+        </div>
+      </div>
+      <div style="background:rgba(0,0,0,0.35); border:1px solid rgba(245,166,35,0.3); padding:1.75rem;">
+        <span class="label">Quick stats</span>
+        <ul style="list-style:none; padding:0; margin:1rem 0 0; display:flex; flex-direction:column; gap:0.85rem;">
+          <li style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:0.85rem;"><span style="color:rgba(255,255,255,0.7); font-size:0.85rem;">Active program graduates</span><span class="font-oswald" style="color:#F5A623; font-weight:700;">820+</span></li>
+          <li style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:0.85rem;"><span style="color:rgba(255,255,255,0.7); font-size:0.85rem;">Foundations pass rate</span><span class="font-oswald" style="color:#F5A623; font-weight:700;">96%</span></li>
+          <li style="display:flex; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:0.85rem;"><span style="color:rgba(255,255,255,0.7); font-size:0.85rem;">Reactive cohort improvement</span><span class="font-oswald" style="color:#F5A623; font-weight:700;">83%</span></li>
+          <li style="display:flex; justify-content:space-between;"><span style="color:rgba(255,255,255,0.7); font-size:0.85rem;">Trail incidents in 6 years</span><span class="font-oswald" style="color:#F5A623; font-weight:700;">0</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section id="programs" style="background:#F8F7F4;" aria-labelledby="prog-h">
+    <div class="inner">
+      <div style="text-align:center; margin-bottom:3rem;">
+        <span class="label" style="color:#1A4731;">Three tiers</span>
+        <h2 id="prog-h" class="font-oswald" style="font-size:2.6rem; font-weight:700; text-transform:uppercase; color:#1A4731; margin:0.4rem 0;">Pick your dog's next chapter.</h2>
+      </div>
+      {programs.map(p => (
+        <article style="background:#fff; border-left:6px solid #F5A623; padding:2.5rem; margin-bottom:1.5rem; box-shadow:0 4px 14px rgba(15,42,29,0.06);">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:2rem; align-items:start;">
+            <div>
+              <span style="background:#1A4731; color:#F5A623; padding:0.35rem 0.85rem; font-family:'Oswald',sans-serif; font-size:0.74rem; letter-spacing:0.16em; font-weight:700;">{p.tag}</span>
+              <h3 class="font-oswald" style="font-size:1.75rem; text-transform:uppercase; color:#1A4731; margin:0.85rem 0 0.4rem; font-weight:700; line-height:1.1;">{p.name}</h3>
+              <p style="color:#3a4a30; font-size:0.85rem; margin:0; line-height:1.55;">{p.duration}<br/><strong style="color:#1A4731;">{p.level}</strong></p>
+              <p class="font-oswald" style="font-size:2.4rem; color:#F5A623; margin:1rem 0 0; font-weight:700; line-height:1;">{p.price}</p>
+              <p style="color:#5a6a52; font-size:0.78rem; margin:0;">complete program · all materials included</p>
+            </div>
+            <div style="grid-column:span 2;">
+              <p style="color:#2D3A2A; line-height:1.8; margin:0 0 1.5rem; font-size:0.96rem;">{p.summary}</p>
+              <table style="width:100%; border-collapse:collapse; background:#F8F7F4;">
+                <thead>
+                  <tr><th style="background:#1A4731; color:#F5A623; padding:0.6rem 0.85rem; text-align:left; font-family:'Oswald',sans-serif; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; width:5rem;">Week</th><th style="background:#1A4731; color:#F5A623; padding:0.6rem 0.85rem; text-align:left; font-family:'Oswald',sans-serif; font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase;">Focus</th></tr>
+                </thead>
+                <tbody>
+                  {p.week.map((w, i) => (
+                    <tr style={`${i<p.week.length-1?'border-bottom:1px solid #e0d8c8;':''}`}>
+                      <td class="font-oswald" style="padding:0.65rem 0.85rem; font-weight:700; color:#F5A623; font-size:0.95rem;">{String(w.n).padStart(2,'0')}</td>
+                      <td style="padding:0.65rem 0.85rem; color:#2D3A2A; font-size:0.88rem; line-height:1.55;">{w.focus}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p style="margin:1.5rem 0 0; padding:1rem 1.25rem; background:#1A4731; color:#F5A623; font-size:0.85rem; line-height:1.7; border-left:4px solid #F5A623;"><strong class="font-oswald" style="letter-spacing:0.1em; text-transform:uppercase; font-size:0.78rem;">Graduation:</strong> <span style="color:rgba(255,255,255,0.85); margin-left:0.5rem;">{p.grad}</span></p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- UPCOMING DATES -->
+  <section id="dates" style="background:#1A4731; color:#fff;" aria-labelledby="dates-h">
+    <div class="inner">
+      <div style="margin-bottom:2.5rem;">
+        <span class="label">Upcoming cohorts</span>
+        <h2 id="dates-h" class="font-oswald" style="font-size:2.4rem; font-weight:700; text-transform:uppercase; margin:0.4rem 0;">Pick a start date.</h2>
+      </div>
+      <div style="display:grid; gap:0; background:#0F2A1D; border:1px solid rgba(245,166,35,0.25);">
+        {dates.map((d, i) => (
+          <div style={`display:grid; grid-template-columns:1.5fr 2fr auto auto; gap:1.5rem; padding:1.25rem 1.75rem; align-items:center; ${i<dates.length-1?'border-bottom:1px solid rgba(245,166,35,0.15);':''}`}>
+            <span class="font-oswald" style="color:#F5A623; font-weight:600; text-transform:uppercase; font-size:0.92rem; letter-spacing:0.06em;">{d.run}</span>
+            <span style="color:rgba(255,255,255,0.78); font-size:0.92rem;">{d.start}</span>
+            <span style="background:#F5A623; color:#1A4731; padding:0.3rem 0.7rem; font-family:'Oswald',sans-serif; font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700;">{d.spots}</span>
+            <a href="/v2-active-outdoor#booking" class="btn-yellow" style="padding:0.55rem 1.2rem; font-size:0.82rem;">Reserve</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section style="background:#F8F7F4;" aria-labelledby="safe-h">
+    <div class="inner">
+      <div style="text-align:center; margin-bottom:2.5rem;">
+        <span class="label" style="color:#1A4731;">Why we sleep at night</span>
+        <h2 id="safe-h" class="font-oswald" style="font-size:2.4rem; font-weight:700; text-transform:uppercase; color:#1A4731; margin:0.4rem 0;">Certified. Insured. Verified.</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem;">
+        {safety.map(s => (
+          <div style="background:#fff; border-top:4px solid #F5A623; padding:1.5rem;">
+            <span class="font-oswald" style="background:#1A4731; color:#F5A623; padding:0.3rem 0.7rem; font-size:0.72rem; letter-spacing:0.14em; font-weight:700; text-transform:uppercase; display:inline-block;">{s.tag}</span>
+            <h3 class="font-oswald" style="font-size:1.05rem; text-transform:uppercase; color:#1A4731; margin:0.85rem 0 0.4rem; font-weight:700;">{s.label}</h3>
+            <p style="color:#3a4a30; line-height:1.7; margin:0; font-size:0.85rem;">{s.detail}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="topo-bg" style="color:#fff; text-align:center;">
+    <div class="inner" style="max-width:42rem;">
+      <h2 class="font-oswald" style="font-size:2.4rem; text-transform:uppercase; font-weight:700; margin:0 0 1rem;">Ready to enroll?</h2>
+      <p style="color:rgba(255,255,255,0.78); line-height:1.8; margin:0 0 2rem;">Call our scheduling line or send a quick form. We'll suggest the right cohort for your dog based on a 10-minute intake call.</p>
+      <a href={`tel:${biz.phone}`} class="btn-yellow">Call to enroll · {biz.phone}</a>
+    </div>
+  </section>
+
+  </main>
+</BaseLayout>
