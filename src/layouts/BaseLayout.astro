@@ -38,6 +38,11 @@ import '../global.css';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {schemaJson && <Fragment set:html={`<script type="application/ld+json">${schemaJson}</script>`} />}
     <script src="/template-topheader.js" defer></script>
+    <style>
+      html { scroll-padding-top: 40px !important; }
+      body { padding-top: 36px !important; }
+      body > #dcrader-topheader, body > [data-dcrader-topheader] { padding-top: 0 !important; margin-top: -36px !important; }
+    </style>
   </head>
   <body>
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:text-black focus:px-3 focus:py-2 focus:rounded">Skip to content</a>
